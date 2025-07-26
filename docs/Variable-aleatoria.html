@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>variable-aleatoria</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Variable aleatoria_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Variable aleatoria_files/libs/quarto-html/quarto.js"></script>
+<script src="Variable aleatoria_files/libs/quarto-html/popper.min.js"></script>
+<script src="Variable aleatoria_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Variable aleatoria_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Variable aleatoria_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Variable aleatoria_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Variable aleatoria_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Variable aleatoria_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Variable aleatoria_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<p>format: html: math: mathjax mathjax: tex: macros: usim: [“\underaccent{\tilde}{#1}”, 1]</p>
+<section id="variable-aleatoria" class="level1">
+<h1>1.2 VARIABLE ALEATORIA</h1>
+<section id="variables-y-vectores-aleatorios" class="level4">
+<h4 class="anchored" data-anchor-id="variables-y-vectores-aleatorios">1.2.1 Variables y vectores aleatorios</h4>
+<p>Consideramos un experimento aleatorio cuyos resultados pertenecen al espacio muestral Ω. Modelamos este proceso suponiendo que existe una terna <span class="math inline">\((\Omega, \mathcal{A}, P),\)</span> donde:</p>
+<ul>
+<li><span class="math inline">\(\Omega\)</span> es el espacio muestra,<br>
+</li>
+<li><span class="math inline">\(\mathcal{P}(\Omega)\)</span> es el conjunto de partes de Ω,<br>
+</li>
+<li><span class="math inline">\(\mathcal{A}\in\mathcal{P}(\Omega)\)</span> es una σ-álgebra,<br>
+</li>
+<li><span class="math inline">\(P\colon \mathcal{A} \to [0,1]\)</span> es una medida de probabilidad que refleja las características aleatorias del experimento realizado.</li>
+</ul>
+<p>A esta terna se le llama <strong>espacio de probabilidad</strong>.</p>
+<p>Los resultados de un experimento aleatorio no son analizados “en bruto”, sino que se les da una representación numérica que facilita su tratamiento. Esto se logra introduciendo variables aleatorias, que asocian cada resultado <span class="math inline">\(\omega\in \Omega\)</span> con un valor numérico o vectorial, y sobre las cuales luego aplicamos técnicas de inferencia estadística.</p>
+<p>En todo estudio estadístico partimos de un <strong>experimento aleatorio</strong> cuyo conjunto de resultados posibles se denomina <strong>espacio muestral</strong> Ω. Para cuantificar dichos resultados definimos las siguientes estructuras:</p>
+<p><strong>Definición: Variables Aleatorias</strong> Sea <span class="math inline">\((\Omega,\mathcal{A},P)\)</span> un espacio de probabilidad. Una <strong>variable aleatoria</strong> es una función <span class="math inline">\(X\colon (\Omega,\mathcal{A})\;\longrightarrow\; (\mathbb{R},\mathcal{B}),\)</span> tal que para todo <span class="math inline">\(B\in\mathcal{B}\)</span> (la <span class="math inline">\(\sigma\)</span>-álgebra de Borel en ℝ), <span class="math inline">\(X^{-1}(B)\;=\;\{\omega\in\Omega : X(\omega)\in B\}\;\in\;\mathcal{A}.\)</span></p>
+<ul>
+<li>Si el espacio muestral Ω es <strong>finito o numerable</strong>, diremos que es un espacio <strong>discreto</strong> y las variables aleatorias asociadas al experimento normalmente estarán definidas como <span class="math inline">\(X\colon \Omega \;\longrightarrow\; \mathbb{Z}.\)</span></li>
+<li>Si <span class="math inline">\(\Omega\)</span> es <strong>no numerable</strong>, entonces diremos que es un espacio <strong>continuo</strong> y <span class="math inline">\(X\colon \Omega \;\longrightarrow\; \mathbb{R}.\)</span></li>
+</ul>
+<hr>
+<p><strong>Definición: Vector aleatorio</strong></p>
+<p>Un <strong>vector aleatorio</strong> de dimensión <span class="math inline">\(n\)</span> es <span class="math inline">\(\mathbf{X} = (X_1,\dots,X_n)\colon(\Omega,\mathcal{A})\longrightarrow(\mathbb{R}^n,\mathcal{B}^n),\)</span> donde cada componente <span class="math inline">\(X_i\)</span> es variable aleatoria y <span class="math inline">\(\mathcal{B}^n\)</span> la <span class="math inline">\(\sigma\)</span>-álgebra de Borel en ℝⁿ.</p>
+<hr>
+<p><strong>Ejemplos</strong> <strong>Lanzamiento de dos monedas</strong></p>
+<p>Sea $= {,CC,;C-,;-C,;–}, $ donde <span class="math inline">\(C\)</span> = “cara” y <span class="math inline">\(-\)</span> = “cruz”. Podemos definir:<br>
+<span class="math inline">\(X_1(\omega) = \text{número de caras en }\omega.\)</span> <span class="math inline">\(X_2(\omega) = 2 - X_1(\omega)\;=\; \text{número de cruces}.\)</span> <span class="math inline">\(X_3(\omega) = \bigl(X_1(\omega)\bigr)^2.\)</span></p>
+<p>Entonces <span class="math inline">\((X_1,X_2,X_3)\)</span> es un vector aleatorio de dimensión 3.</p>
+<p><strong>Tiempos de servicio en un servidor</strong></p>
+<p>Sean <span class="math inline">\(T_i\)</span> los tiempos de servicio (en segundos) de las peticiones <span class="math inline">\(i=1,2,3\)</span>. Definimos<br>
+<span class="math inline">\(\mathbf{T}=(T_1,T_2,T_3),\quad S = T_1 + T_2 + T_3,\quad M = \max\{T_1,T_2,T_3\}.\)</span></p>
+<p><strong>Lecturas de sensores en red distribuida</strong></p>
+<p>En tres nodos <span class="math inline">\(i=1,2,3\)</span> medimos temperatura <span class="math inline">\(X_{i,1}\)</span>, presión <span class="math inline">\(X_{i,2}\)</span> y humedad <span class="math inline">\(X_{i,3}\)</span>. El vector global es <span class="math inline">\(\mathbf{X} = (X_{1,1},X_{1,2},X_{1,3},\,X_{2,1},\dots,X_{3,3}) \in \mathbb{R}^9.\)</span></p>
+<hr>
+<p>Con estas definiciones rigurosas disponemos ya de los objetos básicos para, en las siguientes secciones, construir estimadores, estudiar su comportamiento asintótico y contrastar hipótesis sobre la distribución subyacente <span class="math inline">\(P\)</span>.</p>
+</section>
+<section id="distribución-de-una-variable-aleatoria.-funciones-de-distribución-de-probabilidad-y-de-densidad" class="level4">
+<h4 class="anchored" data-anchor-id="distribución-de-una-variable-aleatoria.-funciones-de-distribución-de-probabilidad-y-de-densidad">1.2.2 Distribución de una variable aleatoria. Funciones de distribución, de probabilidad y de densidad</h4>
+<p><strong>Distribución de una Variable Aleatoria</strong></p>
+<p>La realización de un experimento aleatorio da lugar a un resultado <span class="math inline">\(\omega\in\Omega\)</span> que es aleatorio. Por lo tanto, <span class="math inline">\(X(\omega)\)</span> es un valor de <span class="math inline">\(\mathbb{R}\)</span> también aleatorio. Es decir, la variable aleatoria <span class="math inline">\(X\)</span> induce una medida de probabilidad en <span class="math inline">\(\mathbb{R}\)</span>. A esa medida de probabilidad se le llama <strong>distribución de <span class="math inline">\(X\)</span></strong> o <strong>ley de <span class="math inline">\(X\)</span></strong>. Una de las formas de caracterizar la distribución de una variable aleatoria es dar su función de distribución <span class="math inline">\(F_X\)</span>, que está definida así:</p>
+<p><span class="math inline">\(F_X(x) \;=\; P(X \le x)\;=\; P\bigl(\{\omega \in \Omega : X(\omega) \le x\}\bigr)\;=\; P\bigl(X^{-1}((-\infty, x])\bigr).\)</span>$</p>
+<p>En el caso de que <span class="math inline">\(X\)</span> sea una <strong>variable aleatoria discreta</strong>, es decir, en el caso de que <span class="math inline">\(X\)</span> solo tome una cantidad finita o numerable de valores de <span class="math inline">\(\mathbb{R}\)</span>, su distribución también puede caracterizarse por su <strong>función de probabilidad</strong> (o <strong>función de masa de probabilidad</strong>) <span class="math inline">\(f_X\)</span>, definida como</p>
+<p><span class="math display">\[f_X : \mathbb{R} \longrightarrow [0,1],\qquad f_X(x) = P(X = x).\]</span></p>
+<p>Esa función solo es no nula en un conjunto finito o numerable. Supondremos en adelante, sin pérdida de generalidad, que ese conjunto está contenido en <span class="math inline">\(\mathbb{Z}\)</span>. A partir de la función de masa de probabilidad se puede calcular la probabilidad de que la variable aleatoria <span class="math inline">\(X\)</span> tome valores en cualquier elemento <span class="math inline">\(A \subseteq \mathbb{B}\)</span>:</p>
+<p><span class="math inline">\(P(X \in A) = \sum_{x \in A} f_X(x).\)</span> me</p>
+<p>La función de distribución y la función de masa de probabilidad se relacionan de la siguiente forma:</p>
+<p><span class="math inline">\(F_X(x) = \sum_{u \leq x} f_X(u), \quad f_X(x) = F_X(x) - F_X(x^-),\)</span> donde <span class="math inline">\(F_X(x^-) = \lim_{h \to 0^+} F_X(x - h)\)</span>.</p>
+<p>Una clase relevante de variables aleatorias no discretas son las que poseen <strong>función de densidad</strong>, es decir, aquellas cuya distribución de probabilidad puede caracterizarse por una función <span class="math inline">\(f_X(x) \geq 0\)</span> que cumple que:</p>
+<p><span class="math inline">\(P(X \in A) = \int_{x \in A} f_X(x) \, dx, \quad \text{para todo } A \subseteq \mathbb{B}.\)</span></p>
+<p>La relación entre <span class="math inline">\(F_X\)</span> y <span class="math inline">\(f_X\)</span> es la siguiente:</p>
+<p><span class="math inline">\(F_X(x) = \int_{-\infty}^{x} f_X(u) \, du, \quad f_X(x) = \frac{d}{dx} F_X(x),\)</span></p>
+<p>salvo quizás en un número finito de puntos <span class="math inline">\(x \in \mathbb{R}\)</span>. Las variables aleatorias que poseen función de densidad se llaman <strong>variables aleatorias absolutamente continuas</strong>. Abusando del lenguaje, aquí nos referiremos a ellas como variables aleatorias continuas.</p>
+</section>
+<section id="esperanza-y-varianza" class="level4">
+<h4 class="anchored" data-anchor-id="esperanza-y-varianza">1.2.3 Esperanza y varianza</h4>
+<p>Si se desea describir totalmente la distribución de probabilidad de una variable aleatoria <span class="math inline">\(X\)</span> acabamos de ver que podemos dar su función de distribución o su función de masa o de densidad, según el caso. Una descripción parcial puede efectuarse calculando algunas características de la variable aleatoria <span class="math inline">\(X\)</span>, como por ejemplo medidas de posición o de dispersión. Estudiaremos algunas de ellas.</p>
+<p>Se define la <strong>esperanza</strong> de una variable aleatoria <span class="math inline">\(X\)</span> como la integral de Lebesgue de <span class="math inline">\(X\)</span>:</p>
+<p><span class="math inline">\(E(X) = \int_{\Omega} X(w) dP(w).\)</span></p>
+<p>En el caso de variables aleatorias discretas la esperanza puede calcularse como:</p>
+<p><span class="math inline">\(E(X) = \sum_{w \in \Omega} X(w) P(w) = \sum_{k \in \mathbb{Z}} k P(X = k) = \sum_{k \in \mathbb{Z}} k f_X(k).\)</span></p>
+<p>Por otro lado, la esperanza de una variable aleatoria continua se puede calcular así:</p>
+<p><span class="math inline">\(E(X) = \int_{\mathbb{R}} x f_X(x) dx.\)</span></p>
+<p>La esperanza de una variable aleatoria <span class="math inline">\(X\)</span> es una medida de posición de <span class="math inline">\(X\)</span>: es el centro de gravedad de la distribución de probabilidad de <span class="math inline">\(X\)</span>.</p>
+<p>Si <span class="math inline">\(h\)</span> es una función medible <span class="math inline">\(h : \mathbb{R} \rightarrow \mathbb{R}\)</span>, entonces <span class="math inline">\(Y = h(X)\)</span> es también variable aleatoria y su esperanza se puede calcular a partir de la distribución de <span class="math inline">\(X\)</span>:</p>
+<p><span class="math inline">\(E(h(X)) = \int_{\Omega} h(X(w)) dP(w)\)</span> que en el caso de que <span class="math inline">\(X\)</span> sea discreta puede reescribirse como</p>
+<p><span class="math inline">\(E(h(X)) = \sum_{k \in \mathbb{Z}} h(k) f_X(k).\)</span></p>
+<p>Si <span class="math inline">\(X\)</span> es una variable aleatoria continua entonces</p>
+<p><span class="math inline">\(E(h(X)) = \int_{\mathbb{R}} h(x) f_X(x) dx.\)</span></p>
+<p>Si existe <span class="math inline">\(\mu = E(X)\)</span> y es finita puede definirse una medida de dispersión de la variable aleatoria <span class="math inline">\(X\)</span> a partir de una transformación <span class="math inline">\(h\)</span> de <span class="math inline">\(X\)</span>. Es lo que se denomina <strong>varianza</strong> de <span class="math inline">\(X\)</span> y se define así:</p>
+<p><span class="math inline">\(V(X) = E((X - \mu)^2) = E(X^2) - \mu^2 = E(X^2) - (E(X))^2.\)</span></p>
+</section>
+<section id="función-generadora-de-momentos" class="level4">
+<h4 class="anchored" data-anchor-id="función-generadora-de-momentos">1.2.4 Función generadora de momentos</h4>
+<p>Dada una variable aleatoria <span class="math inline">\(X\)</span>, o su función de distribución <span class="math inline">\(F\)</span>, vamos a definir otra función generadora, como</p>
+<p><span class="math inline">\(M_X(t) = \mathbb{E}(e^{tX}),\)</span> siempre que este valor esperado exista.</p>
+<p>Notemos que cuando <span class="math inline">\(X\)</span> toma valores en los enteros no-negativos, <span class="math inline">\(M_X(t) = \phi_X(e^t)\)</span>, donde <span class="math inline">\(\phi_X(s)=E[s^X]=\sum_{k=0}^{\infty}p_ks^k\)</span> para <span class="math inline">\(s\in[0,1]\)</span> es la función generadora de probabilidad (f.g.p.) de la variable <span class="math inline">\(X\)</span>, con <span class="math inline">\(p_k=P(X=k)\)</span>. Si <span class="math inline">\(X\)</span> está acotada, <span class="math inline">\(M_X\)</span> está bien definida para todo <span class="math inline">\(t\)</span> real; en cambio, si <span class="math inline">\(X\)</span> no está acotada, es posible que el dominio de <span class="math inline">\(M_X\)</span> no sea el conjunto de todos los reales. En todo caso, <span class="math inline">\(\phi\)</span> siempre está definida en cero, y <span class="math inline">\(M(0) = 1\)</span>.</p>
+<p>Es posible demostrar que si la f.g.m. de la v.a. <span class="math inline">\(X\)</span> existe en un entorno de 0, entonces para todo <span class="math inline">\(k &gt; 0\)</span>,</p>
+<p><span class="math inline">\(\mathbb{E}[|X|^k] &lt; \infty.\)</span></p>
+<p>Más aún, la serie</p>
+<p><span class="math inline">\(M_X(t) =
+\mathbb{E}(e^{tX})
+= \mathbb{E}\left(1 + \sum_{k=1}^{\infty} \frac{t^k X^k}{k!}\right)
+= 1 + \sum_{n=1}^{\infty} \frac{t^k}{k!} \mathbb{E}(X^k)
+\tag{5.1}\)</span></p>
+<p>es convergente y se puede derivar término a término. Obtenemos</p>
+<p><span class="math inline">\(M'_X(0) = \mathbb{E}(X); \quad M''_X(0) = \mathbb{E}(X^2)\)</span></p>
+<p>y en general</p>
+<p><span class="math inline">\(M_X^{(k)}(0) = \mathbb{E}(X^k).\)</span></p>
+<p>Es por esta última propiedad que esta función se conoce como <strong>función generadora de momentos</strong> (f.g.m.).</p>
+<p>🎲 Ejemplo: f.g.m. de la distribución Binomial</p>
+<p>Sea <span class="math inline">\(X \sim \text{Binomial}(n, p)\)</span>, es decir, la suma de <span class="math inline">\(n\)</span> ensayos de Bernoulli con probabilidad de éxito <span class="math inline">\(p\)</span>. La función generadora de momentos es: <a href="https://github.com/BMSS-EAFIT-Courses/inference-statistic/blob/main/mgf_binomial.r">Ejemplo fgm binomial</a></p>
+<p><span class="math inline">\(M_X(t) = \mathbb{E}[e^{tX}] = (1 - p + p e^t)^n\)</span></p>
+<pre> ```r #
+mgf_binomial &lt;- function(t, n = 10, p = 0.3) {
+  (1 - p + p * exp(t))^n
+}
+
+t_vals &lt;- seq(-3, 3, length.out = 300)
+mgf_vals &lt;- sapply(t_vals, mgf_binomial)
+
+plot(t_vals, mgf_vals, type = "l", lwd = 2,
+     main = expression("F.G.M. para X ~ Binomial(10, 0.3)"),
+     xlab = "t", ylab = expression(M[X](t)))
+grid()
+``` </pre>
+<p>📈 Ejemplo: f.g.m. de la distribución Normal Estándar</p>
+<p>Sea <span class="math inline">\(X \sim \mathcal{N}(0, 1)\)</span>. Su función generadora de momentos es:</p>
+<p><span class="math inline">\(M_X(t) = \mathbb{E}[e^{tX}] = e^{\frac{t^2}{2}}\)</span></p>
+Esta expresión se obtiene usando la forma cerrada del momento de una normal estándar.
+<pre> ```r #
+mgf_normal &lt;- function(t) {
+  exp(t^2 / 2)
+}
+
+t_vals &lt;- seq(-3, 3, length.out = 300)
+mgf_vals &lt;- sapply(t_vals, mgf_normal)
+
+plot(t_vals, mgf_vals, type = "l", lwd = 2,
+     main = expression("F.G.M. para X ~ N(0, 1)"),
+     xlab = "t", ylab = expression(M[X](t)))
+grid()
+``` </pre>
+<p><strong>❓ Preguntas guía sobre la gráfica de la función generadora de momentos</strong></p>
+<p><strong>📌 ¿Qué representa la gráfica de la f.g.m. <span class="math inline">\(M_X(t)\)</span>?</strong></p>
+<p>La gráfica muestra cómo evoluciona el valor esperado de <span class="math inline">\(e^{tX}\)</span> cuando <span class="math inline">\(t\)</span> varía. Esta función codifica <strong>todos los momentos de la variable aleatoria</strong> <span class="math inline">\(X\)</span>, y por tanto, contiene información completa sobre su distribución (si existe un entorno donde la f.g.m. es finita).</p>
+<hr>
+<p><strong>🧭 ¿Qué se observa en la f.g.m. de una distribución Binomial?</strong> <img width="480" height="480" alt="mgf_binomial" src="https://github.com/user-attachments/assets/8524edee-0b5c-4938-a9e8-8af0e8c5840c"></p>
+<p>![Gráfica MGF Binomial]</p>
+<p>#Preguntas y respuestas</p>
+<ul>
+<li><p><strong>¿Cómo es el comportamiento de la f.g.m. cerca de <span class="math inline">\(t = 0\)</span>?</strong></p>
+<p>En <span class="math inline">\(t = 0\)</span>, siempre se cumple que <span class="math inline">\(M_X(0) = 1\)</span>, ya que:</p>
+<p><span class="math inline">\(M_X(0) = \mathbb{E}[e^{0 \cdot X}] = \mathbb{E}[1] = 1\)</span></p></li>
+<li><p><strong>¿Qué indica la curvatura de la gráfica?</strong></p>
+<p>La curvatura refleja el crecimiento exponencial de los momentos. Si la curva crece rápidamente hacia la derecha, significa que los momentos (media, varianza, etc.) también crecen con rapidez.</p></li>
+<li><p><strong>¿Por qué la gráfica es convexa?</strong></p>
+<p>Todas las funciones generadoras de momentos son <strong>estrictamente convexas</strong> en el intervalo donde están definidas. Esto es una consecuencia de que derivadas sucesivas representan momentos positivos.</p></li>
+<li><p><strong>¿Qué pasa si cambio los parámetros <span class="math inline">\(n\)</span> y <span class="math inline">\(p\)</span>?</strong></p>
+<p>Aumentar $ n $ o <span class="math inline">\(p\)</span> tiende a <strong>elevar</strong> la f.g.m. en el lado derecho, reflejando una mayor media y varianza.</p></li>
+</ul>
+<hr>
+<p><strong>📈 ¿Cómo se comporta la f.g.m. para la Normal Estándar?</strong> <img width="480" height="480" alt="mgf_normal" src="https://github.com/user-attachments/assets/e877129d-4235-42d9-baff-7f29d3afc4a7"></p>
+<p>![Gráfica MGF Normal]</p>
+<p><strong>Preguntas y respuestas</strong></p>
+<ul>
+<li><p><strong>¿Por qué es simétrica respecto al eje $ t = 0 $?</strong></p>
+<p>Porque la normal estándar es simétrica alrededor de su media $ = 0 $, y su f.g.m. tiene la forma:</p></li>
+</ul>
+<p><span class="math inline">\(M_X(t) = e^{t^2 / 2}\)</span></p>
+<p>lo cual es una función par: <span class="math inline">\(M_X(-t)= M_X(t)\)</span>.</p>
+<ul>
+<li><p><strong>¿Qué tan rápido crece la función?</strong></p>
+<p>Muy rápido. El crecimiento es exponencial cuadrático. Esto implica que los momentos de la normal crecen rápidamente en magnitud.</p></li>
+<li><p><strong>¿Cómo se relaciona esta gráfica con los momentos de la normal?</strong></p>
+<p>Derivando sucesivamente la f.g.m. en $ t = 0 $, se obtiene:</p>
+<p><span class="math inline">\(\mathbb{E}[X^k] = M_X^{(k)}(0)\)</span></p>
+<p>Por tanto, la gráfica “encierra” toda la información sobre los momentos.</p></li>
+</ul>
+<hr>
+<p><strong>🧠 Conclusión</strong></p>
+<p>Estas gráficas te permiten <strong>visualizar la información estadística codificada en una variable aleatoria</strong>. La f.g.m. no es solo una herramienta algebraica para obtener momentos, sino una forma poderosa de describir el comportamiento global de la variable.</p>
+<blockquote class="blockquote">
+<p><strong>¿Qué pasa si dos variables tienen la misma f.g.m.?</strong><br>
+¡Tienen la misma distribución! (si la f.g.m. está definida en un entorno de 0).</p>
+</blockquote>
+<p><strong>Ejemplo: Distribución uniforme <span class="math inline">\(U(a,b)\)</span></strong></p>
+<p>Si <span class="math display">\[X \sim U(a,b),\]</span><br>
+su densidad es<br>
+<span class="math display">\[f(x) = \frac{1}{b - a}\quad\text{para }a &lt; x &lt; b,\]</span><br>
+y su función generadora de momentos viene dada por</p>
+<a id="eq:5.2" href=""></a>
+<table align="center">
+<tbody><tr>
+<td align="center">
+<span class="math display">\[M(t)= \int_a^b \frac{e^{t x}}{b - a}\,dx= \frac{e^{b t} - e^{a t}}{t\,(b - a)}.\]</span><br>
+
+</td>
+<td valign="bottom">
+(5.2)
+</td>
+</tr>
+</tbody></table>
+<p>En el caso particular de la distribución uniforme en <span class="math inline">\((0,1)\)</span> se obtiene<br>
+<span class="math display">\[M(t) = \frac{e^t - 1}{t}.\]</span></p>
+<hr>
+<p>Para derivar la fórmula <a href="#eq:5.2">#(5.2)</a> y obtener los momentos, podemos usar el desarrollo en serie de la función exponencial:</p>
+<p><span class="math display">\[M(t)= \frac{1}{t\,(b - a)}\bigl(e^{b t} - e^{a t}\bigr) \\
+= \frac{1}{t\,(b - a)}\Bigl[\bigl(1 + \sum_{n=1}^\infty \tfrac{(b t)^n}{n!}\bigr)
+                    -\bigl(1 + \sum_{n=1}^\infty \tfrac{(a t)^n}{n!}\bigr)\Bigr] \\
+= \frac{1}{b - a}\sum_{n=1}^\infty \frac{b^n - a^n}{n!}\,t^{n-1}.
+\]</span></p>
+<p>Este es el desarrollo de Maclaurin de <span class="math inline">\(M(t)\)</span> en <span class="math inline">\(t=0\)</span>; por tanto, sus derivadas en cero satisfacen</p>
+<table align="center">
+<tbody><tr>
+<td align="center">
+<span class="math display">\[M^{(k)}(0)= \frac{b^{k+1} - a^{k+1}}{(k+1)\,(b - a)}.\]</span>
+</td>
+<td valign="bottom">
+(5.3)
+</td>
+</tr>
+</tbody></table>
+<p>En particular:</p>
+<ul>
+<li><p><span class="math display">\[M'(0)= \frac{b^2 - a^2}{2\,(b - a)}= \frac{a + b}{2},\]</span> que coincide con <span class="math inline">\(\mathbb{E}(X)\)</span>.</p></li>
+<li><p><span class="math display">\[M''(0)= \frac{b^3 - a^3}{3\,(b - a)}= \frac{a^2 + a b + b^2}{3},\]</span></p></li>
+</ul>
+<p>y un cálculo directo muestra que la varianza es</p>
+<p><span class="math display">\[\mathrm{Var}(X)= \mathbb{E}(X^2) - \bigl(\mathbb{E}(X)\bigr)^2= \frac{(a + b)^2}{12}.\]</span></p>
+<p><strong>Observación importante</strong> Sea <span class="math inline">\(X\)</span> una v.a. con f.g.m. <span class="math inline">\(M_X\)</span> y sea <span class="math inline">\(Y=aX+b\)</span> una transformación lineal de <span class="math inline">\(X\)</span>, entonces</p>
+<p><span class="math display">\[M_Y(t)=E(e^{tY})=E(e^{t(aX+b)})=E(e^{taX}e^{tb})=e^{tb}E(e^{taX})=e^{tb}M_X(at)\]</span></p>
+<p><strong>Teorema (fgm de suma de v.a.s)</strong></p>
+<p>Si <span class="math inline">\(X\)</span> tiene función generadora de momentos <span class="math inline">\(M(t)\)</span> que está definida en un entorno <span class="math inline">\((-a,a)\)</span> de 0, entonces <span class="math inline">\(M(t)\)</span> caracteriza a la distribución de <span class="math inline">\(X\)</span>; es decir, si otra variable <span class="math inline">\(Y\)</span> tiene la misma función generadora de momentos, las distribuciones de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> coinciden.</p>
+<hr>
+Si <span class="math inline">\(X,Y\)</span> son variables aleatorias con funciones generadoras de momentos respectivas <span class="math inline">\(M_X\)</span> y <span class="math inline">\(M_Y\)</span> que existen en un dominio común <span class="math inline">\(|t| &lt; d\)</span>, entonces la f.g.m. de la suma <span class="math inline">\(X+Y\)</span> está dada por <a id="eq:5.5" href=""></a>
+<table align="center">
+<tbody><tr>
+<td align="center">
+<span class="math display">\[M_{X+Y}(t)= \mathbb{E}\bigl[e^{t(X+Y)}\bigr]= \mathbb{E}\bigl[e^{tX}\,e^{tY}\bigr]=\mathbb{E}\bigl[e^{tX}\bigr]\;\mathbb{E}\bigl[e^{tY}\bigr]= M_X(t)\,M_Y(t).
+\tag{5.5}
+\]</span>
+</td>
+<td valign="bottom">
+(5.5)
+</td>
+</tr>
+</tbody></table>
+<p>Este resultado se extiende a la suma de <span class="math inline">\(n\)</span> variables aleatorias independientes. Si</p>
+<p><span class="math display">\[S_n = X_1 + \cdots + X_n,\]</span></p>
+<p>entonces</p>
+<p><span class="math display">\[M_{S_n}(t)= \mathbb{E}\bigl[e^{tS_n}\bigr]= \mathbb{E}\Bigl[e^{t\sum_{i=1}^n X_i}\Bigr]= \prod_{i=1}^n\mathbb{E}\bigl[e^{tX_i}\bigr]= \prod_{i=1}^n M_{X_i}(t).\]</span></p>
+<p>La función generadora de momentos resulta particularmente útil cuando consideramos sucesiones de variables aleatorias, como lo muestra el siguiente teorema que enunciamos sin demostración:</p>
+<hr>
+<p><strong>Teorema (de Continuidad)</strong></p>
+<p>Sea <span class="math inline">\(F_n(x)\)</span>, <span class="math inline">\(n\ge1\)</span>, una sucesión de funciones de distribución con funciones generadoras de momentos respectivas <span class="math inline">\(M_n(t)\)</span>, definidas en <span class="math inline">\(|t|&lt;b\)</span>. Supongamos que cuando <span class="math inline">\(n\to\infty\)</span>,</p>
+<p><span class="math display">\[
+M_n(t)\,\longrightarrow\,M(t)
+\quad\text{para }|t|\le a,
+\]</span></p>
+<p>donde <span class="math inline">\(M(t)\)</span> es la función generadora de momentos de la distribución límite <span class="math inline">\(F(x)\)</span>. Entonces</p>
+<p><span class="math display">\[
+F_n(x)\,\longrightarrow\,F(x)
+\quad\text{cuando }n\to\infty
+\]</span></p>
+<p>para todo punto <span class="math inline">\(x\)</span> en el cual <span class="math inline">\(F\)</span> es continua.</p>
+<p><strong>Teorema de Laplace–Moivre</strong></p>
+<p>Sea <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> una sucesión de variables aleatorias <strong>i.i.d.</strong> con distribución ( (p) ), donde ( 0 &lt; p &lt; 1 ). Sea:</p>
+<p><span class="math display">\[
+S_n = X_1 + X_2 + \cdots + X_n \sim \text{Binomial}(n, p)
+\]</span></p>
+<p>y consideremos la variable tipificada:</p>
+<p><span class="math display">\[
+Z_n = \frac{S_n - np}{\sqrt{np(1 - p)}}
+\]</span></p>
+<p>Entonces, cuando ( n ), se tiene convergencia en distribución a una normal estándar:</p>
+<p><span class="math display">\[
+Z_n \xrightarrow{d} \mathcal{N}(0, 1)
+\]</span></p>
+<p>es decir,</p>
+<p><span class="math display">\[
+\lim_{n \to \infty} \mathbb{P}(Z_n \leq z) = \Phi(z), \quad \text{para todo } z \in \mathbb{R}
+\]</span></p>
+<p>donde ( (z) ) es la función de distribución acumulada de la normal estándar.</p>
+<hr>
+<p><strong>Demostración usando funciones generadoras de momentos</strong></p>
+<p>La función generadora de momentos (mgf) de <span class="math inline">\(S_n \sim \text{Binomial}(n, p)\)</span> es:</p>
+<p><span class="math display">\[
+M_{S_n}(t) = \left(1 - p + p e^t\right)^n
+\]</span></p>
+<p>Queremos obtener la mgf de la variable tipificada ( Z_n ). Usamos la propiedad de cambio de variable de la mgf:</p>
+<p><span class="math display">\[
+M_{Z_n}(t) = \mathbb{E}\left[ e^{t Z_n} \right]
+= \mathbb{E}\left[ e^{t \cdot \frac{S_n - np}{\sqrt{np(1 - p)}}} \right]
+= e^{-t \cdot \frac{np}{\sqrt{np(1 - p)}}} \cdot M_{S_n}\left( \frac{t}{\sqrt{np(1 - p)}} \right)
+\]</span></p>
+<p>Sustituimos la mgf de ( S_n ):</p>
+<p><span class="math display">\[
+M_{Z_n}(t) = \exp\left( -t \cdot \frac{np}{\sqrt{np(1 - p)}} \right)
+\cdot \left( 1 - p + p e^{t / \sqrt{np(1 - p)}} \right)^n
+\]</span></p>
+<hr>
+<p><strong>Aproximación por series de Taylor</strong></p>
+<p>Expandimos <span class="math inline">\(e^{t / \sqrt{np(1 - p)}}\)</span> para <span class="math inline">\(n\)</span> grande:</p>
+<p><span class="math display">\[
+e^{t / \sqrt{np(1 - p)}} = 1 + \frac{t}{\sqrt{np(1 - p)}} + \frac{t^2}{2np(1 - p)} + \cdots
+\]</span></p>
+<p>Entonces:</p>
+<p><span class="math display">\[
+1 - p + p e^{t / \sqrt{np(1 - p)}} \approx 1 + \frac{pt}{\sqrt{np(1 - p)}} + \frac{pt^2}{2np(1 - p)} + \cdots
+\]</span></p>
+<p>Usamos que <span class="math inline">\(\log(1 + x) \approx x - \frac{x^2}{2} + \cdots\)</span> para <span class="math inline">\(x \approx 0\)</span>:</p>
+<p><span class="math display">\[\log M_{Z_n}(t) \approx -t \cdot \frac{np}{\sqrt{np(1 - p)}}+ n \left( \frac{pt}{\sqrt{np(1 - p)}} + \frac{pt^2}{2np(1 - p)} \right)\]</span></p>
+<p>Simplificamos:</p>
+<ul>
+<li>El término lineal se cancela:</li>
+</ul>
+<p><span class="math display">\[
+-t \cdot \frac{np}{\sqrt{np(1 - p)}} + n \cdot \frac{pt}{\sqrt{np(1 - p)}} = 0
+\]</span></p>
+<ul>
+<li>Queda:</li>
+</ul>
+<p><span class="math display">\[
+\log M_{Z_n}(t) \to \frac{t^2}{2}, \quad \text{cuando } n \to \infty
+\]</span></p>
+<p>Por tanto:</p>
+<p><span class="math display">\[
+M_{Z_n}(t) \to e^{t^2 / 2}
+\]</span></p>
+<hr>
+<p><strong>Conclusión</strong></p>
+<p>Como <span class="math inline">\(e^{t^2/2}\)</span> es la mgf de <span class="math inline">\(\mathcal{N}(0, 1)\)</span>, y por el teorema de unicidad de la función generadora de momentos:</p>
+<p><span class="math display">\[
+Z_n \xrightarrow{d} \mathcal{N}(0, 1)
+\]</span></p>
+<p>Esto concluye la demostración del <strong>Teorema de Laplace–Moivre</strong> utilizando funciones generadoras de momentos.</p>
+</section>
+<section id="muestra-aleatoria-simple" class="level4">
+<h4 class="anchored" data-anchor-id="muestra-aleatoria-simple">1.2.5 Muestra aleatoria simple</h4>
+<p>Sea <span class="math inline">\(\underset{\sim}{X} =(X_1 ,..., X_n)\)</span> un vector aleatorio. Se dice que sus componentes <span class="math inline">\(X_1 ,..., X_n\)</span> son si <span class="math inline">\(P(X_1\leq x_1 ,..., X_n\leq x_n)=P(X_1\leq x_1)...P(X_n\leq x_n)\)</span> para cualesquiera valores <span class="math inline">\(x_1,..., x_n\)</span> .</p>
+<p>Si además la distribución de las <span class="math inline">\(n\)</span> variables aleatorias <span class="math inline">\(X_i\)</span> es la misma, se dice que <span class="math inline">\(X_1 ,...,X_n\)</span> son variables aleatorias <strong>independientes e idénticamente distribuidas</strong>, o bien que son v.a.i.i.d o simplemente i.i.d.</p>
+<p>Si <span class="math inline">\(\underset{\sim}{X} =(X_1 ,..., X_n)\)</span> y <span class="math inline">\(X_1 ,..., X_n\)</span> son i.i.d. con función de densidad (en su caso, de masa) <span class="math inline">\(f_X\)</span> , la distribución conjunta de <span class="math inline">\(\underset{\sim}{X}\)</span> viene dada por la función de densidad (en su caso, de masa) conjunta <span class="math display">\[
+\begin{align*}
+f_{\underset{\sim}{X}}(\underset{\sim}{x})&amp;=f_{(X_1 ,..., X_n)}(x_1 ,..., x_n)\\
+&amp;=f_{(X_1)}(x_1)...f_{(X_n)}(x_n)\\
+&amp;=\prod_{i=1}^{n}f_{(X_i)}(x_i)
+\end{align*}
+\]</span></p>
+<p>A un vector <span class="math inline">\(\underset{\sim}{X} =(X_1 ,..., X_n)\)</span> de v.a.i.i.d. con distribución igual a la de la variable aleatoria <span class="math inline">\(X\)</span> se le denomina también <strong>muestra aleatoria simple</strong> de <span class="math inline">\(X\)</span> (m.a.s de <span class="math inline">\(X\)</span>).</p>
+<p>Esto responde al hecho siguiente. Supongamos que se desea estudiar la característica <span class="math inline">\(X\)</span> de los individuos de una población de tamaño infinito. Definimos el experimento consistente en elegir aleatoriamente un individuo de la población y llamamos <span class="math inline">\(X\)</span> al valor de la característica de interés en ese individuo. X es una variable aleatoria.</p>
+<p>Si definimos un nuevo experimento consistente en elegir una muestra aleatoria de n individuos y se anota <span class="math inline">\(X_i\)</span>, el valor de la característica en el individuo i-ésimo, entonces <strong>X</strong> <span class="math inline">\(=(X_1 ,..., X_n)\)</span> es una colección de n v.a.i.i.d. con distribución igual a la de la variable aleatoria <span class="math inline">\(X\)</span>, es decir, <span class="math inline">\(X_1 ,..., X_n\)</span> es una m.a.s. de X.</p>
+</section>
+<section id="modelo-paramétrico" class="level4">
+<h4 class="anchored" data-anchor-id="modelo-paramétrico">1.2.6 Modelo paramétrico</h4>
+<p>Usualmente la ley de probabilidad de una variable aleatoria se supone perteneciente a un modelo matemático que depende sólo de un número finito de parámetros: <span class="math inline">\(f_X \in\{f(x|\theta):\theta \in \Theta \subseteq \mathbb{R}^k\}\)</span>. Escribiremos alternativamente <span class="math inline">\(f(x;\theta)\)</span>, <span class="math inline">\(f(x|\theta)\)</span> o <span class="math inline">\(f_\theta(x)\)</span>.</p>
+<p><strong>Definición</strong> El conjunto de distribuciones dadas por <span class="math inline">\(f_\theta(x)\)</span>, <span class="math inline">\(\theta \in \Theta\)</span> se llama familia paramétrica de distribuciones. <span class="math inline">\(\Theta\)</span> es el conjunto de parámetros.</p>
+<p><strong>Definición</strong> La correspondiente distribución conjunta de una muestra aleatoria simple de <span class="math inline">\(X\)</span> viene dada por la función de densidad (o función de masa de probabilidad, según el caso)</p>
+<p><span class="math display">\[
+f_{X_{\sim}}(x_{\sim} \mid \theta) = \prod_{i=1}^{n} f_{\theta}(x_i)
+\]</span></p>
+<p>A esta función la llamaremos <strong>función de verosimilitud</strong> de la muestra <span class="math inline">\(X_{\sim}\)</span>. Utilizaremos este término para referirnos indistintamente a la función de densidad conjunta (si las variables aleatorias son continuas) o a la función de masa conjunta (si son discretas).</p>
+</section>
+<section id="sumas-de-variables-aleatorias" class="level4">
+<h4 class="anchored" data-anchor-id="sumas-de-variables-aleatorias">1.2.7 Sumas de variables aleatorias</h4>
+<p>Cuando se obtiene una muestra aleatoria simple <span class="math inline">\(X_{1},X_{2},\ldots,X_{n}\)</span> normalmente se calculan a partir de ellas cantidades que resumen los valores observados. Cualquiera de estos resúmenes se puede expresar como una función <span class="math inline">\(T(x_1,\ldots,x_n)\)</span> definida en el espacio <span class="math inline">\(\mathcal{X}^n\subseteq\mathbb{R}^n\)</span> donde están las imágenes del vector <span class="math inline">\((X_{1},X_{2},\ldots,X_{n})\)</span>.</p>
+<p>Esta función <span class="math inline">\(T\)</span> puede devolver valores de <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\mathbb{R}^2\)</span> o, en general, <span class="math inline">\(\mathbb{R}^k\)</span>.</p>
+<p><span class="math display">\[T(X_1 , \ldots, X_n)=\sum_{i=1}^{n}X_i,\bar{X},\bar{X}+3, \min{X_1 , \ldots, X_n},\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)=\left(\sum_{i=1}^{n}X_i,\sum_{i=1}^{n}(X_i-\bar{X})^2\right),\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)=\left(\min\{X_1 , \ldots, X_n\},\sum_{i=1}^{n}X_i,\sum_{i=1}^{n}(X_i-\bar{X})^2\right),\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)= (X_1 , \ldots, X_n)\]</span></p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
