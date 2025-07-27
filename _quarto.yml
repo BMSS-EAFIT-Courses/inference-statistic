@@ -1,0 +1,23 @@
+project:
+  type: book
+
+publish:
+  output-dir: docs
+
+book:
+  title: "Inferencia Estadística"
+  author: "Biviana M. Suárez Sierra"
+  # index.qmd es la página de inicio
+  chapters:
+    - index.qmd
+    - "Datos y modelos.qmd"
+    - "Variable aleatoria.qmd"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    navigation:
+      search: true
