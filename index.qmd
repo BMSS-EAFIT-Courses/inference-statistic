@@ -1,0 +1,16 @@
+---
+title: "Inicio"
+---
+
+# Inferencia Estadística
+
+Bienvenida a mi libro de **Inferencia Estadística**.  
+Aquí encontrarás:
+
+- Un recorrido por los datos y los modelos.  
+- Definiciones y ejemplos de variables aleatorias.  
+
+Continúa a:
+
+1. [Datos y modelos](Datos%20y%20modelos.qmd)  
+2. [Variable aleatoria](Variable%20aleatoria.qmd)  

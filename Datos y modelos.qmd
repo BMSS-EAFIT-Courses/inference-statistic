@@ -1,3 +1,7 @@
+---
+title: "Datos y modelos"
+---
+
 # DATOS Y MODELOS
 
 En esta sección establecemos la base conceptual para el análisis estadístico, diferenciando claramente entre el fenómeno aleatorio observado y la medida de probabilidad que lo describe.  

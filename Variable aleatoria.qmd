@@ -1,10 +1,6 @@
-format:
-  html:
-    math: mathjax
-    mathjax:
-      tex:
-        macros:
-          usim: ["\\underaccent{\\tilde}{#1}", 1]
+---
+title: "Variable aleatoria"
+---
 
 # 1.2 VARIABLE ALEATORIA
 #### 1.2.1 Variables y vectores aleatorios
@@ -37,7 +33,7 @@ Un **vector aleatorio** de dimensión $n$ es $\mathbf{X} = (X_1,\dots,X_n)\colon
 **Ejemplos**
   **Lanzamiento de dos monedas**
 
-Sea $\Omega = \{\,CC,\;C-,\;-C,\;--\},  $ donde $C$ = “cara” y $-$ = “cruz”. Podemos definir:  
+Sea $\Omega =\{\,CC,\;C-,\;-C,\;--\},$ donde $C$ = “cara” y $-$ = “cruz”. Podemos definir:  
 $X_1(\omega) = \text{número de caras en }\omega.$
 $X_2(\omega) = 2 - X_1(\omega)\;=\; \text{número de cruces}.$
 $X_3(\omega) = \bigl(X_1(\omega)\bigr)^2.$
