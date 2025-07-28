@@ -10,26 +10,6 @@
     ]
   },
   {
-    "objectID": "Datos y modelos.html",
-    "href": "Datos y modelos.html",
-    "title": "2  DATOS Y MODELOS",
-    "section": "",
-    "text": "2.1 Fenómeno aleatorio y variable observada",
-    "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>DATOS Y MODELOS</span>"
-    ]
-  },
-  {
-    "objectID": "Variable aleatoria.html",
-    "href": "Variable aleatoria.html",
-    "title": "3  VARIABLE ALEATORIA",
-    "section": "",
-    "text": "3.1 Variables y vectores aleatorios\nConsideramos un experimento aleatorio cuyos resultados pertenecen al espacio muestral Ω. Modelamos este proceso suponiendo que existe una terna \\((\\Omega, \\mathcal{A}, P),\\) donde:\nA esta terna se le llama espacio de probabilidad.\nLos resultados de un experimento aleatorio no son analizados “en bruto”, sino que se les da una representación numérica que facilita su tratamiento. Esto se logra introduciendo variables aleatorias, que asocian cada resultado \\(\\omega\\in \\Omega\\) con un valor numérico o vectorial, y sobre las cuales luego aplicamos técnicas de inferencia estadística.\nEn todo estudio estadístico partimos de un experimento aleatorio cuyo conjunto de resultados posibles se denomina espacio muestral Ω. Para cuantificar dichos resultados definimos las siguientes estructuras:\nDefinición: Variables Aleatorias\nSea \\((\\Omega,\\mathcal{A},P)\\) un espacio de probabilidad. Una variable aleatoria es una función \\(X\\colon (\\Omega,\\mathcal{A})\\;\\longrightarrow\\; (\\mathbb{R},\\mathcal{B}),\\) tal que para todo \\(B\\in\\mathcal{B}\\) (la \\(\\sigma\\)-álgebra de Borel en ℝ), \\(X^{-1}(B)\\;=\\;\\{\\omega\\in\\Omega : X(\\omega)\\in B\\}\\;\\in\\;\\mathcal{A}.\\)\nDefinición: Vector aleatorio\nUn vector aleatorio de dimensión \\(n\\) es \\(\\mathbf{X} = (X_1,\\dots,X_n)\\colon(\\Omega,\\mathcal{A})\\longrightarrow(\\mathbb{R}^n,\\mathcal{B}^n),\\) donde cada componente \\(X_i\\) es variable aleatoria y \\(\\mathcal{B}^n\\) la \\(\\sigma\\)-álgebra de Borel en ℝⁿ.\nEjemplos Lanzamiento de dos monedas\nSea \\(\\Omega =\\{\\,CC,\\;C-,\\;-C,\\;--\\},\\) donde \\(C\\) = “cara” y \\(-\\) = “cruz”. Podemos definir:\n\\(X_1(\\omega) = \\text{número de caras en }\\omega.\\) \\(X_2(\\omega) = 2 - X_1(\\omega)\\;=\\; \\text{número de cruces}.\\) \\(X_3(\\omega) = \\bigl(X_1(\\omega)\\bigr)^2.\\)\nEntonces \\((X_1,X_2,X_3)\\) es un vector aleatorio de dimensión 3.\nTiempos de servicio en un servidor\nSean \\(T_i\\) los tiempos de servicio (en segundos) de las peticiones \\(i=1,2,3\\). Definimos\n\\(\\mathbf{T}=(T_1,T_2,T_3),\\quad S = T_1 + T_2 + T_3,\\quad M = \\max\\{T_1,T_2,T_3\\}.\\)\nLecturas de sensores en red distribuida\nEn tres nodos \\(i=1,2,3\\) medimos temperatura \\(X_{i,1}\\), presión \\(X_{i,2}\\) y humedad \\(X_{i,3}\\). El vector global es \\(\\mathbf{X} = (X_{1,1},X_{1,2},X_{1,3},\\,X_{2,1},\\dots,X_{3,3}) \\in \\mathbb{R}^9.\\)\nCon estas definiciones rigurosas disponemos ya de los objetos básicos para, en las siguientes secciones, construir estimadores, estudiar su comportamiento asintótico y contrastar hipótesis sobre la distribución subyacente \\(P\\).",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VARIABLE ALEATORIA</span>"
-    ]
-  },
-  {
     "objectID": "index.html#cómo-navegar-este-libro",
     "href": "index.html#cómo-navegar-este-libro",
     "title": "Inferencia Estadística",
@@ -50,6 +30,16 @@
     ]
   },
   {
+    "objectID": "Datos y modelos.html",
+    "href": "Datos y modelos.html",
+    "title": "2  DATOS Y MODELOS",
+    "section": "",
+    "text": "2.1 Fenómeno aleatorio y variable observada",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>DATOS Y MODELOS</span>"
+    ]
+  },
+  {
     "objectID": "Datos y modelos.html#fenómeno-aleatorio-y-variable-observada",
     "href": "Datos y modelos.html#fenómeno-aleatorio-y-variable-observada",
     "title": "2  DATOS Y MODELOS",
@@ -67,6 +57,16 @@
     "text": "2.2 Incertidumbre inductiva vs. estocástica\n\n“La observación X está dada, por lo que no hay incertidumbre tal como la hay en la teoría de probabilidad desarrollada anteriormente en el curso. Antes, fue concebida una estructura \\((\\Omega, \\mathcal{F}, P)\\) para enfrentar el que haya incertidumbre acerca del valor de X. En el problema estadístico, el valor de X ha sido observado, y la incertidumbre radica en otro punto: radica en que existe duda acerca de cuál P es la que produjo el valor X. En algunas ocasiones se utilizan los términos incertidumbre estocástica e incertidumbre inductiva para distinguir estos dos tipos. Es común que estos se confundan entre sí, porque en estadística matemática la teoría de probabilidad constituye también una de las maneras naturales de afrontar la cuantificación de incertidumbre inductiva. En cualquier caso, el concebir a P como medida de probabilidad es la base para formular soluciones a la incertidumbre inductiva. Con este lenguaje, probabilidad y estadística son problemas diferentes y de cierta manera inversos. Teoría de probabilidad tiene que ver con cuantificar incertidumbre acerca de X y teoría estadística con cuantificar incertidumbre acerca de P a la luz de haber ya observado X.”[Ver referencia 1]\n\n\nIncertidumbre estocástica: duda previa sobre el valor de X, modelada por \\((\\Omega,\\mathcal{F},P)\\).\n\nIncertidumbre inductiva: tras observar X, la incertidumbre se desplaza a la ley generadora P.\n\n\n\n2.2.0.1 Ejemplos en Matemática Aplicada e Ingeniería de Sistemas\n\nModelado de tiempos de respuesta en redes\n\n\\(X\\): tiempo de llegada de paquetes (variable continua).\n\n\\(P\\): distribución de retardo desconocida; objetivo: estimar parámetros de una ley de colas M/M/1.\n\nEstimación de parámetros en ecuaciones diferenciales estocásticas\n\n\\(X(t)\\): trayectoria observada de un proceso de Itô.\n\n\\(P\\): ley del proceso (por ejemplo, coeficientes de difusión y deriva), inferidos a partir de trayectorias discretas.\n\nCalibración de sensores en sistemas de control\n\n\\(X\\): lecturas del sensor (vector aleatorio).\n\n\\(P\\): distribución conjunta desconocida de ruido; se estima para diseñar filtros de Kalman óptimos.\n\n\n\nCon esta distinción clara entre dato observado y modelo probabilístico, estamos listos para construir estimadores y desarrollar la inferencia estadística en las secciones siguientes.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>DATOS Y MODELOS</span>"
+    ]
+  },
+  {
+    "objectID": "Variable aleatoria.html",
+    "href": "Variable aleatoria.html",
+    "title": "3  VARIABLE ALEATORIA",
+    "section": "",
+    "text": "3.1 Variables y vectores aleatorios\nConsideramos un experimento aleatorio cuyos resultados pertenecen al espacio muestral Ω. Modelamos este proceso suponiendo que existe una terna \\((\\Omega, \\mathcal{A}, P),\\) donde:\nA esta terna se le llama espacio de probabilidad.\nLos resultados de un experimento aleatorio no son analizados “en bruto”, sino que se les da una representación numérica que facilita su tratamiento. Esto se logra introduciendo variables aleatorias, que asocian cada resultado \\(\\omega\\in \\Omega\\) con un valor numérico o vectorial, y sobre las cuales luego aplicamos técnicas de inferencia estadística.\nEn todo estudio estadístico partimos de un experimento aleatorio cuyo conjunto de resultados posibles se denomina espacio muestral Ω. Para cuantificar dichos resultados definimos las siguientes estructuras:\nDefinición: Variables Aleatorias\nSea \\((\\Omega,\\mathcal{A},P)\\) un espacio de probabilidad. Una variable aleatoria es una función \\(X\\colon (\\Omega,\\mathcal{A})\\;\\longrightarrow\\; (\\mathbb{R},\\mathcal{B}),\\) tal que para todo \\(B\\in\\mathcal{B}\\) (la \\(\\sigma\\)-álgebra de Borel en ℝ), \\(X^{-1}(B)\\;=\\;\\{\\omega\\in\\Omega : X(\\omega)\\in B\\}\\;\\in\\;\\mathcal{A}.\\)\nDefinición: Vector aleatorio\nUn vector aleatorio de dimensión \\(n\\) es \\(\\mathbf{X} = (X_1,\\dots,X_n)\\colon(\\Omega,\\mathcal{A})\\longrightarrow(\\mathbb{R}^n,\\mathcal{B}^n),\\) donde cada componente \\(X_i\\) es variable aleatoria y \\(\\mathcal{B}^n\\) la \\(\\sigma\\)-álgebra de Borel en ℝⁿ.\nEjemplos Lanzamiento de dos monedas\nSea \\(\\Omega =\\{\\,CC,\\;C-,\\;-C,\\;--\\},\\) donde \\(C\\) = “cara” y \\(-\\) = “cruz”. Podemos definir:\n\\(X_1(\\omega) = \\text{número de caras en }\\omega.\\) \\(X_2(\\omega) = 2 - X_1(\\omega)\\;=\\; \\text{número de cruces}.\\) \\(X_3(\\omega) = \\bigl(X_1(\\omega)\\bigr)^2.\\)\nEntonces \\((X_1,X_2,X_3)\\) es un vector aleatorio de dimensión 3.\nTiempos de servicio en un servidor\nSean \\(T_i\\) los tiempos de servicio (en segundos) de las peticiones \\(i=1,2,3\\). Definimos\n\\(\\mathbf{T}=(T_1,T_2,T_3),\\quad S = T_1 + T_2 + T_3,\\quad M = \\max\\{T_1,T_2,T_3\\}.\\)\nLecturas de sensores en red distribuida\nEn tres nodos \\(i=1,2,3\\) medimos temperatura \\(X_{i,1}\\), presión \\(X_{i,2}\\) y humedad \\(X_{i,3}\\). El vector global es \\(\\mathbf{X} = (X_{1,1},X_{1,2},X_{1,3},\\,X_{2,1},\\dots,X_{3,3}) \\in \\mathbb{R}^9.\\)\nCon estas definiciones rigurosas disponemos ya de los objetos básicos para, en las siguientes secciones, construir estimadores, estudiar su comportamiento asintótico y contrastar hipótesis sobre la distribución subyacente \\(P\\).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VARIABLE ALEATORIA</span>"
     ]
   },
   {
