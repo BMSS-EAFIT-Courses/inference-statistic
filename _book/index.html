@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Biviana M. Suárez Sierra">
 
-<title>Inferencia Estadística - 2&nbsp; DATOS Y MODELOS</title>
+<title>Inferencia Estadística</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Variable aleatoria.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./Datos y modelos.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -69,35 +69,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -110,7 +81,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Datos y modelos.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DATOS Y MODELOS</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -137,14 +108,14 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Datos y modelos.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DATOS Y MODELOS</span></span></a>
+  <a href="./Datos y modelos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos y modelos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -159,8 +130,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#fenómeno-aleatorio-y-variable-observada" id="toc-fenómeno-aleatorio-y-variable-observada" class="nav-link active" data-scroll-target="#fenómeno-aleatorio-y-variable-observada"><span class="header-section-number">2.1</span> Fenómeno aleatorio y variable observada</a></li>
-  <li><a href="#incertidumbre-inductiva-vs.-estocástica" id="toc-incertidumbre-inductiva-vs.-estocástica" class="nav-link" data-scroll-target="#incertidumbre-inductiva-vs.-estocástica"><span class="header-section-number">2.2</span> Incertidumbre inductiva vs.&nbsp;estocástica</a></li>
+  <li><a href="#inferencia-estadística" id="toc-inferencia-estadística" class="nav-link active" data-scroll-target="#inferencia-estadística"><span class="header-section-number">1</span> Inferencia Estadística</a></li>
   </ul>
 </nav>
 </nav>
@@ -173,13 +143,19 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">DATOS Y MODELOS</span></h1>
+<h1 class="title">Inferencia Estadística</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Biviana M. Suárez Sierra </p>
+          </div>
+  </div>
     
   
     
@@ -190,65 +166,23 @@ window.Quarto = {
 </header>
 
 
-<p>En esta sección establecemos la base conceptual para el análisis estadístico, diferenciando claramente entre el fenómeno aleatorio observado y la medida de probabilidad que lo describe.</p>
-<section id="fenómeno-aleatorio-y-variable-observada" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="fenómeno-aleatorio-y-variable-observada"><span class="header-section-number">2.1</span> Fenómeno aleatorio y variable observada</h2>
-<blockquote class="blockquote">
-<p>“Se observa una realización de un fenómeno aleatorio, digamos X. Este puede ser un elemento aleatorio de varios tipos: número (variable aleatoria), un vector de dimensión finita (vector aleatorio), una función, etc.<br>
-La premisa principal es que el carácter aleatorio de X se concibe como una realización de un fenómeno aleatorio que tiene una distribución de probabilidad P, donde la distribución P es desconocida ya sea en su totalidad o en algún detalle específico (por ejemplo, su soporte, su media, etc.). Es de interés conocer P. Si la medida de probabilidad P fuese conocida, entonces no hay problema estadístico propiamente, pues el problema estadístico tiene que ver con <em>inferir</em> la propiedad desconocida de P con base en X.” [Ver referencia 1]</p>
-</blockquote>
+<section id="inferencia-estadística" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Inferencia Estadística</h1>
+<p>Bienvenida a mi libro de <strong>Inferencia Estadística</strong>.<br>
+Aquí encontrarás:</p>
 <ul>
-<li><strong>Definición de X</strong>
-<ul>
-<li><strong>X</strong> puede ser un valor real <span class="math inline">\(X \in \mathbb{R}\)</span>, un vector en <span class="math inline">\(\mathbb{R}^n\)</span>, o incluso una función <span class="math inline">\(\;X: [0,1]\to\mathbb{R}\)</span>.<br>
+<li>Un recorrido por los datos y los modelos.<br>
 </li>
-</ul></li>
-<li><strong>Medida de probabilidad P</strong>
-<ul>
-<li>Desconocida: soporte, media, varianza, etc.<br>
-</li>
-<li>Objetivo estadístico: <em>inferir</em> características de (P) a partir de la muestra (la realización de X).</li>
-</ul></li>
+<li>Definiciones y ejemplos de variables aleatorias.</li>
 </ul>
-</section>
-<section id="incertidumbre-inductiva-vs.-estocástica" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="incertidumbre-inductiva-vs.-estocástica"><span class="header-section-number">2.2</span> Incertidumbre inductiva vs.&nbsp;estocástica</h2>
-<blockquote class="blockquote">
-<p>“La observación <strong>X</strong> está dada, por lo que no hay incertidumbre tal como la hay en la teoría de probabilidad desarrollada anteriormente en el curso. Antes, fue concebida una estructura <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span> para enfrentar el que haya incertidumbre acerca del valor de <strong>X</strong>. En el problema estadístico, el valor de <strong>X</strong> ha sido observado, y la incertidumbre radica en otro punto: radica en que existe duda acerca de cuál <strong>P</strong> es la que produjo el valor <strong>X</strong>. En algunas ocasiones se utilizan los términos <em>incertidumbre estocástica</em> e <em>incertidumbre inductiva</em> para distinguir estos dos tipos. Es común que estos se confundan entre sí, porque en estadística matemática la teoría de probabilidad constituye también una de las maneras naturales de afrontar la cuantificación de incertidumbre inductiva. En cualquier caso, el concebir a <strong>P</strong> como medida de probabilidad es la base para formular soluciones a la incertidumbre inductiva. Con este lenguaje, probabilidad y estadística son problemas diferentes y de cierta manera inversos. Teoría de probabilidad tiene que ver con cuantificar incertidumbre acerca de <strong>X</strong> y teoría estadística con cuantificar incertidumbre acerca de <strong>P</strong> a la luz de haber ya observado <strong>X</strong>.”[Ver referencia 1]</p>
-</blockquote>
-<ul>
-<li><strong>Incertidumbre estocástica</strong>: duda previa sobre el valor de X, modelada por <span class="math inline">\((\Omega,\mathcal{F},P)\)</span>.<br>
-</li>
-<li><strong>Incertidumbre inductiva</strong>: tras observar X, la incertidumbre se desplaza a la ley generadora P.</li>
-</ul>
-<hr>
-<section id="ejemplos-en-matemática-aplicada-e-ingeniería-de-sistemas" class="level4" data-number="2.2.0.1">
-<h4 data-number="2.2.0.1" class="anchored" data-anchor-id="ejemplos-en-matemática-aplicada-e-ingeniería-de-sistemas"><span class="header-section-number">2.2.0.1</span> Ejemplos en Matemática Aplicada e Ingeniería de Sistemas</h4>
+<p>Continúa a:</p>
 <ol type="1">
-<li><strong>Modelado de tiempos de respuesta en redes</strong>
-<ul>
-<li><span class="math inline">\(X\)</span>: tiempo de llegada de paquetes (variable continua).<br>
+<li><a href="./Datos y modelos.html">Datos y modelos</a><br>
 </li>
-<li><span class="math inline">\(P\)</span>: distribución de retardo desconocida; objetivo: estimar parámetros de una ley de colas M/M/1.</li>
-</ul></li>
-<li><strong>Estimación de parámetros en ecuaciones diferenciales estocásticas</strong>
-<ul>
-<li><span class="math inline">\(X(t)\)</span>: trayectoria observada de un proceso de Itô.<br>
-</li>
-<li><span class="math inline">\(P\)</span>: ley del proceso (por ejemplo, coeficientes de difusión y deriva), inferidos a partir de trayectorias discretas.</li>
-</ul></li>
-<li><strong>Calibración de sensores en sistemas de control</strong>
-<ul>
-<li><span class="math inline">\(X\)</span>: lecturas del sensor (vector aleatorio).<br>
-</li>
-<li><span class="math inline">\(P\)</span>: distribución conjunta desconocida de ruido; se estima para diseñar filtros de Kalman óptimos.</li>
-</ul></li>
+<li><a href="./Variable aleatoria.html">Variable aleatoria</a></li>
 </ol>
-<hr>
-<p>Con esta distinción clara entre dato observado y modelo probabilístico, estamos listos para construir estimadores y desarrollar la inferencia estadística en las secciones siguientes.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -663,13 +597,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Inferencia Estadística">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inferencia Estadística</span></span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Variable aleatoria.html" class="pagination-link" aria-label="Variable aleatoria">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable aleatoria</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Datos y modelos.html" class="pagination-link" aria-label="Datos y modelos">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos y modelos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

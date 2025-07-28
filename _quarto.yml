@@ -1,7 +1,5 @@
 project:
   type: book
-
-publish:
   output-dir: docs
 
 book:
@@ -18,6 +16,6 @@ format:
     theme: cosmo
     toc: true
     toc-depth: 3
-    toc-location: left
+    toc-location: right
     navigation:
       search: true

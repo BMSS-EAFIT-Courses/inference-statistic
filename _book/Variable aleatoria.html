@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>variable-aleatoria</title>
+<title>Inferencia Estadística - 3&nbsp; Variable aleatoria</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,16 +23,50 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="Variable aleatoria_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Variable aleatoria_files/libs/quarto-html/quarto.js"></script>
-<script src="Variable aleatoria_files/libs/quarto-html/popper.min.js"></script>
-<script src="Variable aleatoria_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Variable aleatoria_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Variable aleatoria_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Variable aleatoria_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Variable aleatoria_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Variable aleatoria_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Variable aleatoria_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Datos y modelos.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -66,20 +100,98 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Variable aleatoria.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable aleatoria</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Inferencia Estadística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Inicio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Datos y modelos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos y modelos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Variable aleatoria.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable aleatoria</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#variable-aleatoria" id="toc-variable-aleatoria" class="nav-link active" data-scroll-target="#variable-aleatoria"><span class="header-section-number">4</span> 1.2 VARIABLE ALEATORIA</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Variable aleatoria</span></h1>
+</div>
 
 
 
-<p>format: html: math: mathjax mathjax: tex: macros: usim: [“\underaccent{\tilde}{#1}”, 1]</p>
-<section id="variable-aleatoria" class="level1">
-<h1>1.2 VARIABLE ALEATORIA</h1>
-<section id="variables-y-vectores-aleatorios" class="level4">
-<h4 class="anchored" data-anchor-id="variables-y-vectores-aleatorios">1.2.1 Variables y vectores aleatorios</h4>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="variable-aleatoria" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 1.2 VARIABLE ALEATORIA</h1>
+<section id="variables-y-vectores-aleatorios" class="level4" data-number="4.0.0.1">
+<h4 data-number="4.0.0.1" class="anchored" data-anchor-id="variables-y-vectores-aleatorios"><span class="header-section-number">4.0.0.1</span> 1.2.1 Variables y vectores aleatorios</h4>
 <p>Consideramos un experimento aleatorio cuyos resultados pertenecen al espacio muestral Ω. Modelamos este proceso suponiendo que existe una terna <span class="math inline">\((\Omega, \mathcal{A}, P),\)</span> donde:</p>
 <ul>
 <li><span class="math inline">\(\Omega\)</span> es el espacio muestra,<br>
@@ -103,7 +215,7 @@ window.Quarto = {
 <p>Un <strong>vector aleatorio</strong> de dimensión <span class="math inline">\(n\)</span> es <span class="math inline">\(\mathbf{X} = (X_1,\dots,X_n)\colon(\Omega,\mathcal{A})\longrightarrow(\mathbb{R}^n,\mathcal{B}^n),\)</span> donde cada componente <span class="math inline">\(X_i\)</span> es variable aleatoria y <span class="math inline">\(\mathcal{B}^n\)</span> la <span class="math inline">\(\sigma\)</span>-álgebra de Borel en ℝⁿ.</p>
 <hr>
 <p><strong>Ejemplos</strong> <strong>Lanzamiento de dos monedas</strong></p>
-<p>Sea $= {,CC,;C-,;-C,;–}, $ donde <span class="math inline">\(C\)</span> = “cara” y <span class="math inline">\(-\)</span> = “cruz”. Podemos definir:<br>
+<p>Sea <span class="math inline">\(\Omega =\{\,CC,\;C-,\;-C,\;--\},\)</span> donde <span class="math inline">\(C\)</span> = “cara” y <span class="math inline">\(-\)</span> = “cruz”. Podemos definir:<br>
 <span class="math inline">\(X_1(\omega) = \text{número de caras en }\omega.\)</span> <span class="math inline">\(X_2(\omega) = 2 - X_1(\omega)\;=\; \text{número de cruces}.\)</span> <span class="math inline">\(X_3(\omega) = \bigl(X_1(\omega)\bigr)^2.\)</span></p>
 <p>Entonces <span class="math inline">\((X_1,X_2,X_3)\)</span> es un vector aleatorio de dimensión 3.</p>
 <p><strong>Tiempos de servicio en un servidor</strong></p>
@@ -114,8 +226,8 @@ window.Quarto = {
 <hr>
 <p>Con estas definiciones rigurosas disponemos ya de los objetos básicos para, en las siguientes secciones, construir estimadores, estudiar su comportamiento asintótico y contrastar hipótesis sobre la distribución subyacente <span class="math inline">\(P\)</span>.</p>
 </section>
-<section id="distribución-de-una-variable-aleatoria.-funciones-de-distribución-de-probabilidad-y-de-densidad" class="level4">
-<h4 class="anchored" data-anchor-id="distribución-de-una-variable-aleatoria.-funciones-de-distribución-de-probabilidad-y-de-densidad">1.2.2 Distribución de una variable aleatoria. Funciones de distribución, de probabilidad y de densidad</h4>
+<section id="distribución-de-una-variable-aleatoria.-funciones-de-distribución-de-probabilidad-y-de-densidad" class="level4" data-number="4.0.0.2">
+<h4 data-number="4.0.0.2" class="anchored" data-anchor-id="distribución-de-una-variable-aleatoria.-funciones-de-distribución-de-probabilidad-y-de-densidad"><span class="header-section-number">4.0.0.2</span> 1.2.2 Distribución de una variable aleatoria. Funciones de distribución, de probabilidad y de densidad</h4>
 <p><strong>Distribución de una Variable Aleatoria</strong></p>
 <p>La realización de un experimento aleatorio da lugar a un resultado <span class="math inline">\(\omega\in\Omega\)</span> que es aleatorio. Por lo tanto, <span class="math inline">\(X(\omega)\)</span> es un valor de <span class="math inline">\(\mathbb{R}\)</span> también aleatorio. Es decir, la variable aleatoria <span class="math inline">\(X\)</span> induce una medida de probabilidad en <span class="math inline">\(\mathbb{R}\)</span>. A esa medida de probabilidad se le llama <strong>distribución de <span class="math inline">\(X\)</span></strong> o <strong>ley de <span class="math inline">\(X\)</span></strong>. Una de las formas de caracterizar la distribución de una variable aleatoria es dar su función de distribución <span class="math inline">\(F_X\)</span>, que está definida así:</p>
 <p><span class="math inline">\(F_X(x) \;=\; P(X \le x)\;=\; P\bigl(\{\omega \in \Omega : X(\omega) \le x\}\bigr)\;=\; P\bigl(X^{-1}((-\infty, x])\bigr).\)</span>$</p>
@@ -131,8 +243,8 @@ window.Quarto = {
 <p><span class="math inline">\(F_X(x) = \int_{-\infty}^{x} f_X(u) \, du, \quad f_X(x) = \frac{d}{dx} F_X(x),\)</span></p>
 <p>salvo quizás en un número finito de puntos <span class="math inline">\(x \in \mathbb{R}\)</span>. Las variables aleatorias que poseen función de densidad se llaman <strong>variables aleatorias absolutamente continuas</strong>. Abusando del lenguaje, aquí nos referiremos a ellas como variables aleatorias continuas.</p>
 </section>
-<section id="esperanza-y-varianza" class="level4">
-<h4 class="anchored" data-anchor-id="esperanza-y-varianza">1.2.3 Esperanza y varianza</h4>
+<section id="esperanza-y-varianza" class="level4" data-number="4.0.0.3">
+<h4 data-number="4.0.0.3" class="anchored" data-anchor-id="esperanza-y-varianza"><span class="header-section-number">4.0.0.3</span> 1.2.3 Esperanza y varianza</h4>
 <p>Si se desea describir totalmente la distribución de probabilidad de una variable aleatoria <span class="math inline">\(X\)</span> acabamos de ver que podemos dar su función de distribución o su función de masa o de densidad, según el caso. Una descripción parcial puede efectuarse calculando algunas características de la variable aleatoria <span class="math inline">\(X\)</span>, como por ejemplo medidas de posición o de dispersión. Estudiaremos algunas de ellas.</p>
 <p>Se define la <strong>esperanza</strong> de una variable aleatoria <span class="math inline">\(X\)</span> como la integral de Lebesgue de <span class="math inline">\(X\)</span>:</p>
 <p><span class="math inline">\(E(X) = \int_{\Omega} X(w) dP(w).\)</span></p>
@@ -149,8 +261,8 @@ window.Quarto = {
 <p>Si existe <span class="math inline">\(\mu = E(X)\)</span> y es finita puede definirse una medida de dispersión de la variable aleatoria <span class="math inline">\(X\)</span> a partir de una transformación <span class="math inline">\(h\)</span> de <span class="math inline">\(X\)</span>. Es lo que se denomina <strong>varianza</strong> de <span class="math inline">\(X\)</span> y se define así:</p>
 <p><span class="math inline">\(V(X) = E((X - \mu)^2) = E(X^2) - \mu^2 = E(X^2) - (E(X))^2.\)</span></p>
 </section>
-<section id="función-generadora-de-momentos" class="level4">
-<h4 class="anchored" data-anchor-id="función-generadora-de-momentos">1.2.4 Función generadora de momentos</h4>
+<section id="función-generadora-de-momentos" class="level4" data-number="4.0.0.4">
+<h4 data-number="4.0.0.4" class="anchored" data-anchor-id="función-generadora-de-momentos"><span class="header-section-number">4.0.0.4</span> 1.2.4 Función generadora de momentos</h4>
 <p>Dada una variable aleatoria <span class="math inline">\(X\)</span>, o su función de distribución <span class="math inline">\(F\)</span>, vamos a definir otra función generadora, como</p>
 <p><span class="math inline">\(M_X(t) = \mathbb{E}(e^{tX}),\)</span> siempre que este valor esperado exista.</p>
 <p>Notemos que cuando <span class="math inline">\(X\)</span> toma valores en los enteros no-negativos, <span class="math inline">\(M_X(t) = \phi_X(e^t)\)</span>, donde <span class="math inline">\(\phi_X(s)=E[s^X]=\sum_{k=0}^{\infty}p_ks^k\)</span> para <span class="math inline">\(s\in[0,1]\)</span> es la función generadora de probabilidad (f.g.p.) de la variable <span class="math inline">\(X\)</span>, con <span class="math inline">\(p_k=P(X=k)\)</span>. Si <span class="math inline">\(X\)</span> está acotada, <span class="math inline">\(M_X\)</span> está bien definida para todo <span class="math inline">\(t\)</span> real; en cambio, si <span class="math inline">\(X\)</span> no está acotada, es posible que el dominio de <span class="math inline">\(M_X\)</span> no sea el conjunto de todos los reales. En todo caso, <span class="math inline">\(\phi\)</span> siempre está definida en cero, y <span class="math inline">\(M(0) = 1\)</span>.</p>
@@ -248,7 +360,7 @@ grid()
 su densidad es<br>
 <span class="math display">\[f(x) = \frac{1}{b - a}\quad\text{para }a &lt; x &lt; b,\]</span><br>
 y su función generadora de momentos viene dada por</p>
-<a id="eq:5.2" href=""></a>
+<a id="eq:5.2"></a>
 <table align="center">
 <tbody><tr>
 <td align="center">
@@ -292,7 +404,7 @@ y su función generadora de momentos viene dada por</p>
 <p><strong>Teorema (fgm de suma de v.a.s)</strong></p>
 <p>Si <span class="math inline">\(X\)</span> tiene función generadora de momentos <span class="math inline">\(M(t)\)</span> que está definida en un entorno <span class="math inline">\((-a,a)\)</span> de 0, entonces <span class="math inline">\(M(t)\)</span> caracteriza a la distribución de <span class="math inline">\(X\)</span>; es decir, si otra variable <span class="math inline">\(Y\)</span> tiene la misma función generadora de momentos, las distribuciones de <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> coinciden.</p>
 <hr>
-Si <span class="math inline">\(X,Y\)</span> son variables aleatorias con funciones generadoras de momentos respectivas <span class="math inline">\(M_X\)</span> y <span class="math inline">\(M_Y\)</span> que existen en un dominio común <span class="math inline">\(|t| &lt; d\)</span>, entonces la f.g.m. de la suma <span class="math inline">\(X+Y\)</span> está dada por <a id="eq:5.5" href=""></a>
+Si <span class="math inline">\(X,Y\)</span> son variables aleatorias con funciones generadoras de momentos respectivas <span class="math inline">\(M_X\)</span> y <span class="math inline">\(M_Y\)</span> que existen en un dominio común <span class="math inline">\(|t| &lt; d\)</span>, entonces la f.g.m. de la suma <span class="math inline">\(X+Y\)</span> está dada por <a id="eq:5.5"></a>
 <table align="center">
 <tbody><tr>
 <td align="center">
@@ -395,8 +507,8 @@ Z_n \xrightarrow{d} \mathcal{N}(0, 1)
 \]</span></p>
 <p>Esto concluye la demostración del <strong>Teorema de Laplace–Moivre</strong> utilizando funciones generadoras de momentos.</p>
 </section>
-<section id="muestra-aleatoria-simple" class="level4">
-<h4 class="anchored" data-anchor-id="muestra-aleatoria-simple">1.2.5 Muestra aleatoria simple</h4>
+<section id="muestra-aleatoria-simple" class="level4" data-number="4.0.0.5">
+<h4 data-number="4.0.0.5" class="anchored" data-anchor-id="muestra-aleatoria-simple"><span class="header-section-number">4.0.0.5</span> 1.2.5 Muestra aleatoria simple</h4>
 <p>Sea <span class="math inline">\(\underset{\sim}{X} =(X_1 ,..., X_n)\)</span> un vector aleatorio. Se dice que sus componentes <span class="math inline">\(X_1 ,..., X_n\)</span> son si <span class="math inline">\(P(X_1\leq x_1 ,..., X_n\leq x_n)=P(X_1\leq x_1)...P(X_n\leq x_n)\)</span> para cualesquiera valores <span class="math inline">\(x_1,..., x_n\)</span> .</p>
 <p>Si además la distribución de las <span class="math inline">\(n\)</span> variables aleatorias <span class="math inline">\(X_i\)</span> es la misma, se dice que <span class="math inline">\(X_1 ,...,X_n\)</span> son variables aleatorias <strong>independientes e idénticamente distribuidas</strong>, o bien que son v.a.i.i.d o simplemente i.i.d.</p>
 <p>Si <span class="math inline">\(\underset{\sim}{X} =(X_1 ,..., X_n)\)</span> y <span class="math inline">\(X_1 ,..., X_n\)</span> son i.i.d. con función de densidad (en su caso, de masa) <span class="math inline">\(f_X\)</span> , la distribución conjunta de <span class="math inline">\(\underset{\sim}{X}\)</span> viene dada por la función de densidad (en su caso, de masa) conjunta <span class="math display">\[
@@ -410,8 +522,8 @@ f_{\underset{\sim}{X}}(\underset{\sim}{x})&amp;=f_{(X_1 ,..., X_n)}(x_1 ,..., x_
 <p>Esto responde al hecho siguiente. Supongamos que se desea estudiar la característica <span class="math inline">\(X\)</span> de los individuos de una población de tamaño infinito. Definimos el experimento consistente en elegir aleatoriamente un individuo de la población y llamamos <span class="math inline">\(X\)</span> al valor de la característica de interés en ese individuo. X es una variable aleatoria.</p>
 <p>Si definimos un nuevo experimento consistente en elegir una muestra aleatoria de n individuos y se anota <span class="math inline">\(X_i\)</span>, el valor de la característica en el individuo i-ésimo, entonces <strong>X</strong> <span class="math inline">\(=(X_1 ,..., X_n)\)</span> es una colección de n v.a.i.i.d. con distribución igual a la de la variable aleatoria <span class="math inline">\(X\)</span>, es decir, <span class="math inline">\(X_1 ,..., X_n\)</span> es una m.a.s. de X.</p>
 </section>
-<section id="modelo-paramétrico" class="level4">
-<h4 class="anchored" data-anchor-id="modelo-paramétrico">1.2.6 Modelo paramétrico</h4>
+<section id="modelo-paramétrico" class="level4" data-number="4.0.0.6">
+<h4 data-number="4.0.0.6" class="anchored" data-anchor-id="modelo-paramétrico"><span class="header-section-number">4.0.0.6</span> 1.2.6 Modelo paramétrico</h4>
 <p>Usualmente la ley de probabilidad de una variable aleatoria se supone perteneciente a un modelo matemático que depende sólo de un número finito de parámetros: <span class="math inline">\(f_X \in\{f(x|\theta):\theta \in \Theta \subseteq \mathbb{R}^k\}\)</span>. Escribiremos alternativamente <span class="math inline">\(f(x;\theta)\)</span>, <span class="math inline">\(f(x|\theta)\)</span> o <span class="math inline">\(f_\theta(x)\)</span>.</p>
 <p><strong>Definición</strong> El conjunto de distribuciones dadas por <span class="math inline">\(f_\theta(x)\)</span>, <span class="math inline">\(\theta \in \Theta\)</span> se llama familia paramétrica de distribuciones. <span class="math inline">\(\Theta\)</span> es el conjunto de parámetros.</p>
 <p><strong>Definición</strong> La correspondiente distribución conjunta de una muestra aleatoria simple de <span class="math inline">\(X\)</span> viene dada por la función de densidad (o función de masa de probabilidad, según el caso)</p>
@@ -420,16 +532,17 @@ f_{X_{\sim}}(x_{\sim} \mid \theta) = \prod_{i=1}^{n} f_{\theta}(x_i)
 \]</span></p>
 <p>A esta función la llamaremos <strong>función de verosimilitud</strong> de la muestra <span class="math inline">\(X_{\sim}\)</span>. Utilizaremos este término para referirnos indistintamente a la función de densidad conjunta (si las variables aleatorias son continuas) o a la función de masa conjunta (si son discretas).</p>
 </section>
-<section id="sumas-de-variables-aleatorias" class="level4">
-<h4 class="anchored" data-anchor-id="sumas-de-variables-aleatorias">1.2.7 Sumas de variables aleatorias</h4>
+<section id="sumas-de-variables-aleatorias" class="level4" data-number="4.0.0.7">
+<h4 data-number="4.0.0.7" class="anchored" data-anchor-id="sumas-de-variables-aleatorias"><span class="header-section-number">4.0.0.7</span> 1.2.7 Sumas de variables aleatorias</h4>
 <p>Cuando se obtiene una muestra aleatoria simple <span class="math inline">\(X_{1},X_{2},\ldots,X_{n}\)</span> normalmente se calculan a partir de ellas cantidades que resumen los valores observados. Cualquiera de estos resúmenes se puede expresar como una función <span class="math inline">\(T(x_1,\ldots,x_n)\)</span> definida en el espacio <span class="math inline">\(\mathcal{X}^n\subseteq\mathbb{R}^n\)</span> donde están las imágenes del vector <span class="math inline">\((X_{1},X_{2},\ldots,X_{n})\)</span>.</p>
 <p>Esta función <span class="math inline">\(T\)</span> puede devolver valores de <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\mathbb{R}^2\)</span> o, en general, <span class="math inline">\(\mathbb{R}^k\)</span>.</p>
 <p><span class="math display">\[T(X_1 , \ldots, X_n)=\sum_{i=1}^{n}X_i,\bar{X},\bar{X}+3, \min{X_1 , \ldots, X_n},\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)=\left(\sum_{i=1}^{n}X_i,\sum_{i=1}^{n}(X_i-\bar{X})^2\right),\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)=\left(\min\{X_1 , \ldots, X_n\},\sum_{i=1}^{n}X_i,\sum_{i=1}^{n}(X_i-\bar{X})^2\right),\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)= (X_1 , \ldots, X_n)\]</span></p>
+
+
 </section>
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -839,6 +952,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./Datos y modelos.html" class="pagination-link" aria-label="Datos y modelos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos y modelos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

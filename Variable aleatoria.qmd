@@ -1,9 +1,8 @@
 ---
-title: "Variable aleatoria"
+title: "VARIABLE ALEATORIA"
 ---
 
-# 1.2 VARIABLE ALEATORIA
-#### 1.2.1 Variables y vectores aleatorios
+## Variables y vectores aleatorios
 Consideramos un experimento aleatorio cuyos resultados pertenecen al espacio muestral Ω. Modelamos este proceso suponiendo que existe una terna $(\Omega, \mathcal{A}, P),$ donde:
 
 - $\Omega$ es el espacio muestra,  
@@ -18,9 +17,11 @@ Los resultados de un experimento aleatorio no son analizados “en bruto”, sin
 En todo estudio estadístico partimos de un **experimento aleatorio** cuyo conjunto de resultados posibles se denomina **espacio muestral** Ω. Para cuantificar dichos resultados definimos las siguientes estructuras:
 
 **Definición: Variables Aleatorias**
+
 Sea $(\Omega,\mathcal{A},P)$ un espacio de probabilidad. Una **variable aleatoria** es una función $X\colon (\Omega,\mathcal{A})\;\longrightarrow\; (\mathbb{R},\mathcal{B}),$ tal que para todo $B\in\mathcal{B}$ (la $\sigma$-álgebra de Borel en ℝ),  $X^{-1}(B)\;=\;\{\omega\in\Omega : X(\omega)\in B\}\;\in\;\mathcal{A}.$
 
 - Si el espacio muestral Ω es **finito o numerable**, diremos que es un espacio **discreto** y las variables aleatorias asociadas al experimento normalmente estarán definidas como $X\colon \Omega \;\longrightarrow\; \mathbb{Z}.$
+
 - Si $\Omega$ es **no numerable**, entonces diremos que es un espacio **continuo** y $X\colon \Omega \;\longrightarrow\; \mathbb{R}.$
 ---
 
@@ -54,7 +55,7 @@ En tres nodos $i=1,2,3$ medimos temperatura $X_{i,1}$, presión $X_{i,2}$ y hume
 Con estas definiciones rigurosas disponemos ya de los objetos básicos para, en las siguientes secciones, construir estimadores, estudiar su comportamiento asintótico y contrastar hipótesis sobre la distribución subyacente $P$.
 
 
-#### 1.2.2 Distribución de una variable aleatoria. Funciones de distribución, de probabilidad y de densidad
+## Distribución de una variable aleatoria. Funciones de distribución, de probabilidad y de densidad
   
   **Distribución de una Variable Aleatoria**
 
@@ -91,7 +92,7 @@ salvo quizás en un número finito de puntos $x \in \mathbb{R}$. Las variables a
 
 
 
-#### 1.2.3 Esperanza y varianza
+## Esperanza y varianza
 Si se desea describir totalmente la distribución de probabilidad de una variable aleatoria $X$ acabamos de ver que podemos dar su función de distribución o su función de masa o de densidad, según el caso. Una descripción parcial puede efectuarse calculando algunas características de la variable aleatoria $X$, como por ejemplo medidas de posición o de dispersión. Estudiaremos algunas de ellas.
 
 Se define la **esperanza** de una variable aleatoria $X$ como la integral de Lebesgue de $X$:
@@ -122,7 +123,7 @@ Si existe $\mu = E(X)$ y es finita puede definirse una medida de dispersión de 
 
 $V(X) = E((X - \mu)^2) = E(X^2) - \mu^2 = E(X^2) - (E(X))^2.$
 
-#### 1.2.4 Función generadora de momentos 
+## Función generadora de momentos 
 Dada una variable aleatoria $X$, o su función de distribución $F$, vamos a definir otra función generadora, como
 
 $M_X(t) = \mathbb{E}(e^{tX}),$ siempre que este valor esperado exista.
@@ -482,7 +483,7 @@ $$
 Esto concluye la demostración del **Teorema de Laplace–Moivre** utilizando funciones generadoras de momentos.
 
 
-#### 1.2.5 Muestra aleatoria simple
+## Muestra aleatoria simple
 
 Sea $\underset{\sim}{X} =(X_1 ,..., X_n)$ un vector aleatorio. Se dice que sus componentes $X_1 ,..., X_n$ son \textcolor{red}{independientes} si $P(X_1\leq x_1 ,..., X_n\leq x_n)=P(X_1\leq x_1)...P(X_n\leq x_n)$ para cualesquiera valores $x_1,..., x_n$ .
 	
@@ -504,7 +505,7 @@ Esto responde al hecho siguiente. Supongamos que se desea estudiar la caracterí
 
 Si definimos un nuevo experimento consistente en elegir una muestra aleatoria de n individuos y se anota $X_i$, el valor de la característica en el individuo i-ésimo, entonces **X** $=(X_1 ,..., X_n)$ es una colección de n v.a.i.i.d. con distribución igual a la de la variable aleatoria $X$, es decir, $X_1 ,..., X_n$ es una m.a.s. de X.
 
-#### 1.2.6 Modelo paramétrico
+## Modelo paramétrico
 Usualmente la ley de probabilidad de una variable aleatoria se supone perteneciente a un modelo matemático que depende sólo de un número finito de parámetros:
 	$f_X \in\{f(x|\theta):\theta \in \Theta \subseteq \mathbb{R}^k\}$.
 	Escribiremos alternativamente $f(x;\theta)$, $f(x|\theta)$ o $f_\theta(x)$.
@@ -523,7 +524,7 @@ $$
 A esta función la llamaremos **función de verosimilitud** de la muestra $X_{\sim}$. Utilizaremos este término para referirnos indistintamente a la función de densidad conjunta (si las variables aleatorias son continuas) o a la función de masa conjunta (si son discretas).
 	
 
-#### 1.2.7 Sumas de variables aleatorias
+## Sumas de variables aleatorias
 Cuando se obtiene una muestra aleatoria simple $X_{1},X_{2},\ldots,X_{n}$ normalmente se calculan a partir de ellas cantidades que resumen los valores observados. Cualquiera de estos resúmenes se puede expresar como una función $T(x_1,\ldots,x_n)$ definida en el espacio $\mathcal{X}^n\subseteq\mathbb{R}^n$ donde están las imágenes del vector $(X_{1},X_{2},\ldots,X_{n})$.
 
 Esta función $T$ puede devolver valores de $\mathbb{R}$, $\mathbb{R}^2$ o, en general, $\mathbb{R}^k$.
