@@ -169,6 +169,13 @@ window.Quarto = {
   <li><a href="#muestra-aleatoria-simple" id="toc-muestra-aleatoria-simple" class="nav-link" data-scroll-target="#muestra-aleatoria-simple"><span class="header-section-number">3.5</span> Muestra aleatoria simple</a></li>
   <li><a href="#modelo-paramétrico" id="toc-modelo-paramétrico" class="nav-link" data-scroll-target="#modelo-paramétrico"><span class="header-section-number">3.6</span> Modelo paramétrico</a></li>
   <li><a href="#sumas-de-variables-aleatorias" id="toc-sumas-de-variables-aleatorias" class="nav-link" data-scroll-target="#sumas-de-variables-aleatorias"><span class="header-section-number">3.7</span> Sumas de variables aleatorias</a></li>
+  <li><a href="#estadísticos-definidos-a-partir-de-sumas-de-variables-aleatorias" id="toc-estadísticos-definidos-a-partir-de-sumas-de-variables-aleatorias" class="nav-link" data-scroll-target="#estadísticos-definidos-a-partir-de-sumas-de-variables-aleatorias"><span class="header-section-number">3.8</span> Estadísticos definidos a partir de sumas de variables aleatorias</a></li>
+  <li><a href="#muestreo-de-una-distribución-normal" id="toc-muestreo-de-una-distribución-normal" class="nav-link" data-scroll-target="#muestreo-de-una-distribución-normal"><span class="header-section-number">3.9</span> Muestreo de una distribución normal</a>
+  <ul class="collapse">
+  <li><a href="#definición-de-distribución-chi-cuadrada" id="toc-definición-de-distribución-chi-cuadrada" class="nav-link" data-scroll-target="#definición-de-distribución-chi-cuadrada"><span class="header-section-number">3.9.1</span> Definición de distribución Chi cuadrada</a></li>
+  <li><a href="#distribuciones-asociadas-a-la-normal" id="toc-distribuciones-asociadas-a-la-normal" class="nav-link" data-scroll-target="#distribuciones-asociadas-a-la-normal"><span class="header-section-number">3.9.2</span> Distribuciones asociadas a la normal</a></li>
+  </ul></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">3.10</span> Referencias</a></li>
   </ul>
 </nav>
     </div>
@@ -533,7 +540,7 @@ f_{\underset{\sim}{X}}(\underset{\sim}{x})&amp;=f_{(X_1 ,..., X_n)}(x_1 ,..., x_
 <p><strong>Definición</strong> El conjunto de distribuciones dadas por <span class="math inline">\(f_\theta(x)\)</span>, <span class="math inline">\(\theta \in \Theta\)</span> se llama familia paramétrica de distribuciones. <span class="math inline">\(\Theta\)</span> es el conjunto de parámetros.</p>
 <p><strong>Definición</strong> La correspondiente distribución conjunta de una muestra aleatoria simple de <span class="math inline">\(X\)</span> viene dada por la función de densidad (o función de masa de probabilidad, según el caso)</p>
 <p><span class="math display">\[
-f_{X_{\sim}}(x_{\sim} \mid \theta) = \prod_{i=1}^{n} f_{\theta}(x_i)
+f_{\underset{\sim}{X}}(\underset{\sim}{x} \mid \theta) = \prod_{i=1}^{n} f_{\theta}(x_i)
 \]</span></p>
 <p>A esta función la llamaremos <strong>función de verosimilitud</strong> de la muestra <span class="math inline">\(X_{\sim}\)</span>. Utilizaremos este término para referirnos indistintamente a la función de densidad conjunta (si las variables aleatorias son continuas) o a la función de masa conjunta (si son discretas).</p>
 </section>
@@ -542,6 +549,97 @@ f_{X_{\sim}}(x_{\sim} \mid \theta) = \prod_{i=1}^{n} f_{\theta}(x_i)
 <p>Cuando se obtiene una muestra aleatoria simple <span class="math inline">\(X_{1},X_{2},\ldots,X_{n}\)</span> normalmente se calculan a partir de ellas cantidades que resumen los valores observados. Cualquiera de estos resúmenes se puede expresar como una función <span class="math inline">\(T(x_1,\ldots,x_n)\)</span> definida en el espacio <span class="math inline">\(\mathcal{X}^n\subseteq\mathbb{R}^n\)</span> donde están las imágenes del vector <span class="math inline">\((X_{1},X_{2},\ldots,X_{n})\)</span>.</p>
 <p>Esta función <span class="math inline">\(T\)</span> puede devolver valores de <span class="math inline">\(\mathbb{R}\)</span>, <span class="math inline">\(\mathbb{R}^2\)</span> o, en general, <span class="math inline">\(\mathbb{R}^k\)</span>.</p>
 <p><span class="math display">\[T(X_1 , \ldots, X_n)=\sum_{i=1}^{n}X_i,\bar{X},\bar{X}+3, \min{X_1 , \ldots, X_n},\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)=\left(\sum_{i=1}^{n}X_i,\sum_{i=1}^{n}(X_i-\bar{X})^2\right),\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)=\left(\min\{X_1 , \ldots, X_n\},\sum_{i=1}^{n}X_i,\sum_{i=1}^{n}(X_i-\bar{X})^2\right),\]</span> <span class="math display">\[T(X_1 , \ldots, X_n)= (X_1 , \ldots, X_n)\]</span></p>
+<p><strong>Definición de estadísticos:</strong> Las funciones <span class="math inline">\(T\)</span> que dependen de una muestra aleatoria simple <span class="math inline">\(X_1 , \ldots, X_n\)</span> se llaman <strong>estadísticos</strong>. Dependen de los valores observados, pero no de los parámetros desconocidos que determinan la distribución de <span class="math inline">\(X_i\)</span> .</p>
+<p>Cuando un estadístico <span class="math inline">\(T\)</span> es utilizado con el propósito de estimar un parámetro <span class="math inline">\(\theta\)</span> diremos que <span class="math inline">\(T\)</span> es un estimador de <span class="math inline">\(\theta\)</span>.</p>
+<p><strong>Ejemplo de estadístico</strong></p>
+<p><span class="math inline">\(T(X_1 , \ldots, X_n)=\bar{X}\)</span> es un estimador de <span class="math inline">\(E(X)=\mu\)</span>.</p>
+<p>En inferencia estadística interesa saber qué estadísticos son suficientes para recoger toda la información que la muestra aporta sobre la distribución de la variable aleatoria X muestreada. La respuesta depende de la distribución de X.</p>
+<p><strong>Definición distribución en el muestreo:</strong> Dado que <span class="math inline">\(\underset{\sim}{X} =(X_1 ,..., X_n)\)</span> es una variable aleatoria, se tiene que <span class="math inline">\(Y=T(\underset{\sim}{X})=T(X_1 ,..., X_n)\)</span> será también una variable aleatoria. La ley de probabilidad de <span class="math inline">\(Y\)</span> se denomina <strong>distribución en el muestreo de <span class="math inline">\(Y\)</span></strong> (o distribución muestral). Los siguientes resultados dan información sobre algunas características de estadísticos definidos a partir de sumas de variables aleatorias.</p>
+</section>
+<section id="estadísticos-definidos-a-partir-de-sumas-de-variables-aleatorias" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="estadísticos-definidos-a-partir-de-sumas-de-variables-aleatorias"><span class="header-section-number">3.8</span> Estadísticos definidos a partir de sumas de variables aleatorias</h2>
+<p><strong>Teorema</strong> Sean <span class="math inline">\(X_1,\ldots, X_n\)</span>,n números reales, sea <span class="math inline">\(\bar{x} = \frac{1}{n} \sum_{i=1}^{n}x_i\)</span> su media aritmética y sea <span class="math inline">\(S_n^2=\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}\)</span> su varianza muestral.</p>
+<ul>
+<li><span class="math inline">\(\min_a\sum_{i=1}^{n}(x_i-a)^2=\sum_{i=1}^{n}(x_i-\bar{x})^2\)</span></li>
+<li><span class="math inline">\((n-1)S_n^2=\sum_{i=1}^{n}(x_i-\bar{x})^2=\sum_{i=1}^{n}x_i^2-n\bar{x}^2\)</span></li>
+</ul>
+<p><strong>Lema</strong> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> una muestra aleatoria simple de <span class="math inline">\(X\)</span> y sea <span class="math inline">\(g(x)\)</span> una función tal que <span class="math inline">\(E(g(X))\)</span> y <span class="math inline">\(Var(g(X))\)</span> existen. Entonces,</p>
+<ul>
+<li><span class="math inline">\(E(\sum_{i=1}^{n}g(X_i))=nE(g(X))\)</span>,</li>
+<li><span class="math inline">\(Var(\sum_{i=1}^{n}g(X_i))=nVar(g(X))\)</span>.</li>
+</ul>
+<p>Para la demostración ver Gómez et al.&nbsp;(2006)</p>
+<p><strong>Teorema</strong> Sea <span class="math inline">\(X 1,\ldots, X_n\)</span> una muestra aleatoria simple de una población <span class="math inline">\(X\)</span> con esperanza <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2 &lt; \infty\)</span>. Sean <span class="math display">\[
+        \begin{align*}
+        &amp;\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i,\ \
+        S^2=\frac{\sum_{i=1}^{n}(X_i-\bar{X})^2}{n-1},
+        \end{align*}    
+\]</span> la media y la varianza muestrales, respectivamente. Entonces,</p>
+<ol type="a">
+<li><span class="math inline">\(E(\bar{X}) = \mu,\)</span></li>
+<li><span class="math inline">\(Var(\bar{X}) = \frac{\sigma^2}{n},\)</span></li>
+<li><span class="math inline">\(E(S^2) = \sigma^2\)</span>.</li>
+</ol>
+<p><strong>Teorema</strong> Sea <span class="math inline">\(X 1,\ldots, X_n\)</span> una muestra aleatoria simple de una población <span class="math inline">\(X\)</span> con función generadora de momentos <span class="math inline">\(M_X(t)\)</span>. La función generatriz de momentos de <span class="math inline">\(X\)</span> es <span class="math display">\[\begin{align*}
+        &amp;M_{\bar{X}}(t)=\left(M_X\left(\frac{t}{n}\right)\right)^n
+        \end{align*}
+\]</span> ::: {.theorem #teo6-3} <strong>Teorema (Combinación lineal de normales es normal)</strong> (Wackerly et al.&nbsp;(2008)) Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> variables aleatorias independientes normalmente distribuidas <span class="math inline">\(E(Y_i)=\mu_i\)</span> y <span class="math inline">\(V(Y_i)=\sigma_i^2\)</span>ara <span class="math inline">\(i=1,\cdots,\,n\)</span> y sean <span class="math inline">\(a_1,\,a_2,\cdots,\,a_n\)</span> constantes. Si <span class="math display">\[U=\sum_{i=1}^na_iY_i\]</span></p>
+<p>entonces <span class="math inline">\(U\)</span> es una variable aleatoria normalmente distribuida con <span class="math display">\[E(U)=\sum_{i=1}^na_i\mu_i\]</span> y <span class="math display">\[V(U)=\sum_{i=1}^na_i^2\sigma^2_i\]</span> :::</p>
+<p><strong>Ejemplo</strong> <span class="math inline">\(X 1,\ldots, X_n\)</span> m.a.s. de <span class="math inline">\(X \sim N(\mu,\sigma^2)\)</span>. Entonces, <span class="math inline">\(M_{X}(t)=\exp\left\{\mu t+ \frac{\sigma^2t^2}{2}\right\}\)</span>. De ahí que</p>
+<p><span class="math display">\[
+    \begin{align*}
+    M_{\bar{X}}(t)
+    &amp;=\left(\exp\left\{\mu \frac{t}{n}+ \frac{\sigma^2\left(\frac{t}{n}\right)^2}{2}\right\}\right)^n
+    \end{align*}
+\]</span></p>
+<p><span class="math inline">\(X 1,\ldots, X_n\)</span> m.a.s. de <span class="math inline">\(X \sim N(\mu,\sigma^2)\)</span>. Entonces, <span class="math inline">\(M_{X}(t)=\exp\left\{\mu t+ \frac{\sigma^2t^2}{2}\right\}\)</span>. De ahí que <span class="math display">\[
+        \begin{align*}
+        M_{\bar{X}}(t)&amp;=\exp\left\{\mu t+ \frac{\sigma^2t^2}{2n}\right\}
+        \end{align*}
+\]</span> De ahí que <span class="math inline">\(\bar{X}\sim N(\mu,\frac{\sigma^2}{n})\)</span>.</p>
+</section>
+<section id="muestreo-de-una-distribución-normal" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="muestreo-de-una-distribución-normal"><span class="header-section-number">3.9</span> Muestreo de una distribución normal</h2>
+<section id="definición-de-distribución-chi-cuadrada" class="level3" data-number="3.9.1">
+<h3 data-number="3.9.1" class="anchored" data-anchor-id="definición-de-distribución-chi-cuadrada"><span class="header-section-number">3.9.1</span> Definición de distribución Chi cuadrada</h3>
+<div id="def-4.10" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.1</strong></span> <strong>Definición</strong> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(\nu\)</span> un entero positivo. Se dice que una v.a <span class="math inline">\(Y\)</span> tiene distribuci'on <strong>chi cuadrada con <span class="math inline">\(\nu\)</span> grados de libertad</strong> si y sólo si <span class="math inline">\(Y\)</span> es una vriable aleatoria con distribución gamma y parámetros <span class="math inline">\(\alpha=\nu/2\)</span> y <span class="math inline">\(\beta=2\)</span>.</p>
+</div>
+<div id="teo-Fisher" class="theorem">
+<p><strong>Teorema de Fisher</strong> En el resto del tema supondremos que <span class="math inline">\(X 1,\ldots, X_n\)</span> m.a.s. de una <span class="math inline">\(N(\mu, \sigma^2)\)</span>.</p>
+<ol type="a">
+<li><span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S_n^2\)</span> son variables aleatorias independientes.</li>
+<li><span class="math inline">\(\bar{X}\sim N(\mu, \frac{\sigma^2}{n})\)</span></li>
+<li><span class="math inline">\(\frac{(n-1)S_n^2}{\sigma^2}\sim \mathcal{X}^2_{n-1}.\)</span></li>
+</ol>
+</div>
+</section>
+<section id="distribuciones-asociadas-a-la-normal" class="level3" data-number="3.9.2">
+<h3 data-number="3.9.2" class="anchored" data-anchor-id="distribuciones-asociadas-a-la-normal"><span class="header-section-number">3.9.2</span> Distribuciones asociadas a la normal</h3>
+<div id="teo6-4" class="theorem">
+<p><strong>Teorema</strong> (Wackerly et al.&nbsp;(2008)) Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> definidas como en el Teorema 6.3 de y definimos <span class="math inline">\(Z_i\)</span> por <span class="math display">\[Z_i=\frac{Y_i-\mu_i}{\sigma_i}\]</span> con <span class="math inline">\(i=1,\,2,\cdots,\,n\)</span>. Entonces <span class="math inline">\(\sum_{i=1}^nZ_i^2\)</span> tiene distribuici'on <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n\)</span> grados de libertad.</p>
+</div>
+<div id="teo7-2" class="theorem">
+<p><strong>Teorema </strong> (Wackerly et al.&nbsp;(2008)) Si <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> es una muestra aleatoria de una distribuci'on normal con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(Y_i\)</span>, <span class="math inline">\(i=1,\,2,\cdots,n\)</span> son v.a’s independientes distribu'idas normalmente, con <span class="math inline">\(E(Y_i)=\mu\)</span> y <span class="math inline">\(V(Y_i)=\sigma^2\)</span>.</p>
+<p>Entonces <span class="math display">\[Z_i=\frac{Y_i-\mu}{\sigma}\]</span> son v.a’s independientes, <span class="math inline">\(i=1,\,2,\cdots,n\)</span> y <span class="math display">\[\sum_{i=1}^nZ_i^2=\sum_{i=1}^n\left(\frac{Y_i-\mu}{\sigma}\right)^2\]</span>tienen una distribuci'on <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n\)</span> grados de libertad (gl).</p>
+</div>
+<div id="teo7-3" class="theorem">
+<p><strong>Teorema</strong> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> una muestra aleatoria con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>. Entonces <span class="math display">\[\frac{(n-1)S^2}{\sigma^2}=\frac{1}{\sigma^2}\sum_{i=1}^n(Y_i-\overline{Y})^2\]</span> tiene una distribuci'on <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((n-1)\)</span> gl. <span class="math inline">\(\overline{Y}\)</span> y <span class="math inline">\(S^2\)</span> son v.a independientes.</p>
+</div>
+<div id="def7-2" class="theorem">
+<p><strong>Definición</strong> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(Z\)</span> una v.a normal est'andar y sea <span class="math inline">\(W\)</span> una v.a con distribuci'on <span class="math inline">\(\chi^2_\nu\)</span>. Entonces, si <span class="math inline">\(W\)</span> y <span class="math inline">\(Z\)</span> son ind <span class="math display">\[T=\frac{Z}{\sqrt{W/\nu}}\]</span> se dice que tiene una distribuci'on <span class="math inline">\(t\)</span> con <span class="math inline">\(\nu\)</span> grados de libertad.</p>
+</div>
+<p><strong>Observación</strong> Si <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\sim N(\mu,\sigma^2)\)</span> del Teorema @ref(teo7-1) <span class="math display">\[Z=\frac{\sqrt{n}(\overline{Y}-\mu)}{\sigma}\sim N(0,1)\]</span> El teorema @ref(teo7-3) nos dice que <span class="math display">\[W=\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}\]</span> y que <span class="math inline">\(Z\)</span> y <span class="math inline">\(W\)</span> son ind.</p>
+<hr>
+</section>
+</section>
+<section id="referencias" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="referencias"><span class="header-section-number">3.10</span> Referencias</h2>
+<ul>
+<li><p><strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> (2006). <em>Curso de Inferencia y Decisión</em>. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.</p></li>
+<li><p><strong>Wackerly, D. D., Mendenhall, W.</strong>, &amp; <strong>Scheaffer, R. L.</strong> (2008). <strong>Estadística matemática con aplicaciones</strong> (7ª ed.). Cengage Learning.</p></li>
+<li><p><strong>Roussas, G. G.</strong> (1997). <strong>A Course in Mathematical Statistics</strong> (2nd ed.). Academic Press.</p></li>
+</ul>
 
 
 </section>

@@ -1,3 +1,4 @@
+<!-- Forzar nueva versión: actualizando TOC -->
 ---
 title: "INTRODUCCIÓN"
 author: "Biviana M. Suárez Sierra"
@@ -35,3 +36,4 @@ Espero que este libro te acompañe, rete y apoye en tu formación como profesion
 
 <!-- 1. [Datos y modelos](Datos%20y%20modelos.qmd)   -->
 <!-- 2. [Variable aleatoria](Variable%20aleatoria.qmd)   -->
+

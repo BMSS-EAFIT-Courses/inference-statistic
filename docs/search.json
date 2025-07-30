@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Inferencia Estadística",
+    "title": "INTRODUCCIÓN",
     "section": "",
     "text": "0.1 ¿Cómo navegar este libro?",
     "crumbs": [
@@ -12,7 +12,7 @@
   {
     "objectID": "index.html#cómo-navegar-este-libro",
     "href": "index.html#cómo-navegar-este-libro",
-    "title": "Inferencia Estadística",
+    "title": "INTRODUCCIÓN",
     "section": "",
     "text": "Usa el índice lateral izquierdo para acceder a cada capítulo y subcapítulo.\nHaz uso del buscador para encontrar conceptos o términos clave.\nRevisa los apartados de “Lista de problemas” incluidos al final de cada sección para practicar.",
     "crumbs": [
@@ -22,7 +22,7 @@
   {
     "objectID": "index.html#bienvenidao",
     "href": "index.html#bienvenidao",
-    "title": "Inferencia Estadística",
+    "title": "INTRODUCCIÓN",
     "section": "0.2 ¡Bienvenida/o!",
     "text": "0.2 ¡Bienvenida/o!\nTe invito a recorrer este texto con atención, curiosidad y sentido crítico.\nEspero que este libro te acompañe, rete y apoye en tu formación como profesional en ciencias de datos o áreas relacionadas.",
     "crumbs": [
@@ -124,7 +124,7 @@
     "href": "Variable aleatoria.html#modelo-paramétrico",
     "title": "3  VARIABLE ALEATORIA",
     "section": "3.6 Modelo paramétrico",
-    "text": "3.6 Modelo paramétrico\nUsualmente la ley de probabilidad de una variable aleatoria se supone perteneciente a un modelo matemático que depende sólo de un número finito de parámetros: \\(f_X \\in\\{f(x|\\theta):\\theta \\in \\Theta \\subseteq \\mathbb{R}^k\\}\\). Escribiremos alternativamente \\(f(x;\\theta)\\), \\(f(x|\\theta)\\) o \\(f_\\theta(x)\\).\nDefinición El conjunto de distribuciones dadas por \\(f_\\theta(x)\\), \\(\\theta \\in \\Theta\\) se llama familia paramétrica de distribuciones. \\(\\Theta\\) es el conjunto de parámetros.\nDefinición La correspondiente distribución conjunta de una muestra aleatoria simple de \\(X\\) viene dada por la función de densidad (o función de masa de probabilidad, según el caso)\n\\[\nf_{X_{\\sim}}(x_{\\sim} \\mid \\theta) = \\prod_{i=1}^{n} f_{\\theta}(x_i)\n\\]\nA esta función la llamaremos función de verosimilitud de la muestra \\(X_{\\sim}\\). Utilizaremos este término para referirnos indistintamente a la función de densidad conjunta (si las variables aleatorias son continuas) o a la función de masa conjunta (si son discretas).",
+    "text": "3.6 Modelo paramétrico\nUsualmente la ley de probabilidad de una variable aleatoria se supone perteneciente a un modelo matemático que depende sólo de un número finito de parámetros: \\(f_X \\in\\{f(x|\\theta):\\theta \\in \\Theta \\subseteq \\mathbb{R}^k\\}\\). Escribiremos alternativamente \\(f(x;\\theta)\\), \\(f(x|\\theta)\\) o \\(f_\\theta(x)\\).\nDefinición El conjunto de distribuciones dadas por \\(f_\\theta(x)\\), \\(\\theta \\in \\Theta\\) se llama familia paramétrica de distribuciones. \\(\\Theta\\) es el conjunto de parámetros.\nDefinición La correspondiente distribución conjunta de una muestra aleatoria simple de \\(X\\) viene dada por la función de densidad (o función de masa de probabilidad, según el caso)\n\\[\nf_{\\underset{\\sim}{X}}(\\underset{\\sim}{x} \\mid \\theta) = \\prod_{i=1}^{n} f_{\\theta}(x_i)\n\\]\nA esta función la llamaremos función de verosimilitud de la muestra \\(X_{\\sim}\\). Utilizaremos este término para referirnos indistintamente a la función de densidad conjunta (si las variables aleatorias son continuas) o a la función de masa conjunta (si son discretas).",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>VARIABLE ALEATORIA</span>"
     ]
@@ -134,7 +134,47 @@
     "href": "Variable aleatoria.html#sumas-de-variables-aleatorias",
     "title": "3  VARIABLE ALEATORIA",
     "section": "3.7 Sumas de variables aleatorias",
-    "text": "3.7 Sumas de variables aleatorias\nCuando se obtiene una muestra aleatoria simple \\(X_{1},X_{2},\\ldots,X_{n}\\) normalmente se calculan a partir de ellas cantidades que resumen los valores observados. Cualquiera de estos resúmenes se puede expresar como una función \\(T(x_1,\\ldots,x_n)\\) definida en el espacio \\(\\mathcal{X}^n\\subseteq\\mathbb{R}^n\\) donde están las imágenes del vector \\((X_{1},X_{2},\\ldots,X_{n})\\).\nEsta función \\(T\\) puede devolver valores de \\(\\mathbb{R}\\), \\(\\mathbb{R}^2\\) o, en general, \\(\\mathbb{R}^k\\).\n\\[T(X_1 , \\ldots, X_n)=\\sum_{i=1}^{n}X_i,\\bar{X},\\bar{X}+3, \\min{X_1 , \\ldots, X_n},\\] \\[T(X_1 , \\ldots, X_n)=\\left(\\sum_{i=1}^{n}X_i,\\sum_{i=1}^{n}(X_i-\\bar{X})^2\\right),\\] \\[T(X_1 , \\ldots, X_n)=\\left(\\min\\{X_1 , \\ldots, X_n\\},\\sum_{i=1}^{n}X_i,\\sum_{i=1}^{n}(X_i-\\bar{X})^2\\right),\\] \\[T(X_1 , \\ldots, X_n)= (X_1 , \\ldots, X_n)\\]",
+    "text": "3.7 Sumas de variables aleatorias\nCuando se obtiene una muestra aleatoria simple \\(X_{1},X_{2},\\ldots,X_{n}\\) normalmente se calculan a partir de ellas cantidades que resumen los valores observados. Cualquiera de estos resúmenes se puede expresar como una función \\(T(x_1,\\ldots,x_n)\\) definida en el espacio \\(\\mathcal{X}^n\\subseteq\\mathbb{R}^n\\) donde están las imágenes del vector \\((X_{1},X_{2},\\ldots,X_{n})\\).\nEsta función \\(T\\) puede devolver valores de \\(\\mathbb{R}\\), \\(\\mathbb{R}^2\\) o, en general, \\(\\mathbb{R}^k\\).\n\\[T(X_1 , \\ldots, X_n)=\\sum_{i=1}^{n}X_i,\\bar{X},\\bar{X}+3, \\min{X_1 , \\ldots, X_n},\\] \\[T(X_1 , \\ldots, X_n)=\\left(\\sum_{i=1}^{n}X_i,\\sum_{i=1}^{n}(X_i-\\bar{X})^2\\right),\\] \\[T(X_1 , \\ldots, X_n)=\\left(\\min\\{X_1 , \\ldots, X_n\\},\\sum_{i=1}^{n}X_i,\\sum_{i=1}^{n}(X_i-\\bar{X})^2\\right),\\] \\[T(X_1 , \\ldots, X_n)= (X_1 , \\ldots, X_n)\\]\nDefinición de estadísticos: Las funciones \\(T\\) que dependen de una muestra aleatoria simple \\(X_1 , \\ldots, X_n\\) se llaman estadísticos. Dependen de los valores observados, pero no de los parámetros desconocidos que determinan la distribución de \\(X_i\\) .\nCuando un estadístico \\(T\\) es utilizado con el propósito de estimar un parámetro \\(\\theta\\) diremos que \\(T\\) es un estimador de \\(\\theta\\).\nEjemplo de estadístico\n\\(T(X_1 , \\ldots, X_n)=\\bar{X}\\) es un estimador de \\(E(X)=\\mu\\).\nEn inferencia estadística interesa saber qué estadísticos son suficientes para recoger toda la información que la muestra aporta sobre la distribución de la variable aleatoria X muestreada. La respuesta depende de la distribución de X.\nDefinición distribución en el muestreo: Dado que \\(\\underset{\\sim}{X} =(X_1 ,..., X_n)\\) es una variable aleatoria, se tiene que \\(Y=T(\\underset{\\sim}{X})=T(X_1 ,..., X_n)\\) será también una variable aleatoria. La ley de probabilidad de \\(Y\\) se denomina distribución en el muestreo de \\(Y\\) (o distribución muestral). Los siguientes resultados dan información sobre algunas características de estadísticos definidos a partir de sumas de variables aleatorias.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VARIABLE ALEATORIA</span>"
+    ]
+  },
+  {
+    "objectID": "Variable aleatoria.html#estadísticos-definidos-a-partir-de-sumas-de-variables-aleatorias",
+    "href": "Variable aleatoria.html#estadísticos-definidos-a-partir-de-sumas-de-variables-aleatorias",
+    "title": "3  VARIABLE ALEATORIA",
+    "section": "3.8 Estadísticos definidos a partir de sumas de variables aleatorias",
+    "text": "3.8 Estadísticos definidos a partir de sumas de variables aleatorias\nTeorema Sean \\(X_1,\\ldots, X_n\\),n números reales, sea \\(\\bar{x} = \\frac{1}{n} \\sum_{i=1}^{n}x_i\\) su media aritmética y sea \\(S_n^2=\\frac{\\sum_{i=1}^{n}(x_i-\\bar{x})^2}{n-1}\\) su varianza muestral.\n\n\\(\\min_a\\sum_{i=1}^{n}(x_i-a)^2=\\sum_{i=1}^{n}(x_i-\\bar{x})^2\\)\n\\((n-1)S_n^2=\\sum_{i=1}^{n}(x_i-\\bar{x})^2=\\sum_{i=1}^{n}x_i^2-n\\bar{x}^2\\)\n\nLema Sea \\(X_1,\\ldots, X_n\\) una muestra aleatoria simple de \\(X\\) y sea \\(g(x)\\) una función tal que \\(E(g(X))\\) y \\(Var(g(X))\\) existen. Entonces,\n\n\\(E(\\sum_{i=1}^{n}g(X_i))=nE(g(X))\\),\n\\(Var(\\sum_{i=1}^{n}g(X_i))=nVar(g(X))\\).\n\nPara la demostración ver Gómez et al. (2006)\nTeorema Sea \\(X 1,\\ldots, X_n\\) una muestra aleatoria simple de una población \\(X\\) con esperanza \\(\\mu\\) y varianza \\(\\sigma^2 &lt; \\infty\\). Sean \\[\n        \\begin{align*}\n        &\\bar{X}=\\frac{1}{n}\\sum_{i=1}^{n}X_i,\\ \\\n        S^2=\\frac{\\sum_{i=1}^{n}(X_i-\\bar{X})^2}{n-1},\n        \\end{align*}    \n\\] la media y la varianza muestrales, respectivamente. Entonces,\n\n\\(E(\\bar{X}) = \\mu,\\)\n\\(Var(\\bar{X}) = \\frac{\\sigma^2}{n},\\)\n\\(E(S^2) = \\sigma^2\\).\n\nTeorema Sea \\(X 1,\\ldots, X_n\\) una muestra aleatoria simple de una población \\(X\\) con función generadora de momentos \\(M_X(t)\\). La función generatriz de momentos de \\(X\\) es \\[\\begin{align*}\n        &M_{\\bar{X}}(t)=\\left(M_X\\left(\\frac{t}{n}\\right)\\right)^n\n        \\end{align*}\n\\] ::: {.theorem #teo6-3} Teorema (Combinación lineal de normales es normal) (Wackerly et al. (2008)) Sean \\(Y_1,\\,Y_2,\\cdots,\\,Y_n\\) variables aleatorias independientes normalmente distribuidas \\(E(Y_i)=\\mu_i\\) y \\(V(Y_i)=\\sigma_i^2\\)ara \\(i=1,\\cdots,\\,n\\) y sean \\(a_1,\\,a_2,\\cdots,\\,a_n\\) constantes. Si \\[U=\\sum_{i=1}^na_iY_i\\]\nentonces \\(U\\) es una variable aleatoria normalmente distribuida con \\[E(U)=\\sum_{i=1}^na_i\\mu_i\\] y \\[V(U)=\\sum_{i=1}^na_i^2\\sigma^2_i\\] :::\nEjemplo \\(X 1,\\ldots, X_n\\) m.a.s. de \\(X \\sim N(\\mu,\\sigma^2)\\). Entonces, \\(M_{X}(t)=\\exp\\left\\{\\mu t+ \\frac{\\sigma^2t^2}{2}\\right\\}\\). De ahí que\n\\[\n    \\begin{align*}\n    M_{\\bar{X}}(t)\n    &=\\left(\\exp\\left\\{\\mu \\frac{t}{n}+ \\frac{\\sigma^2\\left(\\frac{t}{n}\\right)^2}{2}\\right\\}\\right)^n\n    \\end{align*}\n\\]\n\\(X 1,\\ldots, X_n\\) m.a.s. de \\(X \\sim N(\\mu,\\sigma^2)\\). Entonces, \\(M_{X}(t)=\\exp\\left\\{\\mu t+ \\frac{\\sigma^2t^2}{2}\\right\\}\\). De ahí que \\[\n        \\begin{align*}\n        M_{\\bar{X}}(t)&=\\exp\\left\\{\\mu t+ \\frac{\\sigma^2t^2}{2n}\\right\\}\n        \\end{align*}\n\\] De ahí que \\(\\bar{X}\\sim N(\\mu,\\frac{\\sigma^2}{n})\\).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VARIABLE ALEATORIA</span>"
+    ]
+  },
+  {
+    "objectID": "Variable aleatoria.html#muestreo-de-una-distribución-normal",
+    "href": "Variable aleatoria.html#muestreo-de-una-distribución-normal",
+    "title": "3  VARIABLE ALEATORIA",
+    "section": "3.9 Muestreo de una distribución normal",
+    "text": "3.9 Muestreo de una distribución normal\n\n3.9.1 Definición de distribución Chi cuadrada\n\nDefinition 3.1 Definición (Wackerly et al. (2008)) Sea \\(\\nu\\) un entero positivo. Se dice que una v.a \\(Y\\) tiene distribuci'on chi cuadrada con \\(\\nu\\) grados de libertad si y sólo si \\(Y\\) es una vriable aleatoria con distribución gamma y parámetros \\(\\alpha=\\nu/2\\) y \\(\\beta=2\\).\n\n\nTeorema de Fisher En el resto del tema supondremos que \\(X 1,\\ldots, X_n\\) m.a.s. de una \\(N(\\mu, \\sigma^2)\\).\n\n\\(\\bar{X}\\) y \\(S_n^2\\) son variables aleatorias independientes.\n\\(\\bar{X}\\sim N(\\mu, \\frac{\\sigma^2}{n})\\)\n\\(\\frac{(n-1)S_n^2}{\\sigma^2}\\sim \\mathcal{X}^2_{n-1}.\\)\n\n\n\n\n3.9.2 Distribuciones asociadas a la normal\n\nTeorema (Wackerly et al. (2008)) Sean \\(Y_1,\\,Y_2,\\cdots,\\,Y_n\\) definidas como en el Teorema 6.3 de y definimos \\(Z_i\\) por \\[Z_i=\\frac{Y_i-\\mu_i}{\\sigma_i}\\] con \\(i=1,\\,2,\\cdots,\\,n\\). Entonces \\(\\sum_{i=1}^nZ_i^2\\) tiene distribuici'on \\(\\chi^2\\) con \\(n\\) grados de libertad.\n\n\nTeorema  (Wackerly et al. (2008)) Si \\(Y_1,\\,Y_2,\\cdots,\\,Y_n\\) es una muestra aleatoria de una distribuci'on normal con media \\(\\mu\\) y varianza \\(\\sigma^2\\), \\(Y_i\\), \\(i=1,\\,2,\\cdots,n\\) son v.a’s independientes distribu'idas normalmente, con \\(E(Y_i)=\\mu\\) y \\(V(Y_i)=\\sigma^2\\).\nEntonces \\[Z_i=\\frac{Y_i-\\mu}{\\sigma}\\] son v.a’s independientes, \\(i=1,\\,2,\\cdots,n\\) y \\[\\sum_{i=1}^nZ_i^2=\\sum_{i=1}^n\\left(\\frac{Y_i-\\mu}{\\sigma}\\right)^2\\]tienen una distribuci'on \\(\\chi^2\\) con \\(n\\) grados de libertad (gl).\n\n\nTeorema (Wackerly et al. (2008)) Sea \\(Y_1,\\,Y_2,\\cdots,\\,Y_n\\) una muestra aleatoria con media \\(\\mu\\) y varianza \\(\\sigma^2\\). Entonces \\[\\frac{(n-1)S^2}{\\sigma^2}=\\frac{1}{\\sigma^2}\\sum_{i=1}^n(Y_i-\\overline{Y})^2\\] tiene una distribuci'on \\(\\chi^2\\) con \\((n-1)\\) gl. \\(\\overline{Y}\\) y \\(S^2\\) son v.a independientes.\n\n\nDefinición (Wackerly et al. (2008)) Sea \\(Z\\) una v.a normal est'andar y sea \\(W\\) una v.a con distribuci'on \\(\\chi^2_\\nu\\). Entonces, si \\(W\\) y \\(Z\\) son ind \\[T=\\frac{Z}{\\sqrt{W/\\nu}}\\] se dice que tiene una distribuci'on \\(t\\) con \\(\\nu\\) grados de libertad.\n\nObservación Si \\(Y_1,\\,Y_2,\\cdots,\\,Y_n\\sim N(\\mu,\\sigma^2)\\) del Teorema @ref(teo7-1) \\[Z=\\frac{\\sqrt{n}(\\overline{Y}-\\mu)}{\\sigma}\\sim N(0,1)\\] El teorema @ref(teo7-3) nos dice que \\[W=\\frac{(n-1)S^2}{\\sigma^2}\\sim\\chi^2_{n-1}\\] y que \\(Z\\) y \\(W\\) son ind.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VARIABLE ALEATORIA</span>"
+    ]
+  },
+  {
+    "objectID": "Variable aleatoria.html#teoremas",
+    "href": "Variable aleatoria.html#teoremas",
+    "title": "3  VARIABLE ALEATORIA",
+    "section": "3.10 Teoremas",
+    "text": "3.10 Teoremas\n\nSea (X N(, ^2)). Entonces…\n\nComo se indica en el Teorema @ref(teo6-3), esta propiedad es fundamental.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>VARIABLE ALEATORIA</span>"
+    ]
+  },
+  {
+    "objectID": "Variable aleatoria.html#referencias",
+    "href": "Variable aleatoria.html#referencias",
+    "title": "3  VARIABLE ALEATORIA",
+    "section": "3.10 Referencias",
+    "text": "3.10 Referencias\n\nGómez, Guadalupe, & Delicado, Pedro (2006). Curso de Inferencia y Decisión. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.\nWackerly, D. D., Mendenhall, W., & Scheaffer, R. L. (2008). Estadística matemática con aplicaciones (7ª ed.). Cengage Learning.\nRoussas, G. G. (1997). A Course in Mathematical Statistics (2nd ed.). Academic Press.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>VARIABLE ALEATORIA</span>"
     ]
