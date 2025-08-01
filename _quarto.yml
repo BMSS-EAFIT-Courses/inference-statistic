@@ -7,8 +7,6 @@ book:
   author: "Biviana M. Suárez Sierra"
   chapters:
     - index.qmd
-    - "Datos y modelos.qmd"
-    - "Variable aleatoria.qmd"
 
 format:
   html:
@@ -20,4 +18,3 @@ format:
       search: true
     number-sections: true
     html-math-method: mathjax
-
