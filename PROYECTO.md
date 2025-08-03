@@ -80,7 +80,7 @@ Un informe técnico o artículo corto con estructura tipo IMRyD:
 | Trabajo en equipo          | 10%         |
 | Autoevaluación/reflexión   | 10%         |
 
-> Para más detalles consulta la [rúbrica completa](RÚBRICA.md) (si la incluyes como archivo aparte).
+> Para más detalles consulta la [rúbrica completa](RUBRICA.md) (si la incluyes como archivo aparte).
 
 ---
 
