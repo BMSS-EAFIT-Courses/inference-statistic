@@ -12,9 +12,30 @@ format:
   html:
     theme: cosmo
     toc: true
+    mermaid: {}
     toc-depth: 3
     toc-location: right
-    navigation:
-      search: true
     number-sections: true
     html-math-method: mathjax
+    reference-location: margin
+    fig-cap-location: top
+    citations-hover: true
+    code-link: true
+
+theorem-environments:
+  - name: definition
+    title: "Resultado"
+  - name: theorem
+    title: "Teorema"
+  - name: lemma
+    title: "Lema"
+  - name: proposition
+    title: "Proposición"
+  - name: corollary
+    title: "Corolario"
+  - name: example
+    title: "Ejemplo"
+  - name: remark
+    title: "Observación"
+  - name: proof
+    title: "Demostración"

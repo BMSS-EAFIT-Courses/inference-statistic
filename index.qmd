@@ -47,8 +47,9 @@ En esta sección establecemos la base conceptual para el análisis estadístico,
 
 ## Fenómeno aleatorio y variable observada
 
-> “Se observa una realización de un fenómeno aleatorio, digamos X. Este puede ser un elemento aleatorio de varios tipos: número (variable aleatoria), un vector de dimensión finita (vector aleatorio), una función, etc.  
-> La premisa principal es que el carácter aleatorio de X se concibe como una realización de un fenómeno aleatorio que tiene una distribución de probabilidad P, donde la distribución P es desconocida ya sea en su totalidad o en algún detalle específico (por ejemplo, su soporte, su media, etc.). Es de interés conocer P. Si la medida de probabilidad P fuese conocida, entonces no hay problema estadístico propiamente, pues el problema estadístico tiene que ver con _inferir_ la propiedad desconocida de P con base en X.” [Ver referencia 1]
+“Se observa una realización de un fenómeno aleatorio, digamos X. Este puede ser un elemento aleatorio de varios tipos: número (variable aleatoria), un vector de dimensión finita (vector aleatorio), una función, etc.
+
+La premisa principal es que el carácter aleatorio de X se concibe como una realización de un fenómeno aleatorio que tiene una distribución de probabilidad P, donde la distribución P es desconocida ya sea en su totalidad o en algún detalle específico (por ejemplo, su soporte, su media, etc.). Es de interés conocer P. Si la medida de probabilidad P fuese conocida, entonces no hay problema estadístico propiamente, pues el problema estadístico tiene que ver con _inferir_ la propiedad desconocida de P con base en X.” [Ver referencia 1]
 
 - **Definición de X**  
   - **X** puede ser un valor real $X \in \mathbb{R}$, un vector en $\mathbb{R}^n$, o incluso una función $\;X: [0,1]\to\mathbb{R}$.  
@@ -58,7 +59,7 @@ En esta sección establecemos la base conceptual para el análisis estadístico,
 
 ## Incertidumbre inductiva vs. estocástica
 
-> “La observación **X** está dada, por lo que no hay incertidumbre tal como la hay en la teoría de probabilidad desarrollada anteriormente en el curso. Antes, fue concebida una estructura $(\Omega, \mathcal{F}, P)$ para enfrentar el que haya incertidumbre acerca del valor de **X**. En el problema estadístico, el valor de **X** ha sido observado, y la incertidumbre radica en otro punto: radica en que existe duda acerca de cuál **P** es la que produjo el valor **X**. En algunas ocasiones se utilizan los términos _incertidumbre estocástica_ e _incertidumbre inductiva_ para distinguir estos dos tipos. Es común que estos se confundan entre sí, porque en estadística matemática la teoría de probabilidad constituye también una de las maneras naturales de afrontar la cuantificación de incertidumbre inductiva. En cualquier caso, el concebir a **P** como medida de probabilidad es la base para formular soluciones a la incertidumbre inductiva. Con este lenguaje, probabilidad y estadística son problemas diferentes y de cierta manera inversos. Teoría de probabilidad tiene que ver con cuantificar incertidumbre acerca de **X** y teoría estadística con cuantificar incertidumbre acerca de **P** a la luz de haber ya observado **X**.”[Ver referencia 1]
+“La observación **X** está dada, por lo que no hay incertidumbre tal como la hay en la teoría de probabilidad desarrollada anteriormente en el curso. Antes, fue concebida una estructura $(\Omega, \mathcal{F}, P)$ para enfrentar el que haya incertidumbre acerca del valor de **X**. En el problema estadístico, el valor de **X** ha sido observado, y la incertidumbre radica en otro punto: radica en que existe duda acerca de cuál **P** es la que produjo el valor **X**. En algunas ocasiones se utilizan los términos _incertidumbre estocástica_ e _incertidumbre inductiva_ para distinguir estos dos tipos. Es común que estos se confundan entre sí, porque en estadística matemática la teoría de probabilidad constituye también una de las maneras naturales de afrontar la cuantificación de incertidumbre inductiva. En cualquier caso, el concebir a **P** como medida de probabilidad es la base para formular soluciones a la incertidumbre inductiva. Con este lenguaje, probabilidad y estadística son problemas diferentes y de cierta manera inversos. Teoría de probabilidad tiene que ver con cuantificar incertidumbre acerca de **X** y teoría estadística con cuantificar incertidumbre acerca de **P** a la luz de haber ya observado **X**.”[Ver referencia 1]
 
 - **Incertidumbre estocástica**: duda previa sobre el valor de X, modelada por $(\Omega,\mathcal{F},P)$.  
 - **Incertidumbre inductiva**: tras observar X, la incertidumbre se desplaza a la ley generadora P.
@@ -103,18 +104,22 @@ Los resultados de un experimento aleatorio no son analizados “en bruto”, sin
 
 En todo estudio estadístico partimos de un **experimento aleatorio** cuyo conjunto de resultados posibles se denomina **espacio muestral** Ω. Para cuantificar dichos resultados definimos las siguientes estructuras:
 
-**Definición: Variables Aleatorias**
+::: {.definition #def-1.1}
+**(Variables Aleatorias)** Sea $(\Omega,\mathcal{A},P)$ un espacio de probabilidad. Una **variable aleatoria** es una función $X\colon (\Omega,\mathcal{A})\;\longrightarrow\; (\mathbb{R},\mathcal{B}),$ tal que para todo $B\in\mathcal{B}$ (la $\sigma$-álgebra de Borel en ℝ),  $X^{-1}(B)\;=\;\{\omega\in\Omega : X(\omega)\in B\}\;\in\;\mathcal{A}.$
+:::
 
-Sea $(\Omega,\mathcal{A},P)$ un espacio de probabilidad. Una **variable aleatoria** es una función $X\colon (\Omega,\mathcal{A})\;\longrightarrow\; (\mathbb{R},\mathcal{B}),$ tal que para todo $B\in\mathcal{B}$ (la $\sigma$-álgebra de Borel en ℝ),  $X^{-1}(B)\;=\;\{\omega\in\Omega : X(\omega)\in B\}\;\in\;\mathcal{A}.$
+Si el espacio muestral $\Omega$ es **finito o numerable**, diremos que es un espacio **discreto** y las variables aleatorias asociadas al experimento normalmente estarán definidas como $X\colon \Omega \;\longrightarrow\; \mathbb{Z}.$
 
-- Si el espacio muestral Ω es **finito o numerable**, diremos que es un espacio **discreto** y las variables aleatorias asociadas al experimento normalmente estarán definidas como $X\colon \Omega \;\longrightarrow\; \mathbb{Z}.$
+Si $\Omega$ es **no numerable**, entonces diremos que es un espacio **continuo** y $X\colon \Omega \;\longrightarrow\; \mathbb{R}.$
 
-- Si $\Omega$ es **no numerable**, entonces diremos que es un espacio **continuo** y $X\colon \Omega \;\longrightarrow\; \mathbb{R}.$
+
 ---
 
-**Definición: Vector aleatorio**
-
+::: {.definition #def-1.2}
 Un **vector aleatorio** de dimensión $n$ es $\mathbf{X} = (X_1,\dots,X_n)\colon(\Omega,\mathcal{A})\longrightarrow(\mathbb{R}^n,\mathcal{B}^n),$ donde cada componente $X_i$ es variable aleatoria y $\mathcal{B}^n$ la $\sigma$-álgebra de Borel en ℝⁿ.
+:::
+
+
 
 ---
 
@@ -411,28 +416,34 @@ Sea $X$ una v.a. con f.g.m. $M_X$ y sea $Y=aX+b$ una transformación lineal de $
 
 $$M_Y(t)=E(e^{tY})=E(e^{t(aX+b)})=E(e^{taX}e^{tb})=e^{tb}E(e^{taX})=e^{tb}M_X(at)$$
 
-
-
-  **Teorema (fgm de suma de v.a.s)**
-
+::: {#thm-1}
+**(fgm de suma de v.a.s)**
 Si $X$ tiene función generadora de momentos $M(t)$ que está definida en un entorno $(-a,a)$ de 0, entonces $M(t)$ caracteriza a la distribución de $X$; es decir, si otra variable $Y$ tiene la misma función generadora de momentos, las distribuciones de $X$ e $Y$ coinciden.
+:::
 
+  
 ---
 
 Si $X,Y$ son variables aleatorias con funciones generadoras de momentos respectivas $M_X$ y $M_Y$ que existen en un dominio común $|t| < d$, entonces la f.g.m. de la suma $X+Y$ está dada por
-<a id="eq:5.5"></a> 
-<table align="center">
-  <tr>
-    <td align="center">
-$$M_{X+Y}(t)= \mathbb{E}\bigl[e^{t(X+Y)}\bigr]= \mathbb{E}\bigl[e^{tX}\,e^{tY}\bigr]=\mathbb{E}\bigl[e^{tX}\bigr]\;\mathbb{E}\bigl[e^{tY}\bigr]= M_X(t)\,M_Y(t).
-\tag{5.5}
+<!-- <a id="eq:5.5"></a>  -->
+<!-- <table align="center"> -->
+<!--   <tr> -->
+<!--     <td align="center"> -->
 $$
-  </td>
-    <td valign="bottom">
-      (5.5)
-    </td>
-  </tr>
-</table>
+\begin{align}
+M_{X+Y}(t)&= \mathbb{E}\bigl[e^{t(X+Y)}\bigr]\\
+&= \mathbb{E}\bigl[e^{tX}\,e^{tY}\bigr]\\
+&=\mathbb{E}\bigl[e^{tX}\bigr]\mathbb{E}\bigl[e^{tY}\bigr]\\
+&= M_X(t)\,M_Y(t).
+\end{align}
+\tag{1}
+$$
+<!--   </td> -->
+<!--     <td valign="bottom"> -->
+<!--       (5.5) -->
+<!--     </td> -->
+<!--   </tr> -->
+<!-- </table> -->
 
 Este resultado se extiende a la suma de $n$ variables aleatorias independientes. Si
 
@@ -446,9 +457,8 @@ La función generadora de momentos resulta particularmente útil cuando consider
 
 ---
 
-  **Teorema (de Continuidad)**
-
-Sea $F_n(x)$, $n\ge1$, una sucesión de funciones de distribución con funciones generadoras de momentos respectivas $M_n(t)$, definidas en $|t|<b$. Supongamos que cuando $n\to\infty$,
+::: {#thm-2}
+**(de Continuidad)** Sea $F_n(x)$, $n\ge1$, una sucesión de funciones de distribución con funciones generadoras de momentos respectivas $M_n(t)$, definidas en $|t|<b$. Supongamos que cuando $n\to\infty$,
 
 $$
 M_n(t)\,\longrightarrow\,M(t)
@@ -463,10 +473,10 @@ F_n(x)\,\longrightarrow\,F(x)
 $$
 
 para todo punto $x$ en el cual $F$ es continua.
+:::
 
-  **Teorema de Laplace–Moivre**
-
-Sea $X_1, X_2, \ldots, X_n$ una sucesión de variables aleatorias **i.i.d.** con distribución \( \text{Bernoulli}(p) \), donde \( 0 < p < 1 \). Sea:
+::: {#thm-3}
+**Laplace–Moivre** Sea $X_1, X_2, \ldots, X_n$ una sucesión de variables aleatorias **i.i.d.** con distribución \( \text{Bernoulli}(p) \), donde \( 0 < p < 1 \). Sea:
 
 $$
 S_n = X_1 + X_2 + \cdots + X_n \sim \text{Binomial}(n, p)
@@ -492,9 +502,10 @@ $$
 
 donde \( \Phi(z) \) es la función de distribución acumulada de la normal estándar.
 
----
+:::
 
-  **Demostración usando funciones generadoras de momentos**
+::: {.proof}
+**Demostración usando funciones generadoras de momentos**
 
 La función generadora de momentos (mgf) de $S_n \sim \text{Binomial}(n, p)$ es:
 
@@ -517,9 +528,8 @@ M_{Z_n}(t) = \exp\left( -t \cdot \frac{np}{\sqrt{np(1 - p)}} \right)
 \cdot \left( 1 - p + p e^{t / \sqrt{np(1 - p)}} \right)^n
 $$
 
----
 
-  **Aproximación por series de Taylor**
+**Aproximación por series de Taylor**
 
 Expandimos  $e^{t / \sqrt{np(1 - p)}}$ para $n$ grande:
 
@@ -556,9 +566,6 @@ Por tanto:
 $$
 M_{Z_n}(t) \to e^{t^2 / 2}
 $$
-
----
-
   **Conclusión**
 
 Como $e^{t^2/2}$ es la mgf de $\mathcal{N}(0, 1)$, y por el teorema de unicidad de la función generadora de momentos:
@@ -567,8 +574,9 @@ $$
 Z_n \xrightarrow{d} \mathcal{N}(0, 1)
 $$
 
-Esto concluye la demostración del **Teorema de Laplace–Moivre** utilizando funciones generadoras de momentos.
 
+Esto concluye la demostración del **Teorema de Laplace–Moivre** utilizando funciones generadoras de momentos.
+:::
 
 ## Muestra aleatoria simple
 
@@ -597,18 +605,21 @@ Usualmente la ley de probabilidad de una variable aleatoria se supone pertenecie
 	$f_X \in\{f(x|\theta):\theta \in \Theta \subseteq \mathbb{R}^k\}$.
 	Escribiremos alternativamente $f(x;\theta)$, $f(x|\theta)$ o $f_\theta(x)$.
 
-**Definición**
-		El conjunto de distribuciones dadas por $f_\theta(x)$, $\theta \in \Theta$ se llama familia paramétrica de distribuciones. $\Theta$ es el conjunto de parámetros.
-	
+::: {.definition #def-1.3}
+El conjunto de distribuciones dadas por $f_\theta(x)$, $\theta \in \Theta$ se llama familia paramétrica de distribuciones. $\Theta$ es el conjunto de parámetros.
+:::
 
-**Definición**
-	La correspondiente distribución conjunta de una muestra aleatoria simple de $X$ viene dada por la función de densidad (o función de masa de probabilidad, según el caso)
+::: {.definition #def-1.4}
+La correspondiente distribución conjunta de una muestra aleatoria simple de $X$ viene dada por la función de densidad (o función de masa de probabilidad, según el caso)
 
 $$
 f_{\underset{\sim}{X}}(\underset{\sim}{x} \mid \theta) = \prod_{i=1}^{n} f_{\theta}(x_i)
 $$
 
 A esta función la llamaremos **función de verosimilitud** de la muestra $X_{\sim}$. Utilizaremos este término para referirnos indistintamente a la función de densidad conjunta (si las variables aleatorias son continuas) o a la función de masa conjunta (si son discretas).
+:::
+	
+
 	
 
 ## Sumas de variables aleatorias
@@ -621,9 +632,10 @@ $$T(X_1 , \ldots, X_n)=\left(\sum_{i=1}^{n}X_i,\sum_{i=1}^{n}(X_i-\bar{X})^2\rig
 $$T(X_1 , \ldots, X_n)=\left(\min\{X_1 , \ldots, X_n\},\sum_{i=1}^{n}X_i,\sum_{i=1}^{n}(X_i-\bar{X})^2\right),$$
 $$T(X_1 , \ldots, X_n)= (X_1 , \ldots, X_n)$$
 
-
-**Definición de estadísticos:** Las funciones $T$ que dependen de una muestra aleatoria simple $X_1 , \ldots, X_n$ se llaman **estadísticos**. Dependen de los valores observados, pero no de los
+::: {.definition #def-1.5}
+**(Definición de estadísticos)** Las funciones $T$ que dependen de una muestra aleatoria simple $X_1 , \ldots, X_n$ se llaman **estadísticos**. Dependen de los valores observados, pero no de los
 	parámetros desconocidos que determinan la distribución de $X_i$ . 	
+:::
 
 Cuando un estadístico $T$ es utilizado con el propósito de estimar un parámetro $\theta$ diremos que $T$ es un estimador de $\theta$.	
 
@@ -633,23 +645,32 @@ $T(X_1 , \ldots, X_n)=\bar{X}$ es un estimador de $E(X)=\mu$.
 
 En inferencia estadística interesa saber qué estadísticos son suficientes para recoger toda la información que la muestra aporta sobre la distribución de la variable aleatoria X muestreada. La respuesta depende de la distribución de X.
 
-**Definición distribución en el muestreo:** Dado que $\underset{\sim}{X} =(X_1 ,..., X_n)$ es una variable aleatoria, se tiene que $Y=T(\underset{\sim}{X})=T(X_1 ,..., X_n)$ será también una variable aleatoria. La ley de probabilidad de $Y$ se denomina **distribución en el muestreo de $Y$** (o distribución muestral). Los siguientes resultados dan información sobre algunas características de estadísticos definidos a partir de sumas de variables aleatorias.
+::: {.definition #def-1.6}
+**(Definición distribución en el muestreo)** Dado que $\underset{\sim}{X} =(X_1 ,..., X_n)$ es una variable aleatoria, se tiene que $Y=T(\underset{\sim}{X})=T(X_1 ,..., X_n)$ será también una variable aleatoria. La ley de probabilidad de $Y$ se denomina **distribución en el muestreo de $Y$** (o distribución muestral). Los siguientes resultados dan información sobre algunas características de estadísticos definidos a partir de sumas de variables aleatorias.
+:::
 
 ## Estadísticos definidos a partir de sumas de variables aleatorias
 
-**Teorema** Sean $X_1,\ldots, X_n$,n números reales, sea $\bar{x} = \frac{1}{n} \sum_{i=1}^{n}x_i$ su media aritmética y sea $S_n^2=\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}$ su varianza muestral.
+::: {#thm-4}
+Sean $X_1,\ldots, X_n$,n números reales, sea $\bar{x} = \frac{1}{n} \sum_{i=1}^{n}x_i$ su media aritmética y sea $S_n^2=\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}$ su varianza muestral.
 
-- $\min_a\sum_{i=1}^{n}(x_i-a)^2=\sum_{i=1}^{n}(x_i-\bar{x})^2$
-- $(n-1)S_n^2=\sum_{i=1}^{n}(x_i-\bar{x})^2=\sum_{i=1}^{n}x_i^2-n\bar{x}^2$
+1. $\min_a\sum_{i=1}^{n}(x_i-a)^2=\sum_{i=1}^{n}(x_i-\bar{x})^2$
+2. $(n-1)S_n^2=\sum_{i=1}^{n}(x_i-\bar{x})^2=\sum_{i=1}^{n}x_i^2-n\bar{x}^2$
+:::
 
-**Lema** Sea $X_1,\ldots, X_n$ una muestra aleatoria simple de $X$ y sea $g(x)$ una función tal que $E(g(X))$ y $Var(g(X))$ existen. Entonces,
+::: {#lem-1}
+Sea $X_1,\ldots, X_n$ una muestra aleatoria simple de $X$ y sea $g(x)$ una función tal que $E(g(X))$ y $Var(g(X))$ existen. Entonces,
 
-- $E(\sum_{i=1}^{n}g(X_i))=nE(g(X))$,
-- $Var(\sum_{i=1}^{n}g(X_i))=nVar(g(X))$.
+1. $E(\sum_{i=1}^{n}g(X_i))=nE(g(X))$,
+2. $Var(\sum_{i=1}^{n}g(X_i))=nVar(g(X))$.
+::: 
 
+::: {.proof}
 Para la demostración ver Gómez et al. (2006)
+:::
 
-**Teorema** Sea $X 1,\ldots, X_n$ una muestra aleatoria simple de una población $X$ con esperanza $\mu$ y varianza $\sigma^2 < \infty$. Sean
+::: {#thm-5}
+Sea $X 1,\ldots, X_n$ una muestra aleatoria simple de una población $X$ con esperanza $\mu$ y varianza $\sigma^2 < \infty$. Sean
 $$
 		\begin{align*}
 		&\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i,\ \
@@ -661,15 +682,18 @@ la media y la varianza muestrales, respectivamente. Entonces,
 a. $E(\bar{X}) = \mu,$
 b. $Var(\bar{X}) = \frac{\sigma^2}{n},$
 c. $E(S^2) = \sigma^2$.
+:::
 
-
-**Teorema** Sea $X 1,\ldots, X_n$ una muestra aleatoria simple de una población $X$ con función generadora de momentos $M_X(t)$. La función generatriz de momentos de $X$ es
+::: {#thm-6}
+Sea $X 1,\ldots, X_n$ una muestra aleatoria simple de una población $X$ con función generadora de momentos $M_X(t)$. La función generatriz de momentos de $X$ es
 $$\begin{align*}
 		&M_{\bar{X}}(t)=\left(M_X\left(\frac{t}{n}\right)\right)^n
 		\end{align*}
 $$
-::: {.theorem #teo6-3}
-**Teorema (Combinación lineal de normales es normal)**  (Wackerly et al. (2008))
+:::
+
+::: {#thm-7}
+**(Combinación lineal de normales es normal)**  (Wackerly et al. (2008))
 Sean $Y_1,\,Y_2,\cdots,\,Y_n$  variables aleatorias independientes normalmente distribuidas $E(Y_i)=\mu_i$ y $V(Y_i)=\sigma_i^2$ara $i=1,\cdots,\,n$ y sean $a_1,\,a_2,\cdots,\,a_n$ constantes. Si $$U=\sum_{i=1}^na_iY_i$$
 
 entonces $U$ es una variable aleatoria normalmente distribuida con
@@ -677,6 +701,7 @@ entonces $U$ es una variable aleatoria normalmente distribuida con
 	y 
 	$$V(U)=\sum_{i=1}^na_i^2\sigma^2_i$$
 :::
+
 
 **Ejemplo** $X 1,\ldots, X_n$ m.a.s. de $X \sim N(\mu,\sigma^2)$. Entonces, $M_{X}(t)=\exp\left\{\mu t+ \frac{\sigma^2t^2}{2}\right\}$. De ahí que 
 
@@ -700,221 +725,331 @@ De ahí que $\bar{X}\sim N(\mu,\frac{\sigma^2}{n})$.
 
 ### Definición de distribución Chi cuadrada
 
-::: {.theorem #def-4.10}
-**Definición** (Wackerly et al. (2008)) 
+::: {.definition #def-1.7}
+(Wackerly et al. (2008)) 
 Sea $\nu$ un entero positivo. Se dice que una v.a $Y$ tiene distribuci\'on **chi cuadrada con $\nu$ grados de libertad** si y sólo si $Y$ es una vriable aleatoria con distribución gamma y parámetros $\alpha=\nu/2$ y $\beta=2$.
 :::
 
-::: {.theorem #teo-Fisher}
-**Teorema de Fisher** En el resto del tema supondremos que $X 1,\ldots, X_n$ m.a.s. de una $N(\mu, \sigma^2)$.
+
+
+::: {#thm-8}
+**(Teorema de Fisher)** En el resto del tema supondremos que $X 1,\ldots, X_n$ m.a.s. de una $N(\mu, \sigma^2)$.
 
 a. $\bar{X}$ y $S_n^2$ son variables aleatorias independientes.
 b. $\bar{X}\sim N(\mu, \frac{\sigma^2}{n})$
 c. $\frac{(n-1)S_n^2}{\sigma^2}\sim \mathcal{X}^2_{n-1}.$
 :::
 
+
 ### Distribuciones asociadas a la normal
 
-::: {.theorem #teo6-4}
-**Teorema** (Wackerly et al. (2008)) Sean $Y_1,\,Y_2,\cdots,\,Y_n$ definidas como en el Teorema 6.3 de \cite{Wackerly} y definimos $Z_i$ por 
+::: {#thm-9}
+(Wackerly et al. (2008)) Sean $Y_1,\,Y_2,\cdots,\,Y_n$ definidas como en el Teorema @thm-7 de Wackerly et al. (2008) y definimos $Z_i$ por 
 	$$Z_i=\frac{Y_i-\mu_i}{\sigma_i}$$
 	con $i=1,\,2,\cdots,\,n$. Entonces $\sum_{i=1}^nZ_i^2$ tiene distribuici\'on $\chi^2$ con $n$ grados de libertad. 
 :::
 
-::: {.theorem #teo7-2}
-**Teorema ** (Wackerly et al. (2008)) Si $Y_1,\,Y_2,\cdots,\,Y_n$ es una muestra aleatoria de una distribuci\'on normal con media $\mu$ y varianza $\sigma^2$, $Y_i$, $i=1,\,2,\cdots,n$ son v.a's independientes distribu\'idas normalmente, con $E(Y_i)=\mu$ y $V(Y_i)=\sigma^2$.
+::: {#thm-10}
+(Wackerly et al. (2008)) Si $Y_1,\,Y_2,\cdots,\,Y_n$ es una muestra aleatoria de una distribuci\'on normal con media $\mu$ y varianza $\sigma^2$, $Y_i$, $i=1,\,2,\cdots,n$ son v.a's independientes distribu\'idas normalmente, con $E(Y_i)=\mu$ y $V(Y_i)=\sigma^2$.
 
 Entonces $$Z_i=\frac{Y_i-\mu}{\sigma}$$
 		son v.a's independientes, $i=1,\,2,\cdots,n$  y 
 		$$\sum_{i=1}^nZ_i^2=\sum_{i=1}^n\left(\frac{Y_i-\mu}{\sigma}\right)^2$$tienen una distribuci\'on $\chi^2$ con $n$ grados de libertad (gl).
 :::
 
-::: {.theorem #teo7-3}
-**Teorema** (Wackerly et al. (2008)) Sea $Y_1,\,Y_2,\cdots,\,Y_n$ una muestra aleatoria con media $\mu$ y varianza $\sigma^2$. Entonces
+::: {#thm-11}
+(Wackerly et al. (2008)) Sea $Y_1,\,Y_2,\cdots,\,Y_n$ una muestra aleatoria con media $\mu$ y varianza $\sigma^2$. Entonces
 		$$\frac{(n-1)S^2}{\sigma^2}=\frac{1}{\sigma^2}\sum_{i=1}^n(Y_i-\overline{Y})^2$$
 		tiene una distribuci\'on $\chi^2$ con $(n-1)$ gl. $\overline{Y}$ y $S^2$ son v.a independientes.
 :::
 
-::: {.theorem #def7-2}
-**Definición** (Wackerly et al. (2008))
+
+::: {.definition #def-1.8}
+(Wackerly et al. (2008))
 Sea $Z$ una v.a normal est\'andar y sea $W$ una v.a con distribuci\'on $\chi^2_\nu$. Entonces, si $W$ y $Z$ son ind
 		$$T=\frac{Z}{\sqrt{W/\nu}}$$
 		se dice que tiene una distribuci\'on $t$ con $\nu$ grados de libertad.
 :::
 
 
-
-**Observación** Si $Y_1,\,Y_2,\cdots,\,Y_n\sim N(\mu,\sigma^2)$ del Teorema \@ref(teo7-1)
+::: {.callout-note appearance="default" icon="false" title="Observación 1" #obs-1}
+Si $Y_1,\,Y_2,\cdots,\,Y_n\sim N(\mu,\sigma^2)$ del [Teorema (Combinación lineal de normales es normal)](@teo6-3)
 $$Z=\frac{\sqrt{n}(\overline{Y}-\mu)}{\sigma}\sim N(0,1)$$
-El teorema \@ref(teo7-3) nos dice que
+El teorema  [Observación 1](#teo7-3) nos dice que
 $$W=\frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}$$
 y que $Z$ y $W$ son ind.
+:::
+
+::: {.callout-note appearance="default" icon="false" title="Observación 2" #obs-2}
+Por tanto, de la definición 7.2 se tiene la siguiente expresión:
+$$
+\begin{aligned}
+T &= \frac{Z}{\sqrt{W/\nu}} \\
+  &= \frac{\sqrt{n}(\overline{Y}-\mu)/\sigma}{\sqrt{\left[\frac{(n-1)S^2}{\sigma^2}\right]/(n-1)}} \\
+  &= \sqrt{n}\left(\frac{\overline{Y}-\mu}{S}\right)
+\end{aligned}
+$$
+
+Tiene distribución $t$ con $(n-1)$ grados de libertad.
+:::
 
 
 
 
+Como se indica en la [Observación 7.1](#obs-normal), esta propiedad...
 
-\begin{frame}{1.2.1. Distribuciones asociadas a la normal}
-\begin{remark}
-Por tanto, de la definici\'on 7.2
-\begin{eqnarray*}
-	T&=&\frac{Z}{\sqrt{W/\nu}}\\
-	&=&\frac{\sqrt{n}(\overline{Y}-\mu)/\sigma}{\sqrt{\left[\frac{(n-1)S^2}{\sigma^2}\right]/(n-1)}}\\
-	&=&\sqrt{n}\left(\frac{\overline{Y}-\mu}{S}\right)
-\end{eqnarray*}
-tiene distribuci\'on $t$ con $(n-1)$ grados de libertad.
-\end{remark}
-\end{frame}
-\begin{frame}{1.2.1. Distribuciones asociadas a la normal}
-\begin{defi}[Definici\'on 7.3]{\em Sean $W_1$ y $W_2$ v.a's independientes con distribuci\'on $\chi^2$, con $\nu_1$ y $\nu_2$  grados de libertad respectivamente. Entonces se dice que:
+
+::: {.definition #def-1.9}
+Sean $W_1$ y $W_2$ v.a's independientes con distribución $\chi^2$, con $\nu_1$ y $\nu_2$  grados de libertad respectivamente. Entonces se dice que:
 		$$F=\frac{W_1/\nu_1}{W_2/\nu_2}$$
-		tiene una distribuc\'on $F$ con $\nu_1$ grados de libertad en el numerador y $\nu_2$ grados de libertad en el denominador.}
-	\end{defi} 
-\end{frame}
+		tiene una distribuc\'on $F$ con $\nu_1$ grados de libertad en el numerador y $\nu_2$ grados de libertad en el denominador.
+:::
 
-\begin{frame}{1.2.1. Distribuciones asociadas a la normal}
-	\begin{remark}
-	Considerando dos muestras aleatorias independientes tomadas de distribuiciones normales
+
+
+::: {#rem-3}
+Considerando dos muestras aleatorias independientes tomadas de distribuiciones normales
 	$$W_1=\frac{(n_1-1)S_1^2}{\sigma_1^2}\sim\chi^2_{n_1-1}$$
 	$$W_1=\frac{(n_2-1)S_2^2}{\sigma_2^2}\sim\chi^2_{n_2-1}$$
-	$W_1\bot W_2$.
-	\end{remark}
-\end{frame}
-
-\begin{frame}{1.2.1. Distribuciones asociadas a la normal}
-	\begin{remark}
-		\begin{eqnarray*}
+	$W_1\bot W_2$.    
+::: 
+::: {#rem-4}
+$$
+\begin{eqnarray*}
 			F&=&\frac{W_1/\nu_1}{W_2/\nu_2}\\
 			&=&\frac{[(n_1-1)S_1^2/\sigma_1^2]/(n_1-1)}{[(n_2-1)S_2^2/\sigma_2^2]/(n_2-1)}\\
 			&=&\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}
 		\end{eqnarray*}
-		tiene distribuci\'on $F$ con $(n_1-1)$ gl en el numerador y $(n_2-1)$ gl en el denominador
-	\end{remark}
-\end{frame}
+$$
+		tiene distribuci\'on $F$ con $(n_1-1)$ gl en el numerador y $(n_2-1)$ gl en el denominador    
+::: 
 
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{fig74}
-	\end{center}
-\end{frame}
 
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=0.8\textwidth]{T7}
-	\end{center}
-\end{frame}
+```{r}
+library(ggplot2)
 
-\begin{frame}
-	\begin{ejemplo}[Ejemplo 7.7]{\em $$Y_1^1,\,Y_2^1\,\cdots,\,Y_{n_1}^1\sim N(\mu_1,\,\sigma^2)$$
+figura_densidad_asimetrica <- function(alpha = 0.05) {
+  shape <- 2
+  rate <- 1
+  
+  # Cuantil de interés
+  F_alpha <- qgamma(1 - alpha, shape = shape, rate = rate)
+  
+  # Datos para la densidad
+  x_vals <- seq(0, 10, length.out = 1000)
+  df <- data.frame(
+    x = x_vals,
+    y = dgamma(x_vals, shape = shape, rate = rate)
+  )
+  
+  # Datos para el sombreado
+  df_shaded <- subset(df, x >= F_alpha)
+  
+  # Altura de la flecha
+  y_arrow <- dgamma(F_alpha, shape, rate)
+  
+  ggplot(df, aes(x, y)) +
+    geom_line(linewidth = 1.2) +
+    geom_area(data = df_shaded, aes(x, y), fill = "black", alpha = 0.3) +
+    
+    # Flecha vertical
+    annotate("segment", x = F_alpha, xend = F_alpha, y = 0, yend = y_arrow,
+             arrow = arrow(length = unit(0.15, "cm")), color = "black") +
+    
+    # Etiqueta F_α
+    annotate("text", x = F_alpha, y = 0, label = expression(F[alpha]),
+             vjust = 1.5, hjust = 1.1, size = 5) +
+    
+    # Etiqueta α
+    annotate("text", x = F_alpha, y = y_arrow, label = expression(alpha),
+             vjust = -1, size = 5) +
+    
+    labs(x = "u", y = expression(f(u))) +
+    theme_minimal(base_size = 14)
+}
+figura_densidad_asimetrica()
+```
+
+**Ejercicios con la distribución F en R**
+
+A continuación se presentan dos ejercicios típicos en los que anteriormente se utilizaban tablas de valores críticos de la distribución F. Ahora, gracias a funciones como `qf()` y `var.test()` en R, estos análisis pueden hacerse de manera precisa y automática.
+
+---
+
+**Ejercicio 1: Contrastar dos varianzas**
+
+**Enunciado:**  
+Se tienen dos muestras independientes con:
+- Tamaños: $n_1 = 6$, $n_2 = 10$
+- Varianzas muestrales: $s_1^2 = 25$, $s_2^2 = 10$
+
+¿Existe evidencia para afirmar que las varianzas poblacionales son diferentes al nivel de significancia del 5%?
+
+**Solución en R:**
+
+```{r}
+# Datos
+s1_sq <- 25
+s2_sq <- 10
+n1 <- 6
+n2 <- 10
+
+# Estadístico F observado (mayor varianza sobre menor)
+F_obs <- s1_sq / s2_sq
+gl1 <- n1 - 1
+gl2 <- n2 - 1
+
+# Cuantiles críticos para prueba bilateral al 5%
+alpha <- 0.05
+F_inf <- qf(alpha / 2, df1 = gl1, df2 = gl2)
+F_sup <- qf(1 - alpha / 2, df1 = gl1, df2 = gl2)
+
+# Decisión
+cat("F observado:", round(F_obs, 3), "\n")
+cat("Intervalo de aceptación: [", round(F_inf, 3), ",", round(F_sup, 3), "]\n")
+
+if (F_obs < F_inf || F_obs > F_sup) {
+  cat("Se rechaza H0: las varianzas son significativamente diferentes.\n")
+} else {
+  cat("No se rechaza H0: no hay evidencia suficiente para afirmar diferencia de varianzas.\n")
+}
+``` 
+**Ejercicio 2: Obtener un valor crítico F directamente**
+
+**Enunciado:**  
+Calcular el valor crítico $F_{0.05,\,5,\,9}$ para una prueba unilateral con nivel de significancia del 5%.
+
+Este valor se usa, por ejemplo, cuando se contrasta si una varianza es significativamente mayor que otra, con:
+- $\alpha = 0.05$
+- $\text{gl}_1 = 5$ (grados de libertad del numerador)
+- $\text{gl}_2 = 9$ (grados de libertad del denominador)
+
+**Cálculo en R:**
+
+```{r}
+# Valor crítico F para prueba unilateral con alpha = 0.05
+qf(0.95, df1 = 5, df2 = 9)
+```
+El valor crítico es $F_{0.05,\,5,\,9}=3.478$. Si el estadístico F observado es mayor que este valor, se rechaza la hipótesis nula de igualdad de varianzas a favor de que la varianza del numerador es mayor.
+
+::: {#exm-1}
+$$Y_1^1,\,Y_2^1\,\cdots,\,Y_{n_1}^1\sim N(\mu_1,\,\sigma^2)$$
 			$$Y_1^2,\,Y_2^2\,\cdots,\,Y_{n_2}^2\sim N(\mu_2,\,\sigma^2)$$
-			$P\left(\frac{S_1^2}{S_2^2}\leq b\right)=0.95$ con $n_1=6$ y $n_2=10$, ?`$b$?}
-	\end{ejemplo}
-	Como $n_1=6$ y $n_2=10$ y las varianzas poblacionales son iguales, entonces 
+			$P\left(\frac{S_1^2}{S_2^2}\leq b\right)=0.95$ con $n_1=6$ y $n_2=10$, ?`$b$?  
+			
+Como $n_1=6$ y $n_2=10$ y las varianzas poblacionales son iguales, entonces 
 	$\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}=\frac{S_1^2}{S_2^2}\sim F_{5,9}$
 	$$P\left(\frac{S_1^2}{S_2^2}\leq b\right)= F_{5,9}(b)=0.95$$
 	entonces $qf(0.95,\,5,\,9)=b$, $b=3.48$.
-\end{frame}
+::: 
 
-\begin{frame}
-\begin{ejemplo}Experimento en R, generar n\'umeros aleatorios exponenciales (1/10). Por ser los datos distribuídos exponecialmente, su media será $\mu=10$ y la {\tiny$\sigma^2=100$.
-		$$\begin{array}{ccccc}\mbox{Tama\~no muestral}&\mbox{Promedio muestreo repetido}&\mbox{Media teórica} \mu&\mbox{Varianza muestreo repetido}&\mbox{Varianza teórica}\frac{\sigma^2}{n}\\n=5&10.07389&10&19.01144&20\\n=25&10.04106&10&3.6275184&4\end{array}$$}
-\end{ejemplo}
-\end{frame}
+**Simulación del comportamiento del promedio muestral**
 
-\begin{frame}
-Resultado previo a la prueba del Teorema 7.4 sin prueba
-\begin{teo}[Teorema 7.5]Sean $Y_1,\,Y_2,\cdots,\,Y_n$  v.a's  con funciones generadoras de momentos $m(t)$  y $m_1(t),\,m_2(t),\cdots,$ respectivamente. Si 
+Simulamos 1000 repeticiones del promedio muestral a partir de una distribución exponencial con media \( \mu = 10 \), para distintos tamaños de muestra \( n \).
+```{r}
+simular_promedios <- function(n, repeticiones = 1000, media = 10) {
+  promedios <- replicate(repeticiones, mean(rexp(n, rate = 1 / media)))
+  data.frame(
+    `n` = n,
+    `Promedio repetido` = mean(promedios),
+    `Media teórica` = media,
+    `Varianza repetida` = var(promedios),
+    `Varianza teórica` = media^2 / n
+  )
+}
+
+# Evaluar para varios tamaños
+tamaños <- c(5, 10, 25, 50, 100)
+resultados <- do.call(rbind, lapply(tamaños, simular_promedios))
+knitr::kable(resultados, digits = 5)
+```
+
+::: {#thm-12}
+Sean $Y_1,\,Y_2,\cdots,\,Y_n$  v.a's  con funciones generadoras de momentos $m(t)$  y $m_1(t),\,m_2(t),\cdots,$ respectivamente. Si 
 	$$\lim_{n\rightarrow\infty}m_n(t)=m(t)\mbox{ para toda $t$ real,}$$
 	entonces la funci\'on de distribuci\'on de $Y_n$ converge hacia la funci\'on de distribuci\'on de $Y$ cuando $n\rightarrow\infty$
-\end{teo}
-\end{frame}
+:::
 
-\section{1.3. Leyes de los Grandes Números y Teorema Central del Límite }
 
-\subsection{1.3.1. Leyes de los grandes números}
-\begin{defi}
+## Leyes de los Grandes Números y Teorema Central del Límite
+
+### Leyes de los grandes números
+::: {.definition #def-1.10}
 Una sucesión de variables aleatorias converge en media a $X$, y se denota por $X_{n}\xrightarrow{cm}X$ , si para cualquier $\epsilon>0$ se tiene que:  
 \[\lim _{n\to \infty }E(\left|X_{n}-X\right|)=0,\]
 siempre que dicha esperanza exista.\\
 
 De forma análoga se define convergencia en media de orden r si:
-\[\lim _{n\to \infty }E(\left|X_{n}-X\right|^r)=0,\]
+$$\lim _{n\to \infty }E(\left|X_{n}-X\right|^r)=0,$$
 
 Cuando $r=2$ se dice que se tiene convergencia en media cuadrática
 
-\[\lim _{n\to \infty }E(\left|X_{n}-X\right|^2)=0,\]
+$$\lim _{n\to \infty }E(\left|X_{n}-X\right|^2)=0,$$
+:::
 
-\end{defi}
 
-\begin{frame}{Relaciones entre tipos de convergencias}
-	\begin{center}
-		\includegraphics[width=0.7\textwidth]{esquema}
-	\end{center}
-\end{frame}
+### Relaciones entre tipos de convergencias
 
-\begin{frame}{Ley débil de los grandes números}
-\begin{teo}
+## Diagrama de convergencias
+
+### Diagrama de relaciones entre tipos de convergencia
+
+![Diagrama de convergencias](images/esquema.png)
+
+### Ley débil de los grandes números
+::: {#thm-13}
 Sea $X 1,\ldots, X_n$ una sucesión de variables aleatorias incorreladas con momentos de segundo orden acotados por una constante $C$, independiente de $n$. Sea $S_n = \sum_{i=1  }^{n}X_i$. Entonces
-
+$$
 \begin{align}
 E\left(\left|\frac{S_n-E(S_n)}{n}\right|^2\right)\leq \frac{C}{n}
 \end{align}
-\end{teo}
-\end{frame}
+$$
+y, como consecuencia $$\lim _{n\to \infty }\frac{S_n-E(S_n)}{n}=0$$ en el sentido de la convergencia en **media cuadrática**.
+:::
 
-
-\begin{frame}{Ley débil de los grandes números}
-
-		
-		y, como consecuencia
-		
-		\[\lim _{n\to \infty }\frac{S_n-E(S_n)}{n}=0,\]
-		
-		en el sentido de la convergencia en \textcolor{red}{media cuadrática}.
-
-\end{frame}
-
-\begin{frame}
-Los resultados que garantizan la convergencia casi segura de la media muestral se conocen como leyes fuertes de los grandes números. Se enuncia a continuación una \textcolor{red}{ley fuerte} para variables con segundos momentos finitos e
+Los resultados que garantizan la convergencia casi segura de la media muestral se conocen como leyes fuertes de los grandes números. Se enuncia a continuación una **ley fuerte** para variables con segundos momentos finitos e
 incorreladas.
-\end{frame}
 
-\begin{frame}{Ley fuerte de los grandes números}
-	\begin{teo}
-		Sea $X 1,\ldots, X_n$ una sucesión de variables aleatorias incorreladas con momentos de segundo orden acotados por una constante $C$, independiente de $n$. Sea $S_n = \sum_{i=1  }^{n}X_i$. Entonces
-		
+
+### Ley fuerte de los grandes números
+::: {#thm-line}
+Sea $X 1,\ldots, X_n$ una sucesión de variables aleatorias incorreladas con momentos de segundo orden acotados por una constante $C$, independiente de $n$. Sea $S_n = \sum_{i=1  }^{n}X_i$. Entonces
+		$$
 		\begin{align}
 		E\left(\left|\frac{S_n-E(S_n)}{n}\right|^2\right)\leq \frac{C}{n}
 		\end{align}
-	\end{teo}
-\end{frame}
-
-
-\begin{frame}{Ley fuerte de los grandes números}
+		$$
+y, como consecuencia $$\lim _{n\to \infty }\frac{S_n-E(S_n)}{n}=0$$ en el sentido de la **casi segura**.
+:::
 	
-	
-	y, como consecuencia
-	
-	\[\lim _{n\to \infty }\frac{S_n-E(S_n)}{n}=0,\]
-	
-	en el sentido de la \textcolor{red}{casi segura}.
-	
-\end{frame}
 
-
-
-\subsection{1.3.2. Teorema central del límite}
-\begin{frame}{1.3.2. Teorema central del límite}
-\begin{teo}[Teorema 7.4, Teorema del l\'imite central \cite{Wackerly}] Sean $Y_1,\,Y_2,\cdots,\,Y_n$  v.a's iid ( no se precisa de que distribuci\'on se generan) con $E[Y_i]=\mu$ y $V[Y_i]=\sigma^2<\infty$. Definamos 
+## Teorema central del límite
+::: {#thm-line}
+**Central de Límite** Sean $Y_1,\,Y_2,\cdots,\,Y_n$  v.a's iid ( no se precisa de que distribuci\'on se generan) con $E[Y_i]=\mu$ y $V[Y_i]=\sigma^2<\infty$. Definamos 
 	$$U_n=\frac{\sum_{i=1}^nY_i-n\mu}{\sigma\sqrt{n}}=\frac{\overline{Y}-\mu}{\sigma/\sqrt{n}}\mbox{ donde} \overline{Y}=\frac{1}{n}\sum_{i=1}^nY_i$$
-	\end{teo}
-\end{frame}
+Entonces la función de distribución de $U_n$ converge hacia la función de distribución normal estándar cuando n tiende a infinito . Esto es,
+$$\lim_{n\rightarrow\infty}P(U_n\leq u)=\int_{-\infty}^u\frac{1}{\sqrt{2\pi}}e^{-t^2/2}dt, \forall u$$ 
 
-\begin{frame}{1.3.2. Teorema central del límite}
-	
-		Entonces la funci\'on de distribuci\'on de $U_n$ converge hacia la funci\'on de distribuci\'on normal est\'andar cuando n tiende a infinito . Esto es,
-		$$\lim_{n\rightarrow\infty}P(U_n\leq u)=\int_{-\infty}^u\frac{1}{\sqrt{2\pi}}e^{-t^2/2}dt\,\forall u$$
-\end{frame}
+:::
+
+
+
+
+<!-- ## Ejemplo -->
+
+<!-- ::: {#thm-line} -->
+
+<!-- The equation of any straight line, called a linear equation, can be written as: -->
+
+<!-- $$ -->
+<!-- y = mx + b -->
+<!-- $$ -->
+<!-- ::: -->
+
+<!-- See @thm-line. -->
+
+
+
 
 ---
 ## Referencias
