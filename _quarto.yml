@@ -7,6 +7,7 @@ book:
   author: "Biviana M. Suárez Sierra"
   chapters:
     - index.qmd
+    - chapter1.qmd
 
 format:
   html:
@@ -15,6 +16,7 @@ format:
     mermaid: {}
     toc-depth: 3
     toc-location: right
+    callout-appearance: default
     number-sections: true
     html-math-method: mathjax
     reference-location: margin

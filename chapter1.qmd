@@ -1,0 +1,263 @@
+---
+title: "Principios para reducir los datos"
+---
+
+
+## Principio de suficiencia
+### Estadísticos suficientes minimales
+
+¿Este proceso de resumir los datos a los dos estadísticos $\overline{Y}$ y $S^2$ conserva la información de $\mu$ y $\sigma^2$ en el conjunto original de $n$ observaciones muestrales? O bien ¿Se ha perdido u ocultado alguna información acerca de estos parámetros en el proceso de reducir los datos?
+	
+Presentamos métodos para hallar estadísticos que en cierto sentido resumen toda la información de una muestra acerca de un parámetro objetivo. Se dice que estos estadísticos tienen la propiedad de suficiencia o son  estadísticos suficientes.
+
+::: {#exm-2.1}
+Sean $n$ experimentos binomiales, $X_1,\,X_2,\cdots,\,X_n$, donde
+$$
+\begin{eqnarray*}
+		X_i&=&\left\{\begin{array}{ll}1,&\mbox{si el $i$-\'esimo intento es un \'exito,}\\0,&\mbox{si el $i$-\'esimo intento es un fracaso.}\end{array}\right.\\
+		X_i&=&\left\{\begin{array}{ll}1,&\mbox{con probabilidad $p$,}\\0,&\mbox{con probabilidad $q=1-p$.}\end{array}\right.
+	\end{eqnarray*}
+$$
+Sea $Y=\sum_{i=1}^n X_i$ el número de éxitos en los $n$ intentos. **Si conocemos el valor  de $Y$, ¿Podemos obtener alguna información  adicional acerca de $p$ al ver otras funciones de $X_1,\,X_2,\cdots,\,X_n$?**
+
+$$
+\begin{align*}
+&P(X_1=x_1,\,X_2=x_2,\cdots,\,X_n=x_n|Y=y)\\
+&=\frac{P(X_1=x_1,\,X_2=x_2,\cdots,\,X_n=x_n,\,Y=y)}{P(Y=y)}
+\end{align*}
+$$
+El numerador es $0$ si $\sum_{i=1}^nx_i\neq y$ dado que no pueden suceder los eventos al mismo tiempo.
+
+Si $\sum_{i=1}^nx_i= y$ entonces 
+$$
+\begin{align*}
+&P(X_1=x_1,\,X_2=x_2,\cdots,\,X_n=x_n,\,Y=y)\\
+&=P(X_1=x_1,\,X_2=x_2,\cdots,\,X_n=x_n)
+\end{align*}
+$$
+Por tanto el numerador queda $p^y(1-p)^{n-y}$, dado que hay $y$ unos y $n-y$ ceros.
+
+El denominador
+$$P(Y=y)=\displaystyle{a\choose b} p^y(1-p)^{n-y}$$
+porque $Y\sim Bin(n,p)$.
+$$
+\begin{align*}
+&P(X_1=x_1,\,X_2=x_2,\cdots,\,X_n=x_n,\,Y=y)\\
+&=\left\{\begin{array}{ll}\frac{p^y(1-p)^{n-y}}{\left({n \atop y}\right) p^y(1-p)^{n-y}}=\frac{1}{\left({n \atop y}\right)},& si\sum_{i=1}^nx_i= y\\0,&\mbox{ en cualquier otro punto.}\end{array}\right.
+\end{align*}
+$$
+**$\frac{1}{\left({n \atop y}\right)}$ no depende de $p$**
+::: 
+
+Una vez que se conozca $Y$, ninguna otra función de $X_1,\,X_2,\cdots,\,X_n$ proporcionara más información sobre el posible valor de $p$. En este sentido, $Y$ contiene toda la información acerca de $p$. 
+
+::: {.definition #def-2.1}
+Sean $Y_1,\,Y_2,\cdots,\,Y_n$ una muestra aleatoria de una distribución de probabilidad con parámetro desconocido $\theta$. Entonces se dice que el estadístico $U = T(Y_1,\, Y_2,\cdots,\, Y_n)$ es suficiente para $\theta$ si la distribución condicional de $Y_1,\,Y_2,\cdots,\,Y_n$, dada $U$, no depende de $\theta$.
+:::
+
+
+
+::: {#rem-21}
+El uso de cualquier estadístico $T(\underset{\sim}{X})$ implica una reducción de los datos muestrales. Sea $\underset{\sim}{X} =(X_1 ,\ldots, X_n)$ una muestra aleatoria simple (un vector
+aleatorio) y sean $\underset{\sim}{x} = (x_1 ,\ldots, x_n)$, y $\underset{\sim}{y} = (y_1 ,\ldots, y_n)$ muestras observadas (realizaciones de $X$). Si decidimos usar el estadístico $T(\underset{\sim}{X})$ en vez de toda la muestra, serán tratadas igual dos muestras observadas cualesquiera $\underset{\sim}{x}$, $\underset{\sim}{y}$, siempre
+que $T(\underset{\sim}{x})=T(\underset{\sim}{y})$. Es decir, al usar el estadístico $T$, en lugar de toda la muestra, se pierde información.
+
+Se plantea así el problema de buscar estadísticos $T$
+tales que la información que se pierde al usarlos sea irrelevante para los fines que nos hayamos marcado.
+:::
+
+::: {#rem-2.2}
+**Igualdad de estadísticos = Tratamiento indistinguible**
+
+La afirmación:
+
+> “Serán tratadas igual dos muestras observadas cualesquiera $\underset{\sim}{x}$ y $\underset{\sim}{y}$, siempre que $T(\underset{\sim}{x}) = T(\underset{\sim}{y})$”
+
+significa que **si solo observamos el valor de $T$**, entonces **no podemos distinguir entre dos muestras diferentes** que arrojen el mismo valor de ese estadístico.
+
+Por ejemplo:
+
+Supongamos que $\bar{x} = \bar{y} = 5$, pero los vectores muestrales son diferentes:
+
+$$
+\underset{\sim}{x} = (3,\ 5,\ 7), \quad \underset{\sim}{y} = (4,\ 5,\ 6).
+$$
+
+Ambos tienen la misma media, pero claramente no son la misma muestra. Sin embargo, si solo usamos la media como resumen, **tratamos a ambas muestras como si fueran "iguales"**.
+:::
+
+
+**¿Qué se pierde?**
+
+Se pierde la **estructura interna de la muestra**, incluyendo:
+
+- La **variabilidad**.
+- El **sesgo o simetría**.
+- La existencia de **valores extremos**.
+- La información sobre la **distribución conjunta de los datos**.
+
+Todo eso queda **oculto** si solo consideramos el estadístico $T(\underset{\sim}{X})$.
+
+---
+
+
+Todo estadístico implica una **compresión de la muestra**, y con ello una **pérdida de información**.
+
+Por eso, en inferencia estadística buscamos estadísticos que sean:
+
+- **Suficientes**: capturan toda la información relevante sobre un parámetro.
+- **Eficientes**: minimizan la pérdida de información.
+- **Insesgados**: representan fielmente el parámetro que estiman.
+
+::: {#tip-2.1.callout-tip}
+**Notación**
+$$
+	\begin{eqnarray*}
+		p(y|\theta)&:&\mbox{ función de masa de probabilidad}\\
+		f(y|\theta)&:&\mbox{ función de densidad}
+	\end{eqnarray*}
+$$
+:::
+
+
+
+La definicion @def-2.1 nos dice como comprobar que un estadístico es suficiente pero no nos dice cómo calcularlo.
+
+::: {#tip-2.2 .callout-tip}
+$p(y_1,\, y_2,\cdots,\, y_n)$ función de probabilidad  de v.a's discretas.
+	
+$p(y_1,\, y_2,\cdots,\, y_n|\theta)$ función de probabilidad o verosimilitud de observar el evento $Y_1=y_1,\, Y_2=y_2,\cdots,\, Y_n=y_n$ cuando el valor del par\'ametro es $\theta$.
+	
+$f(y_1,\, y_2,\cdots,\, y_n|\theta)$ caso continuo.
+:::
+
+::: {.definition #def-2.2}
+Sean $y_1,\, y_2,\cdots,\, y_n$ observaciones muestrales tomadas de variables aleatorias correspondientes $Y_1,\, Y_2,\cdots,\, Y_n$ cuya distribución depende de un parámetro $\theta$. Entonces, si $Y_1,\, Y_2,\cdots,\, Y_n$ son variables aleatorias discretas, **la verosimilitud de la muestra, $L (y_1,\, y_2,\cdots,\, y_n|\theta)$**, se define como la probabilidad conjunta de $y_1,\, y_2,\cdots,\, y_n$.
+
+Si $Y_1,\, Y_2,\cdots,\, Y_n$ son v.a's continuas, **la verosimilitud $L (y_1,\, y_2,\cdots,\, y_n|\theta)$** se define como la densidad conjunta evaluada en $y_1,\, y_2,\cdots,\, y_n$
+:::
+
+::: {.callout-important appearance="default" icon="false" #imp-2.1}
+Si el conjunto de v.a's iid $Y_1,\, Y_2,\cdots,\, Y_n$ denota una muestra aleatoria de distribución discreta con función de probabilidad $p(y|\theta)$ entonces 
+$$
+\begin{eqnarray*}
+	L (y_1,\, y_2,\cdots,\, y_n|\theta)&=&p (y_1,\, y_2,\cdots,\, y_n|\theta)\\
+	&=&p(y_1|\theta)p(y_2|\theta)\cdots p(y_n|\theta)
+\end{eqnarray*}
+$$
+Mientras que si $Y_1,\, Y_2,\cdots,\, Y_n$ iid tienen distribución continua con función de densidad $f(y|\theta)$ entonces 
+\begin{eqnarray*}
+	L (y_1,\, y_2,\cdots,\, y_n|\theta)&=&f (y_1,\, y_2,\cdots,\, y_n|\theta)\\
+	&=&f(y_1|\theta)f(y_2|\theta)\cdots f(y_n|\theta)
+\end{eqnarray*}      
+:::
+
+::: {#thm-2.1}
+Si $f(\underset{\sim}{x}|\theta)$ es la verosimilitud de un vector aleatorio $X$ y $q(t|\theta)$ es la verosimilitud (función de densidad o de masa) de un estadístico $T(\underset{\sim}{X})$, se tiene la siguiente equivalencia. $T(\underset{\sim}{X})$ es un estadístico suficiente para $\theta$ si y sólo si para cada $\underset{\sim}{x}$ del espacio muestral $\mathcal{X}$ el cociente
+\begin{align}
+\frac{f(\underset{\sim}{x}|\theta)}{q(T(\underset{\sim}{x})|\theta)}
+\end{align}
+no depende de $\theta$.
+:::
+
+::: {.remark}
+El cociente del teorema
+
+El cociente
+
+$$
+\frac{f(\underset{\sim}{x} \mid \theta)}{q(T(\underset{\sim}{x}) \mid \theta)}
+$$
+
+compara cuánta verosimilitud aporta la muestra completa respecto a la verosimilitud que se concentra solamente en el estadístico.
+
+🔁 Si este cociente **no depende de $\theta$**, eso significa que **toda la información sobre $\theta$** contenida en $f(\underset{\sim}{x} \mid \theta)$ ya está contenida en $q(T(\underset{\sim}{x}) \mid \theta)$.
+:::
+
+
+::: {#thm-2.2}
+Sea $U$ un estadístico basado en la muestra aleatoria $Y_1,\, Y_2,\cdots,\, Y_n$. Entonces $U$ es un estadístico suficiente para la estimación de un parámetro $\theta$ sí y sólo si la verosimilitud $L(\theta)=L (y_1,\, y_2,\cdots,\, y_n|\theta)$ se puede factorizar en dos funciones no negativas,
+	$$L (y_1,\, y_2,\cdots,\, y_n|\theta)=g(u,\,\theta)\times h(y_1,\, y_2,\cdots,\, y_n)$$
+	donde $g(u,\,\theta)$ es una función sólo de $u$ y $\theta$ y $h(y_1,\, y_2,\cdots,\, y_n)$ no es una función de $\theta$
+:::
+
+::: {.remark}
+### Interpretación: ¿Por qué esto implica suficiencia?
+
+Cuando se cumple la factorización:
+
+- La función $g(u, \theta)$ contiene **toda la información sobre $\theta$**.
+- El resto de la muestra solo afecta a $h(\cdot)$, que **no contiene ninguna información sobre $\theta$**.
+
+Por lo tanto, si ya conocemos $u$, **no necesitamos el resto de la muestra** para inferir $\theta$.
+
+---
+
+🧩 **Conclusión**:  
+$U$ es suficiente ⇔ **no se pierde información sobre $\theta$** al reemplazar la muestra por $U$.
+:::
+
+::: {#exm-2.2}
+Sean $Y_1,\, Y_2,\cdots,\, Y_n$ una muestra aleatoria en la que $Y_i$ posee la función de densidad de probabilidad
+		$$f(y_i|\theta)=\left\{\begin{array}{ll}(1/\theta)e^{-y_i/\theta},& 0\leq y_i<\infty\\0,&\mbox{ en cualquier otro punto.}\end{array}\right.$$
+		donde $\theta>0,\,i=1,\cdots,\,n$. Demuestre que $\overline{Y}$ es un estadístico suficiente para el parámetro $\theta$.     
+::: 
+
+::: {.proof}
+\begin{eqnarray*}
+	L(y_1,\, y_2,\cdots,\, y_n|\theta)&=&f(y_1|\theta)f(y_2|\theta)\cdots f(y_n|\theta)\\
+	&=&\frac{1}{\theta}e^{-y_1/\theta}\frac{1}{\theta}e^{-y_2/\theta}\cdots\frac{1}{\theta}e^{-y_n/\theta}\\
+	&=&\left(\frac{1}{\theta}\right)^ne^{-\sum_{i=1}^ny_i/\theta}\\
+	&=&\left(\frac{1}{\theta}\right)^ne^{-n\overline{y}/\theta}\\
+\end{eqnarray*}
+Así que $g(\overline{y},\,\theta)=\frac{e^{-n\overline{y}/\theta}}{\theta^n}$ y $h(y_1,\, y_2,\cdots,\, y_n)=1$
+:::
+
+
+## Estadísticos suficientes minimales
+
+La factorización de la función de verosimilitud no es única y como consecuencia de ello, tampoco es único el estadístico suficiente para un parámetro.
+
+Ya vimos que cualquier transformación biyectiva de un estadístico suficiente da lugar a otro estadístico suficiente. Pero aún hay muchos más estadísticos suficientes. Por ejemplo, la muestra completa $X$ también es estadístico suficiente para el parámetro:
+$$
+\begin{align*}
+f(x|\theta)=g(x|\theta)h(x)
+\end{align*}
+$$
+
+donde $h( x )=1$, $T(x)=x$ y $g(x|\theta)=f(x|\theta)$.
+
+
+### Estadístico minimal
+
+Un estadístico suficiente $T(\underset{\sim}{X})$ se llama **minimal** si para cualquier otro estadístico $S(\underset{\sim}{X})$ se tiene que $T(\underset{\sim}{X})$ es función de $S(\underset{\sim}{X})$. Es decir, si ocurre que $S( \underset{\sim}{x}) = S(\underset{\sim}{y})$ entonces forzosamente se tiene que $T(\underset{\sim}{x}) = T(\underset{\sim}{y})$.
+
+El siguiente teorema proporciona un método para encontrar el estadístico suficiente minimal.
+
+::: {#thm-2.3}
+Sea $f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)$ la función de verosimilitud conjunta de $\underset{\sim}{X}$ (discreta o continua). Supongamos que existe una función $T(\underset{\sim}{x})$ tal que para cualquier par de elementos del espacio muestral $\underset{\sim}{x}$ , $\underset{\sim}{y}$ , el cociente
+$$
+\begin{align}
+\frac{f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)}{f_{\underset{\sim}{X}}(\underset{\sim}{y}|\theta)}
+\end{align}
+$$
+es constante como función de $\theta$, si y sólo si $T(\underset{\sim}{x}) = T(\underset{\sim}{y})$. Entonces $T(\underset{\sim}{x})$ es estadístico suficiente minimal para $\theta$.
+:::
+
+::: {#exm-2.3}
+ Determinar un estadístico minimal para el parámetro $\theta$, cuando $X_1,\, X_2,\cdots,\, X_n$ es una muestra aleatoria de una población con distribución de Poisson.
+$$
+\begin{align*}
+\frac{f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)}{f_{\underset{\sim}{X}}(\underset{\sim}{y}|\theta)}
+&=\frac{\prod_{i=1}^{n}\frac{\theta^{x_i} e^{-\theta}}{x_i!}}{\prod_{i=1}^{n}\frac{\theta^{y_i} e^{-\theta}}{y_i!}}\\
+&=\frac{e^{-n\theta}\prod_{i=1}^{n}\frac{\theta^{x_i} }{x_i!}}{e^{-n\theta}\prod_{i=1}^{n}\frac{\theta^{y_i} }{y_i!}}\\
+&=\frac{\frac{\theta^{\sum_{i=1}^{n}x_i} }{\prod_{i=1}^{n}x_i!}}{\frac{\theta^{\sum_{i=1}^{n}y_i} }{\prod_{i=1}^{n}y_i!}}\\
+&=\frac{\frac{\theta^{n\bar{x}} }{\prod_{i=1}^{n}x_i!}}{\frac{\theta^{n\bar{y}} }{\prod_{i=1}^{n}y_i!}}\\
+&=\theta^{n(\bar{x}-\bar{y})}\frac{\prod_{i=1}^{n}y_i!}{\prod_{i=1}^{n}x_i!}
+\end{align*}
+$$
+::: 
+
+
+
+El cociente de la última igualdad no depende de $\theta$, sí y sólo si $\bar{x}-\bar{y}=0$; es decir si $\bar{X}_n$ es un estadística suficiente minimal para $\theta$.
