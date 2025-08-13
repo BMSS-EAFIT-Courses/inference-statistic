@@ -1,0 +1,436 @@
+---
+title: "Estimación puntual"
+---
+
+## La función de distribución empírica y el método de los momentos 
+
+
+Sea la variable aleatoria $X$ con función de distribución $F$. Consideramos una muestra aleatoria simple de tamaño $n$ de $X$, es decir, $X_1 ,\ldots, X_n$ v.a.i.i.d. con
+distribución dada por $F$ . Sea $x_1 ,\ldots, x_n$ una realización de esa m.a.s.
+Se llama función de **distribución empírica** a la función
+$$
+\begin{align}
+F_{n}(x)=\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}\mathbf{I}_{(-\infty,x]}(x_{i})¸
+\end{align}
+$$
+que a cada número real x le asigna la proporción de valores observados que son
+menores o iguales que x.
+
+
+Es inmediato comprobar que la función $F_n$  así definida es una función de distribución:
+
+1. $F_n(x) \in [0, 1]$ para todo $x \in \mathbb{R}$. 
+2. $F_n$ es continua por la derecha.
+3. $F_n$ es no decreciente.
+4. $\lim _{x\to -\infty }F_{n}(x)=0$
+5. $\lim _{x\to \infty }F_{n}(x)=1$
+
+Concretamente, $F_n$ es la función de distribución de una variable aleatoria discreta (que podemos llamar $X_e$ ) que pone masa $\frac{1}{n}$ en cada uno de los n puntos
+$x_i$ observados:
+
+| $x_i$                     | $1$     | $2$     | $\ldots$ | $n$     |
+|---------------------------|---------|---------|----------|---------|
+| $p_i = P(X_e = x_i)$       | $1/n$   | $1/n$   | $\ldots$ | $1/n$   |
+
+
+\begin{tabular}{lcccl}
+	$x_i$ & 1 & 2 & $\ldots$&$n$ \\ 
+	$p_i = P(X_e = x_i)$& $1/n$ & $1/n$  & $\ldots$& $1/n$
+\end{tabular}
+
+A la distribución de $X_e$ e se le llama **distribución empírica** asociada al conjunto de valores ${x_1 ,\ldots, x_n}$.
+
+Obsérvese que si fijamos el valor de $x$ y dejamos variar la muestra, lo que obtenemos es una variable aleatoria. En efecto, se tiene entonces que
+
+$$
+\begin{align}
+F_{n}(x)=\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}\mathbf{I}_{(-\infty,x]}(x_{i})¸
+\end{align}
+$$
+
+donde 
+
+$$
+\begin{align}
+\mathbf{I}_{(-\infty,x]}(X_{i})= \left\{ \begin{array}{lcc}
+1 &   si  & X_{i}\leq x \\
+\\ 0 &  si &X_{i}> x\\
+\end{array}
+\right.
+\end{align}
+$$
+y, por lo tanto, cada término $\mathbf{I}_{(-\infty,x]}(X_{i})$ es una variable aleatoria de Bernoulli
+con probabilidad de éxito
+
+$$
+\begin{align}
+p&=P(\mathbf{I}_{(-\infty,x]}(X_{i})=1)\\
+&=P(X_{i}\leq x)\\
+&=F(x)
+\end{align}
+$$
+De ahí se deduce que $F_n$ es una variable aleatoria y que $nF_n(x)$ tiene distribución binomial con parámetros $n$ y $p = F(x)$.
+
+## Teorema de Glivenko-Cantelli
+
+El siguiente teorema recoge algunas de las propiedades de la función de distribución empírica.
+
+::: {#thm-3.1}
+Sea $\{X_n\}$ para $n\geq 1$ , sucesión de variables aleatorias independientes e idénticamente distribuidas definidas en el espacio de probabilidad $(\Omega, \mathcal{A}, P)$ con función de distribución común $F$ . Se denota por $F_n$ la función de distribución empírica obtenida de las $n$ primeras variables aleatorias $X_1 ,\ldots, X_n$ . Sea $x\in\mathbb{R}$.
+Se verifica lo siguiente:
+:::
+
+a. $P(nF_n(x)=j)=P(F_n(x)=\frac{j}{n})=\binom{n}{j}(F(x))^j(1-F(x))^{n-j}$, $j=1,\ldots,n$\\
+b. $E(F_n(x))=F(x)$; $Var(F_n(x))=\frac{1}{n}F(x)(1-F(x))$.
+c. $\lim _{n\to \infty }F_{n}(x)=F(x)$
+d. $\lim _{n\to \infty }\frac{F_{n}(x)-F(x)}{\sqrt{\frac{F(x)(1-F(x))}{n}}}=Z$, donde $Z$ es una variable aleatoria con distribución normal estándar y la convergencia es convergencia en distribución.
+
+El siguiente teorema refuerza el resultado (c) anterior, puesto que afirma que la convergencia de $F_n(x)$ a $F(x)$ se da uniformemente.
+
+::: {#thm-3.2}
+Sea $\{X_n\}$ para $n\geq 1$ , sucesión de variables aleatorias independientes e idénticamente distribuidas definidas en el espacio de probabilidad $(\Omega, \mathcal{A}, P)$ con función de distribución común $F$ . Se denota por $F_n$ la función de distribución empírica obtenida de las $n$ primeras variables aleatorias $X_1 ,\ldots, X_n$ . Sea $x\in\mathbb{R}$. Entonces
+$$Sup_{x\in\mathbb{R}} |F_{n}(x)-F(x)|\xrightarrow{c.s}0$$
+:::
+
+
+::: {.callout-note appearance="default" icon="false" #nte-3.1}
+Obsérvese que según el apartado (c) del teorema @thm-3.1, las distribuciones empíricas asociadas a muestras de tamaño n convergen débilmente a la distribución de
+probabilidad teórica identificada por $F$, para casi todas las muestras de tamaño infinito que se extraigan de $F$ . Ésta es una de las consecuencias más importantes
+del citado teorema:
+la distribución empírica converge débilmente con probabilidad 1 a la poblacional cuando el tamaño de la muestra tiende a infinito:
+	$$F_{n}(x)\xrightarrow{c.s}F(x)$$
+Esto garantiza la posibilidad de realizar inferencia estadística:
+
+1. Los aspectos probabilísticos de una característica $X$, medida en una población, se resumen de
+forma estilizada en una distribución de probabilidad $F$.
+2. La distribución de probabilidad $F$, puede ser aproximada mediante las distribuciones empíricas $F_n$ obtenidas por muestreo de la población en estudio.
+3. El teorema de Glivenko-Cantelli afirma que esas aproximaciones son uniformes en x.
+4. Por esta razón el teorema de Glivenko-Cantelli
+se llama a veces Teorema Fundamental de la Estadística Matemática.
+::: 
+
+**Podemos ver a continuación cómo, a medida que aumentamos el tamaño de la muestra (n=10,30,100,1000), la función de distribución empírica se ajusta cada vez mejor a la distribución teórica normal estándar N(0,1), tal como afirma el teorema.**
+
+```{r}
+# Cargar librería para gráficos
+library(ggplot2)
+
+# Definir función para graficar ECDF vs distribución teórica
+comparar_ecdf_teorica <- function(n, distribucion = "normal") {
+  set.seed(123)  # Para reproducibilidad
+
+  # Muestra de tamaño n desde N(0,1)
+  muestra <- rnorm(n)
+  
+  # Dominio común
+  x_vals <- seq(-3, 3, length.out = 1000)
+
+  # Distribución teórica
+  F_teorica <- pnorm(x_vals)
+
+  # Distribución empírica
+  ecdf_muestra <- ecdf(muestra)
+  F_empirica <- ecdf_muestra(x_vals)
+
+  # Construir data frame para ggplot
+  df <- data.frame(
+    x = rep(x_vals, 2),
+    F = c(F_empirica, F_teorica),
+    Tipo = rep(c("Empírica", "Teórica"), each = length(x_vals))
+  )
+
+  # Graficar
+  ggplot(df, aes(x = x, y = F, color = Tipo, linetype = Tipo)) +
+    geom_line(size = 1) +
+    labs(
+      title = paste("ECDF vs F(x) — Tamaño de muestra n =", n),
+      x = "x", y = "Probabilidad acumulada"
+    ) +
+    theme_minimal() +
+    scale_color_manual(values = c("Empírica" = "red", "Teórica" = "black")) +
+    scale_linetype_manual(values = c("Empírica" = "dashed", "Teórica" = "solid"))
+}
+
+# Generar gráficos para diferentes tamaños de muestra
+comparar_ecdf_teorica(10)
+comparar_ecdf_teorica(30)
+comparar_ecdf_teorica(100)
+comparar_ecdf_teorica(1000)
+
+```
+
+
+**El Teorema Fundamental de la Estadística Matemática: da una fundamentación de la inferencia estadística, cuyo objetivo principal consiste en extraer información sobre $F$ a partir de las observaciones muestrales.**
+
+**¿Por qué esto es importante?**
+
+Porque sin conocer $F(x)$ explícitamente, **podemos estimarla a partir de los datos**.  
+Esto es la base de:
+
+- los **histogramas acumulados**,
+- las **pruebas no paramétricas**,
+- los **intervalos de confianza empíricos**, y
+- toda la **inferencia estadística basada en datos reales**.
+
+
+🎯 **Ejemplo: Estimación del percentil 90 del ingreso mensual**
+
+📌 Contexto
+Supón que quieres estimar el ingreso mensual **por debajo del cual se encuentran el 90% de las personas** en una ciudad.  
+No conoces la distribución real del ingreso \( F(x) \), pero tienes una muestra de datos.
+
+---
+
+**Paso a paso**
+
+1. Simulamos una población
+Vamos a suponer que el ingreso sigue una distribución log-normal:
+
+```{r}
+set.seed(123)
+poblacion <- rlnorm(1e6, meanlog = 10, sdlog = 0.5)
+```
+
+2. Tomamos una muestra aleatoria
+
+```{r}
+muestra <- sample(poblacion, size = 20000, replace = FALSE)
+```
+
+3. Estimamos la distribución empírica
+```{r}
+Fn <- ecdf(muestra)
+```
+
+4. Estimamos el percentil 90 (cuantil 0.9)
+
+```{r}
+cuantil_90_empirico <- quantile(muestra, probs = 0.9)
+```
+
+5. Comparamos con el valor verdadero en la población
+```{r}
+cuantil_90_real <- quantile(poblacion, probs = 0.9)
+```
+
+6. Resultado
+
+```{r}
+cat("Cuantil 90 estimado (empírico):", round(cuantil_90_empirico, 2), "\n")
+cat("Cuantil 90 real (poblacional):", round(cuantil_90_real, 2), "\n")
+```
+
+## La función de distribución empírica y el método de los momentos 
+### Principio de sustitución
+En esta sección presentamos una consecuencia importante de la convergencia de $F_n$ a $F$ , la definición de estimadores mediante el principio de sustitución.
+
+
+a. La convergencia de $F_n$ a $F$ permite construir versiones factibles de características poblacionales desconocidas.
+b. Supongamos que estudiamos una característica $X$ en una población y que el resultado de la observación de $X$ puede ser modelado como una variable aleatoria con distribución desconocida, digamos $F$.
+c. Muchas de las preguntas relevantes acerca de la característica $X$ podrían ser contestadas si su función de distribución $F$ fuese conocida.
+
+
+::: {.callout-important appearance="default" icon="false" #imp-3.1}
+**Preguntas sobre $X$**
+
+- el valor esperado,
+- el número de modas de la distribución o 
+- la probabilidad de que $X$ sea negativa
+
+
+Para fijar ideas podemos pensar que nos interesa conocer cantidades numéricas (parámetros) que dependen únicamente de la función de distribución desconocida $F$:
+
+$$
+	\begin{align}
+	\theta=\psi(F)
+	\end{align}
+$$
+**El teorema de Glivenko-Cantelli** nos dice que $F_n$ se acerca a $F$, a medida que el tamaño muestral crece. Así, podemos esperar que también se verifique que
+$$
+	\begin{align}
+	\hat{\theta}_n=\psi(F_n)\rightarrow\theta=\psi(F)
+	\end{align}
+	$$
+
+
+Es decir, esperamos que las cantidades numéricas calculadas para la distribución empírica (estimadores) se aproximen a las cantidades desconocidas a medida que el tamaño muestral crezca.
+
+Esta forma de obtener estimadores de parámetros poblacionales desconocidos se denomina principio de sustitución (plug-in principle en inglés). Es un procedimiento muy general de obtención de estimadores.
+::: 
+
+
+Sea $X\sim U(0,\theta)$. Se toma una m.a.s. de $X$ de tamaño n para estimar $\theta$. Un estimador razonable de $\theta$ es el máximo de las observaciones, que es estadístico
+minimal suficiente para $\theta$:
+$$
+\begin{align}
+	\hat{\theta}_2 = \max_i {X_i}.
+\end{align}
+$$
+El siguiente código muestra:
+
+- Para cada tamaño de muestra n, simula valores de $X_i$∼U(0,θ),
+
+- Calcula $$\hat{\theta} = \max_i {X_i}$$
+- Compara con el valor real de $\theta=10$.
+
+- Muestra cómo, al aumentar n, el estimador se acerca a $\theta$.
+
+```{r}
+# Simulación para estimar theta en una uniforme (0, theta)
+set.seed(42)
+theta_real <- 10
+
+# Tamaños de muestra
+n_vals <- c(5, 10, 30, 100)
+
+# Simular y comparar
+estimadores <- sapply(n_vals, function(n) {
+  muestra <- runif(n, min = 0, max = theta_real)
+  max(muestra)
+})
+
+# Mostrar resultados
+data.frame(
+  Tamaño_muestra = n_vals,
+  Estimador_maximo = round(estimadores, 3),
+  Error = round(theta_real - estimadores, 3)
+)
+```
+
+
+**Convergencia del estimador plug-in en la distribución uniforme**
+
+En este ejemplo, estimamos el parámetro $\theta$ de una distribución $X \sim \mathcal{U}(0, \theta)$ usando el estimador $\hat{\theta}_n = \max(X_i)$. Este es un estimador tipo plug-in: se usa la distribución empírica para estimar una característica de la distribución teórica.
+
+A continuación, simulamos cómo este estimador converge al verdadero valor $\theta = 10$ a medida que el tamaño de muestra $n$ crece.
+
+```{r}
+# Chunk de R — solo código
+#| label: fig-convergencia-max
+#| fig-cap: 'Convergencia del estimador plug-in $ \hat{\theta}_n = \max X_i $ hacia el valor real $ \theta = 10 $'
+#| fig-align: center
+#| message: false
+#| warning: false
+
+set.seed(42)
+theta_real <- 10
+
+# Vector de tamaños de muestra crecientes
+n_seq <- seq(5, 500, by = 5)
+
+# Calcular el estimador para cada n
+estimadores <- sapply(n_seq, function(n) {
+  muestra <- runif(n, min = 0, max = theta_real)
+  max(muestra)
+})
+
+# Crear data frame para graficar
+df_estimacion <- data.frame(
+  n = n_seq,
+  estimador = estimadores
+)
+
+# Graficar
+library(ggplot2)
+ggplot(df_estimacion, aes(x = n, y = estimador)) +
+  geom_line(color = "steelblue", size = 1) +
+  geom_hline(yintercept = theta_real, color = "red", linetype = "dashed") +
+  labs(
+    title = expression("Convergencia de " * hat(theta)[n] * " al valor real " * theta),
+    x = "Tamaño de muestra (n)",
+    y = expression(hat(theta)[n])
+  ) +
+  theme_minimal()
+```
+
+
+## Método de momentos
+
+Una aplicación del principio de sustitución es la definición de los estimadores basados en momentos. El momento **no centrado** de orden $k$ de una variable aleatoria $X$ con distribución $F$ se define como
+$$
+\begin{align}
+\mu_k=E_F(X^k)=\int x^kdF(x)
+	\end{align}
+$$
+Si $X_e$ es una variable aleatoria con función de distribución igual a $F_n$ , la función de distribución empírica de una m.a.s. de tamaño $n$ de $X$, se tiene que sus \textcolor{red}{momentos no centrados} (a los que llamaremos $m_{k,n}$) son de la forma
+	\begin{align}
+	m_{k,n}=E_{F_n}(X_e^k)=\int x^kdF_n(x)=\frac{1}{n}\sum_{i=1}^{n}X_i^k,
+	\end{align}
+	y se denominan momentos muestrales no centrados de orden $k$. Por ejemplo, $µ_1$ es la esperanza poblacional y $m_{1,n}$ la media muestral.
+
+
+La siguiente proposición garantiza que los momentos muestrales convergen a los poblacionales.
+    
+::: {#prp-3.1}
+Sea $X$ variable aleatoria con $E(X^{2k}) < \infty$. Entonces se verifica que $m_{k,n} \rightarrow \mu_k$ casi seguro. Además,
+$$
+\begin{align}
+\frac{\sqrt{n}(m_{k,n}-\mu_k)}{\sqrt{\mu_{2k}-\mu_k^2}}\xrightarrow{d}Z,
+\end{align}
+$$
+con $Z\sim N(0,1)$. 
+::: 
+
+::: {.proof}
+Si $Y_i=X_i^k$ entonces  $m_{k,n}=E_{k,n}(Y_i)=E_{n}(X_i^k)=\frac{1}{n}\sum_{i=1}^{n}X_i^k=\frac{1}{n}\sum_{i=1}^{n}Y_i=\bar{Y}_n$.\\
+
+Aplicando la ley fuerte de los grandes números se tiene que 
+\begin{align}
+\lim _{n\to \infty }\frac{S_n-E(S_n)}{n}&=\lim _{n\to \infty }\frac{\sum_{i=1}^{n}X_i^k-E(\sum_{i=1}^{n}X_i^k)}{n}\nonumber\\
+&=\lim _{n\to \infty }\left[\frac{\sum_{i=1}^{n}X_i^k}{n}-\frac{E(\sum_{i=1}^{n}X_i^k)}{n}\right]\nonumber\\
+&=\lim _{n\to \infty }\left[\bar{Y}_n-\frac{\sum_{i=1}^{n}E(X_i^k)}{n}\right]\nonumber\\
+&=\lim _{n\to \infty }\left[\bar{Y}_n-\frac{nE(X^k)}{n}\right]\mbox{Por ser las $X_i$ una mas de X}\nonumber\\
+&=\lim _{n\to \infty }\left[\bar{Y}_n-\bar{Y}\right]=0   \mbox{ Aplicando L.F.G.N}
+\end{align}
+
+Por lo anterior, se tiene que
+ $m_{k,n}=\bar{Y}_n\xrightarrow{c.s} \mu_k=\bar{Y}=E_F(X^k)$. Por otro lado, veamos 
+ \begin{align}
+\frac{S_n-E(S_n)}{\sqrt{Var(S_n)}}=\frac{m_{k,n}-E(X^k)}{\sqrt{\frac{Var(X^k)}{n}}}\xrightarrow{d}Z
+ \end{align}
+ donde $S_n=\sum_{i=1}^{n}X_i^k$. Sabemos que $E(X^k)=\mu_k$ y que $Var(X^k)=E[(X^k)^2]-[E(X^k)]^2=\mu_{2k}-\mu_k^2$, de ahí se sigue el resultado.
+:::
+
+Muchas características poblacionales de interés se pueden expresar como función de los momentos no centrados de órdenes $1,\ldots, k$: $\theta=h(\mu_1, \ldots, \mu_k)$. Por ejemplo, la varianza de $X$ se expresa como $\sigma^2 = h(\mu_1, \mu_2) = \mu_2-\mu_1^2$.
+
+**El estimador de $\theta$ basado en el principio de sustitución se conoce como estimador de los momentos de $\theta$ y será
+	\begin{align}
+\hat{\theta}_n = h(m_{1,n} ,\ldots, m_{k,n}).
+	\end{align}
+	Obsérvese que el estimador de los momentos de $\theta$ puede no ser único, porque diferentes funciones $h$ pueden conducir al mismo valor $\theta$.**
+
+::: {#prp-3.2}
+Consideremos la variable aleatoria $X$ con $E(X_{2k})< \infty$. Sea $\theta=h(\mu_{n} ,\ldots, \mu_{n})$. Si $h$ es continua en $(\mu_{n} ,\ldots, \mu_{n})$, entonces $\hat{\theta}_n=h(m_{1,n} ,\ldots, m_{k,n})$ converge a $\theta$ casi seguro. Además, si $h$ es derivable en $(\mu_{n} ,\ldots, \mu_{n})$, entonces la
+distribución límite de $\hat{\theta}_n$ es normal:
+\begin{align}
+\sqrt{n}(\hat{\theta}_n-\theta)\xrightarrow{d} N(0, \sigma_{h,\theta}^2)
+\end{align}
+::: 
+
+
+::: {#exm-3.1}
+Sea $X\sim U(0,\theta)$. Se toma una m.a.s. de $X$ de tamaño n para estimar $\theta$. Un estimador de momentos  $\hat{\theta}_M$ de $\theta$ viene dado por la siguiente relación 
+	\begin{align}
+	E(X)=\frac{\theta}{2}\Longrightarrow m_{1,n}=\frac{\hat{\theta}_M}{2}\Longrightarrow 2m_{1,n}=\hat{\theta}_M\Longrightarrow 2\bar{X}=\hat{\theta}_M
+	\end{align}
+::: 
+
+
+::: {#exm-3.2}
+\item[1.] Para la variable aleatoria $X$ con varianza finita, un estimador para $\theta=Var(X)$ es 
+\begin{align}
+\hat{\theta}=h(m_{1,n}, m_{2,n})&=m_{2,n}-m_{1,n}^2\nonumber\\
+&=\frac{1}{n}\sum_{i=1}^{n}x_i^2-\bar{x}^2\nonumber\\
+&=\frac{\sum_{i=1}^{n}x_i^2-n\bar{x}^2}{n}\nonumber\\
+&=\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n}\nonumber\\
+&=\frac{(n-1)S_n^2}{n}\nonumber\\
+\end{align}	
+
+::: 
+
+::: {#exm-3.3}
+\item[2.]Si $X\sim Exp(\lambda)$ con $E(X)=\frac{1}{\lambda}$, entonces $m_{1,n}=\frac{1}{\hat{\lambda}_M}$ $\Longrightarrow \hat{\lambda}_M=\frac{1}{m_{1,n}}\Longrightarrow \hat{\lambda}_M=\frac{1}{\bar{X}}$.
+\item[3.]Si $X\sim B(n,p)$, con $E(X)=np$ y $Var(X)=npq$, entonces $m_{1,n}=n\hat{p}$ $\Longrightarrow$ $\frac{m_{1,n}}{n}=\hat{p}$ $\Longrightarrow$ $\frac{\bar{X}}{n}=\hat{p}$ $\Longrightarrow$ $\hat{Var(X)}=n\hat{p}(1-\hat{p})$.
+::: 
+
+

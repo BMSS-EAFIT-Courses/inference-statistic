@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>3&nbsp; Estimación puntual – Inferencia Estadística</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./chapter1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-241b0f728d524ab724cf38981e173e36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+</head>
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación puntual</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Inferencia Estadística</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">INTRODUCCIÓN</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principios para reducir los datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación puntual</span></span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#la-funci%C3%B3n-de-distribuci%C3%B3n-emp%C3%ADrica-y-el-m%C3%A9todo-de-los-momentos" id="toc-la-función-de-distribución-empírica-y-el-método-de-los-momentos" class="nav-link active" data-scroll-target="#la-funci%C3%B3n-de-distribuci%C3%B3n-emp%C3%ADrica-y-el-m%C3%A9todo-de-los-momentos"><span class="header-section-number">3.1</span> La función de distribución empírica y el método de los momentos</a></li>
+  <li><a href="#teorema-de-glivenko-cantelli" id="toc-teorema-de-glivenko-cantelli" class="nav-link" data-scroll-target="#teorema-de-glivenko-cantelli"><span class="header-section-number">3.2</span> Teorema de Glivenko-Cantelli</a></li>
+  <li>
+<a href="#la-funci%C3%B3n-de-distribuci%C3%B3n-emp%C3%ADrica-y-el-m%C3%A9todo-de-los-momentos-1" id="toc-la-función-de-distribución-empírica-y-el-método-de-los-momentos-1" class="nav-link" data-scroll-target="#la-funci%C3%B3n-de-distribuci%C3%B3n-emp%C3%ADrica-y-el-m%C3%A9todo-de-los-momentos-1"><span class="header-section-number">3.3</span> La función de distribución empírica y el método de los momentos</a>
+  <ul class="collapse">
+<li><a href="#principio-de-sustituci%C3%B3n" id="toc-principio-de-sustitución" class="nav-link" data-scroll-target="#principio-de-sustituci%C3%B3n"><span class="header-section-number">3.3.1</span> Principio de sustitución</a></li>
+  </ul>
+</li>
+  <li><a href="#m%C3%A9todo-de-momentos" id="toc-método-de-momentos" class="nav-link" data-scroll-target="#m%C3%A9todo-de-momentos"><span class="header-section-number">3.4</span> Método de momentos</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación puntual</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="la-función-de-distribución-empírica-y-el-método-de-los-momentos" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="la-función-de-distribución-empírica-y-el-método-de-los-momentos">
+<span class="header-section-number">3.1</span> La función de distribución empírica y el método de los momentos</h2>
+<p>Sea la variable aleatoria <span class="math inline">\(X\)</span> con función de distribución <span class="math inline">\(F\)</span>. Consideramos una muestra aleatoria simple de tamaño <span class="math inline">\(n\)</span> de <span class="math inline">\(X\)</span>, es decir, <span class="math inline">\(X_1 ,\ldots, X_n\)</span> v.a.i.i.d. con distribución dada por <span class="math inline">\(F\)</span> . Sea <span class="math inline">\(x_1 ,\ldots, x_n\)</span> una realización de esa m.a.s. Se llama función de <strong>distribución empírica</strong> a la función <span class="math display">\[
+\begin{align}
+F_{n}(x)=\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}\mathbf{I}_{(-\infty,x]}(x_{i})¸
+\end{align}
+\]</span> que a cada número real x le asigna la proporción de valores observados que son menores o iguales que x.</p>
+<p>Es inmediato comprobar que la función <span class="math inline">\(F_n\)</span> así definida es una función de distribución:</p>
+<ol type="1">
+<li>
+<span class="math inline">\(F_n(x) \in [0, 1]\)</span> para todo <span class="math inline">\(x \in \mathbb{R}\)</span>.</li>
+<li>
+<span class="math inline">\(F_n\)</span> es continua por la derecha.</li>
+<li>
+<span class="math inline">\(F_n\)</span> es no decreciente.</li>
+<li><span class="math inline">\(\lim _{x\to -\infty }F_{n}(x)=0\)</span></li>
+<li><span class="math inline">\(\lim _{x\to \infty }F_{n}(x)=1\)</span></li>
+</ol>
+<p>Concretamente, <span class="math inline">\(F_n\)</span> es la función de distribución de una variable aleatoria discreta (que podemos llamar <span class="math inline">\(X_e\)</span> ) que pone masa <span class="math inline">\(\frac{1}{n}\)</span> en cada uno de los n puntos <span class="math inline">\(x_i\)</span> observados:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th><span class="math inline">\(x_i\)</span></th>
+<th><span class="math inline">\(1\)</span></th>
+<th><span class="math inline">\(2\)</span></th>
+<th><span class="math inline">\(\ldots\)</span></th>
+<th><span class="math inline">\(n\)</span></th>
+</tr></thead>
+<tbody><tr class="odd">
+<td><span class="math inline">\(p_i = P(X_e = x_i)\)</span></td>
+<td><span class="math inline">\(1/n\)</span></td>
+<td><span class="math inline">\(1/n\)</span></td>
+<td><span class="math inline">\(\ldots\)</span></td>
+<td><span class="math inline">\(1/n\)</span></td>
+</tr></tbody>
+</table>
+<p>A la distribución de <span class="math inline">\(X_e\)</span> e se le llama <strong>distribución empírica</strong> asociada al conjunto de valores <span class="math inline">\({x_1 ,\ldots, x_n}\)</span>.</p>
+<p>Obsérvese que si fijamos el valor de <span class="math inline">\(x\)</span> y dejamos variar la muestra, lo que obtenemos es una variable aleatoria. En efecto, se tiene entonces que</p>
+<p><span class="math display">\[
+\begin{align}
+F_{n}(x)=\dfrac{1}{n}\displaystyle\sum_{i=1}^{n}\mathbf{I}_{(-\infty,x]}(x_{i})¸
+\end{align}
+\]</span></p>
+<p>donde</p>
+<p><span class="math display">\[
+\begin{align}
+\mathbf{I}_{(-\infty,x]}(X_{i})= \left\{ \begin{array}{lcc}
+1 &amp;   si  &amp; X_{i}\leq x \\
+\\ 0 &amp;  si &amp;X_{i}&gt; x\\
+\end{array}
+\right.
+\end{align}
+\]</span> y, por lo tanto, cada término <span class="math inline">\(\mathbf{I}_{(-\infty,x]}(X_{i})\)</span> es una variable aleatoria de Bernoulli con probabilidad de éxito</p>
+<p><span class="math display">\[
+\begin{align}
+p&amp;=P(\mathbf{I}_{(-\infty,x]}(X_{i})=1)\\
+&amp;=P(X_{i}\leq x)\\
+&amp;=F(x)
+\end{align}
+\]</span> De ahí se deduce que <span class="math inline">\(F_n\)</span> es una variable aleatoria y que <span class="math inline">\(nF_n(x)\)</span> tiene distribución binomial con parámetros <span class="math inline">\(n\)</span> y <span class="math inline">\(p = F(x)\)</span>.</p>
+</section><section id="teorema-de-glivenko-cantelli" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="teorema-de-glivenko-cantelli">
+<span class="header-section-number">3.2</span> Teorema de Glivenko-Cantelli</h2>
+<p>El siguiente teorema recoge algunas de las propiedades de la función de distribución empírica.</p>
+<div id="thm-3.1" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.1</strong></span> Sea <span class="math inline">\(\{X_n\}\)</span> para <span class="math inline">\(n\geq 1\)</span> , sucesión de variables aleatorias independientes e idénticamente distribuidas definidas en el espacio de probabilidad <span class="math inline">\((\Omega, \mathcal{A}, P)\)</span> con función de distribución común <span class="math inline">\(F\)</span> . Se denota por <span class="math inline">\(F_n\)</span> la función de distribución empírica obtenida de las <span class="math inline">\(n\)</span> primeras variables aleatorias <span class="math inline">\(X_1 ,\ldots, X_n\)</span> . Sea <span class="math inline">\(x\in\mathbb{R}\)</span>. Se verifica lo siguiente:</p>
+</div>
+<ol type="a">
+<li>
+<span class="math inline">\(P(nF_n(x)=j)=P(F_n(x)=\frac{j}{n})=\binom{n}{j}(F(x))^j(1-F(x))^{n-j}\)</span>, <span class="math inline">\(j=1,\ldots,n\)</span>\</li>
+<li>
+<span class="math inline">\(E(F_n(x))=F(x)\)</span>; <span class="math inline">\(Var(F_n(x))=\frac{1}{n}F(x)(1-F(x))\)</span>.</li>
+<li><span class="math inline">\(\lim _{n\to \infty }F_{n}(x)=F(x)\)</span></li>
+<li>
+<span class="math inline">\(\lim _{n\to \infty }\frac{F_{n}(x)-F(x)}{\sqrt{\frac{F(x)(1-F(x))}{n}}}=Z\)</span>, donde <span class="math inline">\(Z\)</span> es una variable aleatoria con distribución normal estándar y la convergencia es convergencia en distribución.</li>
+</ol>
+<p>El siguiente teorema refuerza el resultado (c) anterior, puesto que afirma que la convergencia de <span class="math inline">\(F_n(x)\)</span> a <span class="math inline">\(F(x)\)</span> se da uniformemente.</p>
+<div id="thm-3.2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.2</strong></span> Sea <span class="math inline">\(\{X_n\}\)</span> para <span class="math inline">\(n\geq 1\)</span> , sucesión de variables aleatorias independientes e idénticamente distribuidas definidas en el espacio de probabilidad <span class="math inline">\((\Omega, \mathcal{A}, P)\)</span> con función de distribución común <span class="math inline">\(F\)</span> . Se denota por <span class="math inline">\(F_n\)</span> la función de distribución empírica obtenida de las <span class="math inline">\(n\)</span> primeras variables aleatorias <span class="math inline">\(X_1 ,\ldots, X_n\)</span> . Sea <span class="math inline">\(x\in\mathbb{R}\)</span>. Entonces <span class="math display">\[Sup_{x\in\mathbb{R}} |F_{n}(x)-F(x)|\xrightarrow{c.s}0\]</span></p>
+</div>
+<div id="nte-3.1" class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;3.1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Obsérvese que según el apartado (c) del teorema <a href="#thm-3.1" class="quarto-xref">Theorem&nbsp;<span>3.1</span></a>, las distribuciones empíricas asociadas a muestras de tamaño n convergen débilmente a la distribución de probabilidad teórica identificada por <span class="math inline">\(F\)</span>, para casi todas las muestras de tamaño infinito que se extraigan de <span class="math inline">\(F\)</span> . Ésta es una de las consecuencias más importantes del citado teorema: la distribución empírica converge débilmente con probabilidad 1 a la poblacional cuando el tamaño de la muestra tiende a infinito: <span class="math display">\[F_{n}(x)\xrightarrow{c.s}F(x)\]</span> Esto garantiza la posibilidad de realizar inferencia estadística:</p>
+<ol type="1">
+<li>Los aspectos probabilísticos de una característica <span class="math inline">\(X\)</span>, medida en una población, se resumen de forma estilizada en una distribución de probabilidad <span class="math inline">\(F\)</span>.</li>
+<li>La distribución de probabilidad <span class="math inline">\(F\)</span>, puede ser aproximada mediante las distribuciones empíricas <span class="math inline">\(F_n\)</span> obtenidas por muestreo de la población en estudio.</li>
+<li>El teorema de Glivenko-Cantelli afirma que esas aproximaciones son uniformes en x.</li>
+<li>Por esta razón el teorema de Glivenko-Cantelli se llama a veces Teorema Fundamental de la Estadística Matemática.</li>
+</ol>
+</div>
+</div>
+<p><strong>Podemos ver a continuación cómo, a medida que aumentamos el tamaño de la muestra (n=10,30,100,1000), la función de distribución empírica se ajusta cada vez mejor a la distribución teórica normal estándar N(0,1), tal como afirma el teorema.</strong></p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Cargar librería para gráficos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Definir función para graficar ECDF vs distribución teórica</span></span>
+<span><span class="va">comparar_ecdf_teorica</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">distribucion</span> <span class="op">=</span> <span class="st">"normal"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span>  <span class="co"># Para reproducibilidad</span></span>
+<span></span>
+<span>  <span class="co"># Muestra de tamaño n desde N(0,1)</span></span>
+<span>  <span class="va">muestra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Dominio común</span></span>
+<span>  <span class="va">x_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span>, <span class="fl">3</span>, length.out <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Distribución teórica</span></span>
+<span>  <span class="va">F_teorica</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="va">x_vals</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Distribución empírica</span></span>
+<span>  <span class="va">ecdf_muestra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html">ecdf</a></span><span class="op">(</span><span class="va">muestra</span><span class="op">)</span></span>
+<span>  <span class="va">F_empirica</span> <span class="op">&lt;-</span> <span class="fu">ecdf_muestra</span><span class="op">(</span><span class="va">x_vals</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Construir data frame para ggplot</span></span>
+<span>  <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>    x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">x_vals</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>    F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">F_empirica</span>, <span class="va">F_teorica</span><span class="op">)</span>,</span>
+<span>    Tipo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Empírica"</span>, <span class="st">"Teórica"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">x_vals</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Graficar</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="cn">F</span>, color <span class="op">=</span> <span class="va">Tipo</span>, linetype <span class="op">=</span> <span class="va">Tipo</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>      title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"ECDF vs F(x) — Tamaño de muestra n ="</span>, <span class="va">n</span><span class="op">)</span>,</span>
+<span>      x <span class="op">=</span> <span class="st">"x"</span>, y <span class="op">=</span> <span class="st">"Probabilidad acumulada"</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Empírica"</span> <span class="op">=</span> <span class="st">"red"</span>, <span class="st">"Teórica"</span> <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_linetype_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Empírica"</span> <span class="op">=</span> <span class="st">"dashed"</span>, <span class="st">"Teórica"</span> <span class="op">=</span> <span class="st">"solid"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Generar gráficos para diferentes tamaños de muestra</span></span>
+<span><span class="fu">comparar_ecdf_teorica</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">comparar_ecdf_teorica</span><span class="op">(</span><span class="fl">30</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">comparar_ecdf_teorica</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-1-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">comparar_ecdf_teorica</span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-1-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>El Teorema Fundamental de la Estadística Matemática: da una fundamentación de la inferencia estadística, cuyo objetivo principal consiste en extraer información sobre <span class="math inline">\(F\)</span> a partir de las observaciones muestrales.</strong></p>
+<p><strong>¿Por qué esto es importante?</strong></p>
+<p>Porque sin conocer <span class="math inline">\(F(x)\)</span> explícitamente, <strong>podemos estimarla a partir de los datos</strong>.<br>
+Esto es la base de:</p>
+<ul>
+<li>los <strong>histogramas acumulados</strong>,</li>
+<li>las <strong>pruebas no paramétricas</strong>,</li>
+<li>los <strong>intervalos de confianza empíricos</strong>, y</li>
+<li>toda la <strong>inferencia estadística basada en datos reales</strong>.</li>
+</ul>
+<p>🎯 <strong>Ejemplo: Estimación del percentil 90 del ingreso mensual</strong></p>
+<p>📌 Contexto Supón que quieres estimar el ingreso mensual <strong>por debajo del cual se encuentran el 90% de las personas</strong> en una ciudad.<br>
+No conoces la distribución real del ingreso ( F(x) ), pero tienes una muestra de datos.</p>
+<hr>
+<p><strong>Paso a paso</strong></p>
+<ol type="1">
+<li>Simulamos una población Vamos a suponer que el ingreso sigue una distribución log-normal:</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">poblacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Lognormal.html">rlnorm</a></span><span class="op">(</span><span class="fl">1e6</span>, meanlog <span class="op">=</span> <span class="fl">10</span>, sdlog <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Tomamos una muestra aleatoria</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">muestra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="va">poblacion</span>, size <span class="op">=</span> <span class="fl">20000</span>, replace <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Estimamos la distribución empírica</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Fn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/ecdf.html">ecdf</a></span><span class="op">(</span><span class="va">muestra</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Estimamos el percentil 90 (cuantil 0.9)</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cuantil_90_empirico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">muestra</span>, probs <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="1">
+<li>Comparamos con el valor verdadero en la población</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cuantil_90_real</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">poblacion</span>, probs <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="6" type="1">
+<li>Resultado</li>
+</ol>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Cuantil 90 estimado (empírico):"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cuantil_90_empirico</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cuantil 90 estimado (empírico): 41926.83 </code></pre>
+</div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Cuantil 90 real (poblacional):"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">cuantil_90_real</span>, <span class="fl">2</span><span class="op">)</span>, <span class="st">"\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cuantil 90 real (poblacional): 41805.56 </code></pre>
+</div>
+</div>
+</section><section id="la-función-de-distribución-empírica-y-el-método-de-los-momentos-1" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="la-función-de-distribución-empírica-y-el-método-de-los-momentos-1">
+<span class="header-section-number">3.3</span> La función de distribución empírica y el método de los momentos</h2>
+<section id="principio-de-sustitución" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="principio-de-sustitución">
+<span class="header-section-number">3.3.1</span> Principio de sustitución</h3>
+<p>En esta sección presentamos una consecuencia importante de la convergencia de <span class="math inline">\(F_n\)</span> a <span class="math inline">\(F\)</span> , la definición de estimadores mediante el principio de sustitución.</p>
+<ol type="a">
+<li>La convergencia de <span class="math inline">\(F_n\)</span> a <span class="math inline">\(F\)</span> permite construir versiones factibles de características poblacionales desconocidas.</li>
+<li>Supongamos que estudiamos una característica <span class="math inline">\(X\)</span> en una población y que el resultado de la observación de <span class="math inline">\(X\)</span> puede ser modelado como una variable aleatoria con distribución desconocida, digamos <span class="math inline">\(F\)</span>.</li>
+<li>Muchas de las preguntas relevantes acerca de la característica <span class="math inline">\(X\)</span> podrían ser contestadas si su función de distribución <span class="math inline">\(F\)</span> fuese conocida.</li>
+</ol>
+<div id="imp-3.1" class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important&nbsp;3.1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Preguntas sobre <span class="math inline">\(X\)</span></strong></p>
+<ul>
+<li>el valor esperado,</li>
+<li>el número de modas de la distribución o</li>
+<li>la probabilidad de que <span class="math inline">\(X\)</span> sea negativa</li>
+</ul>
+<p>Para fijar ideas podemos pensar que nos interesa conocer cantidades numéricas (parámetros) que dependen únicamente de la función de distribución desconocida <span class="math inline">\(F\)</span>:</p>
+<p><span class="math display">\[
+    \begin{align}
+    \theta=\psi(F)
+    \end{align}
+\]</span> <strong>El teorema de Glivenko-Cantelli</strong> nos dice que <span class="math inline">\(F_n\)</span> se acerca a <span class="math inline">\(F\)</span>, a medida que el tamaño muestral crece. Así, podemos esperar que también se verifique que <span class="math display">\[
+    \begin{align}
+    \hat{\theta}_n=\psi(F_n)\rightarrow\theta=\psi(F)
+    \end{align}
+    \]</span></p>
+<p>Es decir, esperamos que las cantidades numéricas calculadas para la distribución empírica (estimadores) se aproximen a las cantidades desconocidas a medida que el tamaño muestral crezca.</p>
+<p>Esta forma de obtener estimadores de parámetros poblacionales desconocidos se denomina principio de sustitución (plug-in principle en inglés). Es un procedimiento muy general de obtención de estimadores.</p>
+</div>
+</div>
+<p>Sea <span class="math inline">\(X\sim U(0,\theta)\)</span>. Se toma una m.a.s. de <span class="math inline">\(X\)</span> de tamaño n para estimar <span class="math inline">\(\theta\)</span>. Un estimador razonable de <span class="math inline">\(\theta\)</span> es el máximo de las observaciones, que es estadístico minimal suficiente para <span class="math inline">\(\theta\)</span>: <span class="math display">\[
+\begin{align}
+    \hat{\theta}_2 = \max_i {X_i}.
+\end{align}
+\]</span> El siguiente código muestra:</p>
+<ul>
+<li><p>Para cada tamaño de muestra n, simula valores de <span class="math inline">\(X_i\)</span>∼U(0,θ),</p></li>
+<li><p>Calcula <span class="math display">\[\hat{\theta} = \max_i {X_i}\]</span></p></li>
+<li><p>Compara con el valor real de <span class="math inline">\(\theta=10\)</span>.</p></li>
+<li><p>Muestra cómo, al aumentar n, el estimador se acerca a <span class="math inline">\(\theta\)</span>.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Simulación para estimar theta en una uniforme (0, theta)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
+<span><span class="va">theta_real</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span></span>
+<span><span class="co"># Tamaños de muestra</span></span>
+<span><span class="va">n_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">30</span>, <span class="fl">100</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Simular y comparar</span></span>
+<span><span class="va">estimadores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">n_vals</span>, <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">muestra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="va">theta_real</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">muestra</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Mostrar resultados</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Tamaño_muestra <span class="op">=</span> <span class="va">n_vals</span>,</span>
+<span>  Estimador_maximo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">estimadores</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>  Error <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">theta_real</span> <span class="op">-</span> <span class="va">estimadores</span>, <span class="fl">3</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tamaño_muestra Estimador_maximo Error
+1              5            9.371 0.629
+2             10            9.347 0.653
+3             30            9.889 0.111
+4            100            9.828 0.172</code></pre>
+</div>
+</div>
+<p><strong>Convergencia del estimador plug-in en la distribución uniforme</strong></p>
+<p>En este ejemplo, estimamos el parámetro <span class="math inline">\(\theta\)</span> de una distribución <span class="math inline">\(X \sim \mathcal{U}(0, \theta)\)</span> usando el estimador <span class="math inline">\(\hat{\theta}_n = \max(X_i)\)</span>. Este es un estimador tipo plug-in: se usa la distribución empírica para estimar una característica de la distribución teórica.</p>
+<p>A continuación, simulamos cómo este estimador converge al verdadero valor <span class="math inline">\(\theta = 10\)</span> a medida que el tamaño de muestra <span class="math inline">\(n\)</span> crece.</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Chunk de R — solo código</span></span>
+<span><span class="co">#| label: fig-convergencia-max</span></span>
+<span><span class="co">#| fig-cap: 'Convergencia del estimador plug-in $ \hat{\theta}_n = \max X_i $ hacia el valor real $ \theta = 10 $'</span></span>
+<span><span class="co">#| fig-align: center</span></span>
+<span><span class="co">#| message: false</span></span>
+<span><span class="co">#| warning: false</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span>
+<span><span class="va">theta_real</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span></span>
+<span><span class="co"># Vector de tamaños de muestra crecientes</span></span>
+<span><span class="va">n_seq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">500</span>, by <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Calcular el estimador para cada n</span></span>
+<span><span class="va">estimadores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">n_seq</span>, <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">muestra</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="va">n</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="va">theta_real</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">muestra</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Crear data frame para graficar</span></span>
+<span><span class="va">df_estimacion</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  n <span class="op">=</span> <span class="va">n_seq</span>,</span>
+<span>  estimador <span class="op">=</span> <span class="va">estimadores</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Graficar</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df_estimacion</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">n</span>, y <span class="op">=</span> <span class="va">estimador</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"steelblue"</span>, size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">theta_real</span>, color <span class="op">=</span> <span class="st">"red"</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="st">"Convergencia de "</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">[</span><span class="va">n</span><span class="op">]</span> <span class="op">*</span> <span class="st">" al valor real "</span> <span class="op">*</span> <span class="va">theta</span><span class="op">)</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Tamaño de muestra (n)"</span>,</span>
+<span>    y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">[</span><span class="va">n</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="método-de-momentos" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="método-de-momentos">
+<span class="header-section-number">3.4</span> Método de momentos</h2>
+<p>Una aplicación del principio de sustitución es la definición de los estimadores basados en momentos. El momento <strong>no centrado</strong> de orden <span class="math inline">\(k\)</span> de una variable aleatoria <span class="math inline">\(X\)</span> con distribución <span class="math inline">\(F\)</span> se define como <span class="math display">\[
+\begin{align}
+\mu_k=E_F(X^k)=\int x^kdF(x)
+    \end{align}
+\]</span> Si <span class="math inline">\(X_e\)</span> es una variable aleatoria con función de distribución igual a <span class="math inline">\(F_n\)</span> , la función de distribución empírica de una m.a.s. de tamaño <span class="math inline">\(n\)</span> de <span class="math inline">\(X\)</span>, se tiene que sus (a los que llamaremos <span class="math inline">\(m_{k,n}\)</span>) son de la forma <span class="math display">\[\begin{align}
+    m_{k,n}=E_{F_n}(X_e^k)=\int x^kdF_n(x)=\frac{1}{n}\sum_{i=1}^{n}X_i^k,
+    \end{align}\]</span> y se denominan momentos muestrales no centrados de orden <span class="math inline">\(k\)</span>. Por ejemplo, <span class="math inline">\(µ_1\)</span> es la esperanza poblacional y <span class="math inline">\(m_{1,n}\)</span> la media muestral.</p>
+<p>La siguiente proposición garantiza que los momentos muestrales convergen a los poblacionales.</p>
+<div id="prp-3.1" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.1</strong></span> Sea <span class="math inline">\(X\)</span> variable aleatoria con <span class="math inline">\(E(X^{2k}) &lt; \infty\)</span>. Entonces se verifica que <span class="math inline">\(m_{k,n} \rightarrow \mu_k\)</span> casi seguro. Además, <span class="math display">\[
+\begin{align}
+\frac{\sqrt{n}(m_{k,n}-\mu_k)}{\sqrt{\mu_{2k}-\mu_k^2}}\xrightarrow{d}Z,
+\end{align}
+\]</span> con <span class="math inline">\(Z\sim N(0,1)\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Si <span class="math inline">\(Y_i=X_i^k\)</span> entonces <span class="math inline">\(m_{k,n}=E_{k,n}(Y_i)=E_{n}(X_i^k)=\frac{1}{n}\sum_{i=1}^{n}X_i^k=\frac{1}{n}\sum_{i=1}^{n}Y_i=\bar{Y}_n\)</span>.\</p>
+<p>Aplicando la ley fuerte de los grandes números se tiene que <span class="math display">\[\begin{align}
+\lim _{n\to \infty }\frac{S_n-E(S_n)}{n}&amp;=\lim _{n\to \infty }\frac{\sum_{i=1}^{n}X_i^k-E(\sum_{i=1}^{n}X_i^k)}{n}\nonumber\\
+&amp;=\lim _{n\to \infty }\left[\frac{\sum_{i=1}^{n}X_i^k}{n}-\frac{E(\sum_{i=1}^{n}X_i^k)}{n}\right]\nonumber\\
+&amp;=\lim _{n\to \infty }\left[\bar{Y}_n-\frac{\sum_{i=1}^{n}E(X_i^k)}{n}\right]\nonumber\\
+&amp;=\lim _{n\to \infty }\left[\bar{Y}_n-\frac{nE(X^k)}{n}\right]\mbox{Por ser las $X_i$ una mas de X}\nonumber\\
+&amp;=\lim _{n\to \infty }\left[\bar{Y}_n-\bar{Y}\right]=0   \mbox{ Aplicando L.F.G.N}
+\end{align}\]</span></p>
+<p>Por lo anterior, se tiene que <span class="math inline">\(m_{k,n}=\bar{Y}_n\xrightarrow{c.s} \mu_k=\bar{Y}=E_F(X^k)\)</span>. Por otro lado, veamos <span class="math display">\[\begin{align}
+\frac{S_n-E(S_n)}{\sqrt{Var(S_n)}}=\frac{m_{k,n}-E(X^k)}{\sqrt{\frac{Var(X^k)}{n}}}\xrightarrow{d}Z
+\end{align}\]</span> donde <span class="math inline">\(S_n=\sum_{i=1}^{n}X_i^k\)</span>. Sabemos que <span class="math inline">\(E(X^k)=\mu_k\)</span> y que <span class="math inline">\(Var(X^k)=E[(X^k)^2]-[E(X^k)]^2=\mu_{2k}-\mu_k^2\)</span>, de ahí se sigue el resultado.</p>
+</div>
+<p>Muchas características poblacionales de interés se pueden expresar como función de los momentos no centrados de órdenes <span class="math inline">\(1,\ldots, k\)</span>: <span class="math inline">\(\theta=h(\mu_1, \ldots, \mu_k)\)</span>. Por ejemplo, la varianza de <span class="math inline">\(X\)</span> se expresa como <span class="math inline">\(\sigma^2 = h(\mu_1, \mu_2) = \mu_2-\mu_1^2\)</span>.</p>
+<p><strong>El estimador de <span class="math inline">\(\theta\)</span> basado en el principio de sustitución se conoce como estimador de los momentos de <span class="math inline">\(\theta\)</span> y será <span class="math display">\[\begin{align}
+\hat{\theta}_n = h(m_{1,n} ,\ldots, m_{k,n}).
+    \end{align}\]</span> Obsérvese que el estimador de los momentos de <span class="math inline">\(\theta\)</span> puede no ser único, porque diferentes funciones <span class="math inline">\(h\)</span> pueden conducir al mismo valor <span class="math inline">\(\theta\)</span>.</strong></p>
+<div id="prp-3.2" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3.2</strong></span> Consideremos la variable aleatoria <span class="math inline">\(X\)</span> con <span class="math inline">\(E(X_{2k})&lt; \infty\)</span>. Sea <span class="math inline">\(\theta=h(\mu_{n} ,\ldots, \mu_{n})\)</span>. Si <span class="math inline">\(h\)</span> es continua en <span class="math inline">\((\mu_{n} ,\ldots, \mu_{n})\)</span>, entonces <span class="math inline">\(\hat{\theta}_n=h(m_{1,n} ,\ldots, m_{k,n})\)</span> converge a <span class="math inline">\(\theta\)</span> casi seguro. Además, si <span class="math inline">\(h\)</span> es derivable en <span class="math inline">\((\mu_{n} ,\ldots, \mu_{n})\)</span>, entonces la distribución límite de <span class="math inline">\(\hat{\theta}_n\)</span> es normal: <span class="math display">\[\begin{align}
+\sqrt{n}(\hat{\theta}_n-\theta)\xrightarrow{d} N(0, \sigma_{h,\theta}^2)
+\end{align}\]</span></p>
+</div>
+<div id="exm-3.1" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.1</strong></span> Sea <span class="math inline">\(X\sim U(0,\theta)\)</span>. Se toma una m.a.s. de <span class="math inline">\(X\)</span> de tamaño n para estimar <span class="math inline">\(\theta\)</span>. Un estimador de momentos <span class="math inline">\(\hat{\theta}_M\)</span> de <span class="math inline">\(\theta\)</span> viene dado por la siguiente relación <span class="math display">\[\begin{align}
+    E(X)=\frac{\theta}{2}\Longrightarrow m_{1,n}=\frac{\hat{\theta}_M}{2}\Longrightarrow 2m_{1,n}=\hat{\theta}_M\Longrightarrow 2\bar{X}=\hat{\theta}_M
+    \end{align}\]</span></p>
+</div>
+<div id="exm-3.2" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.2</strong></span> &nbsp;</p>
+<p>Para la variable aleatoria <span class="math inline">\(X\)</span> con varianza finita, un estimador para <span class="math inline">\(\theta=Var(X)\)</span> es <span class="math display">\[\begin{align}
+\hat{\theta}=h(m_{1,n}, m_{2,n})&amp;=m_{2,n}-m_{1,n}^2\nonumber\\
+&amp;=\frac{1}{n}\sum_{i=1}^{n}x_i^2-\bar{x}^2\nonumber\\
+&amp;=\frac{\sum_{i=1}^{n}x_i^2-n\bar{x}^2}{n}\nonumber\\
+&amp;=\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n}\nonumber\\
+&amp;=\frac{(n-1)S_n^2}{n}\nonumber\\
+\end{align}\]</span></p>
+</div>
+<div id="exm-3.3" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.3</strong></span> &nbsp;</p>
+Si <span class="math inline">\(X\sim Exp(\lambda)\)</span> con <span class="math inline">\(E(X)=\frac{1}{\lambda}\)</span>, entonces <span class="math inline">\(m_{1,n}=\frac{1}{\hat{\lambda}_M}\)</span> <span class="math inline">\(\Longrightarrow \hat{\lambda}_M=\frac{1}{m_{1,n}}\Longrightarrow \hat{\lambda}_M=\frac{1}{\bar{X}}\)</span>.
+<p>Si <span class="math inline">\(X\sim B(n,p)\)</span>, con <span class="math inline">\(E(X)=np\)</span> y <span class="math inline">\(Var(X)=npq\)</span>, entonces <span class="math inline">\(m_{1,n}=n\hat{p}\)</span> <span class="math inline">\(\Longrightarrow\)</span> <span class="math inline">\(\frac{m_{1,n}}{n}=\hat{p}\)</span> <span class="math inline">\(\Longrightarrow\)</span> <span class="math inline">\(\frac{\bar{X}}{n}=\hat{p}\)</span> <span class="math inline">\(\Longrightarrow\)</span> <span class="math inline">\(\hat{Var(X)}=n\hat{p}(1-\hat{p})\)</span>.</p>
+</div>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./chapter1.html" class="pagination-link" aria-label="Principios para reducir los datos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Principios para reducir los datos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

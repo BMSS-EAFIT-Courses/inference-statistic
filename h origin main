@@ -1,0 +1,21 @@
+[33m3dfc195[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m Agrega explicación del teorema de factorización y observaciones sobre suficiencia
+[33md37c8c8[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Render sitio Quarto
+[33m34524db[m Versión consolidada del libro en index.qmd
+[33m7ef6c1e[m Actualiza referencias cruzadas y corrige YAML
+[33m8ce52fd[m Renderizo y subo HTMLs con TOC a la derecha
+[33m7039342[m Descripción del cambio
+[33m358500b[m Actualiza bienvenida e índice del libro
+[33m94fdee6[m Publica versión final del libro Quarto en docs/
+[33m4153c3f[m Agrega front-matter a capítulos y regenera book
+[33md73355f[m Configura chapters incluyendo index.qmd como inicio
+[33m9b061a3[m Alinea nombres de carpeta _files con rutas en HTML
+[33m576273f[m Actualiza índice con ambos capítulos: datos-y-modelos y variable-aleatoria
+[33m6dc02f9[m Organiza sitio en docs/: agrega ambos capítulos y recursos, elimina viejas rutas
+[33mb7e19bc[m Quito duplicados y dejo sólo la versión en minúsculas
+[33m91777ae[m Agrega HTML y carpeta de recursos en docs para Pages
+[33mfdef76c[m Agrega índice en docs/index.html
+[33mc27b2f4[m Agrega carpeta de recursos para datos-y-modelos en docs/
+[33mb1dc8e7[m Mueve datos-y-modelos.html a docs/ y elimina el viejo
+[33mc3b9ac5[m Publicar datos-y-modelos.html en docs/
+[33m06da9ad[m se crea quarto
+[33m6bf054b[m Create mgf_binomial.r
