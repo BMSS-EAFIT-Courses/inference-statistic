@@ -177,7 +177,7 @@ Esto es la base de:
 
 📌 Contexto
 Supón que quieres estimar el ingreso mensual **por debajo del cual se encuentran el 90% de las personas** en una ciudad.  
-No conoces la distribución real del ingreso \( F(x) \), pero tienes una muestra de datos.
+No conoces la distribución real del ingreso $ F(x) $, pero tienes una muestra de datos.
 
 ---
 
@@ -432,5 +432,818 @@ Sea $X\sim U(0,\theta)$. Se toma una m.a.s. de $X$ de tamaño n para estimar $\t
 \item[2.]Si $X\sim Exp(\lambda)$ con $E(X)=\frac{1}{\lambda}$, entonces $m_{1,n}=\frac{1}{\hat{\lambda}_M}$ $\Longrightarrow \hat{\lambda}_M=\frac{1}{m_{1,n}}\Longrightarrow \hat{\lambda}_M=\frac{1}{\bar{X}}$.
 \item[3.]Si $X\sim B(n,p)$, con $E(X)=np$ y $Var(X)=npq$, entonces $m_{1,n}=n\hat{p}$ $\Longrightarrow$ $\frac{m_{1,n}}{n}=\hat{p}$ $\Longrightarrow$ $\frac{\bar{X}}{n}=\hat{p}$ $\Longrightarrow$ $\hat{Var(X)}=n\hat{p}(1-\hat{p})$.
 ::: 
+
+
+
+## Estimadores de máxima verosimilitud
+## Cálculo del estimador máximo verosímil
+
+Sea $\underset{\sim}{X} =(X_1,\ldots, X_n)$ una muestra aleatoria simple de una variable aleatoria $X$ con función de densidad (o de masa de probabilidad) $f(\underset{\sim}{x}|\theta)$, con $\theta = (\theta_1,\ldots,\theta_k) \in \Theta \subseteq \mathbb{R}^k$ . Sea $\mathcal{X}$ el espacio muestral, es decir, el conjunto de todos los posibles valores de $\underset{\sim}{X}$ . Hemos definido la \textcolor{red}{función de verosimilitud} para $\underset{\sim}{x} =(x_1,\ldots, x_n )\in \mathcal{X}$ como
+$$
+	\begin{align}
+	L(\cdot|\underset{\sim}{x}):&\Theta\rightarrow \mathbb{R}^+\nonumber\\
+	&\theta\rightarrow L(\theta|\underset{\sim}{x})=f(\underset{\sim}{x}|\theta)=\prod_{i=1}^{n}f(x_i|\theta)
+	\end{align}
+$$
+
+
+### Preguntas sobre $X$
+Para cada muestra $\underset{\sim}{x} \in \underset{\sim}{X}$ , el estimador de máxima verosimilitud $\hat{\theta}$ de $\theta$ es el valor de $\Theta$ que hace máxima la verosimilitud $L(\cdot|\underset{\sim}{x})$:
+$$
+\begin{align}
+L(\hat{\theta}| \underset{\sim}{x} ) = \max_{\theta \in \Theta} L(\theta|\underset{\sim}{x}).
+\end{align}
+$$
+Intuitivamente $\hat{\theta}$ es el valor del parámetro que hace más verosímil la muestra observada. Veremos más adelante que los estimadores de máxima verosimilitud son muy buenos estimadores y que en general tienen propiedades de optimalidad. Además, en muchas ocasiones el estimador máximo verosímil es el que el sentido común nos llevaría a proponer.
+
+
+::: {#exm-3.4}
+Si $X\sim Exp(\lambda)\Longrightarrow f(x|\lambda)=\lambda\exp\{-\lambda x\}I_{[0,\infty)}(x)$, $\lambda>0$ 
+
+Se toma una muestra de tamaño $n=1$ y se observa que $x=3$. Estudiamos la función de verosimilitud $L(\lambda|3)=\lambda\exp\{-3\lambda\}$ y buscamos su máximo para $\lambda>0$.
+		
+Buscamos los valores de $\lambda$ que hacen la derivada cero de $L(\lambda|3)$:
+$$	
+\begin{align}
+\label{maxver_exp}
+L^{'}(\lambda|3)&=\exp\{-3\lambda\}(1-3\lambda)
+\end{align}
+$$ {#eq-maxver_exp}
+Igualando a cero la expresión (@eq-maxver_exp) se tiene que $\lambda=\frac{1}{3}$. Como $L^{'}(\lambda|3)\geq 0$ y 
+$$
+\begin{align}
+\lim _{\lambda\to 0}L(\lambda|3)=\lim _{\lambda\to \infty}L(\lambda|3)=0
+\end{align}
+$$
+Se sigue que el punto crítico de $L(\lambda|3)$ es un máximo. Así, $\hat{\lambda}=\frac{1}{3}$
+:::
+
+
+::: {#exm-3.5}
+Suponga que deseamos estimar $\theta$, la proporción de personas con tuberulosis en una gran población homogénea. Para hacer esto, seleccionamos de manera aleatoria $n$ personas para hacer pruebas y encontrar $x$ de estos que tienen la enfermedad.
+
+Ya que la población es grande y homogénea, asumimos que los $n$ individuos observados son independiente y que cada uno tiene probabilidad $\theta$ de tener tuberculosis.
+
+Si $E$ es el evento tiene tuberculosis 
+$$
+\begin{align}
+P(E;\theta)&=P(\mbox{x entre n tienen tuberculosis})\nonumber\\
+&=\binom{n}{x}\theta^x(1-\theta)^{n-x}
+\end{align}
+$$ {#eq-Kalbfleish1}
+Observe que $\binom{n}{x}$ es un factor constante no tendrá efecto sobre la maximización de la expresión (@eq-Kalbfleish1) sobre $\theta$, ver (kalbfleisch et al. (1985)).
+La función de verosimilitud de $\theta$ es definida como sigue:
+$$
+\begin{align}
+L(\theta)=cP(E;\theta)
+\end{align}
+$$ {#eq-ver}
+Acá $c$ es alguna constante positiva con respecto a $\theta$; esto es, $c$ no es función de $\theta$, sin embargo esta debe ser función de los datos. Escogemos $c$ para obtener una expresión simple para $L(\theta)$, y resultados subsecuentes no dependerán de la escogencia específica hecha.
+
+
+
+
+Usualmente $P(E;\theta)$ y $L(\theta)$ son productos de términos y será más conveniente trabajar con logaritmos. La función **logverosimilitud** es el logaritmo de $L$:
+
+$$
+\begin{align}
+l(\theta)=log L(\theta)
+\end{align}
+$$ {#eq-logver}
+Observe que, por (@eq-ver)
+$$
+\begin{align}
+l(\theta)=c^{'}+log P(E;\theta)
+\end{align}
+$$ {#eq-logver2}
+donde $c^{'}=log c$ no es una función de $\theta$.
+
+
+
+Por la expresión (@eq-Kalbfleish1) se tiene que 
+
+$$
+\begin{align}
+c=\frac{1}{\binom{n}{x}},
+\end{align}
+$$
+entonces
+$$
+\begin{align}
+L(\theta)=\theta^x(1-\theta)^{n-x}, \mbox{para } 0\leq\theta\leq1
+\end{align}
+$$ {#eq-ver2}
+La función de log verosimilitud es ahora 
+$$
+\begin{align}
+l(\theta)=xlog(\theta)+(n-x)log(1-\theta), \mbox{para } 0\leq\theta\leq1
+\end{align}
+$$ {#eq-logver2}
+El estimador de máxima verosimilitud (MDL) $\hat{\theta}$ es el valor de $\theta$ el cual maximiza $l(\theta)$.
+
+Tomando la derivada respecto a $\theta$ de  (@eq-logver) se tiene que 
+$$
+	\begin{align}
+	S(\theta)&=\frac{dl(\theta)}{d\theta}\nonumber\\
+	&=\frac{x}{\theta}-\frac{n-x}{1-\theta}
+	\end{align}
+$$ {#eq-Score}
+Haciendo cero a $S(\theta)$ tiene una única solución $\theta=\frac{x}{n}$, para $1\leq x\leq n-1$. Bajo estas mismas condiciones tomamos la segunda derivada y la multiplicamos por $-1$ en la siguiente expresión	
+
+
+$$
+\begin{align}
+\mathscr{I}(\theta)&=-\frac{dS(\theta)}{d\theta}\nonumber\\
+&=\frac{x}{\theta^2}+\frac{n-x}{(1-\theta)^2}
+\end{align}
+$$ {#eq-Inf}
+
+Ya que $\mathscr{I}(\theta)>0$ en $\theta=\frac{x}{n}$, la función de verosimilitud tiene un máximo relativo en $\theta=\frac{x}{n}$. Más aún, $L(\theta)=0$ para $\theta=0$ y para  $\theta=1$, hemos encontrado con esto un máximo global en $\hat{\theta}=\frac{x}{n}$.
+
+A las funciones $S(\theta)$ y $\mathscr{I}(\theta)$ definidas en (@eq-Score}) y (@eq-Inf), se les llama **función Score** y **función de información** respectivamente.
+:::
+
+### Principio de invarianza del estimador máximo verosímil
+
+Sea $X_1,\ldots, X_n$ muestra aleatoria simple de $X\sim f(x|\theta)$ y sea $\hat{\theta}$ el estimador
+	máximo verosímil de $\theta$. Si estamos interesados en estimar una función $\tau(\theta)$ del
+	parámetro, podemos hacerlo mediante $\tau(\hat{\theta})$. Éste es el resultado que garantiza el siguiente teorema y se conoce como **principio de invariancia**.
+	
+::: {#thm-3.3}	
+Si $\hat{\theta}$ es el estimador de máxima verosimilitud de $\theta$, entonces para cualquier función $\tau$ el estimador de máxima verosimilitud de $\tau(\theta)$ es $\tau(\hat{\theta})$.
+::: 	
+
+
+::: {#exm-3.6}
+Sea $X_1,\ldots,X_n$ una m.a.s de $X\sim N(\mu,\sigma^2)$. Podemos probar que el estimador de máxima verosimilitud para $\mu$, $\hat{\mu}=\bar{X}$. ¿Cuál es el estimador de máxima verosimilitud de $\theta_1=3\mu$, $\theta_2=\mu^2$ y $\theta_3=1/\mu$?
+
+Por el principio de invarianza tenemos que $\hat{\theta_1}=3\bar{X}$, $\hat{\theta_2}=\bar{X}^2$ y $\hat{\theta_3}=\frac{1}{\bar{X}}$.
+::: 
+
+
+
+## Error cuadrático medio 
+
+**Una vez se han presentado diferentes métodos de estimación surge la necesidad de desarrollar criterios para evaluarlos y compararlos de acuerdo a estos
+		criterios. En este tema estudiaremos medidas de la calidad de un estimador. Lo
+		haremos primero para muestras finitas para pasar después a proponer medidas
+		asintóticas de calidad.**
+
+Se define el error cuadrático medio (ECM) de un estimador $W$ de un parámetro $\theta$ como
+$$
+\begin{align}
+	E_\theta((W-\theta)^2)
+\end{align}
+$$
+Ésta es una medida intuitiva del comportamiento de un estimador: cuanto menor sea el **error cuadrático medio** mejor será el estadístico $W$. De hecho, para cualquier función $\phi$ creciente con $\phi(0) = 0$, $E_\theta(\phi(|W- \theta|))$ es una medida razonable de lo alejadas que estarán, en promedio, las estimaciones de $\theta$ que proporcione W.
+
+En general, se prefiere el error cuadrático medio a otras medidas por ser más tratable analíticamente. Además el error cuadrático medio puede descomponerse
+\begin{align}
+E_\theta((W-\theta)^2)&=E_\theta((W-E_\theta(W))^2)+E_\theta((E_\theta(W)-\theta)^2)\nonumber\\
+&=Var_\theta(W)+(B_\theta(W))^2
+\end{align}
+El término $B_\theta(W) = E_\theta(W)-\theta$ se llama \textcolor{red}{sesgo} (en inglés bias) de $W$ cuando
+se estima $\theta$ y es una medida de la desviación sistemática que se tiene cuando se estima $\theta$ por $W$. Si un estimador tiene sesgo nulo para cualquier valor del
+parámetro se dice que es un estimador **insesgado**. En tal caso, $E_\theta((W-\theta)^2)=Var_\theta(W)$.
+
+### Observaciones sobre el ECM
+
+1. Así, el error cuadrático medio de un estimador es la suma de su varianza (una medida de su dispersión) más el cuadrado de su sesgo (medida de la desviación sistemática o de la exactitud del estimador).
+
+2. Es una medida conjunta de precisión y exactitud del estimador.
+
+3. Por lo tanto, parece sensato buscar estimadores que tengan error cuadrático medio pequeño, porque de esta manera controlaremos tanto la dispersión como la exactitud de las estimaciones.
+
+::: {#fig-Precision_vs_exactitud layout-ncol=1}
+
+![Exactitud vs precisión](images/Precision_vs_exactitud.jpg){#fig-Precision_vs_exactitud}
+
+Comparación entre precisión y exactitud
+:::
+
+```{r}
+# install.packages("ggplot2")  # si hace falta
+library(ggplot2)
+
+theta    <- 0      # valor "verdadero"
+thetahat <- 1.2    # estimación
+
+x  <- seq(theta - 3, thetahat + 3, length.out = 500)
+df <- data.frame(x = x,
+                 y = dnorm(x, mean = thetahat, sd = 0.9))
+
+ggplot(df, aes(x, y)) +
+  geom_line(linewidth = 1.2) +
+  geom_hline(yintercept = 0, linewidth = 0.8) +
+  # marquitas en el eje para theta y theta-hat
+  geom_segment(aes(x = theta,    xend = theta,    y = 0, yend = max(y)*0.03),
+               inherit.aes = FALSE) +
+  geom_segment(aes(x = thetahat, xend = thetahat, y = 0, yend = max(y)*0.03),
+               inherit.aes = FALSE) +
+  annotate("text", x = theta,    y = -max(df$y)*0.05, label = expression(theta)) +
+  annotate("text", x = thetahat, y = -max(df$y)*0.05, label = expression(hat(theta))) +
+  labs(title = "Distribución de estimaciones", x = NULL, y = NULL) +
+  coord_cartesian(ylim = c(-max(df$y)*0.08, max(df$y)*1.05), clip = "off") +
+  theme_classic(base_size = 14) +
+  theme(
+    axis.text.y  = element_blank(),
+    axis.ticks.y = element_blank(),
+    plot.margin  = margin(10, 20, 25, 20) # deja espacio para las etiquetas bajo el eje
+  )
+```
+
+	
+Estimador de $\theta$ estará indicado por $\hat{\theta}$.
+
+**Quisieramos que $E(\hat{\theta})=\theta$.**
+
+La distribución muestral para un estimador puntual sesgado positivamente, para el que $E(\hat{\theta})>\theta$, se muestra en la siguiente figura
+
+```{r}
+library(ggplot2)
+
+# --- Parámetros editables ---
+theta       <- 0
+E_thetahat  <- 0.5      # sesgo: centro de la densidad
+thetahat    <- 1.2
+sd0         <- 0.7      # dispersión
+# ----------------------------
+
+# Curva de densidad (normal centrada en E(\hat{theta}))
+x_min <- theta - 1.2
+x_max <- thetahat + 1.2
+x  <- seq(x_min, x_max, length.out = 800)
+y  <- dnorm(x, mean = E_thetahat, sd = sd0)
+df <- data.frame(x, y)
+ymax <- max(y)
+
+# Alturas EXACTAS de las barras (tocar la curva)
+y_theta     <- dnorm(theta,      mean = E_thetahat, sd = sd0)  # altura en theta
+y_Ethetahat <- dnorm(E_thetahat, mean = E_thetahat, sd = sd0)  # pico
+
+ggplot(df, aes(x, y)) +
+  geom_line(linewidth = 1.1, lineend = "round") +
+  # ejes "a mano"
+  annotate("segment", x = x_min, xend = x_max, y = 0, yend = 0, linewidth = 0.8) +
+  annotate("segment", x = x_min, xend = x_min, y = 0, yend = 1.05*ymax, linewidth = 0.8) +
+  # barra corta en theta (hasta la curva)
+  geom_segment(aes(x = theta, xend = theta, y = 0, yend = y_theta), inherit.aes = FALSE) +
+  # barra larga en E(thetahat) (hasta el pico)
+  geom_segment(aes(x = E_thetahat, xend = E_thetahat, y = 0, yend = y_Ethetahat),
+               inherit.aes = FALSE) +
+  # etiquetas bajo el eje x
+  annotate("text", x = theta,      y = -0.06*ymax, label = expression(theta)) +
+  annotate("text", x = E_thetahat, y = -0.06*ymax, label = expression(E(hat(theta)))) +
+  annotate("text", x = thetahat,   y = -0.06*ymax, label = expression(hat(theta))) +
+  # etiqueta del eje y
+  annotate("text",
+           x = x_min - 0.03*(x_max - x_min), y = 0.9*ymax,
+           label = expression(f(hat(theta))), angle = 90) +
+  labs(x = NULL, y = NULL) +
+  coord_cartesian(xlim = c(x_min, x_max),
+                  ylim = c(-0.10*ymax, 1.08*ymax), clip = "off") +
+  theme_void(base_size = 14) +
+  theme(plot.margin = margin(10, 20, 35, 45))
+```
+
+
+```{r}
+library(ggplot2)
+library(patchwork)
+
+# ===== Panel (a): arco =====
+# soporte con ~5% a la izquierda y 95% a la derecha
+xL <- -0.10
+xR <-  2.10
+theta     <- (xL + xR)/2    # centro del arco: ahí debe ir la barra
+thetahat1 <- xR
+
+# definir el arco (semicircunferencia escalada)
+c_a  <- (xL + xR)/2
+R_a  <- (xR - xL)/2
+x_a  <- seq(xL, xR, length.out = 700)
+hsca <- 0.95
+y_a  <- hsca * sqrt(pmax(0, R_a^2 - (x_a - c_a)^2))
+dfa  <- data.frame(x = x_a, y = y_a)
+ymax_a <- max(dfa$y)
+
+# altura de la curva en theta
+y_theta <- approx(x_a, y_a, xout = theta)$y
+
+p_a <-
+  ggplot(dfa, aes(x, y)) +
+  geom_line(linewidth = 1.2, lineend = "round") +
+  # ejes
+  annotate("segment", x = xL-0.3, xend = xR+0.3, y = 0, yend = 0, linewidth = 0.8) +
+  annotate("segment", x = 0, xend = 0, y = 0, yend = 1.05*ymax_a, linewidth = 0.8) +
+  # barra en el centro (theta)
+  geom_segment(aes(x = theta, xend = theta, y = 0, yend = y_theta), inherit.aes = FALSE) +
+  # etiquetas
+  annotate("text", x = theta,     y = -0.08*ymax_a, label = expression(theta)) +
+  annotate("text", x = thetahat1, y = -0.08*ymax_a, label = expression(hat(theta)[1])) +
+  annotate("text", x = -0.15, y = 0.9*ymax_a,
+           label = expression(f(hat(theta)[1])), angle = 90) +
+  annotate("text", x = (xL + xR)/2, y = -0.22*ymax_a, label = "(a)") +
+  coord_cartesian(xlim = c(xL-0.2, xR+0.2),
+                  ylim = c(-0.25*ymax_a, 1.1*ymax_a), clip = "off") +
+  theme_void(base_size = 14) +
+  theme(plot.margin = margin(10, 20, 40, 45))
+
+# ===== Panel (b): normal (sin cambios) =====
+theta_b    <- 1.00
+thetahat2  <- 1.60
+sd_b       <- 0.25
+x_b <- seq(0, theta_b + 3.2*sd_b, length.out = 700)
+y_b <- dnorm(x_b, mean = theta_b, sd = sd_b)
+dfb <- data.frame(x = x_b, y = y_b)
+ymax_b <- max(dfb$y)
+
+p_b <-
+  ggplot(dfb, aes(x, y)) +
+  geom_line(linewidth = 1.2, lineend = "round") +
+  annotate("segment", x = 0, xend = max(x_b)+0.3, y = 0, yend = 0, linewidth = 0.8) +
+  annotate("segment", x = 0, xend = 0, y = 0, yend = 1.05*ymax_b, linewidth = 0.8) +
+  geom_segment(aes(x = theta_b, xend = theta_b, y = 0, yend = dnorm(theta_b, theta_b, sd_b)),
+               inherit.aes = FALSE) +
+  annotate("text", x = theta_b,   y = -0.08*ymax_b, label = expression(theta)) +
+  annotate("text", x = thetahat2, y = -0.08*ymax_b, label = expression(hat(theta)[2])) +
+  annotate("text", x = -0.15, y = 0.9*ymax_b,
+           label = expression(f(hat(theta)[2])), angle = 90) +
+  annotate("text", x = (min(x_b)+max(x_b))/2, y = -0.22*ymax_b, label = "(b)") +
+  coord_cartesian(xlim = c(0, max(x_b)+0.2),
+                  ylim = c(-0.25*ymax_b, 1.1*ymax_b), clip = "off") +
+  theme_void(base_size = 14) +
+  theme(plot.margin = margin(10, 20, 40, 45))
+
+# ===== Combinar =====
+p_a | p_b
+```
+
+La figura (b) es la distribución deseada porque una varianza pequeña garantiza que, en un muestreo repetido, una fracción más alta de valores $\hat{\theta}_2$ estará ``cerca'' de $\theta$.
+
+Por consiguiente, además de preferir un estimador insesgado, necesitamos que la varianza de la distribución del estimador $V(\hat{\theta})$ sea lo más pequeña posible. Dados dos estimadores  insesgados de un parámetro $\theta$ seleccionamos el estimador con la menor varianza, mientras todos los demás  parece igual. 
+
+::: {#exm-3.7}
+Suponga que $Y_1,Y_2,Y_3$ denotan una muestra aleatoria ind de una distribuci\'on exponencial con funci\'on de densidad
+$$f(y)=\left\{\begin{array}{ll}\left(\frac{1}{\theta}\right)e^{-y/\theta},& y>0,\\0,&\mbox{ en cualquier otro punto}\end{array}\right.$$
+Considere los siguientes estimadores de $\theta$:
+$$\hat{\theta}_1=Y_1,\,\,\,\,\,\,\,\,\,\,\hat{\theta}_2=\frac{Y_1+Y_2}{2},\,\,\,\,\,\,\,\,\,\,\hat{\theta}_3=\frac{Y_1+2Y_2}{3},\,\,\,\,\,\,\,\,\,\,$$
+
+$$\hat{\theta}_4=\min(Y_1,\,Y_2,\,Y_3),\,\,\,\,\,\,\,\,\,\,\hat{\theta}_5=\overline{Y}$$
+
+a. ¿Cuáles son insesgados?
+
+**Sol:**
+Determinemos si $\hat{\theta}_4=\min(Y_1,\,Y_2,\,Y_3)$ es insesgado. Para esto, determinemos la distribución de $\hat{\theta}_4$. Supongamos que $Y_i\sim Exp(\lambda_i)$ con $i=1,2,3$.
+$$
+		\begin{align}
+		P(\hat{\theta}_4>a)&=P(\min(Y_1,\,Y_2,\,Y_3)>a)\nonumber\\
+		&=P(Y_1>a)P(Y_2>a)P(Y_3>a)\nonumber\\
+		&=\exp\{-a\lambda_1\}\exp\{-a\lambda_2\}\exp\{-a\lambda_3\}\nonumber\\
+		&\exp\left\{-a\left(\sum_{i=1}^{3}\lambda_i\right)\right\}
+		\end{align}	
+$$
+Así que 
+$$
+\begin{align}
+F_{\hat{\theta}_4}(a)&=1-P(\hat{\theta}_4>a)\nonumber\\
+&=1-\exp\left\{-a\left(\sum_{i=1}^{3}\lambda_i\right)\right\}
+\end{align}
+$$
+De ahí que $\hat{\theta}_4\sim Exp\left(\sum_{i=1}^{3}\lambda_i\right)$ entonces, $E(\hat{\theta}_4)=\frac{1}{\sum_{i=1}^{3}\lambda_i}$. Pero por hipótesis $\lambda_i=\frac{1}{\theta}$, para todo $i=1,2,3$. Luego, 
+
+::: 
+
+
+
+
+
+
+$$
+\begin{align}
+	E(\hat{\theta}_4)&=\frac{1}{\sum_{i=1}^{3}\lambda_i}\nonumber\\
+	&=\frac{1}{3\lambda} \mbox{ por ser las $Y_i$ son iid}\nonumber\\
+	&=\frac{1}{\frac{3}{\theta}}\nonumber\\
+	&=\frac{\theta}{3}
+	\end{align}
+$$
+Luego $\hat{\theta}_4$ no es insesgado, es sesgado. 
+
+### Eficiencia relativa
+
+::: {.definition #def-3.1}
+Un estimador $W$ de $\theta$ se denomina **inadmisible** si existe otro estimador $V$ de $\theta$ tal que
+$$
+\begin{align}
+E_\theta((V-\theta)^2)\leq E_\theta((W-\theta)^2) \mbox{ para todo $\theta \in \Theta$}
+\end{align}
+$$
+::: 
+
+### Mejor estimador insesgado.
+
+::: {.definition #def-3.2}
+Sean $\hat{\theta}_1$ y $\hat{\theta}_2$ dos estimadores insesgados de un parámetro $\theta$, con varianzas $V (\hat{\theta}_1)$ y $V (\hat{\theta}_2)$, respectivamente. Entonces la eficiencia de $\hat{\theta}_1$ con respecto a $\hat{\theta}_2$ denotada como $eff(\hat{\theta}_1,\,\hat{\theta}_2)$ se defiene por la expresión
+
+$$eff (\hat{\theta}_1,\, \hat{\theta}_2)=\frac{V(\hat{\theta}_1)}{V(\hat{\theta}_2)}.$$
+::: 
+
+
+::: {#exm-3.8}
+Diremos que $\hat{\theta}_1$ es más eficiente que $\hat{\theta}_2$ si $$eff(\hat{\theta}_1,\,\hat{\theta}_2)<1\mbox{ si y sólo si }V(\hat{\theta}_2)>V(\hat{\theta}_1)$$
+luego $\hat{\theta}_1$ es un mejor estimador insesgado que $\hat{\theta}_2$.
+::: 
+
+::: {#exm-3.9}
+Si $eff(\hat{\theta}_1,\,\hat{\theta}_2)=1.8$ entonces $V(\hat{\theta}_1)=1.8V(\hat{\theta}_2)$ entonces $\hat{\theta}_2$ se prefiere a $\hat{\theta}_1$.
+
+Si $eff(\hat{\theta}_1,\,\hat{\theta}_2)=0.73$ entonces $V(\hat{\theta}_1)=0.73V(\hat{\theta}_2)$ entonces $\hat{\theta}_1$ se prefiere a $\hat{\theta}_2$.
+::: 
+
+::: {#thm-3.4}
+**Teorema de Lehmann-Scheffé**
+Si $\hat{\theta}$ es un estimador insesgado para $\theta$ y si $U$ es un estadístico suficiente para $\theta$, entonces hay una función de $U$ que también es un estimador insesgado para $\theta$ y tiene una varianza no mayor que $\hat{\theta}$.
+
+En símbolos:
+
+Si $E(\hat{\theta})=\theta$ y $U$ es suficiente para $\theta$ entonces existe una $f(U)$ tal que
+$$E(f(U))=\theta$$
+y
+$$Var(\hat{\theta})\geq Var(f(U))$$
+:::
+
+:::  {#exm-3.10}
+**Contexto del teorema**
+
+Un **estimador insesgado** de $\theta$ es una variable aleatoria $\hat{\theta}$ que cumple:
+
+$$
+E(\hat{\theta}) = \theta.
+$$
+
+Un **estadístico suficiente** $U$ para $\theta$ contiene toda la información de la muestra acerca de $\theta$. Es decir, dados $U$, la muestra completa no aporta nada más sobre $\theta$.
+
+El **Teorema de Lehmann–Scheffé** dice que si combinas estos dos elementos:
+
+- Un estimador insesgado cualquiera $\hat{\theta}$.
+- Un estadístico suficiente $U$.
+
+Entonces puedes construir una función de $U$, digamos $f(U)$, que:
+
+- también es insesgado,
+- tiene varianza menor o igual a la de $\hat{\theta}$.
+
+De hecho, el resultado formal se apoya en el **Teorema de Rao–Blackwell**:
+
+$$
+f(U) = E(\hat{\theta} \mid U).
+$$
+
+Esta transformación se llama **Rao-Blackwellización**.  
+Y el teorema de Lehmann–Scheffé añade que, si $U$ además de suficiente es **completo**, entonces ese $f(U)$ es el **único estimador insesgado de varianza mínima** (UMVUE: *Uniformly Minimum Variance Unbiased Estimator*).
+
+---
+
+**2. Intuición**
+
+- Empiezas con cualquier estimador insesgado $\hat{\theta}$.
+- Si “condicionas” en la estadística suficiente $U$, eliminas ruido innecesario que no aporta información sobre $\theta$.
+- Eso reduce (o al menos no aumenta) la varianza del estimador.
+- El resultado es un estimador más eficiente.
+
+---
+
+**3. Ejemplo clásico**
+
+**Contexto**
+Supongamos que:
+
+$$
+X_1, X_2, \dots, X_n \overset{iid}{\sim} \text{Bernoulli}(p),
+$$
+
+donde el parámetro de interés es $p$.
+
+---
+
+**Paso 1: un estimador insesgado cualquiera**
+
+Consideremos el estimador basado sólo en el primer dato:
+
+$$
+\hat{p} = X_1.
+$$
+
+Claramente:
+
+$$
+E(\hat{p}) = E(X_1) = p.
+$$
+
+Así que es insesgado, pero muy ineficiente (usa un solo dato).
+
+---
+
+**Paso 2: estadístico suficiente**
+
+El número total de éxitos:
+
+$$
+U = \sum_{i=1}^n X_i
+$$
+
+es un estadístico suficiente para $p$ (por factorización de la verosimilitud).
+
+---
+
+**Paso 3: aplicar Rao–Blackwell**
+
+Construimos:
+
+$$
+f(U) = E(\hat{p} \mid U).
+$$
+
+Como $\hat{p} = X_1$, necesitamos $E(X_1 \mid U)$.  
+Por simetría, dado que hay $U$ éxitos en total entre $n$ ensayos, cada $X_i$ tiene la misma probabilidad de ser 1. Entonces:
+
+$$
+E(X_1 \mid U) = \frac{U}{n}.
+$$
+
+Así:
+
+$$
+f(U) = \frac{U}{n}.
+$$
+
+---
+
+**Paso 4: verificar propiedades**
+
+- **Insesgado:**
+
+$$
+E\left(\frac{U}{n}\right) = \frac{1}{n}E(U) = \frac{1}{n}(np) = p.
+$$
+
+- **Varianza:**
+
+$$
+Var(X_1) = p(1-p),
+$$
+
+$$
+Var\left(\frac{U}{n}\right) = \frac{1}{n^2} Var(U) = \frac{1}{n^2}(np(1-p)) = \frac{p(1-p)}{n}.
+$$
+
+Y efectivamente:
+
+$$
+\frac{p(1-p)}{n} \leq p(1-p).
+$$
+
+---
+
+**4. Conclusión**
+
+El estimador inicial $\hat{p} = X_1$ era insesgado pero ineficiente.
+
+Rao–Blackwellizando con el suficiente $U$, obtuvimos:
+
+$$
+f(U) = \frac{U}{n},
+$$
+
+que es la **media muestral**.
+
+Por Lehmann–Scheffé, como $U$ es suficiente y completo, $\bar{X} = U/n$ es el **UMVUE de $p$**.
+:::
+
+### Teorema de Cramér-Rao. Información de Fisher
+
+::: {.definition #def-3.3}
+Diremos que un estimador $W^{*}$ es el mejor estimador insesgado de $\tau(\theta)$, o el UMVUE (Uniformly Minimum Variance Unbiased Estimator) **(estimador insesgado de $\tau(\theta)$ uniformemente de mínima varianza)** , si
+$E_\theta(W^{*}) = \tau(\theta)$ para todo $\theta\in\Theta$ y si para cualquier otro estimador $W$ , tal que $E_\theta(W) = \tau(\theta)$ para todo $\theta\in\Theta$, se tiene que $V_\theta(W^{*}) \leq V_\theta(W)$, para todo  $\theta\in\Theta$.
+::: 
+
+**La búsqueda del UMVUE no debe consistir en repasar todos los estimadores insesgados posibles. El siguiente resultado aborda
+	el problema de un modo diferente: establece una cota inferior para la varianza de todos los estimadores insesgados de un parámetro. Así, si encontramos un estimador insesgado cuya varianza iguale esa cota podremos concluir que ese estimador es el UMVUE.**
+
+
+::: {#thm-3.5}
+Sea $\underset{\sim}{X} =(X_1,\ldots, X_n)$ una variable aleatoria n-dimensional con función de densidad conjunta $f ( \underset{\sim}{x}|\theta)$, $\theta\in\Theta\subseteq\mathbb{R}$. Sea $W(\underset{\sim}{X} )$ un estimador insesgado para $\tau(\theta)$, es decir, $E_\theta(W(\underset{\sim}{X})) = \tau(\theta)$ para todo $\theta$, donde $\tau$ es una función de $\theta$ que cumple:
+
+H1: $\tau(\theta)$ es diferenciable en $\theta$.
+
+H2: Se supone además que la verosimilitud conjunta $f(\underset{\sim}{x}|\theta)$ verifica que para cualquier función $h(\underset{\sim}{x})$ tal que $E_\theta|h(\underset{\sim}{X})| < \infty$ se tiene que
+
+$$
+\begin{align}
+&\frac{d}{d\theta}\int\dotsc\int h(\underset{\sim}{x})f (\underset{\sim}{x}|\theta)dx_1\ldots dx_n\nonumber\\
+&=\int\dotsc\int h(\underset{\sim}{x})\left[\frac{\partial}{\partial\theta}f (\underset{\sim}{x}|\theta)\right]dx_1\ldots dx_n
+\end{align}
+$$
+
+Entonces, 
+\begin{align}
+V_\theta(W(\underset{\sim}{X} ))\geq\frac{\left(\frac{d}{d\theta}\tau(\theta)\right)^2}{E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f(\underset{\sim}{X}|\theta)\right)^2\right]}
+\end{align}
+A la cantidad del lado derecho de la desigualdad anterior se la denomina **Cota de Cramér-Rao**.
+::: 
+
+
+
+::: {.callout-note appearance="default" icon="false" #nte-3.2}
+Nota: El teorema de Cramér-Rao es igualmente válido en el caso discreto. En este caso la hipótesis H2 afirma que pueden intercambiarse el sumatorio y la diferenciación.
+::: 
+
+
+1. Un estimador insesgado para $\tau(\theta)$ se denomina \textcolor{red}{eficiente} si su varianza es la mínima posible, es decir, si es igual a la cota de Cramér-Rao.
+
+2. La eficiencia de un estimador insesgado se define como el cociente entre la cota de Cramér-Rao y su varianza.
+
+3. Es un valor menor o igual que 1 si se dan las hipótesis del teorema de Cramér-Rao.
+
+En la demostración del teorema de Cramér-Rao se ha probado que
+
+$$
+\begin{align}
+E_\theta(S(\theta))&=E_\theta(S(\theta|\underset{\sim}{X}))\nonumber\\
+&=E_\theta\left(\frac{\partial}{\partial \theta}\log L(\theta|\underset{\sim}{X})\right)=0
+\end{align}
+$$
+Obsérvese que para obtener el estimador máximo verosímil de $\theta$ lo que se hace es resolver la ecuación
+\begin{align}
+	S(\theta|\underset{\sim}{X})=0
+\end{align}
+lo que equivale a buscar el valor de $\theta$ para el cual el valor de $S(\theta|\underset{\sim}{X})$ coincide con su valor esperado.
+
+
+A la cantidad que aparece en el denominador de la cota de Cramér-Rao se le denomina cantidad de **información de Fisher** que sobre $\theta$ contiene el
+vector $\underset{\sim}{X}$:
+
+$$
+\begin{align}
+\mathscr{I}_{E}(\theta)=\mathscr{I}_{\underset{\sim}{X}}(\theta)&=E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{X}|\theta)\right)^2\right]\\
+&=V\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{X}|\theta)\right)\\
+&=V(S(\theta|\underset{\sim}{X}))
+\end{align}
+$$
+
+
+Se denomina **cantidad de información de Fisher** que sobre $\theta$ contiene la variable $X_i$ a 
+$$
+\begin{align}
+	&=E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(X|\theta)\right)^2\right]\\
+	&=V\left(\frac{\partial}{\partial \theta}\log f_{X_i}(X|\theta)\right)\\
+	&=V(S(\theta|X_i))
+	\end{align}
+$$
+
+Cuando $\underset{\sim}{X}=(X_1,\ldots, X_n)$ es una muestra aleatoria simple de $X$ se verifica que la información de Fisher contenida en la muestra es la suma de las informaciones
+contenidas en cada una de las observaciones y, dado que éstas son idénticamente distribuidas, se tiene que
+
+$$
+\begin{align}
+\mathscr{I}_{E}(\theta)=\mathscr{I}_{\underset{\sim}{X}}(\theta)=n\mathscr{I}_{X}(\theta)
+\end{align}
+$$
+Este resultado es consecuencia del siguiente corolario del teorema de Cramér-Rao:
+
+::: {#cor-3.1}
+Bajo las hipótesis del teorema de Cramér-Rao, si $\underset{\sim}{X}=(X_1,\ldots, X_n)$ es una muestra aleatoria simple de $X$ con distribución dada por $f(x|\theta)$ entonces
+$$
+\begin{align*}
+\mathscr{I}_{E}(\theta)=\mathscr{I}_{\underset{\sim}{X}}(\theta)&=E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{X}|\theta)\right)^2\right]\\
+&=nE_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X}(X|\theta)\right)^2\right]\\
+&=n\mathscr{I}_{X}(\theta)
+\end{align*}
+$$
+:::
+
+
+::: {.proof}
+Por independencia, la verosimilitud de $\underset{\sim}{X}$ es el producto de verosimilitudes, luego
+	\begin{align}
+	\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)&=\frac{\partial}{\partial \theta}\sum_{i=1}^{n}\log f_{X}(x_i|\theta)\nonumber\\
+	&=\sum_{i=1}^{n}\frac{\partial}{\partial \theta}\log f_{X}(x_i|\theta)
+	\end{align}
+	Por lo tanto,
+
+$$
+\begin{align}
+E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)\right)^2\right]&=E_\theta\left[\left(\sum_{i=1}^{n}\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)^2\right]\nonumber\\
+=&\sum_{i=1}^{n}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)^2\right]\nonumber\\
++&\sum_{i\neq j}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\frac{\partial}{\partial \theta}\log f_{X_j}(x_j|\theta)\right)\right]
+\end{align}
+$$ {#eq-col3}
+
+La segunga igualdad de @eq-col3 se tiene por que $\left(\sum_{i=1}^{n}a_i\right)^2=\sum_{i=1}^{n}a_i^2+\sum_{i\neq j}a_ia_j$. Pero la segunda sumatoria es igual a cero debido a la independencia entre $X_i$ y $X_j$ y dado que las funciones score tienen esperanza 0, según se vio en la demostración del teorema de Cramér-Rao.
+$$
+\begin{align}
+E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)\right)^2\right]
+		=&\sum_{i=1}^{n}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)^2\right]\nonumber\\
+		+&\sum_{i\neq j}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)\left(\frac{\partial}{\partial \theta}\log f_{X_j}(x_j|\theta)\right)\right]\nonumber\\
+		=&\sum_{i=1}^{n}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)^2\right]\nonumber\\
+\end{align}
+$$ {#eq-col31}
+::: 
+	
+
+::: {#lem-3.1}
+Si la función de verosimilitud satisface:
+
+H3: Se supone que la verosimilitud conjunta $f (\underset{\sim}{x}|\theta)$ verifica que para cualquier función $h(\underset{\sim}{x})$ tal que $E_\theta|h(\underset{\sim}{X})| < \infty$ se tiene que
+$$
+\begin{align}
+&\frac{\partial^2}{\partial\theta^2}\int\dotsc\int h(\underset{\sim}{x})f (\underset{\sim}{x}|\theta)dx_1\ldots dx_n\nonumber\\
+&=\int\dotsc\int h(\underset{\sim}{x})\left[\frac{\partial^2}{\partial\theta^2}f (\underset{\sim}{x}|\theta)\right]dx_1\ldots dx_n
+\end{align}
+$$
+
+Entonces 
+$$
+\begin{align}
+\mathscr{I}_{X}(\theta)=E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X}(x|\theta)\right)^2\right]=-E_\theta\left[\frac{\partial^2}{\partial \theta^2}\log f_{X}(x|\theta)\right]
+\end{align}
+$$
+::: 
+
+
+
+::: {.proof}
+$$
+\begin{align}
+		\frac{\partial^2}{\partial \theta^2}\log f_{X}(x|\theta)&=\frac{\partial}{\partial \theta}\left[\frac{1}{f_{X}(x|\theta)}\left(\frac{\partial}{\partial \theta}f_{X}(x|\theta)\right)\right]\nonumber\\
+		&=-\frac{1}{f^2_{X}(x|\theta)}\left(\frac{\partial}{\partial \theta}f_{X}(x|\theta)\right)^2\nonumber\\
+		&+\frac{1}{f_{X}(x|\theta)}\frac{\partial^2}{\partial \theta^2}f_{X}(x|\theta)
+\end{align}
+$$
+Por otro lado, 
+$$
+\begin{align}
+	E_\theta\left[\frac{1}{f_{X}(x|\theta)}\frac{\partial^2}{\partial \theta^2}f_{X}(x|\theta)\right]&=\int\frac{\partial^2}{\partial \theta^2}f_{X}(x|\theta)dx\nonumber\\
+	&\overset{\text{H3}}{=}\frac{d^2}{d \theta^2}\int f_{X}(x|\theta)dx\nonumber\\
+	&=\frac{d^2}{d \theta^2}1 =0
+\end{align}
+$$
+Así pues, 
+$$
+\begin{align}
+		E_\theta\left[\frac{\partial^2}{\partial \theta^2}\log f_{X}(x|\theta)\right]
+		&=-E_\theta\left[\frac{1}{f^2_{X}(x|\theta)}\left(\frac{\partial}{\partial \theta}f_{X}(x|\theta)\right)^2\right]\nonumber\\
+		&=-E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X}(x|\theta)\right)^2\right]\nonumber\\
+		&=-\mathscr{I}_{X}(\theta)
+		\end{align}
+$$
+::: 
+
+1. En general, el teorema de Cramér-Rao no es aplicable si el soporte de $f(x|\theta)$
+depende del parámetro $\theta$ debido a que la derivada y la integral no son intercambiables si los límites de integración dependen de $\theta$.
+
+2. Aunque el teorema de Cramér-Rao pueda ser aplicado y la cota de Cramér-Rao sea efectiva, no hay garantías de que esta cota sea alcanzada por algún estimador insesgado del parámetro. 
+
+
+::: {#cor-3.2}
+Sea $X_1 , \ldots, X_n$ una muestra aleatoria simple de $X$ con distribución dada por $f(x|\theta)$, $\theta\in\mathbb{R}$, donde $f$ satisface las hipótesis del teorema de Cramér-Rao. Sea $L(\theta|\underset{\sim}{x}) = \prod_{i=1}^{n}f(x_i|\theta)$ la función de verosimilitud. Sea
+$W (\underset{\sim}{x}) = W(X_1 , \ldots, X_n)$ un estimador insesgado de $\tau(\theta)$. Entonces $W(\underset{\sim}{x})$ alcanza la cota de Cramér-Rao si y sólo si existe una función $a(\theta)$ tal que se tiene la igualdad
+$$
+\begin{align}
+a(\theta)(W(\underset{\sim}{x})-\tau(\theta))=\frac{\partial}{\partial\theta}\log L(\theta|\underset{\sim}{x}) \mbox{ para todo $\theta$}
+\end{align}
+$$
+::: 
+
+Además, el enunciado del corolario @cor-3.2 ocurre sí y sólo sí existen funciones $h(\theta)$, $k(\theta)$ y $u(\underset{\sim}{x})$ tales que 
+
+$$
+\begin{align}
+L(\theta|\underset{\sim}{x})=u(\underset{\sim}{x})h(\theta)\exp\{W(\underset{\sim}{x})k(\theta)\}
+\end{align}
+$$
+es decir, si y sólo si la distribución de partida pertenece a **la familia exponencial**.
+
+
+\begin{frame}
+	\frametitle{Bibliografía}
+	
+	Algunos libros que recomiendo: 
+	\bibliographystyle{plain}
+	\bibliography{bibliografia}
+\end{frame}
+
+---
+## Referencias
+
+- **Gómez, Guadalupe**, & **Delicado, Pedro** (2006). *Curso de Inferencia y Decisión*. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.
+
+- **Wackerly, D. D., Mendenhall, W.**, & **Scheaffer, R. L.** (2008). **Estadística matemática con aplicaciones** (7ª ed.). Cengage Learning.
+
+- **Roussas, G. G.** (1997). **A Course in Mathematical Statistics** (2nd ed.). Academic Press.
+
+- **Kalbfleisch, J. G. Probability and Statistical Inference**. Springer-Verlag, 1985.
+
+
 
 

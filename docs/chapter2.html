@@ -187,6 +187,24 @@ window.Quarto = {
   </ul>
 </li>
   <li><a href="#m%C3%A9todo-de-momentos" id="toc-método-de-momentos" class="nav-link" data-scroll-target="#m%C3%A9todo-de-momentos"><span class="header-section-number">3.4</span> Método de momentos</a></li>
+  <li><a href="#estimadores-de-m%C3%A1xima-verosimilitud" id="toc-estimadores-de-máxima-verosimilitud" class="nav-link" data-scroll-target="#estimadores-de-m%C3%A1xima-verosimilitud"><span class="header-section-number">3.5</span> Estimadores de máxima verosimilitud</a></li>
+  <li>
+<a href="#c%C3%A1lculo-del-estimador-m%C3%A1ximo-veros%C3%ADmil" id="toc-cálculo-del-estimador-máximo-verosímil" class="nav-link" data-scroll-target="#c%C3%A1lculo-del-estimador-m%C3%A1ximo-veros%C3%ADmil"><span class="header-section-number">3.6</span> Cálculo del estimador máximo verosímil</a>
+  <ul class="collapse">
+<li><a href="#preguntas-sobre-x" id="toc-preguntas-sobre-x" class="nav-link" data-scroll-target="#preguntas-sobre-x"><span class="header-section-number">3.6.1</span> Preguntas sobre <span class="math inline">\(X\)</span></a></li>
+  <li><a href="#principio-de-invarianza-del-estimador-m%C3%A1ximo-veros%C3%ADmil" id="toc-principio-de-invarianza-del-estimador-máximo-verosímil" class="nav-link" data-scroll-target="#principio-de-invarianza-del-estimador-m%C3%A1ximo-veros%C3%ADmil"><span class="header-section-number">3.6.2</span> Principio de invarianza del estimador máximo verosímil</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#error-cuadr%C3%A1tico-medio" id="toc-error-cuadrático-medio" class="nav-link" data-scroll-target="#error-cuadr%C3%A1tico-medio"><span class="header-section-number">3.7</span> Error cuadrático medio</a>
+  <ul class="collapse">
+<li><a href="#observaciones-sobre-el-ecm" id="toc-observaciones-sobre-el-ecm" class="nav-link" data-scroll-target="#observaciones-sobre-el-ecm"><span class="header-section-number">3.7.1</span> Observaciones sobre el ECM</a></li>
+  <li><a href="#eficiencia-relativa" id="toc-eficiencia-relativa" class="nav-link" data-scroll-target="#eficiencia-relativa"><span class="header-section-number">3.7.2</span> Eficiencia relativa</a></li>
+  <li><a href="#mejor-estimador-insesgado." id="toc-mejor-estimador-insesgado." class="nav-link" data-scroll-target="#mejor-estimador-insesgado."><span class="header-section-number">3.7.3</span> Mejor estimador insesgado.</a></li>
+  <li><a href="#teorema-de-cram%C3%A9r-rao.-informaci%C3%B3n-de-fisher" id="toc-teorema-de-cramér-rao.-información-de-fisher" class="nav-link" data-scroll-target="#teorema-de-cram%C3%A9r-rao.-informaci%C3%B3n-de-fisher"><span class="header-section-number">3.7.4</span> Teorema de Cramér-Rao. Información de Fisher</a></li>
+  </ul>
+</li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">3.8</span> Referencias</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -391,7 +409,7 @@ Esto es la base de:</p>
 </ul>
 <p>🎯 <strong>Ejemplo: Estimación del percentil 90 del ingreso mensual</strong></p>
 <p>📌 Contexto Supón que quieres estimar el ingreso mensual <strong>por debajo del cual se encuentran el 90% de las personas</strong> en una ciudad.<br>
-No conoces la distribución real del ingreso ( F(x) ), pero tienes una muestra de datos.</p>
+No conoces la distribución real del ingreso $ F(x) $, pero tienes una muestra de datos.</p>
 <hr>
 <p><strong>Paso a paso</strong></p>
 <ol type="1">
@@ -623,6 +641,686 @@ Important&nbsp;3.1
 Si <span class="math inline">\(X\sim Exp(\lambda)\)</span> con <span class="math inline">\(E(X)=\frac{1}{\lambda}\)</span>, entonces <span class="math inline">\(m_{1,n}=\frac{1}{\hat{\lambda}_M}\)</span> <span class="math inline">\(\Longrightarrow \hat{\lambda}_M=\frac{1}{m_{1,n}}\Longrightarrow \hat{\lambda}_M=\frac{1}{\bar{X}}\)</span>.
 <p>Si <span class="math inline">\(X\sim B(n,p)\)</span>, con <span class="math inline">\(E(X)=np\)</span> y <span class="math inline">\(Var(X)=npq\)</span>, entonces <span class="math inline">\(m_{1,n}=n\hat{p}\)</span> <span class="math inline">\(\Longrightarrow\)</span> <span class="math inline">\(\frac{m_{1,n}}{n}=\hat{p}\)</span> <span class="math inline">\(\Longrightarrow\)</span> <span class="math inline">\(\frac{\bar{X}}{n}=\hat{p}\)</span> <span class="math inline">\(\Longrightarrow\)</span> <span class="math inline">\(\hat{Var(X)}=n\hat{p}(1-\hat{p})\)</span>.</p>
 </div>
+</section><section id="estimadores-de-máxima-verosimilitud" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="estimadores-de-máxima-verosimilitud">
+<span class="header-section-number">3.5</span> Estimadores de máxima verosimilitud</h2>
+</section><section id="cálculo-del-estimador-máximo-verosímil" class="level2" data-number="3.6"><h2 data-number="3.6" class="anchored" data-anchor-id="cálculo-del-estimador-máximo-verosímil">
+<span class="header-section-number">3.6</span> Cálculo del estimador máximo verosímil</h2>
+<p>Sea <span class="math inline">\(\underset{\sim}{X} =(X_1,\ldots, X_n)\)</span> una muestra aleatoria simple de una variable aleatoria <span class="math inline">\(X\)</span> con función de densidad (o de masa de probabilidad) <span class="math inline">\(f(\underset{\sim}{x}|\theta)\)</span>, con <span class="math inline">\(\theta = (\theta_1,\ldots,\theta_k) \in \Theta \subseteq \mathbb{R}^k\)</span> . Sea <span class="math inline">\(\mathcal{X}\)</span> el espacio muestral, es decir, el conjunto de todos los posibles valores de <span class="math inline">\(\underset{\sim}{X}\)</span> . Hemos definido la para <span class="math inline">\(\underset{\sim}{x} =(x_1,\ldots, x_n )\in \mathcal{X}\)</span> como <span class="math display">\[
+    \begin{align}
+    L(\cdot|\underset{\sim}{x}):&amp;\Theta\rightarrow \mathbb{R}^+\nonumber\\
+    &amp;\theta\rightarrow L(\theta|\underset{\sim}{x})=f(\underset{\sim}{x}|\theta)=\prod_{i=1}^{n}f(x_i|\theta)
+    \end{align}
+\]</span></p>
+<section id="preguntas-sobre-x" class="level3" data-number="3.6.1"><h3 data-number="3.6.1" class="anchored" data-anchor-id="preguntas-sobre-x">
+<span class="header-section-number">3.6.1</span> Preguntas sobre <span class="math inline">\(X\)</span>
+</h3>
+<p>Para cada muestra <span class="math inline">\(\underset{\sim}{x} \in \underset{\sim}{X}\)</span> , el estimador de máxima verosimilitud <span class="math inline">\(\hat{\theta}\)</span> de <span class="math inline">\(\theta\)</span> es el valor de <span class="math inline">\(\Theta\)</span> que hace máxima la verosimilitud <span class="math inline">\(L(\cdot|\underset{\sim}{x})\)</span>: <span class="math display">\[
+\begin{align}
+L(\hat{\theta}| \underset{\sim}{x} ) = \max_{\theta \in \Theta} L(\theta|\underset{\sim}{x}).
+\end{align}
+\]</span> Intuitivamente <span class="math inline">\(\hat{\theta}\)</span> es el valor del parámetro que hace más verosímil la muestra observada. Veremos más adelante que los estimadores de máxima verosimilitud son muy buenos estimadores y que en general tienen propiedades de optimalidad. Además, en muchas ocasiones el estimador máximo verosímil es el que el sentido común nos llevaría a proponer.</p>
+<div id="exm-3.4" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.4</strong></span> Si <span class="math inline">\(X\sim Exp(\lambda)\Longrightarrow f(x|\lambda)=\lambda\exp\{-\lambda x\}I_{[0,\infty)}(x)\)</span>, <span class="math inline">\(\lambda&gt;0\)</span></p>
+<p>Se toma una muestra de tamaño <span class="math inline">\(n=1\)</span> y se observa que <span class="math inline">\(x=3\)</span>. Estudiamos la función de verosimilitud <span class="math inline">\(L(\lambda|3)=\lambda\exp\{-3\lambda\}\)</span> y buscamos su máximo para <span class="math inline">\(\lambda&gt;0\)</span>.</p>
+<p>Buscamos los valores de <span class="math inline">\(\lambda\)</span> que hacen la derivada cero de <span class="math inline">\(L(\lambda|3)\)</span>: <span id="eq-maxver_exp"><span class="math display">\[  
+\begin{align}
+\label{maxver_exp}
+L^{'}(\lambda|3)&amp;=\exp\{-3\lambda\}(1-3\lambda)
+\end{align}
+\tag{3.1}\]</span></span> Igualando a cero la expresión (<a href="#eq-maxver_exp" class="quarto-xref">Equation&nbsp;<span>3.1</span></a>) se tiene que <span class="math inline">\(\lambda=\frac{1}{3}\)</span>. Como <span class="math inline">\(L^{'}(\lambda|3)\geq 0\)</span> y <span class="math display">\[
+\begin{align}
+\lim _{\lambda\to 0}L(\lambda|3)=\lim _{\lambda\to \infty}L(\lambda|3)=0
+\end{align}
+\]</span> Se sigue que el punto crítico de <span class="math inline">\(L(\lambda|3)\)</span> es un máximo. Así, <span class="math inline">\(\hat{\lambda}=\frac{1}{3}\)</span></p>
+</div>
+<div id="exm-3.5" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.5</strong></span> Suponga que deseamos estimar <span class="math inline">\(\theta\)</span>, la proporción de personas con tuberulosis en una gran población homogénea. Para hacer esto, seleccionamos de manera aleatoria <span class="math inline">\(n\)</span> personas para hacer pruebas y encontrar <span class="math inline">\(x\)</span> de estos que tienen la enfermedad.</p>
+<p>Ya que la población es grande y homogénea, asumimos que los <span class="math inline">\(n\)</span> individuos observados son independiente y que cada uno tiene probabilidad <span class="math inline">\(\theta\)</span> de tener tuberculosis.</p>
+<p>Si <span class="math inline">\(E\)</span> es el evento tiene tuberculosis <span id="eq-Kalbfleish1"><span class="math display">\[
+\begin{align}
+P(E;\theta)&amp;=P(\mbox{x entre n tienen tuberculosis})\nonumber\\
+&amp;=\binom{n}{x}\theta^x(1-\theta)^{n-x}
+\end{align}
+\tag{3.2}\]</span></span> Observe que <span class="math inline">\(\binom{n}{x}\)</span> es un factor constante no tendrá efecto sobre la maximización de la expresión (<a href="#eq-Kalbfleish1" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) sobre <span class="math inline">\(\theta\)</span>, ver (kalbfleisch et al.&nbsp;(1985)). La función de verosimilitud de <span class="math inline">\(\theta\)</span> es definida como sigue: <span id="eq-ver"><span class="math display">\[
+\begin{align}
+L(\theta)=cP(E;\theta)
+\end{align}
+\tag{3.3}\]</span></span> Acá <span class="math inline">\(c\)</span> es alguna constante positiva con respecto a <span class="math inline">\(\theta\)</span>; esto es, <span class="math inline">\(c\)</span> no es función de <span class="math inline">\(\theta\)</span>, sin embargo esta debe ser función de los datos. Escogemos <span class="math inline">\(c\)</span> para obtener una expresión simple para <span class="math inline">\(L(\theta)\)</span>, y resultados subsecuentes no dependerán de la escogencia específica hecha.</p>
+<p>Usualmente <span class="math inline">\(P(E;\theta)\)</span> y <span class="math inline">\(L(\theta)\)</span> son productos de términos y será más conveniente trabajar con logaritmos. La función <strong>logverosimilitud</strong> es el logaritmo de <span class="math inline">\(L\)</span>:</p>
+<p><span id="eq-logver"><span class="math display">\[
+\begin{align}
+l(\theta)=log L(\theta)
+\end{align}
+\tag{3.4}\]</span></span> Observe que, por (<a href="#eq-ver" class="quarto-xref">Equation&nbsp;<span>3.3</span></a>) <span id="eq-logver2"><span class="math display">\[
+\begin{align}
+l(\theta)=c^{'}+log P(E;\theta)
+\end{align}
+\tag{3.5}\]</span></span> donde <span class="math inline">\(c^{'}=log c\)</span> no es una función de <span class="math inline">\(\theta\)</span>.</p>
+<p>Por la expresión (<a href="#eq-Kalbfleish1" class="quarto-xref">Equation&nbsp;<span>3.2</span></a>) se tiene que</p>
+<p><span class="math display">\[
+\begin{align}
+c=\frac{1}{\binom{n}{x}},
+\end{align}
+\]</span> entonces <span id="eq-ver2"><span class="math display">\[
+\begin{align}
+L(\theta)=\theta^x(1-\theta)^{n-x}, \mbox{para } 0\leq\theta\leq1
+\end{align}
+\tag{3.6}\]</span></span> La función de log verosimilitud es ahora <span id="eq-logver2"><span class="math display">\[
+\begin{align}
+l(\theta)=xlog(\theta)+(n-x)log(1-\theta), \mbox{para } 0\leq\theta\leq1
+\end{align}
+\tag{3.7}\]</span></span> El estimador de máxima verosimilitud (MDL) <span class="math inline">\(\hat{\theta}\)</span> es el valor de <span class="math inline">\(\theta\)</span> el cual maximiza <span class="math inline">\(l(\theta)\)</span>.</p>
+<p>Tomando la derivada respecto a <span class="math inline">\(\theta\)</span> de (<a href="#eq-logver" class="quarto-xref">Equation&nbsp;<span>3.4</span></a>) se tiene que <span id="eq-Score"><span class="math display">\[
+    \begin{align}
+    S(\theta)&amp;=\frac{dl(\theta)}{d\theta}\nonumber\\
+    &amp;=\frac{x}{\theta}-\frac{n-x}{1-\theta}
+    \end{align}
+\tag{3.8}\]</span></span> Haciendo cero a <span class="math inline">\(S(\theta)\)</span> tiene una única solución <span class="math inline">\(\theta=\frac{x}{n}\)</span>, para <span class="math inline">\(1\leq x\leq n-1\)</span>. Bajo estas mismas condiciones tomamos la segunda derivada y la multiplicamos por <span class="math inline">\(-1\)</span> en la siguiente expresión</p>
+<p><span id="eq-Inf"><span class="math display">\[
+\begin{align}
+\mathscr{I}(\theta)&amp;=-\frac{dS(\theta)}{d\theta}\nonumber\\
+&amp;=\frac{x}{\theta^2}+\frac{n-x}{(1-\theta)^2}
+\end{align}
+\tag{3.9}\]</span></span></p>
+<p>Ya que <span class="math inline">\(\mathscr{I}(\theta)&gt;0\)</span> en <span class="math inline">\(\theta=\frac{x}{n}\)</span>, la función de verosimilitud tiene un máximo relativo en <span class="math inline">\(\theta=\frac{x}{n}\)</span>. Más aún, <span class="math inline">\(L(\theta)=0\)</span> para <span class="math inline">\(\theta=0\)</span> y para <span class="math inline">\(\theta=1\)</span>, hemos encontrado con esto un máximo global en <span class="math inline">\(\hat{\theta}=\frac{x}{n}\)</span>.</p>
+<p>A las funciones <span class="math inline">\(S(\theta)\)</span> y <span class="math inline">\(\mathscr{I}(\theta)\)</span> definidas en (<a href="#eq-Score" class="quarto-xref">Equation&nbsp;<span>3.8</span></a>}) y (<a href="#eq-Inf" class="quarto-xref">Equation&nbsp;<span>3.9</span></a>), se les llama <strong>función Score</strong> y <strong>función de información</strong> respectivamente.</p>
+</div>
+</section><section id="principio-de-invarianza-del-estimador-máximo-verosímil" class="level3" data-number="3.6.2"><h3 data-number="3.6.2" class="anchored" data-anchor-id="principio-de-invarianza-del-estimador-máximo-verosímil">
+<span class="header-section-number">3.6.2</span> Principio de invarianza del estimador máximo verosímil</h3>
+<p>Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> muestra aleatoria simple de <span class="math inline">\(X\sim f(x|\theta)\)</span> y sea <span class="math inline">\(\hat{\theta}\)</span> el estimador máximo verosímil de <span class="math inline">\(\theta\)</span>. Si estamos interesados en estimar una función <span class="math inline">\(\tau(\theta)\)</span> del parámetro, podemos hacerlo mediante <span class="math inline">\(\tau(\hat{\theta})\)</span>. Éste es el resultado que garantiza el siguiente teorema y se conoce como <strong>principio de invariancia</strong>.</p>
+<div id="thm-3.3" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.3</strong></span> Si <span class="math inline">\(\hat{\theta}\)</span> es el estimador de máxima verosimilitud de <span class="math inline">\(\theta\)</span>, entonces para cualquier función <span class="math inline">\(\tau\)</span> el estimador de máxima verosimilitud de <span class="math inline">\(\tau(\theta)\)</span> es <span class="math inline">\(\tau(\hat{\theta})\)</span>.</p>
+</div>
+<div id="exm-3.6" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.6</strong></span> Sea <span class="math inline">\(X_1,\ldots,X_n\)</span> una m.a.s de <span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>. Podemos probar que el estimador de máxima verosimilitud para <span class="math inline">\(\mu\)</span>, <span class="math inline">\(\hat{\mu}=\bar{X}\)</span>. ¿Cuál es el estimador de máxima verosimilitud de <span class="math inline">\(\theta_1=3\mu\)</span>, <span class="math inline">\(\theta_2=\mu^2\)</span> y <span class="math inline">\(\theta_3=1/\mu\)</span>?</p>
+<p>Por el principio de invarianza tenemos que <span class="math inline">\(\hat{\theta_1}=3\bar{X}\)</span>, <span class="math inline">\(\hat{\theta_2}=\bar{X}^2\)</span> y <span class="math inline">\(\hat{\theta_3}=\frac{1}{\bar{X}}\)</span>.</p>
+</div>
+</section></section><section id="error-cuadrático-medio" class="level2" data-number="3.7"><h2 data-number="3.7" class="anchored" data-anchor-id="error-cuadrático-medio">
+<span class="header-section-number">3.7</span> Error cuadrático medio</h2>
+<p><strong>Una vez se han presentado diferentes métodos de estimación surge la necesidad de desarrollar criterios para evaluarlos y compararlos de acuerdo a estos criterios. En este tema estudiaremos medidas de la calidad de un estimador. Lo haremos primero para muestras finitas para pasar después a proponer medidas asintóticas de calidad.</strong></p>
+<p>Se define el error cuadrático medio (ECM) de un estimador <span class="math inline">\(W\)</span> de un parámetro <span class="math inline">\(\theta\)</span> como <span class="math display">\[
+\begin{align}
+    E_\theta((W-\theta)^2)
+\end{align}
+\]</span> Ésta es una medida intuitiva del comportamiento de un estimador: cuanto menor sea el <strong>error cuadrático medio</strong> mejor será el estadístico <span class="math inline">\(W\)</span>. De hecho, para cualquier función <span class="math inline">\(\phi\)</span> creciente con <span class="math inline">\(\phi(0) = 0\)</span>, <span class="math inline">\(E_\theta(\phi(|W- \theta|))\)</span> es una medida razonable de lo alejadas que estarán, en promedio, las estimaciones de <span class="math inline">\(\theta\)</span> que proporcione W.</p>
+<p>En general, se prefiere el error cuadrático medio a otras medidas por ser más tratable analíticamente. Además el error cuadrático medio puede descomponerse <span class="math display">\[\begin{align}
+E_\theta((W-\theta)^2)&amp;=E_\theta((W-E_\theta(W))^2)+E_\theta((E_\theta(W)-\theta)^2)\nonumber\\
+&amp;=Var_\theta(W)+(B_\theta(W))^2
+\end{align}\]</span> El término <span class="math inline">\(B_\theta(W) = E_\theta(W)-\theta\)</span> se llama (en inglés bias) de <span class="math inline">\(W\)</span> cuando se estima <span class="math inline">\(\theta\)</span> y es una medida de la desviación sistemática que se tiene cuando se estima <span class="math inline">\(\theta\)</span> por <span class="math inline">\(W\)</span>. Si un estimador tiene sesgo nulo para cualquier valor del parámetro se dice que es un estimador <strong>insesgado</strong>. En tal caso, <span class="math inline">\(E_\theta((W-\theta)^2)=Var_\theta(W)\)</span>.</p>
+<section id="observaciones-sobre-el-ecm" class="level3" data-number="3.7.1"><h3 data-number="3.7.1" class="anchored" data-anchor-id="observaciones-sobre-el-ecm">
+<span class="header-section-number">3.7.1</span> Observaciones sobre el ECM</h3>
+<ol type="1">
+<li><p>Así, el error cuadrático medio de un estimador es la suma de su varianza (una medida de su dispersión) más el cuadrado de su sesgo (medida de la desviación sistemática o de la exactitud del estimador).</p></li>
+<li><p>Es una medida conjunta de precisión y exactitud del estimador.</p></li>
+<li><p>Por lo tanto, parece sensato buscar estimadores que tengan error cuadrático medio pequeño, porque de esta manera controlaremos tanto la dispersión como la exactitud de las estimaciones.</p></li>
+</ol>
+<div id="fig-Precision_vs_exactitud" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure"><figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-fig" id="fig-Precision_vs_exactitud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Comparación entre precisión y exactitud
+</figcaption><div aria-describedby="fig-Precision_vs_exactitud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-Precision_vs_exactitud" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-Precision_vs_exactitud" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure"><figcaption class="quarto-float-caption-top quarto-subfloat-caption quarto-subfloat-fig" id="fig-Precision_vs_exactitud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Exactitud vs precisión
+</figcaption><div aria-describedby="fig-Precision_vs_exactitud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/Precision_vs_exactitud.jpg" class="img-fluid figure-img" data-ref-parent="fig-Precision_vs_exactitud">
+</div>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># install.packages("ggplot2")  # si hace falta</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">theta</span>    <span class="op">&lt;-</span> <span class="fl">0</span>      <span class="co"># valor "verdadero"</span></span>
+<span><span class="va">thetahat</span> <span class="op">&lt;-</span> <span class="fl">1.2</span>    <span class="co"># estimación</span></span>
+<span></span>
+<span><span class="va">x</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">theta</span> <span class="op">-</span> <span class="fl">3</span>, <span class="va">thetahat</span> <span class="op">+</span> <span class="fl">3</span>, length.out <span class="op">=</span> <span class="fl">500</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>,</span>
+<span>                 y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">thetahat</span>, sd <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># marquitas en el eje para theta y theta-hat</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">theta</span>,    xend <span class="op">=</span> <span class="va">theta</span>,    y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">*</span><span class="fl">0.03</span><span class="op">)</span>,</span>
+<span>               inherit.aes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">thetahat</span>, xend <span class="op">=</span> <span class="va">thetahat</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">*</span><span class="fl">0.03</span><span class="op">)</span>,</span>
+<span>               inherit.aes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">theta</span>,    y <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">y</span><span class="op">)</span><span class="op">*</span><span class="fl">0.05</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">thetahat</span>, y <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">y</span><span class="op">)</span><span class="op">*</span><span class="fl">0.05</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribución de estimaciones"</span>, x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">y</span><span class="op">)</span><span class="op">*</span><span class="fl">0.08</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">y</span><span class="op">)</span><span class="op">*</span><span class="fl">1.05</span><span class="op">)</span>, clip <span class="op">=</span> <span class="st">"off"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    axis.text.y  <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.ticks.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    plot.margin  <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">25</span>, <span class="fl">20</span><span class="op">)</span> <span class="co"># deja espacio para las etiquetas bajo el eje</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_segment(aes(x = theta, xend = theta, y = 0, yend = max(y) * : All aesthetics have length 1, but the data has 500 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_segment(aes(x = thetahat, xend = thetahat, y = 0, yend = max(y) * : All aesthetics have length 1, but the data has 500 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression
+Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Estimador de <span class="math inline">\(\theta\)</span> estará indicado por <span class="math inline">\(\hat{\theta}\)</span>.</p>
+<p><strong>Quisieramos que <span class="math inline">\(E(\hat{\theta})=\theta\)</span>.</strong></p>
+<p>La distribución muestral para un estimador puntual sesgado positivamente, para el que <span class="math inline">\(E(\hat{\theta})&gt;\theta\)</span>, se muestra en la siguiente figura</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># --- Parámetros editables ---</span></span>
+<span><span class="va">theta</span>       <span class="op">&lt;-</span> <span class="fl">0</span></span>
+<span><span class="va">E_thetahat</span>  <span class="op">&lt;-</span> <span class="fl">0.5</span>      <span class="co"># sesgo: centro de la densidad</span></span>
+<span><span class="va">thetahat</span>    <span class="op">&lt;-</span> <span class="fl">1.2</span></span>
+<span><span class="va">sd0</span>         <span class="op">&lt;-</span> <span class="fl">0.7</span>      <span class="co"># dispersión</span></span>
+<span><span class="co"># ----------------------------</span></span>
+<span></span>
+<span><span class="co"># Curva de densidad (normal centrada en E(\hat{theta}))</span></span>
+<span><span class="va">x_min</span> <span class="op">&lt;-</span> <span class="va">theta</span> <span class="op">-</span> <span class="fl">1.2</span></span>
+<span><span class="va">x_max</span> <span class="op">&lt;-</span> <span class="va">thetahat</span> <span class="op">+</span> <span class="fl">1.2</span></span>
+<span><span class="va">x</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">x_min</span>, <span class="va">x_max</span>, length.out <span class="op">=</span> <span class="fl">800</span><span class="op">)</span></span>
+<span><span class="va">y</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean <span class="op">=</span> <span class="va">E_thetahat</span>, sd <span class="op">=</span> <span class="va">sd0</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
+<span><span class="va">ymax</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Alturas EXACTAS de las barras (tocar la curva)</span></span>
+<span><span class="va">y_theta</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">theta</span>,      mean <span class="op">=</span> <span class="va">E_thetahat</span>, sd <span class="op">=</span> <span class="va">sd0</span><span class="op">)</span>  <span class="co"># altura en theta</span></span>
+<span><span class="va">y_Ethetahat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">E_thetahat</span>, mean <span class="op">=</span> <span class="va">E_thetahat</span>, sd <span class="op">=</span> <span class="va">sd0</span><span class="op">)</span>  <span class="co"># pico</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1.1</span>, lineend <span class="op">=</span> <span class="st">"round"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># ejes "a mano"</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">x_min</span>, xend <span class="op">=</span> <span class="va">x_max</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fl">0</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">x_min</span>, xend <span class="op">=</span> <span class="va">x_min</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fl">1.05</span><span class="op">*</span><span class="va">ymax</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># barra corta en theta (hasta la curva)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">theta</span>, xend <span class="op">=</span> <span class="va">theta</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="va">y_theta</span><span class="op">)</span>, inherit.aes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># barra larga en E(thetahat) (hasta el pico)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">E_thetahat</span>, xend <span class="op">=</span> <span class="va">E_thetahat</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="va">y_Ethetahat</span><span class="op">)</span>,</span>
+<span>               inherit.aes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># etiquetas bajo el eje x</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">theta</span>,      y <span class="op">=</span> <span class="op">-</span><span class="fl">0.06</span><span class="op">*</span><span class="va">ymax</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">E_thetahat</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">0.06</span><span class="op">*</span><span class="va">ymax</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu">E</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">thetahat</span>,   y <span class="op">=</span> <span class="op">-</span><span class="fl">0.06</span><span class="op">*</span><span class="va">ymax</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># etiqueta del eje y</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>,</span>
+<span>           x <span class="op">=</span> <span class="va">x_min</span> <span class="op">-</span> <span class="fl">0.03</span><span class="op">*</span><span class="op">(</span><span class="va">x_max</span> <span class="op">-</span> <span class="va">x_min</span><span class="op">)</span>, y <span class="op">=</span> <span class="fl">0.9</span><span class="op">*</span><span class="va">ymax</span>,</span>
+<span>           label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">x_min</span>, <span class="va">x_max</span><span class="op">)</span>,</span>
+<span>                  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.10</span><span class="op">*</span><span class="va">ymax</span>, <span class="fl">1.08</span><span class="op">*</span><span class="va">ymax</span><span class="op">)</span>, clip <span class="op">=</span> <span class="st">"off"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">35</span>, <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_segment(aes(x = theta, xend = theta, y = 0, yend = y_theta), : All aesthetics have length 1, but the data has 800 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_segment(aes(x = E_thetahat, xend = E_thetahat, y = 0, yend = y_Ethetahat), : All aesthetics have length 1, but the data has 800 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression
+Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression
+Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression
+Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># ===== Panel (a): arco =====</span></span>
+<span><span class="co"># soporte con ~5% a la izquierda y 95% a la derecha</span></span>
+<span><span class="va">xL</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">0.10</span></span>
+<span><span class="va">xR</span> <span class="op">&lt;-</span>  <span class="fl">2.10</span></span>
+<span><span class="va">theta</span>     <span class="op">&lt;-</span> <span class="op">(</span><span class="va">xL</span> <span class="op">+</span> <span class="va">xR</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span>    <span class="co"># centro del arco: ahí debe ir la barra</span></span>
+<span><span class="va">thetahat1</span> <span class="op">&lt;-</span> <span class="va">xR</span></span>
+<span></span>
+<span><span class="co"># definir el arco (semicircunferencia escalada)</span></span>
+<span><span class="va">c_a</span>  <span class="op">&lt;-</span> <span class="op">(</span><span class="va">xL</span> <span class="op">+</span> <span class="va">xR</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span></span>
+<span><span class="va">R_a</span>  <span class="op">&lt;-</span> <span class="op">(</span><span class="va">xR</span> <span class="op">-</span> <span class="va">xL</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span></span>
+<span><span class="va">x_a</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">xL</span>, <span class="va">xR</span>, length.out <span class="op">=</span> <span class="fl">700</span><span class="op">)</span></span>
+<span><span class="va">hsca</span> <span class="op">&lt;-</span> <span class="fl">0.95</span></span>
+<span><span class="va">y_a</span>  <span class="op">&lt;-</span> <span class="va">hsca</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">pmax</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">R_a</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="op">(</span><span class="va">x_a</span> <span class="op">-</span> <span class="va">c_a</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">dfa</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x_a</span>, y <span class="op">=</span> <span class="va">y_a</span><span class="op">)</span></span>
+<span><span class="va">ymax_a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">dfa</span><span class="op">$</span><span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># altura de la curva en theta</span></span>
+<span><span class="va">y_theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/approxfun.html">approx</a></span><span class="op">(</span><span class="va">x_a</span>, <span class="va">y_a</span>, xout <span class="op">=</span> <span class="va">theta</span><span class="op">)</span><span class="op">$</span><span class="va">y</span></span>
+<span></span>
+<span><span class="va">p_a</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dfa</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1.2</span>, lineend <span class="op">=</span> <span class="st">"round"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># ejes</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">xL</span><span class="op">-</span><span class="fl">0.3</span>, xend <span class="op">=</span> <span class="va">xR</span><span class="op">+</span><span class="fl">0.3</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fl">0</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="fl">0</span>, xend <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fl">1.05</span><span class="op">*</span><span class="va">ymax_a</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># barra en el centro (theta)</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">theta</span>, xend <span class="op">=</span> <span class="va">theta</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="va">y_theta</span><span class="op">)</span>, inherit.aes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># etiquetas</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">theta</span>,     y <span class="op">=</span> <span class="op">-</span><span class="fl">0.08</span><span class="op">*</span><span class="va">ymax_a</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">thetahat1</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">0.08</span><span class="op">*</span><span class="va">ymax_a</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="op">-</span><span class="fl">0.15</span>, y <span class="op">=</span> <span class="fl">0.9</span><span class="op">*</span><span class="va">ymax_a</span>,</span>
+<span>           label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="op">(</span><span class="va">xL</span> <span class="op">+</span> <span class="va">xR</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">0.22</span><span class="op">*</span><span class="va">ymax_a</span>, label <span class="op">=</span> <span class="st">"(a)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">xL</span><span class="op">-</span><span class="fl">0.2</span>, <span class="va">xR</span><span class="op">+</span><span class="fl">0.2</span><span class="op">)</span>,</span>
+<span>                  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.25</span><span class="op">*</span><span class="va">ymax_a</span>, <span class="fl">1.1</span><span class="op">*</span><span class="va">ymax_a</span><span class="op">)</span>, clip <span class="op">=</span> <span class="st">"off"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">40</span>, <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># ===== Panel (b): normal (sin cambios) =====</span></span>
+<span><span class="va">theta_b</span>    <span class="op">&lt;-</span> <span class="fl">1.00</span></span>
+<span><span class="va">thetahat2</span>  <span class="op">&lt;-</span> <span class="fl">1.60</span></span>
+<span><span class="va">sd_b</span>       <span class="op">&lt;-</span> <span class="fl">0.25</span></span>
+<span><span class="va">x_b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">theta_b</span> <span class="op">+</span> <span class="fl">3.2</span><span class="op">*</span><span class="va">sd_b</span>, length.out <span class="op">=</span> <span class="fl">700</span><span class="op">)</span></span>
+<span><span class="va">y_b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x_b</span>, mean <span class="op">=</span> <span class="va">theta_b</span>, sd <span class="op">=</span> <span class="va">sd_b</span><span class="op">)</span></span>
+<span><span class="va">dfb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">x_b</span>, y <span class="op">=</span> <span class="va">y_b</span><span class="op">)</span></span>
+<span><span class="va">ymax_b</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">dfb</span><span class="op">$</span><span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p_b</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dfb</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">1.2</span>, lineend <span class="op">=</span> <span class="st">"round"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="fl">0</span>, xend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x_b</span><span class="op">)</span><span class="op">+</span><span class="fl">0.3</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fl">0</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="fl">0</span>, xend <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fl">1.05</span><span class="op">*</span><span class="va">ymax_b</span>, linewidth <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_segment.html">geom_segment</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">theta_b</span>, xend <span class="op">=</span> <span class="va">theta_b</span>, y <span class="op">=</span> <span class="fl">0</span>, yend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">theta_b</span>, <span class="va">theta_b</span>, <span class="va">sd_b</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>               inherit.aes <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">theta_b</span>,   y <span class="op">=</span> <span class="op">-</span><span class="fl">0.08</span><span class="op">*</span><span class="va">ymax_b</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="va">thetahat2</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">0.08</span><span class="op">*</span><span class="va">ymax_b</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="op">-</span><span class="fl">0.15</span>, y <span class="op">=</span> <span class="fl">0.9</span><span class="op">*</span><span class="va">ymax_b</span>,</span>
+<span>           label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html">expression</a></span><span class="op">(</span><span class="fu">f</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/influence.measures.html">hat</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>, angle <span class="op">=</span> <span class="fl">90</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">x_b</span><span class="op">)</span><span class="op">+</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x_b</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">0.22</span><span class="op">*</span><span class="va">ymax_b</span>, label <span class="op">=</span> <span class="st">"(b)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_cartesian.html">coord_cartesian</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">x_b</span><span class="op">)</span><span class="op">+</span><span class="fl">0.2</span><span class="op">)</span>,</span>
+<span>                  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.25</span><span class="op">*</span><span class="va">ymax_b</span>, <span class="fl">1.1</span><span class="op">*</span><span class="va">ymax_b</span><span class="op">)</span>, clip <span class="op">=</span> <span class="st">"off"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">40</span>, <span class="fl">45</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># ===== Combinar =====</span></span>
+<span><span class="va">p_a</span> <span class="op">|</span> <span class="va">p_b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_segment(aes(x = theta, xend = theta, y = 0, yend = y_theta), : All aesthetics have length 1, but the data has 700 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression
+Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression
+Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_segment(aes(x = theta_b, xend = theta_b, y = 0, yend = dnorm(theta_b, : All aesthetics have length 1, but the data has 700 rows.
+ℹ Please consider using `annotate()` or provide this layer with data containing
+  a single row.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression
+Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression
+Warning in is.na(x): is.na() aplicado a un objeto que no es (lista o vector) de
+tipo 'expression</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La figura (b) es la distribución deseada porque una varianza pequeña garantiza que, en un muestreo repetido, una fracción más alta de valores <span class="math inline">\(\hat{\theta}_2\)</span> estará ``cerca’’ de <span class="math inline">\(\theta\)</span>.</p>
+<p>Por consiguiente, además de preferir un estimador insesgado, necesitamos que la varianza de la distribución del estimador <span class="math inline">\(V(\hat{\theta})\)</span> sea lo más pequeña posible. Dados dos estimadores insesgados de un parámetro <span class="math inline">\(\theta\)</span> seleccionamos el estimador con la menor varianza, mientras todos los demás parece igual.</p>
+<div id="exm-3.7" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.7</strong></span> Suponga que <span class="math inline">\(Y_1,Y_2,Y_3\)</span> denotan una muestra aleatoria ind de una distribuci'on exponencial con funci'on de densidad <span class="math display">\[f(y)=\left\{\begin{array}{ll}\left(\frac{1}{\theta}\right)e^{-y/\theta},&amp; y&gt;0,\\0,&amp;\mbox{ en cualquier otro punto}\end{array}\right.\]</span> Considere los siguientes estimadores de <span class="math inline">\(\theta\)</span>: <span class="math display">\[\hat{\theta}_1=Y_1,\,\,\,\,\,\,\,\,\,\,\hat{\theta}_2=\frac{Y_1+Y_2}{2},\,\,\,\,\,\,\,\,\,\,\hat{\theta}_3=\frac{Y_1+2Y_2}{3},\,\,\,\,\,\,\,\,\,\,\]</span></p>
+<p><span class="math display">\[\hat{\theta}_4=\min(Y_1,\,Y_2,\,Y_3),\,\,\,\,\,\,\,\,\,\,\hat{\theta}_5=\overline{Y}\]</span></p>
+<ol type="a">
+<li>¿Cuáles son insesgados?</li>
+</ol>
+<p><strong>Sol:</strong> Determinemos si <span class="math inline">\(\hat{\theta}_4=\min(Y_1,\,Y_2,\,Y_3)\)</span> es insesgado. Para esto, determinemos la distribución de <span class="math inline">\(\hat{\theta}_4\)</span>. Supongamos que <span class="math inline">\(Y_i\sim Exp(\lambda_i)\)</span> con <span class="math inline">\(i=1,2,3\)</span>. <span class="math display">\[
+        \begin{align}
+        P(\hat{\theta}_4&gt;a)&amp;=P(\min(Y_1,\,Y_2,\,Y_3)&gt;a)\nonumber\\
+        &amp;=P(Y_1&gt;a)P(Y_2&gt;a)P(Y_3&gt;a)\nonumber\\
+        &amp;=\exp\{-a\lambda_1\}\exp\{-a\lambda_2\}\exp\{-a\lambda_3\}\nonumber\\
+        &amp;\exp\left\{-a\left(\sum_{i=1}^{3}\lambda_i\right)\right\}
+        \end{align}
+\]</span> Así que <span class="math display">\[
+\begin{align}
+F_{\hat{\theta}_4}(a)&amp;=1-P(\hat{\theta}_4&gt;a)\nonumber\\
+&amp;=1-\exp\left\{-a\left(\sum_{i=1}^{3}\lambda_i\right)\right\}
+\end{align}
+\]</span> De ahí que <span class="math inline">\(\hat{\theta}_4\sim Exp\left(\sum_{i=1}^{3}\lambda_i\right)\)</span> entonces, <span class="math inline">\(E(\hat{\theta}_4)=\frac{1}{\sum_{i=1}^{3}\lambda_i}\)</span>. Pero por hipótesis <span class="math inline">\(\lambda_i=\frac{1}{\theta}\)</span>, para todo <span class="math inline">\(i=1,2,3\)</span>. Luego,</p>
+</div>
+<p><span class="math display">\[
+\begin{align}
+    E(\hat{\theta}_4)&amp;=\frac{1}{\sum_{i=1}^{3}\lambda_i}\nonumber\\
+    &amp;=\frac{1}{3\lambda} \mbox{ por ser las $Y_i$ son iid}\nonumber\\
+    &amp;=\frac{1}{\frac{3}{\theta}}\nonumber\\
+    &amp;=\frac{\theta}{3}
+    \end{align}
+\]</span> Luego <span class="math inline">\(\hat{\theta}_4\)</span> no es insesgado, es sesgado.</p>
+</section><section id="eficiencia-relativa" class="level3" data-number="3.7.2"><h3 data-number="3.7.2" class="anchored" data-anchor-id="eficiencia-relativa">
+<span class="header-section-number">3.7.2</span> Eficiencia relativa</h3>
+<div id="def-3.1" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 3.1</strong></span> Un estimador <span class="math inline">\(W\)</span> de <span class="math inline">\(\theta\)</span> se denomina <strong>inadmisible</strong> si existe otro estimador <span class="math inline">\(V\)</span> de <span class="math inline">\(\theta\)</span> tal que <span class="math display">\[
+\begin{align}
+E_\theta((V-\theta)^2)\leq E_\theta((W-\theta)^2) \mbox{ para todo $\theta \in \Theta$}
+\end{align}
+\]</span></p>
+</div>
+</section><section id="mejor-estimador-insesgado." class="level3" data-number="3.7.3"><h3 data-number="3.7.3" class="anchored" data-anchor-id="mejor-estimador-insesgado.">
+<span class="header-section-number">3.7.3</span> Mejor estimador insesgado.</h3>
+<div id="def-3.2" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 3.2</strong></span> Sean <span class="math inline">\(\hat{\theta}_1\)</span> y <span class="math inline">\(\hat{\theta}_2\)</span> dos estimadores insesgados de un parámetro <span class="math inline">\(\theta\)</span>, con varianzas <span class="math inline">\(V (\hat{\theta}_1)\)</span> y <span class="math inline">\(V (\hat{\theta}_2)\)</span>, respectivamente. Entonces la eficiencia de <span class="math inline">\(\hat{\theta}_1\)</span> con respecto a <span class="math inline">\(\hat{\theta}_2\)</span> denotada como <span class="math inline">\(eff(\hat{\theta}_1,\,\hat{\theta}_2)\)</span> se defiene por la expresión</p>
+<p><span class="math display">\[eff (\hat{\theta}_1,\, \hat{\theta}_2)=\frac{V(\hat{\theta}_1)}{V(\hat{\theta}_2)}.\]</span></p>
+</div>
+<div id="exm-3.8" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.8</strong></span> Diremos que <span class="math inline">\(\hat{\theta}_1\)</span> es más eficiente que <span class="math inline">\(\hat{\theta}_2\)</span> si <span class="math display">\[eff(\hat{\theta}_1,\,\hat{\theta}_2)&lt;1\mbox{ si y sólo si }V(\hat{\theta}_2)&gt;V(\hat{\theta}_1)\]</span> luego <span class="math inline">\(\hat{\theta}_1\)</span> es un mejor estimador insesgado que <span class="math inline">\(\hat{\theta}_2\)</span>.</p>
+</div>
+<div id="exm-3.9" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.9</strong></span> Si <span class="math inline">\(eff(\hat{\theta}_1,\,\hat{\theta}_2)=1.8\)</span> entonces <span class="math inline">\(V(\hat{\theta}_1)=1.8V(\hat{\theta}_2)\)</span> entonces <span class="math inline">\(\hat{\theta}_2\)</span> se prefiere a <span class="math inline">\(\hat{\theta}_1\)</span>.</p>
+<p>Si <span class="math inline">\(eff(\hat{\theta}_1,\,\hat{\theta}_2)=0.73\)</span> entonces <span class="math inline">\(V(\hat{\theta}_1)=0.73V(\hat{\theta}_2)\)</span> entonces <span class="math inline">\(\hat{\theta}_1\)</span> se prefiere a <span class="math inline">\(\hat{\theta}_2\)</span>.</p>
+</div>
+<div id="thm-3.4" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.4</strong></span> <strong>Teorema de Lehmann-Scheffé</strong> Si <span class="math inline">\(\hat{\theta}\)</span> es un estimador insesgado para <span class="math inline">\(\theta\)</span> y si <span class="math inline">\(U\)</span> es un estadístico suficiente para <span class="math inline">\(\theta\)</span>, entonces hay una función de <span class="math inline">\(U\)</span> que también es un estimador insesgado para <span class="math inline">\(\theta\)</span> y tiene una varianza no mayor que <span class="math inline">\(\hat{\theta}\)</span>.</p>
+<p>En símbolos:</p>
+<p>Si <span class="math inline">\(E(\hat{\theta})=\theta\)</span> y <span class="math inline">\(U\)</span> es suficiente para <span class="math inline">\(\theta\)</span> entonces existe una <span class="math inline">\(f(U)\)</span> tal que <span class="math display">\[E(f(U))=\theta\]</span> y <span class="math display">\[Var(\hat{\theta})\geq Var(f(U))\]</span></p>
+</div>
+<div id="exm-3.10" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.10</strong></span> <strong>Contexto del teorema</strong></p>
+<p>Un <strong>estimador insesgado</strong> de <span class="math inline">\(\theta\)</span> es una variable aleatoria <span class="math inline">\(\hat{\theta}\)</span> que cumple:</p>
+<p><span class="math display">\[
+E(\hat{\theta}) = \theta.
+\]</span></p>
+<p>Un <strong>estadístico suficiente</strong> <span class="math inline">\(U\)</span> para <span class="math inline">\(\theta\)</span> contiene toda la información de la muestra acerca de <span class="math inline">\(\theta\)</span>. Es decir, dados <span class="math inline">\(U\)</span>, la muestra completa no aporta nada más sobre <span class="math inline">\(\theta\)</span>.</p>
+<p>El <strong>Teorema de Lehmann–Scheffé</strong> dice que si combinas estos dos elementos:</p>
+<ul>
+<li>Un estimador insesgado cualquiera <span class="math inline">\(\hat{\theta}\)</span>.</li>
+<li>Un estadístico suficiente <span class="math inline">\(U\)</span>.</li>
+</ul>
+<p>Entonces puedes construir una función de <span class="math inline">\(U\)</span>, digamos <span class="math inline">\(f(U)\)</span>, que:</p>
+<ul>
+<li>también es insesgado,</li>
+<li>tiene varianza menor o igual a la de <span class="math inline">\(\hat{\theta}\)</span>.</li>
+</ul>
+<p>De hecho, el resultado formal se apoya en el <strong>Teorema de Rao–Blackwell</strong>:</p>
+<p><span class="math display">\[
+f(U) = E(\hat{\theta} \mid U).
+\]</span></p>
+<p>Esta transformación se llama <strong>Rao-Blackwellización</strong>.<br>
+Y el teorema de Lehmann–Scheffé añade que, si <span class="math inline">\(U\)</span> además de suficiente es <strong>completo</strong>, entonces ese <span class="math inline">\(f(U)\)</span> es el <strong>único estimador insesgado de varianza mínima</strong> (UMVUE: <em>Uniformly Minimum Variance Unbiased Estimator</em>).</p>
+<hr>
+<p><strong>2. Intuición</strong></p>
+<ul>
+<li>Empiezas con cualquier estimador insesgado <span class="math inline">\(\hat{\theta}\)</span>.</li>
+<li>Si “condicionas” en la estadística suficiente <span class="math inline">\(U\)</span>, eliminas ruido innecesario que no aporta información sobre <span class="math inline">\(\theta\)</span>.</li>
+<li>Eso reduce (o al menos no aumenta) la varianza del estimador.</li>
+<li>El resultado es un estimador más eficiente.</li>
+</ul>
+<hr>
+<p><strong>3. Ejemplo clásico</strong></p>
+<p><strong>Contexto</strong> Supongamos que:</p>
+<p><span class="math display">\[
+X_1, X_2, \dots, X_n \overset{iid}{\sim} \text{Bernoulli}(p),
+\]</span></p>
+<p>donde el parámetro de interés es <span class="math inline">\(p\)</span>.</p>
+<hr>
+<p><strong>Paso 1: un estimador insesgado cualquiera</strong></p>
+<p>Consideremos el estimador basado sólo en el primer dato:</p>
+<p><span class="math display">\[
+\hat{p} = X_1.
+\]</span></p>
+<p>Claramente:</p>
+<p><span class="math display">\[
+E(\hat{p}) = E(X_1) = p.
+\]</span></p>
+<p>Así que es insesgado, pero muy ineficiente (usa un solo dato).</p>
+<hr>
+<p><strong>Paso 2: estadístico suficiente</strong></p>
+<p>El número total de éxitos:</p>
+<p><span class="math display">\[
+U = \sum_{i=1}^n X_i
+\]</span></p>
+<p>es un estadístico suficiente para <span class="math inline">\(p\)</span> (por factorización de la verosimilitud).</p>
+<hr>
+<p><strong>Paso 3: aplicar Rao–Blackwell</strong></p>
+<p>Construimos:</p>
+<p><span class="math display">\[
+f(U) = E(\hat{p} \mid U).
+\]</span></p>
+<p>Como <span class="math inline">\(\hat{p} = X_1\)</span>, necesitamos <span class="math inline">\(E(X_1 \mid U)\)</span>.<br>
+Por simetría, dado que hay <span class="math inline">\(U\)</span> éxitos en total entre <span class="math inline">\(n\)</span> ensayos, cada <span class="math inline">\(X_i\)</span> tiene la misma probabilidad de ser 1. Entonces:</p>
+<p><span class="math display">\[
+E(X_1 \mid U) = \frac{U}{n}.
+\]</span></p>
+<p>Así:</p>
+<p><span class="math display">\[
+f(U) = \frac{U}{n}.
+\]</span></p>
+<hr>
+<p><strong>Paso 4: verificar propiedades</strong></p>
+<ul>
+<li><strong>Insesgado:</strong></li>
+</ul>
+<p><span class="math display">\[
+E\left(\frac{U}{n}\right) = \frac{1}{n}E(U) = \frac{1}{n}(np) = p.
+\]</span></p>
+<ul>
+<li><strong>Varianza:</strong></li>
+</ul>
+<p><span class="math display">\[
+Var(X_1) = p(1-p),
+\]</span></p>
+<p><span class="math display">\[
+Var\left(\frac{U}{n}\right) = \frac{1}{n^2} Var(U) = \frac{1}{n^2}(np(1-p)) = \frac{p(1-p)}{n}.
+\]</span></p>
+<p>Y efectivamente:</p>
+<p><span class="math display">\[
+\frac{p(1-p)}{n} \leq p(1-p).
+\]</span></p>
+<hr>
+<p><strong>4. Conclusión</strong></p>
+<p>El estimador inicial <span class="math inline">\(\hat{p} = X_1\)</span> era insesgado pero ineficiente.</p>
+<p>Rao–Blackwellizando con el suficiente <span class="math inline">\(U\)</span>, obtuvimos:</p>
+<p><span class="math display">\[
+f(U) = \frac{U}{n},
+\]</span></p>
+<p>que es la <strong>media muestral</strong>.</p>
+<p>Por Lehmann–Scheffé, como <span class="math inline">\(U\)</span> es suficiente y completo, <span class="math inline">\(\bar{X} = U/n\)</span> es el <strong>UMVUE de <span class="math inline">\(p\)</span></strong>.</p>
+</div>
+</section><section id="teorema-de-cramér-rao.-información-de-fisher" class="level3" data-number="3.7.4"><h3 data-number="3.7.4" class="anchored" data-anchor-id="teorema-de-cramér-rao.-información-de-fisher">
+<span class="header-section-number">3.7.4</span> Teorema de Cramér-Rao. Información de Fisher</h3>
+<div id="def-3.3" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 3.3</strong></span> Diremos que un estimador <span class="math inline">\(W^{*}\)</span> es el mejor estimador insesgado de <span class="math inline">\(\tau(\theta)\)</span>, o el UMVUE (Uniformly Minimum Variance Unbiased Estimator) <strong>(estimador insesgado de <span class="math inline">\(\tau(\theta)\)</span> uniformemente de mínima varianza)</strong> , si <span class="math inline">\(E_\theta(W^{*}) = \tau(\theta)\)</span> para todo <span class="math inline">\(\theta\in\Theta\)</span> y si para cualquier otro estimador <span class="math inline">\(W\)</span> , tal que <span class="math inline">\(E_\theta(W) = \tau(\theta)\)</span> para todo <span class="math inline">\(\theta\in\Theta\)</span>, se tiene que <span class="math inline">\(V_\theta(W^{*}) \leq V_\theta(W)\)</span>, para todo <span class="math inline">\(\theta\in\Theta\)</span>.</p>
+</div>
+<p><strong>La búsqueda del UMVUE no debe consistir en repasar todos los estimadores insesgados posibles. El siguiente resultado aborda el problema de un modo diferente: establece una cota inferior para la varianza de todos los estimadores insesgados de un parámetro. Así, si encontramos un estimador insesgado cuya varianza iguale esa cota podremos concluir que ese estimador es el UMVUE.</strong></p>
+<div id="thm-3.5" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.5</strong></span> Sea <span class="math inline">\(\underset{\sim}{X} =(X_1,\ldots, X_n)\)</span> una variable aleatoria n-dimensional con función de densidad conjunta <span class="math inline">\(f ( \underset{\sim}{x}|\theta)\)</span>, <span class="math inline">\(\theta\in\Theta\subseteq\mathbb{R}\)</span>. Sea <span class="math inline">\(W(\underset{\sim}{X} )\)</span> un estimador insesgado para <span class="math inline">\(\tau(\theta)\)</span>, es decir, <span class="math inline">\(E_\theta(W(\underset{\sim}{X})) = \tau(\theta)\)</span> para todo <span class="math inline">\(\theta\)</span>, donde <span class="math inline">\(\tau\)</span> es una función de <span class="math inline">\(\theta\)</span> que cumple:</p>
+<p>H1: <span class="math inline">\(\tau(\theta)\)</span> es diferenciable en <span class="math inline">\(\theta\)</span>.</p>
+<p>H2: Se supone además que la verosimilitud conjunta <span class="math inline">\(f(\underset{\sim}{x}|\theta)\)</span> verifica que para cualquier función <span class="math inline">\(h(\underset{\sim}{x})\)</span> tal que <span class="math inline">\(E_\theta|h(\underset{\sim}{X})| &lt; \infty\)</span> se tiene que</p>
+<p><span class="math display">\[
+\begin{align}
+&amp;\frac{d}{d\theta}\int\dotsc\int h(\underset{\sim}{x})f (\underset{\sim}{x}|\theta)dx_1\ldots dx_n\nonumber\\
+&amp;=\int\dotsc\int h(\underset{\sim}{x})\left[\frac{\partial}{\partial\theta}f (\underset{\sim}{x}|\theta)\right]dx_1\ldots dx_n
+\end{align}
+\]</span></p>
+<p>Entonces, <span class="math display">\[\begin{align}
+V_\theta(W(\underset{\sim}{X} ))\geq\frac{\left(\frac{d}{d\theta}\tau(\theta)\right)^2}{E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f(\underset{\sim}{X}|\theta)\right)^2\right]}
+\end{align}\]</span> A la cantidad del lado derecho de la desigualdad anterior se la denomina <strong>Cota de Cramér-Rao</strong>.</p>
+</div>
+<div id="nte-3.2" class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;3.2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Nota: El teorema de Cramér-Rao es igualmente válido en el caso discreto. En este caso la hipótesis H2 afirma que pueden intercambiarse el sumatorio y la diferenciación.</p>
+</div>
+</div>
+<ol type="1">
+<li><p>Un estimador insesgado para <span class="math inline">\(\tau(\theta)\)</span> se denomina si su varianza es la mínima posible, es decir, si es igual a la cota de Cramér-Rao.</p></li>
+<li><p>La eficiencia de un estimador insesgado se define como el cociente entre la cota de Cramér-Rao y su varianza.</p></li>
+<li><p>Es un valor menor o igual que 1 si se dan las hipótesis del teorema de Cramér-Rao.</p></li>
+</ol>
+<p>En la demostración del teorema de Cramér-Rao se ha probado que</p>
+<p><span class="math display">\[
+\begin{align}
+E_\theta(S(\theta))&amp;=E_\theta(S(\theta|\underset{\sim}{X}))\nonumber\\
+&amp;=E_\theta\left(\frac{\partial}{\partial \theta}\log L(\theta|\underset{\sim}{X})\right)=0
+\end{align}
+\]</span> Obsérvese que para obtener el estimador máximo verosímil de <span class="math inline">\(\theta\)</span> lo que se hace es resolver la ecuación <span class="math display">\[\begin{align}
+    S(\theta|\underset{\sim}{X})=0
+\end{align}\]</span> lo que equivale a buscar el valor de <span class="math inline">\(\theta\)</span> para el cual el valor de <span class="math inline">\(S(\theta|\underset{\sim}{X})\)</span> coincide con su valor esperado.</p>
+<p>A la cantidad que aparece en el denominador de la cota de Cramér-Rao se le denomina cantidad de <strong>información de Fisher</strong> que sobre <span class="math inline">\(\theta\)</span> contiene el vector <span class="math inline">\(\underset{\sim}{X}\)</span>:</p>
+<p><span class="math display">\[
+\begin{align}
+\mathscr{I}_{E}(\theta)=\mathscr{I}_{\underset{\sim}{X}}(\theta)&amp;=E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{X}|\theta)\right)^2\right]\\
+&amp;=V\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{X}|\theta)\right)\\
+&amp;=V(S(\theta|\underset{\sim}{X}))
+\end{align}
+\]</span></p>
+<p>Se denomina <strong>cantidad de información de Fisher</strong> que sobre <span class="math inline">\(\theta\)</span> contiene la variable <span class="math inline">\(X_i\)</span> a <span class="math display">\[
+\begin{align}
+    &amp;=E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(X|\theta)\right)^2\right]\\
+    &amp;=V\left(\frac{\partial}{\partial \theta}\log f_{X_i}(X|\theta)\right)\\
+    &amp;=V(S(\theta|X_i))
+    \end{align}
+\]</span></p>
+<p>Cuando <span class="math inline">\(\underset{\sim}{X}=(X_1,\ldots, X_n)\)</span> es una muestra aleatoria simple de <span class="math inline">\(X\)</span> se verifica que la información de Fisher contenida en la muestra es la suma de las informaciones contenidas en cada una de las observaciones y, dado que éstas son idénticamente distribuidas, se tiene que</p>
+<p><span class="math display">\[
+\begin{align}
+\mathscr{I}_{E}(\theta)=\mathscr{I}_{\underset{\sim}{X}}(\theta)=n\mathscr{I}_{X}(\theta)
+\end{align}
+\]</span> Este resultado es consecuencia del siguiente corolario del teorema de Cramér-Rao:</p>
+<div id="cor-3.1" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 3.1</strong></span> Bajo las hipótesis del teorema de Cramér-Rao, si <span class="math inline">\(\underset{\sim}{X}=(X_1,\ldots, X_n)\)</span> es una muestra aleatoria simple de <span class="math inline">\(X\)</span> con distribución dada por <span class="math inline">\(f(x|\theta)\)</span> entonces <span class="math display">\[
+\begin{align*}
+\mathscr{I}_{E}(\theta)=\mathscr{I}_{\underset{\sim}{X}}(\theta)&amp;=E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{X}|\theta)\right)^2\right]\\
+&amp;=nE_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X}(X|\theta)\right)^2\right]\\
+&amp;=n\mathscr{I}_{X}(\theta)
+\end{align*}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Por independencia, la verosimilitud de <span class="math inline">\(\underset{\sim}{X}\)</span> es el producto de verosimilitudes, luego <span class="math display">\[\begin{align}
+    \frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)&amp;=\frac{\partial}{\partial \theta}\sum_{i=1}^{n}\log f_{X}(x_i|\theta)\nonumber\\
+    &amp;=\sum_{i=1}^{n}\frac{\partial}{\partial \theta}\log f_{X}(x_i|\theta)
+    \end{align}\]</span> Por lo tanto,</p>
+<p><span id="eq-col3"><span class="math display">\[
+\begin{align}
+E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)\right)^2\right]&amp;=E_\theta\left[\left(\sum_{i=1}^{n}\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)^2\right]\nonumber\\
+=&amp;\sum_{i=1}^{n}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)^2\right]\nonumber\\
++&amp;\sum_{i\neq j}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\frac{\partial}{\partial \theta}\log f_{X_j}(x_j|\theta)\right)\right]
+\end{align}
+\tag{3.10}\]</span></span></p>
+<p>La segunga igualdad de <a href="#eq-col3" class="quarto-xref">Equation&nbsp;<span>3.10</span></a> se tiene por que <span class="math inline">\(\left(\sum_{i=1}^{n}a_i\right)^2=\sum_{i=1}^{n}a_i^2+\sum_{i\neq j}a_ia_j\)</span>. Pero la segunda sumatoria es igual a cero debido a la independencia entre <span class="math inline">\(X_i\)</span> y <span class="math inline">\(X_j\)</span> y dado que las funciones score tienen esperanza 0, según se vio en la demostración del teorema de Cramér-Rao. <span id="eq-col31"><span class="math display">\[
+\begin{align}
+E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{\underset{\sim}{X}}(\underset{\sim}{x}|\theta)\right)^2\right]
+        =&amp;\sum_{i=1}^{n}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)^2\right]\nonumber\\
+        +&amp;\sum_{i\neq j}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)\left(\frac{\partial}{\partial \theta}\log f_{X_j}(x_j|\theta)\right)\right]\nonumber\\
+        =&amp;\sum_{i=1}^{n}E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X_i}(x_i|\theta)\right)^2\right]\nonumber\\
+\end{align}
+\tag{3.11}\]</span></span></p>
+</div>
+<div id="lem-3.1" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 3.1</strong></span> Si la función de verosimilitud satisface:</p>
+<p>H3: Se supone que la verosimilitud conjunta <span class="math inline">\(f (\underset{\sim}{x}|\theta)\)</span> verifica que para cualquier función <span class="math inline">\(h(\underset{\sim}{x})\)</span> tal que <span class="math inline">\(E_\theta|h(\underset{\sim}{X})| &lt; \infty\)</span> se tiene que <span class="math display">\[
+\begin{align}
+&amp;\frac{\partial^2}{\partial\theta^2}\int\dotsc\int h(\underset{\sim}{x})f (\underset{\sim}{x}|\theta)dx_1\ldots dx_n\nonumber\\
+&amp;=\int\dotsc\int h(\underset{\sim}{x})\left[\frac{\partial^2}{\partial\theta^2}f (\underset{\sim}{x}|\theta)\right]dx_1\ldots dx_n
+\end{align}
+\]</span></p>
+<p>Entonces <span class="math display">\[
+\begin{align}
+\mathscr{I}_{X}(\theta)=E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X}(x|\theta)\right)^2\right]=-E_\theta\left[\frac{\partial^2}{\partial \theta^2}\log f_{X}(x|\theta)\right]
+\end{align}
+\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><span class="math display">\[
+\begin{align}
+        \frac{\partial^2}{\partial \theta^2}\log f_{X}(x|\theta)&amp;=\frac{\partial}{\partial \theta}\left[\frac{1}{f_{X}(x|\theta)}\left(\frac{\partial}{\partial \theta}f_{X}(x|\theta)\right)\right]\nonumber\\
+        &amp;=-\frac{1}{f^2_{X}(x|\theta)}\left(\frac{\partial}{\partial \theta}f_{X}(x|\theta)\right)^2\nonumber\\
+        &amp;+\frac{1}{f_{X}(x|\theta)}\frac{\partial^2}{\partial \theta^2}f_{X}(x|\theta)
+\end{align}
+\]</span> Por otro lado, <span class="math display">\[
+\begin{align}
+    E_\theta\left[\frac{1}{f_{X}(x|\theta)}\frac{\partial^2}{\partial \theta^2}f_{X}(x|\theta)\right]&amp;=\int\frac{\partial^2}{\partial \theta^2}f_{X}(x|\theta)dx\nonumber\\
+    &amp;\overset{\text{H3}}{=}\frac{d^2}{d \theta^2}\int f_{X}(x|\theta)dx\nonumber\\
+    &amp;=\frac{d^2}{d \theta^2}1 =0
+\end{align}
+\]</span> Así pues, <span class="math display">\[
+\begin{align}
+        E_\theta\left[\frac{\partial^2}{\partial \theta^2}\log f_{X}(x|\theta)\right]
+        &amp;=-E_\theta\left[\frac{1}{f^2_{X}(x|\theta)}\left(\frac{\partial}{\partial \theta}f_{X}(x|\theta)\right)^2\right]\nonumber\\
+        &amp;=-E_\theta\left[\left(\frac{\partial}{\partial \theta}\log f_{X}(x|\theta)\right)^2\right]\nonumber\\
+        &amp;=-\mathscr{I}_{X}(\theta)
+        \end{align}
+\]</span></p>
+</div>
+<ol type="1">
+<li><p>En general, el teorema de Cramér-Rao no es aplicable si el soporte de <span class="math inline">\(f(x|\theta)\)</span> depende del parámetro <span class="math inline">\(\theta\)</span> debido a que la derivada y la integral no son intercambiables si los límites de integración dependen de <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Aunque el teorema de Cramér-Rao pueda ser aplicado y la cota de Cramér-Rao sea efectiva, no hay garantías de que esta cota sea alcanzada por algún estimador insesgado del parámetro.</p></li>
+</ol>
+<div id="cor-3.2" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 3.2</strong></span> Sea <span class="math inline">\(X_1 , \ldots, X_n\)</span> una muestra aleatoria simple de <span class="math inline">\(X\)</span> con distribución dada por <span class="math inline">\(f(x|\theta)\)</span>, <span class="math inline">\(\theta\in\mathbb{R}\)</span>, donde <span class="math inline">\(f\)</span> satisface las hipótesis del teorema de Cramér-Rao. Sea <span class="math inline">\(L(\theta|\underset{\sim}{x}) = \prod_{i=1}^{n}f(x_i|\theta)\)</span> la función de verosimilitud. Sea <span class="math inline">\(W (\underset{\sim}{x}) = W(X_1 , \ldots, X_n)\)</span> un estimador insesgado de <span class="math inline">\(\tau(\theta)\)</span>. Entonces <span class="math inline">\(W(\underset{\sim}{x})\)</span> alcanza la cota de Cramér-Rao si y sólo si existe una función <span class="math inline">\(a(\theta)\)</span> tal que se tiene la igualdad <span class="math display">\[
+\begin{align}
+a(\theta)(W(\underset{\sim}{x})-\tau(\theta))=\frac{\partial}{\partial\theta}\log L(\theta|\underset{\sim}{x}) \mbox{ para todo $\theta$}
+\end{align}
+\]</span></p>
+</div>
+<p>Además, el enunciado del corolario <a href="#cor-3.2" class="quarto-xref">Corollary&nbsp;<span>3.2</span></a> ocurre sí y sólo sí existen funciones <span class="math inline">\(h(\theta)\)</span>, <span class="math inline">\(k(\theta)\)</span> y <span class="math inline">\(u(\underset{\sim}{x})\)</span> tales que</p>
+<p><span class="math display">\[
+\begin{align}
+L(\theta|\underset{\sim}{x})=u(\underset{\sim}{x})h(\theta)\exp\{W(\underset{\sim}{x})k(\theta)\}
+\end{align}
+\]</span> es decir, si y sólo si la distribución de partida pertenece a <strong>la familia exponencial</strong>.</p>
+<hr></section></section><section id="referencias" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="referencias">
+<span class="header-section-number">3.8</span> Referencias</h2>
+<ul>
+<li><p><strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> (2006). <em>Curso de Inferencia y Decisión</em>. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.</p></li>
+<li><p><strong>Wackerly, D. D., Mendenhall, W.</strong>, &amp; <strong>Scheaffer, R. L.</strong> (2008). <strong>Estadística matemática con aplicaciones</strong> (7ª ed.). Cengage Learning.</p></li>
+<li><p><strong>Roussas, G. G.</strong> (1997). <strong>A Course in Mathematical Statistics</strong> (2nd ed.). Academic Press.</p></li>
+<li><p><strong>Kalbfleisch, J. G. Probability and Statistical Inference</strong>. Springer-Verlag, 1985.</p></li>
+</ul>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

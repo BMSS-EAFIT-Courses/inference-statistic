@@ -41,11 +41,11 @@ Espero que este libro te acompañe, rete y apoye en tu formación como profesion
 
 
 
-# DATOS Y MODELOS
+## DATOS Y MODELOS
 
 En esta sección establecemos la base conceptual para el análisis estadístico, diferenciando claramente entre el fenómeno aleatorio observado y la medida de probabilidad que lo describe.  
 
-## Fenómeno aleatorio y variable observada
+### Fenómeno aleatorio y variable observada
 
 “Se observa una realización de un fenómeno aleatorio, digamos X. Este puede ser un elemento aleatorio de varios tipos: número (variable aleatoria), un vector de dimensión finita (vector aleatorio), una función, etc.
 
@@ -57,7 +57,7 @@ La premisa principal es que el carácter aleatorio de X se concibe como una real
   - Desconocida: soporte, media, varianza, etc.  
   - Objetivo estadístico: _inferir_ características de \(P\) a partir de la muestra (la realización de X).
 
-## Incertidumbre inductiva vs. estocástica
+### Incertidumbre inductiva vs. estocástica
 
 “La observación **X** está dada, por lo que no hay incertidumbre tal como la hay en la teoría de probabilidad desarrollada anteriormente en el curso. Antes, fue concebida una estructura $(\Omega, \mathcal{F}, P)$ para enfrentar el que haya incertidumbre acerca del valor de **X**. En el problema estadístico, el valor de **X** ha sido observado, y la incertidumbre radica en otro punto: radica en que existe duda acerca de cuál **P** es la que produjo el valor **X**. En algunas ocasiones se utilizan los términos _incertidumbre estocástica_ e _incertidumbre inductiva_ para distinguir estos dos tipos. Es común que estos se confundan entre sí, porque en estadística matemática la teoría de probabilidad constituye también una de las maneras naturales de afrontar la cuantificación de incertidumbre inductiva. En cualquier caso, el concebir a **P** como medida de probabilidad es la base para formular soluciones a la incertidumbre inductiva. Con este lenguaje, probabilidad y estadística son problemas diferentes y de cierta manera inversos. Teoría de probabilidad tiene que ver con cuantificar incertidumbre acerca de **X** y teoría estadística con cuantificar incertidumbre acerca de **P** a la luz de haber ya observado **X**.”[Ver referencia 1]
 
@@ -87,10 +87,10 @@ Con esta distinción clara entre dato observado y modelo probabilístico, estamo
 
 
 
-# VARIABLE ALEATORIA
+## VARIABLE ALEATORIA
 
 
-## Variables y vectores aleatorios
+### Variables y vectores aleatorios
 Consideramos un experimento aleatorio cuyos resultados pertenecen al espacio muestral Ω. Modelamos este proceso suponiendo que existe una terna $(\Omega, \mathcal{A}, P),$ donde:
 
 - $\Omega$ es el espacio muestra,  
@@ -382,10 +382,13 @@ $$M(t) = \frac{e^t - 1}{t}.$$
 
 Para derivar la fórmula [#(5.2)](#eq:5.2) y obtener los momentos, podemos usar el desarrollo en serie de la función exponencial:
 
-$$M(t)= \frac{1}{t\,(b - a)}\bigl(e^{b t} - e^{a t}\bigr) \\
-= \frac{1}{t\,(b - a)}\Bigl[\bigl(1 + \sum_{n=1}^\infty \tfrac{(b t)^n}{n!}\bigr)
+$$
+\begin{align}
+M(t)&= \frac{1}{t\,(b - a)}\bigl(e^{b t} - e^{a t}\bigr) \\
+&= \frac{1}{t\,(b - a)}\Bigl[\bigl(1 + \sum_{n=1}^\infty \tfrac{(b t)^n}{n!}\bigr)
                     -\bigl(1 + \sum_{n=1}^\infty \tfrac{(a t)^n}{n!}\bigr)\Bigr] \\
-= \frac{1}{b - a}\sum_{n=1}^\infty \frac{b^n - a^n}{n!}\,t^{n-1}.
+&= \frac{1}{b - a}\sum_{n=1}^\infty \frac{b^n - a^n}{n!}\,t^{n-1}.
+\end{align}
 $$
 
 Este es el desarrollo de Maclaurin de $M(t)$ en $t=0$; por tanto, sus derivadas en cero satisfacen
