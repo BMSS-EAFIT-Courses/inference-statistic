@@ -829,7 +829,7 @@ $$
 $$
 Luego $\hat{\theta}_4$ no es insesgado, es sesgado. 
 
-### Eficiencia relativa
+## Eficiencia relativa
 
 ::: {.definition #def-3.1}
 Un estimador $W$ de $\theta$ se denomina **inadmisible** si existe otro estimador $V$ de $\theta$ tal que
@@ -840,7 +840,7 @@ E_\theta((V-\theta)^2)\leq E_\theta((W-\theta)^2) \mbox{ para todo $\theta \in \
 $$
 ::: 
 
-### Mejor estimador insesgado.
+## Mejor estimador insesgado.
 
 ::: {.definition #def-3.2}
 Sean $\hat{\theta}_1$ y $\hat{\theta}_2$ dos estimadores insesgados de un parámetro $\theta$, con varianzas $V (\hat{\theta}_1)$ y $V (\hat{\theta}_2)$, respectivamente. Entonces la eficiencia de $\hat{\theta}_1$ con respecto a $\hat{\theta}_2$ denotada como $eff(\hat{\theta}_1,\,\hat{\theta}_2)$ se defiene por la expresión
@@ -1020,7 +1020,7 @@ que es la **media muestral**.
 Por Lehmann–Scheffé, como $U$ es suficiente y completo, $\bar{X} = U/n$ es el **UMVUE de $p$**.
 :::
 
-### Teorema de Cramér-Rao. Información de Fisher
+## Teorema de Cramér-Rao. Información de Fisher
 
 ::: {.definition #def-3.3}
 Diremos que un estimador $W^{*}$ es el mejor estimador insesgado de $\tau(\theta)$, o el UMVUE (Uniformly Minimum Variance Unbiased Estimator) **(estimador insesgado de $\tau(\theta)$ uniformemente de mínima varianza)** , si
@@ -1225,15 +1225,604 @@ $$
 es decir, si y sólo si la distribución de partida pertenece a **la familia exponencial**.
 
 
-\begin{frame}
-	\frametitle{Bibliografía}
+
+
+## Evaluación de estimadores
+### Mejor estimador insesgado.
+**Teorema de Rao-Blackwell. Teorema de Lehmann-Scheffé**
+
+
+Si buscamos estimadores insesgados con varianzas pequeñas, podemos restringir nuestra búsqueda a estimadores que sean funciones de estadísticos suficientes. 
+
+::: {#thm-3.6}
+Si $Y_1$ y $Y_2$ son dos variables aleatorias, entonces  
+
+$E(Y_1) = E[E(Y_1 \mid Y_2)]$,
+
+donde en el lado derecho de la ecuación el valor esperado interior es con respecto a la distribución condicional de $Y_1$ dada $Y_2$, y el valor esperado exterior es con respecto a la distribución de $Y_2$.
+::: 
+---
+
+::: {#thm-3.7}
+
+Si $Y_1$ y $Y_2$ representan variables aleatorias, entonces  
+
+$V(Y_1) = E[V(Y_1 \mid Y_2)] + V[E(Y_1 \mid Y_2)]$.
+::: 
+
+::: {#thm-3.8}
+**El Teorema de Rao-Blackwell** Sea $\hat{\theta}$ un estimador insesgado para $\theta$ tal que $V (\hat{\theta}) <\infty$ . Si $U$ es un estadístico suficiente para $\theta$, definamos $\hat{\theta}^* = E(\hat{\theta} |U)$. Entonces, para toda $\theta$, $$E(\hat{\theta}^*) =\theta\mbox{ y }V(\hat{\theta}^*) \leq V(\hat{\theta})$$.
+::: 
+
+::: {.proof}
+Como $U$ es suficiente para $\theta$, la distribución condicional de cualquier estadístico (incluyendo $\hat{\theta}$), dada $U$ no depende de $\theta$. Entonces, $\hat{\theta}^*=E(\hat{\theta}|U)$ no es función de $\theta$ y es por tanto un estadístico.
+		
+Como $\hat{\theta}$ es un estimador insesgado para $\theta$ entonces de los Teoremas @thm-3.6 y @thm-3.7, tenemos
+$$E(\hat{\theta}^*)=E[E(\hat{\theta}|U)]=E(\hat{\theta})=\theta.$$
+Entonces $\hat{\theta}^*$ es un estimador insesgado para $\theta$.
+El Teorema  @thm-3.7 implica que 
+\begin{eqnarray*}
+V(\hat{\theta})&=&V[E(\hat{\theta}|U)]+E[V(\hat{\theta}|U)]\\
+			&=&V(\hat{\theta}^*)+E[V(\hat{\theta}|U)].
+\end{eqnarray*}	
+Como $V(\hat{\theta} |U = u) \geq 0$ para toda $u$, se deduce que $E[V(\hat{\theta} |U)]\geq 0$ y por lo tanto que 
+\begin{eqnarray*}
+V(\hat{\theta})&=&V(\hat{\theta}^*)+E[V(\hat{\theta}|U)]\\
+&\geq&V(\hat{\theta}^*)+0
+\end{eqnarray*}
+luego $V (\hat{\theta}) \geq V (\hat{\theta}^*)$.
+		
+::: 
+
+El Teorema de Rao-Blackwell implica que un estimador insesgado para $\theta$ con una varianza pequeña es, o puede llegar a ser, una función de un estadístico suficiente. Si $U$ es un estadístico suficiente para $\theta$, $E(\hat{\theta}|U)=\hat{\theta}^*$ entonces $E(\hat{\theta}^*)=\theta$ y $V(\hat{\theta}^*)\leq V(\hat{\theta})$.
+**$\theta^*$ Estimador insesgado, $\hat{\theta}^*=h(U)$ entonces $E(h(U)|U)=h(U)=\hat{\theta}^*$**.
 	
-	Algunos libros que recomiendo: 
-	\bibliographystyle{plain}
-	\bibliography{bibliografia}
-\end{frame}
+En general, $E(h(U)|U)=h(U)$, vemos que usando de nuevo el teorema de Rao-Blackwell nuestro nuevo estimador es simplemente $h(U)=\hat{\theta}^*$.
+No ganamos nada después de la primera aplicación.
+	
+Debido a que numerosos estadísticos son suficientes para un parámetro $\theta$ asociado con una distribución ¿qué estadístico suficiente debemos usar cuando aplicamos este teorema?
+
+El criterio de factorización de manera típica identifica un estadístico $U$ que mejor resume la información de los datos acerca del parámetro $\theta$. Tales estadísticos reciben el nombre de **estadísticos suficinetes mínimos**.
+	
+Si aplicamos el Teoremo @thm-3.8 usando $U$, no sólo obtenemos un estimador con varianza más pequeña si no un estimador insesgado para $\theta$ con varianza mínima, este se le llama **Estimador Insesgado de Varianza Mínima EIVM (MVUE)**.
+
+::: {.callout-note appearance="default" icon="false" #nte-3.3}
+**El Teorema de Rao–Blackwell es uno de esos resultados hermosos que nos dicen: “Siempre puedes mejorar tus estimadores, si aprovechas la información disponible en un estadístico suficiente”.**
+
+Supongamos que queremos estimar la media $\theta = \mu$ de una distribución **Bernoulli($p$)**.
+
+**Estimador inicial ingenuo:**  
+Tomemos una muestra de tamaño $n$ y digamos que solo miramos la primera observación $X_1$.  
+Como $E(X_1) = p$, este es un estimador insesgado, pero claramente tiene varianza muy grande.
+
+**Estadístico suficiente:**  
+La suma $U = \sum_{i=1}^n X_i$ es suficiente para $p$.
+
+**Estimador Rao–Blackwellizado:**  
+Calculamos:
+
+$$\hat{p}^* = E(X_1 \mid U) = \frac{U}{n}.$$
+
+Es decir, hemos pasado de un estimador ingenuo ($X_1$) a la **media muestral**, que sabemos es mucho más eficiente.
+:::
+
+```{r}
+## Teorema de Rao–Blackwell: ejemplo Bernoulli ----
+
+set.seed(123)
+
+# Parámetros verdaderos
+p     <- 0.6
+n     <- 20         # tamaño de muestra
+Nsim  <- 10000      # número de simulaciones
+
+# Vectores para guardar los estimadores
+est_naive <- numeric(Nsim)  # usa solo la primera observación X1
+est_RB    <- numeric(Nsim)  # E[X1 | U] = U/n  (media muestral)
+
+for (s in 1:Nsim) {
+  X <- rbinom(n, size = 1, prob = p)
+  U <- sum(X)
+
+  est_naive[s] <- X[1]
+  est_RB[s]    <- U / n
+}
+
+# Resumen empírico
+mean_naive <- mean(est_naive)
+var_naive  <- var(est_naive)
+
+mean_RB <- mean(est_RB)
+var_RB  <- var(est_RB)
+
+# Valores teóricos
+var_naive_theo <- p * (1 - p)            # Var(X1)
+var_RB_theo    <- p * (1 - p) / n        # Var(U/n)
+
+cat("==== Resultados (empíricos vs teóricos) ====\n")
+cat(sprintf("E[X1]            empírico = %.4f  (teórico = %.4f)\n", mean_naive, p))
+cat(sprintf("Var(X1)          empírico = %.4f  (teórico = %.4f)\n\n", var_naive, var_naive_theo))
+
+cat(sprintf("E[U/n]           empírico = %.4f  (teórico = %.4f)\n", mean_RB, p))
+cat(sprintf("Var(U/n)         empírico = %.4f  (teórico = %.4f)\n\n", var_RB, var_RB_theo))
+
+cat(sprintf("Reducción de varianza (empírica): Var(U/n) / Var(X1) = %.4f\n", var_RB / var_naive))
+cat(sprintf("Reducción de varianza (teórica) : Var(U/n) / Var(X1) = %.4f\n", var_RB_theo / var_naive_theo))
+
+```
+
+
+Si empezamos con un estimador insesgado para $\theta$ y el estadístico suficiente obtenido por medio del criterio de factorización, la aplicación del Teorema de Rao-Blackwell en general lleva a un MVUE para el parámetro.
+	
+Sea $\hat{\theta}$ el parámetro insesgado para $\theta$. $$E(\hat{\theta})=\theta$$
+$U$ igual al obtenido por el método de factorización  $$\hat{\theta}^*=E(\hat{\theta}|U)$$
+donde $\hat{\theta}^*$ es el MVUE (Aplicar Blackwell).
+	
+**La consecuencia fundamental de este teorema es que en la búsqueda del estimador UMVUE, basta con restringirnos a aquellos estimadores insesgados que son función de un estadístico suficiente: si trabajamos con un estadístico insesgado que no es función de uno suficiente, tomando esperanzas condicionadas podemos conseguir otro que sea al menos tan bueno como el anterior y sea función del estadístico suficiente. Este proceso se llama a veces Rao-Blackwellización.**
+
+
+### Otra versión del teorema de Rao-Blackwell
+::: {#thm-3.9}
+**Otra versión del teorema de Rao-Blackwell**
+Sea  una m.a.s. de $X$, con densidad (o masa de probabilidad) $f(x|\theta)$. Sea $T(\underset{\sim}{X})$ un estadístico suficiente para $\theta$ y sea $W(\underset{\sim}{X})$ un estimador insesgado de $\tau(\theta)$. Definimos
+\begin{align}
+W_T=E_\theta(W|T)
+\end{align}
+Entonces, 
+
+- $W_T$ es función unicamente de $T(\underset{\sim}{X})$ (Es decir, no depende de $\theta$ y no depende de la muestra $\underset{\sim}{X}$ sólo a través del valor de $T(\underset{\sim}{X})$)
+- $E_\theta(W_T)=\tau(\theta)$.
+- $V_\theta(W_T)\leq V_\theta(W)$ \mbox{para todo $\theta \in \Theta$}.
+::: 
+
+
+**La consecuencia fundamental de este teorema es que en la búsqueda del estimador UMVUE, basta con restringirnos a aquellos estimadores insesgados que son función de un estadístico suficiente: si trabajamos con un estadístico insesgado que no es función de uno suficiente, tomando esperanzas condicionadas podemos conseguir otro que es al menos tan bueno como el anterior y es función del estadístico suficiente. Este proceso se llama a veces Rao-Blackwellización.**
+
+
+## Comportamiento asintótico
+
+### Consistencia
+
+::: {.definition #def-3.4}
+Se dice que el estimador $\hat{\theta}_n$ es un estimador consistente de $\theta$ si, para cualquier número positivo $\varepsilon$,
+$$\lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|\leq\varepsilon)=1$$
+o bien, de forma equivalente,
+$$\lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|>\varepsilon)=0$$
+::: 
+
+**La consistencia es la misma convergencia en probabilidad!!**
+
+::: {#thm-3.10}
+Un estimador insesgado $\hat{\theta}_n$ para $\theta$ es un estimador consistente de $\theta$ si $$\lim_{n\rightarrow\infty}V(\hat{\theta}_n)=0.$$
+::: 
+
+::: {.proof}
+$E(\hat{\theta}_n)=\theta$. Sea $\sigma_{\hat{\theta}_n}=\sqrt{V(\hat{\theta}_n)}$ aplicando el Teorema Tchebysheff para la v.a $\hat{\theta}_n$, obtenemos $$P(|\hat{\theta}_n-\theta|>k\sigma_{\hat{\theta}_n}
+	)\leq \frac{1}{k^2}$$
+Para cualquier número positivo $\varepsilon$, y $n$ cualquier tamaño muestral
+$$\varepsilon=k\sigma_{\hat{\theta}_n}\Rightarrow k=\frac{\varepsilon}{\sigma_{\hat{\theta}_n}}$$
+luego $k>0$.
+
+La aplicación del teorema de Chebyshev  para esta $n$ fija y esta selección de $k$ muestra que 
+\begin{eqnarray*}
+	P(|\hat{\theta}_n-\theta|>\varepsilon)&=&P\left(|\hat{\theta}_n-\theta|>\left[\frac{\varepsilon}{\sigma_{\hat{\theta}_n}}\right]\sigma_{\hat{\theta}_n}\right)\\
+	&\leq&\frac{1}{(\varepsilon/\sigma_{\hat{\theta}_n})^2}\\
+	&=&\frac{V(\hat{\theta}_n)}{\varepsilon^2}
+\end{eqnarray*}
+Entonces, para cualquier $n$ fija
+$$0\leq P(|\hat{\theta}_n-\theta|>\varepsilon)\leq \frac{V(\hat{\theta}_n)}{\varepsilon^2}$$
+	Si $\lim_{n\rightarrow\infty}V(\hat{\theta}_n)=0$ entonces
+	$$\lim_{n\rightarrow\infty}0\leq \lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|>\varepsilon)\leq\lim_{n\rightarrow\infty} \frac{V(\hat{\theta}_n)}{\varepsilon^2}=0$$
+	Luego 
+	$$\lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|>\varepsilon)=0$$
+	luego $\hat{\theta}_n$ es un estimador consistente para $\theta$.
+	
+::: 
+
+
+::: {#thm-3.11}
+$\displaystyle{\hat{\theta}_n \stackrel{P}{\rightarrow} \theta}$ y $\displaystyle{\hat{\theta}'_n \stackrel{P}{\rightarrow} \theta'}$ entonces
+
+a. $\displaystyle{\hat{\theta}_n +\hat{\theta}'_n \stackrel{P}{\longrightarrow} \theta+\theta'}$.
+b. $\displaystyle{\hat{\theta}_n \times\hat{\theta}'_n \stackrel{P}{\longrightarrow} \theta\times\theta'}$.
+c. Si $\theta'\neq 0$, $\displaystyle{\frac{\hat{\theta}_n}{\hat{\theta}'_n}\stackrel{P}{\longrightarrow} \frac{\theta}{\theta'}}$.
+d. Si $g (\cdot)$ es una funci\'on de valor real que es continua en $\theta$, entonces $g (\hat{\theta}_n )$ converge en probabilidad en $g (\theta)$.
+::: 
+
+::: {.callout-tip #tip-3.1}
+1. El teorema de Rao-Blackwell establece que basta con buscar el estimador UMVUE entre aquellos estimadores que son función de un estadístico suficiente.
+2. Bajo ciertas condiciones (existencia de estadísticos suficientes y completos y de estimadores insesgados), esta combinación de los conceptos de estadístico completo y de estadístico suficiente garantiza la existencia de estimadores UMVUE de una función $\tau(\theta)$ del parámetro y da un
+método para construirlos. **El siguiente teorema establece este resultado. Podemos decir que este teorema resuelve teóricamente el problema de la estimación puntual, entendida ésta como la búsqueda del UMVUE.**
+:::
+
+
+::: {.definition #def-3.4}
+## estadístico completo
+Sea $f_T(t|\theta)$ la función de densidad (o de masa de probabilidad) de un estadístico $T$ . Diremos que la familia de distribuciones ${f_T(t|\theta) : \theta\in \Theta}$ es completa si se da la implicación siguiente:
+\begin{align}
+E_\theta(g(T))=0 \mbox{para todo $\theta$ entonces}  P_\theta(g(T) = 0) = 1 \mbox{para todo $\theta$}.
+\end{align}
+
+En ese caso diremos que $T$ es un estadístico completo.
+```{r}
+## Completitud para T ~ Binomial(n, p)
+set.seed(1)
+
+n     <- 10
+gridp <- seq(0.1, 0.9, by = 0.1)
+N     <- 100000  # simulaciones por p
+
+# Dos funciones no triviales de T (no dependen de p)
+g1 <- function(T) T - n/2
+g2 <- function(T) (T - n/2) * (T - n/3)
+
+# Función trivial (cero) para contraste
+g0 <- function(T) 0 * T
+
+sim_mean_g <- function(gfun) {
+  sapply(gridp, function(p) {
+    T <- rbinom(N, size = n, prob = p)
+    mean(gfun(T))
+  })
+}
+
+# Medias empíricas
+m0 <- sim_mean_g(g0)
+m1 <- sim_mean_g(g1)
+m2 <- sim_mean_g(g2)
+
+# Valores teóricos (para comparar)
+# E[T] = n p; Var[T] = n p (1-p); E[T^2] = Var[T] + (E[T])^2
+theo_g1 <- n * (gridp - 1/2)  # E[g1(T)] = n(p - 1/2)
+
+ET   <- n * gridp
+VarT <- n * gridp * (1 - gridp)
+ET2  <- VarT + ET^2
+theo_g2 <- ET2 - (n/2 + n/3) * ET + (n^2)/(6)  # expandir (T - n/2)(T - n/3)
+
+# Mostrar resultados
+tab <- data.frame(
+  p = gridp,
+  E_g0_emp = round(m0, 5),
+  E_g1_emp = round(m1, 5),
+  E_g1_teo = round(theo_g1, 5),
+  E_g2_emp = round(m2, 5),
+  E_g2_teo = round(theo_g2, 5)
+)
+print(tab, row.names = FALSE)
+
+```
+::: {.callout-tip #tip-3.2}
+### Qué observar
+
+- Para $g_0(T)\equiv 0$, la media empírica es $\approx 0$ para todos los $p$.  
+
+- Para $g_1(T) = T - \tfrac{n}{2}$, la esperanza teórica es $n(p - \tfrac{1}{2})$:  
+  solo vale $0$ cuando $p = \tfrac{1}{2}$; **no** es $0$ para los demás $p$.  
+
+- Para $g_2(T) = (T - \tfrac{n}{2})(T - \tfrac{n}{3})$, la esperanza es un polinomio en $p$ que **no** es idénticamente cero; de nuevo, no se anula para todos los $p$.  
 
 ---
+
+Esto ilustra la **completitud**: si alguna $g(T)$ (que no depende de $p$) tuviera  
+$E_p[g(T)] = 0$ para todo $p \in (0,1)$, entonces esa $g$ debe ser (casi seguro) la función **cero**.  
+
+➡️ De ahí que, con **suficiencia + completitud**, el estimador insesgado derivado es el **único UMVUE** (Teorema de Lehmann–Scheffé).
+::: 
+
+**La definición de completitud refuerza la de suficiencia en el sentido de que si un estadístico es suficiente y completo entonces, es suficiente minimal (el recíproco no es cierto)**
+
+::: {#thm-3.12}
+## Teorema de Lehmann-Scheffé
+Si $T(\underset{\sim}{X})$ es un estadístico suficiente y completo para $\theta$ y $W(\underset{\sim}{X})$ es un estimador insesgado cualquiera de
+$\tau(\theta)$, entonces
+\begin{align}
+W_T(\underset{\sim}{X})=E_\theta(W|T)
+\end{align}
+es el mejor estimador insesgado (UMVUE) de $\tau(\theta)$. Si, además, $V(W_T) < \infty$
+para todo $\theta$, entonces $W_T$ es único.
+:::
+
+
+1. La demostración del teorema de Lehmann-Scheffé se basa en el hecho de que, si existen estimadores insesgados, esencialmente sólo existe uno que sea función del estadístico suficiente y completo, pues condicionando cualquiera de los insesgados al estadístico suficiente y completo se obtiene siempre el mismo resultado.
+2. El teorema de Rao-Blackwell garantiza que al tomar esperanzas condicionadas se ha reducido la varianza, llegando así al UMVUE.
+3. La principal conclusión del teorema de Lehmann-Scheffé es que si existe un estimador insesgado de $\tau(\theta)$ que sea función de un estadístico suficiente y
+completo, entonces es el único UMVUE de $\tau(\theta)$.
+
+::: {.callout-tip #tip-3.3}
+## Recreando Lehmann–Scheffé en R
+
+¡Vamos a “recrear” Lehmann–Scheffé en R con un ejemplo clásico y totalmente replicable!  
+
+Usaremos $X_1,\dots,X_n \sim \text{i.i.d. Poisson}(\lambda)$.  
+Entonces 
+
+$$
+T=\sum_{i=1}^n X_i \sim \text{Poisson}(n\lambda)
+$$
+
+es suficiente y completo para $\lambda$.  
+
+Veremos dos blancos $\tau(\theta)$:
+
+- $\tau(\lambda)=\lambda$  
+- $\tau(\lambda)=e^{-\lambda}$  
+
+En cada caso partimos de un estimador insesgado cualquiera $W(\mathbf X)$ y lo “Rao–Blackwellizamos” con $T$:
+
+$$
+W_T(\mathbf X)=\mathbb{E}_\theta[W \mid T].
+$$
+
+Por **Lehmann–Scheffé**, $W_T$ es el **UMVUE**.
+
+
+
+**Idea teórica rápida**
+
+- Para $\tau(\lambda)=\lambda$:  
+  Un estimador insesgado simple es $W=X_1$ (pues $\mathbb{E}[X_1]=\lambda$).  
+  Condicionando en $T$:  
+
+$$
+  W_T = \mathbb{E}[X_1 \mid T] = \tfrac{T}{n} \quad \Longrightarrow \quad \text{UMVUE}.
+$$
+
+- Para $\tau(\lambda)=e^{-\lambda}$:  
+  Un insesgado simple es $W=\mathbf 1\{X_1=0\}$ (pues $\Pr(X_1=0)=e^{-\lambda}$).  
+  Dado $T=t$,  
+
+$$
+  (X_1,\dots,X_n)\mid T=t \sim \text{Multinomial}\Big(t;\tfrac{1}{n},\dots,\tfrac{1}{n}\Big),
+$$
+
+  así que  
+
+$$
+  \Pr(X_1=0 \mid T=t)=\Big(1-\tfrac{1}{n}\Big)^t.
+$$
+
+  Por ende,  
+
+ $$
+  W_T = \mathbb{E}[\,\mathbf 1\{X_1=0\}\mid T] 
+  = \Big(1-\tfrac{1}{n}\Big)^T,
+$$
+
+  que es el **UMVUE de $e^{-\lambda}$**.
+
+::: 
+
+```{r}
+## Lehmann–Scheffé con Poisson ----
+## X_i ~ Poisson(lambda).  T = sum X_i ~ Poisson(n*lambda) es suficiente y completo.
+
+set.seed(123)
+
+# Parámetros
+lambda <- 2
+n      <- 10
+Nsim   <- 20000
+
+# Contenedores
+W1_naive  <- numeric(Nsim)  # para tau1(lambda)=lambda, W = X1
+W1_RB     <- numeric(Nsim)  # W_T = E[X1|T] = T/n
+
+W2_naive  <- numeric(Nsim)  # para tau2(lambda)=exp(-lambda), W = 1{X1=0}
+W2_RB     <- numeric(Nsim)  # W_T = E[1{X1=0} | T] = ((n-1)/n)^T
+
+for (s in 1:Nsim) {
+  X <- rpois(n, lambda)
+  Tsum <- sum(X)
+  
+  # Caso 1: tau(lambda) = lambda
+  W1_naive[s] <- X[1]
+  W1_RB[s]    <- Tsum / n
+  
+  # Caso 2: tau(lambda) = exp(-lambda)
+  W2_naive[s] <- as.numeric(X[1] == 0)
+  W2_RB[s]    <- (1 - 1/n)^Tsum
+}
+
+## Resúmenes empíricos
+res <- data.frame(
+  Estimador = c("W = X1", "W_T = T/n", "W = 1{X1=0}", "W_T = ((n-1)/n)^T"),
+  Objetivo  = c("lambda", "lambda", "exp(-lambda)", "exp(-lambda)"),
+  Media     = c(mean(W1_naive), mean(W1_RB), mean(W2_naive), mean(W2_RB)),
+  Varianza  = c(var(W1_naive), var(W1_RB), var(W2_naive), var(W2_RB))
+)
+
+print(res, row.names = FALSE)
+
+## Valores teóricos para comparación
+# Caso 1 (lambda):
+var_W1_naive_theo <- lambda            # Var(X1)
+var_W1_RB_theo    <- lambda / n        # Var(T/n)
+
+# Caso 2 (exp(-lambda)):
+# Var(1{X1=0}) = e^{-lambda}(1 - e^{-lambda})
+var_W2_naive_theo <- exp(-lambda) * (1 - exp(-lambda))
+
+# Var(((n-1)/n)^T) = E[a^{2T}] - (E[a^T])^2, con a = (n-1)/n y T~Poisson(n*lambda)
+a <- 1 - 1/n
+E_aT     <- exp(n * lambda * (a - 1))        # = exp(n*lambda*(-1/n)) = exp(-lambda)
+E_a2T    <- exp(n * lambda * (a^2 - 1))      # = exp(-2*lambda + lambda/n)
+var_W2_RB_theo <- E_a2T - E_aT^2             # = e^{-2lambda}(e^{lambda/n} - 1)
+
+cat("\n--- Teórico ---\n")
+cat(sprintf("Var(W=X1)                 = %.5f\n", var_W1_naive_theo))
+cat(sprintf("Var(W_T=T/n)              = %.5f\n", var_W1_RB_theo))
+cat(sprintf("Var(W=1{X1=0})            = %.5f\n", var_W2_naive_theo))
+cat(sprintf("Var(W_T=((n-1)/n)^T)      = %.5f\n\n", var_W2_RB_theo))
+
+cat("Relaciones esperadas (Rao–Blackwell):\n")
+cat(sprintf("Var(T/n)  <= Var(X1):           %.5f <= %.5f\n", var_W1_RB_theo, var_W1_naive_theo))
+cat(sprintf("Var(((n-1)/n)^T) <= Var(1{X1=0}): %.5f <= %.5f\n", var_W2_RB_theo, var_W2_naive_theo))
+
+```
+**Qué comprueba el script**
+
+- **Insesgadez:** las medias empíricas de $W$ y $W_T$ aproximan $\tau(\lambda)$ (ya sea $\lambda$ o $e^{-\lambda}$).  
+
+- **Mejor varianza:**  
+  $$\mathrm{Var}(W_T) \leq \mathrm{Var}(W)$$  
+  en ambos casos (se ve empíricamente y con fórmulas teóricas).  
+
+- **Forma cerrada del UMVUE:**  
+  - Para $\tau(\lambda)=\lambda$: $W_T = T/n$.  
+  - Para $\tau(\lambda)=e^{-\lambda}$: $W_T = \Big(\tfrac{n-1}{n}\Big)^T$.  
+
+ Y, por **Lehmann–Scheffé**, como $T$ es suficiente y completo y $\mathrm{Var}(W_T)<\infty$, este UMVUE es **único**.
+
+```{r}
+# --- Preparación ----
+# install.packages("ggplot2") # si no lo tienes
+library(ggplot2)
+
+explore_LS <- function(lambda = 2, n = 10, Nsim = 20000, seed = 123,
+                       show_plots = TRUE, save_plots = FALSE, prefix = "LS") {
+  set.seed(seed)
+
+  # ---- Simulación ----
+  # Generamos Nsim muestras, cada una de tamaño n (Poisson(lambda))
+  # Para eficiencia, simulamos Nsim*n y damos forma de matriz.
+  Xmat <- matrix(rpois(Nsim * n, lambda), nrow = Nsim, ncol = n)
+  Tsum <- rowSums(Xmat)
+
+  # Caso 1: tau(lambda) = lambda
+  W1  <- Xmat[, 1]          # estimador ingenuo: X1
+  WT1 <- Tsum / n           # Rao-Blackwell: E[X1 | T] = T/n  (UMVUE)
+
+  # Caso 2: tau(lambda) = exp(-lambda)
+  W2  <- as.numeric(Xmat[, 1] == 0)        # ingenuo: 1{X1=0}
+  WT2 <- (1 - 1/n)^Tsum                    # RB: ((n-1)/n)^T  (UMVUE)
+
+  # ---- Resúmenes empíricos ----
+  tab <- data.frame(
+    Estimador = c("W = X1", "W_T = T/n", "W = 1{X1=0}", "W_T = ((n-1)/n)^T"),
+    Objetivo  = c("lambda", "lambda", "exp(-lambda)", "exp(-lambda)"),
+    Media     = c(mean(W1), mean(WT1), mean(W2), mean(WT2)),
+    Varianza  = c(var(W1),  var(WT1), var(W2), var(WT2))
+  )
+
+  # ---- Valores teóricos ----
+  # Caso 1:
+  var_W1_theo  <- lambda           # Var(X1)
+  var_WT1_theo <- lambda / n       # Var(T/n)
+
+  # Caso 2:
+  # Var(1{X1=0}) = e^{-lambda}(1 - e^{-lambda})
+  var_W2_theo  <- exp(-lambda) * (1 - exp(-lambda))
+
+  # Var(((n-1)/n)^T) = E[a^{2T}] - (E[a^T])^2 con T ~ Poisson(n*lambda), a=(n-1)/n
+  a <- 1 - 1/n
+  E_aT  <- exp(n * lambda * (a - 1))           # = exp(-lambda)
+  E_a2T <- exp(n * lambda * (a^2 - 1))         # = exp(-2*lambda + lambda/n)
+  var_WT2_theo <- E_a2T - E_aT^2               # = e^{-2lambda}(e^{lambda/n} - 1)
+
+  tab_teo <- data.frame(
+    Estimador = c("W = X1", "W_T = T/n", "W = 1{X1=0}", "W_T = ((n-1)/n)^T"),
+    Var_teor  = c(var_W1_theo, var_WT1_theo, var_W2_theo, var_WT2_theo)
+  )
+
+  # ---- Data para gráficas ----
+  df1 <- rbind(
+    data.frame(valor = W1,  tipo = "W = X1",        objetivo = "lambda"),
+    data.frame(valor = WT1, tipo = "W_T = T/n",     objetivo = "lambda")
+  )
+
+  df2 <- rbind(
+    data.frame(valor = W2,  tipo = "W = 1{X1=0}",           objetivo = "exp(-lambda)"),
+    data.frame(valor = WT2, tipo = "W_T = ((n-1)/n)^T",     objetivo = "exp(-lambda)")
+  )
+
+  # ---- Gráficas ----
+  p_dens_1 <- ggplot(df1, aes(x = valor, fill = tipo)) +
+    geom_density(alpha = 0.35, adjust = 1.1) +
+    geom_vline(xintercept = lambda, linetype = 2) +
+    labs(
+      title = bquote("Distribuciones de " * W ~ "vs" ~ W[T] ~ " para " ~ tau(lambda) == lambda),
+      subtitle = bquote(lambda == .(lambda) ~ ", " ~ n == .(n) ~ ", " ~ N[sim] == .(Nsim)),
+      x = "valor", y = "densidad"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "top")
+
+  p_box_1 <- ggplot(df1, aes(x = tipo, y = valor, fill = tipo)) +
+    geom_boxplot(alpha = 0.4, width = 0.6, outlier.alpha = 0.25) +
+    geom_hline(yintercept = lambda, linetype = 2) +
+    labs(
+      title   = "Boxplots: W vs W_T (objetivo: lambda)",
+      x = NULL, y = "valor"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+
+  # Para el caso indicador es discreto; usamos barras y boxplot (WT2 es continuo en [0,1])
+  p_bar_2 <- ggplot(df2, aes(x = factor(round(valor, 3)), fill = tipo)) +
+    geom_bar(position = "dodge") +
+    labs(
+      title = bquote("Distribuciones de " * W ~ "vs" ~ W[T] ~ " para " ~ tau(lambda) == e^{-lambda}),
+      subtitle = bquote(lambda == .(lambda) ~ ", " ~ n == .(n) ~ ", " ~ N[sim] == .(Nsim)),
+      x = "valor (redondeado a 3 decimales)", y = "frecuencia"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "top")
+
+  p_box_2 <- ggplot(df2, aes(x = tipo, y = valor, fill = tipo)) +
+    geom_boxplot(alpha = 0.4, width = 0.6, outlier.alpha = 0.25) +
+    geom_hline(yintercept = exp(-lambda), linetype = 2) +
+    labs(
+      title = "Boxplots: W vs W_T (objetivo: exp(-lambda))",
+      x = NULL, y = "valor"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+
+  if (show_plots) {
+    print(p_dens_1); print(p_box_1)
+    print(p_bar_2);  print(p_box_2)
+  }
+
+  if (save_plots) {
+    ggsave(sprintf("%s_dens_lambda.png", prefix), p_dens_1, width = 7, height = 4.5, dpi = 150)
+    ggsave(sprintf("%s_box_lambda.png",  prefix), p_box_1,  width = 6, height = 4.5, dpi = 150)
+    ggsave(sprintf("%s_bar_expl.png",    prefix), p_bar_2,  width = 7, height = 4.5, dpi = 150)
+    ggsave(sprintf("%s_box_expl.png",    prefix), p_box_2,  width = 6, height = 4.5, dpi = 150)
+  }
+
+  # ---- Salida ----
+  list(
+    resumen_empirico = tab,
+    resumen_teorico  = tab_teo,
+    plots = list(dens_lambda = p_dens_1, box_lambda = p_box_1,
+                 bar_expl = p_bar_2, box_expl = p_box_2)
+  )
+}
+
+# ===== Ejemplo de uso =====
+out <- explore_LS(lambda = 2, n = 10, Nsim = 20000, seed = 123, show_plots = TRUE)
+
+# Mira los resúmenes:
+out$resumen_empirico
+out$resumen_teorico
+
+```
+**Qué muestra**
+
+- **Densidad y boxplot (objetivo $\lambda$):**  
+  Compara $W = X_1$ vs $W_T = T/n$.  
+  Ambos se centran en $\lambda$, pero verás **menor varianza** para $W_T$.  
+
+- **Barras/boxplot (objetivo $e^{-\lambda}$):**  
+  Compara $W = \mathbf{1}\{X_1=0\}$ vs $W_T = \Big(\tfrac{n-1}{n}\Big)^T$.  
+  Ambos centrados en $e^{-\lambda}$, con **varianza menor** para $W_T$.  
+
+---
+
+ **Sugerencia:** juega con $\lambda$ y $n$ en `explore_LS(lambda, n, ...)` para ver cómo cambia la varianza.  
+Por **Lehmann–Scheffé**, $W_T$ es el **UMVUE** y único (bajo varianza finita) cuando $T$ es suficiente y completo.
+
 ## Referencias
 
 - **Gómez, Guadalupe**, & **Delicado, Pedro** (2006). *Curso de Inferencia y Decisión*. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.

@@ -199,12 +199,24 @@ window.Quarto = {
 <a href="#error-cuadr%C3%A1tico-medio" id="toc-error-cuadrático-medio" class="nav-link" data-scroll-target="#error-cuadr%C3%A1tico-medio"><span class="header-section-number">3.7</span> Error cuadrático medio</a>
   <ul class="collapse">
 <li><a href="#observaciones-sobre-el-ecm" id="toc-observaciones-sobre-el-ecm" class="nav-link" data-scroll-target="#observaciones-sobre-el-ecm"><span class="header-section-number">3.7.1</span> Observaciones sobre el ECM</a></li>
-  <li><a href="#eficiencia-relativa" id="toc-eficiencia-relativa" class="nav-link" data-scroll-target="#eficiencia-relativa"><span class="header-section-number">3.7.2</span> Eficiencia relativa</a></li>
-  <li><a href="#mejor-estimador-insesgado." id="toc-mejor-estimador-insesgado." class="nav-link" data-scroll-target="#mejor-estimador-insesgado."><span class="header-section-number">3.7.3</span> Mejor estimador insesgado.</a></li>
-  <li><a href="#teorema-de-cram%C3%A9r-rao.-informaci%C3%B3n-de-fisher" id="toc-teorema-de-cramér-rao.-información-de-fisher" class="nav-link" data-scroll-target="#teorema-de-cram%C3%A9r-rao.-informaci%C3%B3n-de-fisher"><span class="header-section-number">3.7.4</span> Teorema de Cramér-Rao. Información de Fisher</a></li>
   </ul>
 </li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">3.8</span> Referencias</a></li>
+  <li><a href="#eficiencia-relativa" id="toc-eficiencia-relativa" class="nav-link" data-scroll-target="#eficiencia-relativa"><span class="header-section-number">3.8</span> Eficiencia relativa</a></li>
+  <li><a href="#mejor-estimador-insesgado." id="toc-mejor-estimador-insesgado." class="nav-link" data-scroll-target="#mejor-estimador-insesgado."><span class="header-section-number">3.9</span> Mejor estimador insesgado.</a></li>
+  <li><a href="#teorema-de-cram%C3%A9r-rao.-informaci%C3%B3n-de-fisher" id="toc-teorema-de-cramér-rao.-información-de-fisher" class="nav-link" data-scroll-target="#teorema-de-cram%C3%A9r-rao.-informaci%C3%B3n-de-fisher"><span class="header-section-number">3.10</span> Teorema de Cramér-Rao. Información de Fisher</a></li>
+  <li>
+<a href="#evaluaci%C3%B3n-de-estimadores" id="toc-evaluación-de-estimadores" class="nav-link" data-scroll-target="#evaluaci%C3%B3n-de-estimadores"><span class="header-section-number">3.11</span> Evaluación de estimadores</a>
+  <ul class="collapse">
+<li><a href="#mejor-estimador-insesgado.-1" id="toc-mejor-estimador-insesgado.-1" class="nav-link" data-scroll-target="#mejor-estimador-insesgado.-1"><span class="header-section-number">3.11.1</span> Mejor estimador insesgado.</a></li>
+  <li><a href="#otra-versi%C3%B3n-del-teorema-de-rao-blackwell" id="toc-otra-versión-del-teorema-de-rao-blackwell" class="nav-link" data-scroll-target="#otra-versi%C3%B3n-del-teorema-de-rao-blackwell"><span class="header-section-number">3.11.2</span> Otra versión del teorema de Rao-Blackwell</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#comportamiento-asint%C3%B3tico" id="toc-comportamiento-asintótico" class="nav-link" data-scroll-target="#comportamiento-asint%C3%B3tico"><span class="header-section-number">3.12</span> Comportamiento asintótico</a>
+  <ul class="collapse">
+<li><a href="#consistencia" id="toc-consistencia" class="nav-link" data-scroll-target="#consistencia"><span class="header-section-number">3.12.1</span> Consistencia</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -1033,8 +1045,8 @@ F_{\hat{\theta}_4}(a)&amp;=1-P(\hat{\theta}_4&gt;a)\nonumber\\
     &amp;=\frac{\theta}{3}
     \end{align}
 \]</span> Luego <span class="math inline">\(\hat{\theta}_4\)</span> no es insesgado, es sesgado.</p>
-</section><section id="eficiencia-relativa" class="level3" data-number="3.7.2"><h3 data-number="3.7.2" class="anchored" data-anchor-id="eficiencia-relativa">
-<span class="header-section-number">3.7.2</span> Eficiencia relativa</h3>
+</section></section><section id="eficiencia-relativa" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="eficiencia-relativa">
+<span class="header-section-number">3.8</span> Eficiencia relativa</h2>
 <div id="def-3.1" class="definition theorem">
 <p><span class="theorem-title"><strong>Definition 3.1</strong></span> Un estimador <span class="math inline">\(W\)</span> de <span class="math inline">\(\theta\)</span> se denomina <strong>inadmisible</strong> si existe otro estimador <span class="math inline">\(V\)</span> de <span class="math inline">\(\theta\)</span> tal que <span class="math display">\[
 \begin{align}
@@ -1042,8 +1054,8 @@ E_\theta((V-\theta)^2)\leq E_\theta((W-\theta)^2) \mbox{ para todo $\theta \in \
 \end{align}
 \]</span></p>
 </div>
-</section><section id="mejor-estimador-insesgado." class="level3" data-number="3.7.3"><h3 data-number="3.7.3" class="anchored" data-anchor-id="mejor-estimador-insesgado.">
-<span class="header-section-number">3.7.3</span> Mejor estimador insesgado.</h3>
+</section><section id="mejor-estimador-insesgado." class="level2" data-number="3.9"><h2 data-number="3.9" class="anchored" data-anchor-id="mejor-estimador-insesgado.">
+<span class="header-section-number">3.9</span> Mejor estimador insesgado.</h2>
 <div id="def-3.2" class="definition theorem">
 <p><span class="theorem-title"><strong>Definition 3.2</strong></span> Sean <span class="math inline">\(\hat{\theta}_1\)</span> y <span class="math inline">\(\hat{\theta}_2\)</span> dos estimadores insesgados de un parámetro <span class="math inline">\(\theta\)</span>, con varianzas <span class="math inline">\(V (\hat{\theta}_1)\)</span> y <span class="math inline">\(V (\hat{\theta}_2)\)</span>, respectivamente. Entonces la eficiencia de <span class="math inline">\(\hat{\theta}_1\)</span> con respecto a <span class="math inline">\(\hat{\theta}_2\)</span> denotada como <span class="math inline">\(eff(\hat{\theta}_1,\,\hat{\theta}_2)\)</span> se defiene por la expresión</p>
 <p><span class="math display">\[eff (\hat{\theta}_1,\, \hat{\theta}_2)=\frac{V(\hat{\theta}_1)}{V(\hat{\theta}_2)}.\]</span></p>
@@ -1162,8 +1174,8 @@ f(U) = \frac{U}{n},
 <p>que es la <strong>media muestral</strong>.</p>
 <p>Por Lehmann–Scheffé, como <span class="math inline">\(U\)</span> es suficiente y completo, <span class="math inline">\(\bar{X} = U/n\)</span> es el <strong>UMVUE de <span class="math inline">\(p\)</span></strong>.</p>
 </div>
-</section><section id="teorema-de-cramér-rao.-información-de-fisher" class="level3" data-number="3.7.4"><h3 data-number="3.7.4" class="anchored" data-anchor-id="teorema-de-cramér-rao.-información-de-fisher">
-<span class="header-section-number">3.7.4</span> Teorema de Cramér-Rao. Información de Fisher</h3>
+</section><section id="teorema-de-cramér-rao.-información-de-fisher" class="level2" data-number="3.10"><h2 data-number="3.10" class="anchored" data-anchor-id="teorema-de-cramér-rao.-información-de-fisher">
+<span class="header-section-number">3.10</span> Teorema de Cramér-Rao. Información de Fisher</h2>
 <div id="def-3.3" class="definition theorem">
 <p><span class="theorem-title"><strong>Definition 3.3</strong></span> Diremos que un estimador <span class="math inline">\(W^{*}\)</span> es el mejor estimador insesgado de <span class="math inline">\(\tau(\theta)\)</span>, o el UMVUE (Uniformly Minimum Variance Unbiased Estimator) <strong>(estimador insesgado de <span class="math inline">\(\tau(\theta)\)</span> uniformemente de mínima varianza)</strong> , si <span class="math inline">\(E_\theta(W^{*}) = \tau(\theta)\)</span> para todo <span class="math inline">\(\theta\in\Theta\)</span> y si para cualquier otro estimador <span class="math inline">\(W\)</span> , tal que <span class="math inline">\(E_\theta(W) = \tau(\theta)\)</span> para todo <span class="math inline">\(\theta\in\Theta\)</span>, se tiene que <span class="math inline">\(V_\theta(W^{*}) \leq V_\theta(W)\)</span>, para todo <span class="math inline">\(\theta\in\Theta\)</span>.</p>
 </div>
@@ -1313,8 +1325,641 @@ a(\theta)(W(\underset{\sim}{x})-\tau(\theta))=\frac{\partial}{\partial\theta}\lo
 L(\theta|\underset{\sim}{x})=u(\underset{\sim}{x})h(\theta)\exp\{W(\underset{\sim}{x})k(\theta)\}
 \end{align}
 \]</span> es decir, si y sólo si la distribución de partida pertenece a <strong>la familia exponencial</strong>.</p>
-<hr></section></section><section id="referencias" class="level2" data-number="3.8"><h2 data-number="3.8" class="anchored" data-anchor-id="referencias">
-<span class="header-section-number">3.8</span> Referencias</h2>
+</section><section id="evaluación-de-estimadores" class="level2" data-number="3.11"><h2 data-number="3.11" class="anchored" data-anchor-id="evaluación-de-estimadores">
+<span class="header-section-number">3.11</span> Evaluación de estimadores</h2>
+<section id="mejor-estimador-insesgado.-1" class="level3" data-number="3.11.1"><h3 data-number="3.11.1" class="anchored" data-anchor-id="mejor-estimador-insesgado.-1">
+<span class="header-section-number">3.11.1</span> Mejor estimador insesgado.</h3>
+<p><strong>Teorema de Rao-Blackwell. Teorema de Lehmann-Scheffé</strong></p>
+<p>Si buscamos estimadores insesgados con varianzas pequeñas, podemos restringir nuestra búsqueda a estimadores que sean funciones de estadísticos suficientes.</p>
+<div id="thm-3.6" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.6</strong></span> Si <span class="math inline">\(Y_1\)</span> y <span class="math inline">\(Y_2\)</span> son dos variables aleatorias, entonces</p>
+<p><span class="math inline">\(E(Y_1) = E[E(Y_1 \mid Y_2)]\)</span>,</p>
+<p>donde en el lado derecho de la ecuación el valor esperado interior es con respecto a la distribución condicional de <span class="math inline">\(Y_1\)</span> dada <span class="math inline">\(Y_2\)</span>, y el valor esperado exterior es con respecto a la distribución de <span class="math inline">\(Y_2\)</span>.</p>
+</div>
+<hr>
+<div id="thm-3.7" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.7</strong></span> Si <span class="math inline">\(Y_1\)</span> y <span class="math inline">\(Y_2\)</span> representan variables aleatorias, entonces</p>
+<p><span class="math inline">\(V(Y_1) = E[V(Y_1 \mid Y_2)] + V[E(Y_1 \mid Y_2)]\)</span>.</p>
+</div>
+<div id="thm-3.8" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.8</strong></span> <strong>El Teorema de Rao-Blackwell</strong> Sea <span class="math inline">\(\hat{\theta}\)</span> un estimador insesgado para <span class="math inline">\(\theta\)</span> tal que <span class="math inline">\(V (\hat{\theta}) &lt;\infty\)</span> . Si <span class="math inline">\(U\)</span> es un estadístico suficiente para <span class="math inline">\(\theta\)</span>, definamos <span class="math inline">\(\hat{\theta}^* = E(\hat{\theta} |U)\)</span>. Entonces, para toda <span class="math inline">\(\theta\)</span>, <span class="math display">\[E(\hat{\theta}^*) =\theta\mbox{ y }V(\hat{\theta}^*) \leq V(\hat{\theta})\]</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Como <span class="math inline">\(U\)</span> es suficiente para <span class="math inline">\(\theta\)</span>, la distribución condicional de cualquier estadístico (incluyendo <span class="math inline">\(\hat{\theta}\)</span>), dada <span class="math inline">\(U\)</span> no depende de <span class="math inline">\(\theta\)</span>. Entonces, <span class="math inline">\(\hat{\theta}^*=E(\hat{\theta}|U)\)</span> no es función de <span class="math inline">\(\theta\)</span> y es por tanto un estadístico.</p>
+<p>Como <span class="math inline">\(\hat{\theta}\)</span> es un estimador insesgado para <span class="math inline">\(\theta\)</span> entonces de los Teoremas <a href="#thm-3.6" class="quarto-xref">Theorem&nbsp;<span>3.6</span></a> y <a href="#thm-3.7" class="quarto-xref">Theorem&nbsp;<span>3.7</span></a>, tenemos <span class="math display">\[E(\hat{\theta}^*)=E[E(\hat{\theta}|U)]=E(\hat{\theta})=\theta.\]</span> Entonces <span class="math inline">\(\hat{\theta}^*\)</span> es un estimador insesgado para <span class="math inline">\(\theta\)</span>. El Teorema <a href="#thm-3.7" class="quarto-xref">Theorem&nbsp;<span>3.7</span></a> implica que <span class="math display">\[\begin{eqnarray*}
+V(\hat{\theta})&amp;=&amp;V[E(\hat{\theta}|U)]+E[V(\hat{\theta}|U)]\\
+            &amp;=&amp;V(\hat{\theta}^*)+E[V(\hat{\theta}|U)].
+\end{eqnarray*}\]</span> Como <span class="math inline">\(V(\hat{\theta} |U = u) \geq 0\)</span> para toda <span class="math inline">\(u\)</span>, se deduce que <span class="math inline">\(E[V(\hat{\theta} |U)]\geq 0\)</span> y por lo tanto que <span class="math display">\[\begin{eqnarray*}
+V(\hat{\theta})&amp;=&amp;V(\hat{\theta}^*)+E[V(\hat{\theta}|U)]\\
+&amp;\geq&amp;V(\hat{\theta}^*)+0
+\end{eqnarray*}\]</span> luego <span class="math inline">\(V (\hat{\theta}) \geq V (\hat{\theta}^*)\)</span>.</p>
+</div>
+<p>El Teorema de Rao-Blackwell implica que un estimador insesgado para <span class="math inline">\(\theta\)</span> con una varianza pequeña es, o puede llegar a ser, una función de un estadístico suficiente. Si <span class="math inline">\(U\)</span> es un estadístico suficiente para <span class="math inline">\(\theta\)</span>, <span class="math inline">\(E(\hat{\theta}|U)=\hat{\theta}^*\)</span> entonces <span class="math inline">\(E(\hat{\theta}^*)=\theta\)</span> y <span class="math inline">\(V(\hat{\theta}^*)\leq V(\hat{\theta})\)</span>. <strong><span class="math inline">\(\theta^*\)</span> Estimador insesgado, <span class="math inline">\(\hat{\theta}^*=h(U)\)</span> entonces <span class="math inline">\(E(h(U)|U)=h(U)=\hat{\theta}^*\)</span></strong>.</p>
+<p>En general, <span class="math inline">\(E(h(U)|U)=h(U)\)</span>, vemos que usando de nuevo el teorema de Rao-Blackwell nuestro nuevo estimador es simplemente <span class="math inline">\(h(U)=\hat{\theta}^*\)</span>. No ganamos nada después de la primera aplicación.</p>
+<p>Debido a que numerosos estadísticos son suficientes para un parámetro <span class="math inline">\(\theta\)</span> asociado con una distribución ¿qué estadístico suficiente debemos usar cuando aplicamos este teorema?</p>
+<p>El criterio de factorización de manera típica identifica un estadístico <span class="math inline">\(U\)</span> que mejor resume la información de los datos acerca del parámetro <span class="math inline">\(\theta\)</span>. Tales estadísticos reciben el nombre de <strong>estadísticos suficinetes mínimos</strong>.</p>
+<p>Si aplicamos el Teoremo <a href="#thm-3.8" class="quarto-xref">Theorem&nbsp;<span>3.8</span></a> usando <span class="math inline">\(U\)</span>, no sólo obtenemos un estimador con varianza más pequeña si no un estimador insesgado para <span class="math inline">\(\theta\)</span> con varianza mínima, este se le llama <strong>Estimador Insesgado de Varianza Mínima EIVM (MVUE)</strong>.</p>
+<div id="nte-3.3" class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;3.3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>El Teorema de Rao–Blackwell es uno de esos resultados hermosos que nos dicen: “Siempre puedes mejorar tus estimadores, si aprovechas la información disponible en un estadístico suficiente”.</strong></p>
+<p>Supongamos que queremos estimar la media <span class="math inline">\(\theta = \mu\)</span> de una distribución <strong>Bernoulli(<span class="math inline">\(p\)</span>)</strong>.</p>
+<p><strong>Estimador inicial ingenuo:</strong><br>
+Tomemos una muestra de tamaño <span class="math inline">\(n\)</span> y digamos que solo miramos la primera observación <span class="math inline">\(X_1\)</span>.<br>
+Como <span class="math inline">\(E(X_1) = p\)</span>, este es un estimador insesgado, pero claramente tiene varianza muy grande.</p>
+<p><strong>Estadístico suficiente:</strong><br>
+La suma <span class="math inline">\(U = \sum_{i=1}^n X_i\)</span> es suficiente para <span class="math inline">\(p\)</span>.</p>
+<p><strong>Estimador Rao–Blackwellizado:</strong><br>
+Calculamos:</p>
+<p><span class="math display">\[\hat{p}^* = E(X_1 \mid U) = \frac{U}{n}.\]</span></p>
+<p>Es decir, hemos pasado de un estimador ingenuo (<span class="math inline">\(X_1\)</span>) a la <strong>media muestral</strong>, que sabemos es mucho más eficiente.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Teorema de Rao–Blackwell: ejemplo Bernoulli ----</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Parámetros verdaderos</span></span>
+<span><span class="va">p</span>     <span class="op">&lt;-</span> <span class="fl">0.6</span></span>
+<span><span class="va">n</span>     <span class="op">&lt;-</span> <span class="fl">20</span>         <span class="co"># tamaño de muestra</span></span>
+<span><span class="va">Nsim</span>  <span class="op">&lt;-</span> <span class="fl">10000</span>      <span class="co"># número de simulaciones</span></span>
+<span></span>
+<span><span class="co"># Vectores para guardar los estimadores</span></span>
+<span><span class="va">est_naive</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">Nsim</span><span class="op">)</span>  <span class="co"># usa solo la primera observación X1</span></span>
+<span><span class="va">est_RB</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">Nsim</span><span class="op">)</span>  <span class="co"># E[X1 | U] = U/n  (media muestral)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">s</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">Nsim</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">n</span>, size <span class="op">=</span> <span class="fl">1</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span>
+<span>  <span class="va">U</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">est_naive</span><span class="op">[</span><span class="va">s</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  <span class="va">est_RB</span><span class="op">[</span><span class="va">s</span><span class="op">]</span>    <span class="op">&lt;-</span> <span class="va">U</span> <span class="op">/</span> <span class="va">n</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Resumen empírico</span></span>
+<span><span class="va">mean_naive</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">est_naive</span><span class="op">)</span></span>
+<span><span class="va">var_naive</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">est_naive</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mean_RB</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">est_RB</span><span class="op">)</span></span>
+<span><span class="va">var_RB</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">est_RB</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Valores teóricos</span></span>
+<span><span class="va">var_naive_theo</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p</span><span class="op">)</span>            <span class="co"># Var(X1)</span></span>
+<span><span class="va">var_RB_theo</span>    <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">p</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span>        <span class="co"># Var(U/n)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"==== Resultados (empíricos vs teóricos) ====\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>==== Resultados (empíricos vs teóricos) ====</code></pre>
+</div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"E[X1]            empírico = %.4f  (teórico = %.4f)\n"</span>, <span class="va">mean_naive</span>, <span class="va">p</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>E[X1]            empírico = 0.6006  (teórico = 0.6000)</code></pre>
+</div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Var(X1)          empírico = %.4f  (teórico = %.4f)\n\n"</span>, <span class="va">var_naive</span>, <span class="va">var_naive_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Var(X1)          empírico = 0.2399  (teórico = 0.2400)</code></pre>
+</div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"E[U/n]           empírico = %.4f  (teórico = %.4f)\n"</span>, <span class="va">mean_RB</span>, <span class="va">p</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>E[U/n]           empírico = 0.6004  (teórico = 0.6000)</code></pre>
+</div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Var(U/n)         empírico = %.4f  (teórico = %.4f)\n\n"</span>, <span class="va">var_RB</span>, <span class="va">var_RB_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Var(U/n)         empírico = 0.0119  (teórico = 0.0120)</code></pre>
+</div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Reducción de varianza (empírica): Var(U/n) / Var(X1) = %.4f\n"</span>, <span class="va">var_RB</span> <span class="op">/</span> <span class="va">var_naive</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reducción de varianza (empírica): Var(U/n) / Var(X1) = 0.0494</code></pre>
+</div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Reducción de varianza (teórica) : Var(U/n) / Var(X1) = %.4f\n"</span>, <span class="va">var_RB_theo</span> <span class="op">/</span> <span class="va">var_naive_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reducción de varianza (teórica) : Var(U/n) / Var(X1) = 0.0500</code></pre>
+</div>
+</div>
+<p>Si empezamos con un estimador insesgado para <span class="math inline">\(\theta\)</span> y el estadístico suficiente obtenido por medio del criterio de factorización, la aplicación del Teorema de Rao-Blackwell en general lleva a un MVUE para el parámetro.</p>
+<p>Sea <span class="math inline">\(\hat{\theta}\)</span> el parámetro insesgado para <span class="math inline">\(\theta\)</span>. <span class="math display">\[E(\hat{\theta})=\theta\]</span> <span class="math inline">\(U\)</span> igual al obtenido por el método de factorización <span class="math display">\[\hat{\theta}^*=E(\hat{\theta}|U)\]</span> donde <span class="math inline">\(\hat{\theta}^*\)</span> es el MVUE (Aplicar Blackwell).</p>
+<p><strong>La consecuencia fundamental de este teorema es que en la búsqueda del estimador UMVUE, basta con restringirnos a aquellos estimadores insesgados que son función de un estadístico suficiente: si trabajamos con un estadístico insesgado que no es función de uno suficiente, tomando esperanzas condicionadas podemos conseguir otro que sea al menos tan bueno como el anterior y sea función del estadístico suficiente. Este proceso se llama a veces Rao-Blackwellización.</strong></p>
+</section><section id="otra-versión-del-teorema-de-rao-blackwell" class="level3" data-number="3.11.2"><h3 data-number="3.11.2" class="anchored" data-anchor-id="otra-versión-del-teorema-de-rao-blackwell">
+<span class="header-section-number">3.11.2</span> Otra versión del teorema de Rao-Blackwell</h3>
+<div id="thm-3.9" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.9</strong></span> <strong>Otra versión del teorema de Rao-Blackwell</strong> Sea una m.a.s. de <span class="math inline">\(X\)</span>, con densidad (o masa de probabilidad) <span class="math inline">\(f(x|\theta)\)</span>. Sea <span class="math inline">\(T(\underset{\sim}{X})\)</span> un estadístico suficiente para <span class="math inline">\(\theta\)</span> y sea <span class="math inline">\(W(\underset{\sim}{X})\)</span> un estimador insesgado de <span class="math inline">\(\tau(\theta)\)</span>. Definimos <span class="math display">\[\begin{align}
+W_T=E_\theta(W|T)
+\end{align}\]</span> Entonces,</p>
+<ul>
+<li>
+<span class="math inline">\(W_T\)</span> es función unicamente de <span class="math inline">\(T(\underset{\sim}{X})\)</span> (Es decir, no depende de <span class="math inline">\(\theta\)</span> y no depende de la muestra <span class="math inline">\(\underset{\sim}{X}\)</span> sólo a través del valor de <span class="math inline">\(T(\underset{\sim}{X})\)</span>)</li>
+<li>
+<span class="math inline">\(E_\theta(W_T)=\tau(\theta)\)</span>.</li>
+<li>
+<span class="math inline">\(V_\theta(W_T)\leq V_\theta(W)\)</span> .</li>
+</ul>
+</div>
+<p><strong>La consecuencia fundamental de este teorema es que en la búsqueda del estimador UMVUE, basta con restringirnos a aquellos estimadores insesgados que son función de un estadístico suficiente: si trabajamos con un estadístico insesgado que no es función de uno suficiente, tomando esperanzas condicionadas podemos conseguir otro que es al menos tan bueno como el anterior y es función del estadístico suficiente. Este proceso se llama a veces Rao-Blackwellización.</strong></p>
+</section></section><section id="comportamiento-asintótico" class="level2" data-number="3.12"><h2 data-number="3.12" class="anchored" data-anchor-id="comportamiento-asintótico">
+<span class="header-section-number">3.12</span> Comportamiento asintótico</h2>
+<section id="consistencia" class="level3" data-number="3.12.1"><h3 data-number="3.12.1" class="anchored">
+<span class="header-section-number">3.12.1</span> Consistencia</h3>
+<div id="def-3.4" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 3.4</strong></span> Se dice que el estimador <span class="math inline">\(\hat{\theta}_n\)</span> es un estimador consistente de <span class="math inline">\(\theta\)</span> si, para cualquier número positivo <span class="math inline">\(\varepsilon\)</span>, <span class="math display">\[\lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|\leq\varepsilon)=1\]</span> o bien, de forma equivalente, <span class="math display">\[\lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|&gt;\varepsilon)=0\]</span></p>
+</div>
+<p><strong>La consistencia es la misma convergencia en probabilidad!!</strong></p>
+<div id="thm-3.10" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.10</strong></span> Un estimador insesgado <span class="math inline">\(\hat{\theta}_n\)</span> para <span class="math inline">\(\theta\)</span> es un estimador consistente de <span class="math inline">\(\theta\)</span> si <span class="math display">\[\lim_{n\rightarrow\infty}V(\hat{\theta}_n)=0.\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><span class="math inline">\(E(\hat{\theta}_n)=\theta\)</span>. Sea <span class="math inline">\(\sigma_{\hat{\theta}_n}=\sqrt{V(\hat{\theta}_n)}\)</span> aplicando el Teorema Tchebysheff para la v.a <span class="math inline">\(\hat{\theta}_n\)</span>, obtenemos <span class="math display">\[P(|\hat{\theta}_n-\theta|&gt;k\sigma_{\hat{\theta}_n}
+    )\leq \frac{1}{k^2}\]</span> Para cualquier número positivo <span class="math inline">\(\varepsilon\)</span>, y <span class="math inline">\(n\)</span> cualquier tamaño muestral <span class="math display">\[\varepsilon=k\sigma_{\hat{\theta}_n}\Rightarrow k=\frac{\varepsilon}{\sigma_{\hat{\theta}_n}}\]</span> luego <span class="math inline">\(k&gt;0\)</span>.</p>
+<p>La aplicación del teorema de Chebyshev para esta <span class="math inline">\(n\)</span> fija y esta selección de <span class="math inline">\(k\)</span> muestra que <span class="math display">\[\begin{eqnarray*}
+    P(|\hat{\theta}_n-\theta|&gt;\varepsilon)&amp;=&amp;P\left(|\hat{\theta}_n-\theta|&gt;\left[\frac{\varepsilon}{\sigma_{\hat{\theta}_n}}\right]\sigma_{\hat{\theta}_n}\right)\\
+    &amp;\leq&amp;\frac{1}{(\varepsilon/\sigma_{\hat{\theta}_n})^2}\\
+    &amp;=&amp;\frac{V(\hat{\theta}_n)}{\varepsilon^2}
+\end{eqnarray*}\]</span> Entonces, para cualquier <span class="math inline">\(n\)</span> fija <span class="math display">\[0\leq P(|\hat{\theta}_n-\theta|&gt;\varepsilon)\leq \frac{V(\hat{\theta}_n)}{\varepsilon^2}\]</span> Si <span class="math inline">\(\lim_{n\rightarrow\infty}V(\hat{\theta}_n)=0\)</span> entonces <span class="math display">\[\lim_{n\rightarrow\infty}0\leq \lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|&gt;\varepsilon)\leq\lim_{n\rightarrow\infty} \frac{V(\hat{\theta}_n)}{\varepsilon^2}=0\]</span> Luego <span class="math display">\[\lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|&gt;\varepsilon)=0\]</span> luego <span class="math inline">\(\hat{\theta}_n\)</span> es un estimador consistente para <span class="math inline">\(\theta\)</span>.</p>
+</div>
+<div id="thm-3.11" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.11</strong></span> <span class="math inline">\(\displaystyle{\hat{\theta}_n \stackrel{P}{\rightarrow} \theta}\)</span> y <span class="math inline">\(\displaystyle{\hat{\theta}'_n \stackrel{P}{\rightarrow} \theta'}\)</span> entonces</p>
+<ol type="a">
+<li>
+<span class="math inline">\(\displaystyle{\hat{\theta}_n +\hat{\theta}'_n \stackrel{P}{\longrightarrow} \theta+\theta'}\)</span>.</li>
+<li>
+<span class="math inline">\(\displaystyle{\hat{\theta}_n \times\hat{\theta}'_n \stackrel{P}{\longrightarrow} \theta\times\theta'}\)</span>.</li>
+<li>Si <span class="math inline">\(\theta'\neq 0\)</span>, <span class="math inline">\(\displaystyle{\frac{\hat{\theta}_n}{\hat{\theta}'_n}\stackrel{P}{\longrightarrow} \frac{\theta}{\theta'}}\)</span>.</li>
+<li>Si <span class="math inline">\(g (\cdot)\)</span> es una funci'on de valor real que es continua en <span class="math inline">\(\theta\)</span>, entonces <span class="math inline">\(g (\hat{\theta}_n )\)</span> converge en probabilidad en <span class="math inline">\(g (\theta)\)</span>.</li>
+</ol>
+</div>
+<div id="tip-3.1" class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;3.1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>El teorema de Rao-Blackwell establece que basta con buscar el estimador UMVUE entre aquellos estimadores que son función de un estadístico suficiente.</li>
+<li>Bajo ciertas condiciones (existencia de estadísticos suficientes y completos y de estimadores insesgados), esta combinación de los conceptos de estadístico completo y de estadístico suficiente garantiza la existencia de estimadores UMVUE de una función <span class="math inline">\(\tau(\theta)\)</span> del parámetro y da un método para construirlos. <strong>El siguiente teorema establece este resultado. Podemos decir que este teorema resuelve teóricamente el problema de la estimación puntual, entendida ésta como la búsqueda del UMVUE.</strong>
+</li>
+</ol>
+</div>
+</div>
+<div id="def-3.4" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 3.5 (estadístico completo)</strong></span> Sea <span class="math inline">\(f_T(t|\theta)\)</span> la función de densidad (o de masa de probabilidad) de un estadístico <span class="math inline">\(T\)</span> . Diremos que la familia de distribuciones <span class="math inline">\({f_T(t|\theta) : \theta\in \Theta}\)</span> es completa si se da la implicación siguiente: <span class="math display">\[\begin{align}
+E_\theta(g(T))=0 \mbox{para todo $\theta$ entonces}  P_\theta(g(T) = 0) = 1 \mbox{para todo $\theta$}.
+\end{align}\]</span></p>
+<p>En ese caso diremos que <span class="math inline">\(T\)</span> es un estadístico completo.</p>
+<div class="cell">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Completitud para T ~ Binomial(n, p)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">n</span>     <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">gridp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.9</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
+<span><span class="va">N</span>     <span class="op">&lt;-</span> <span class="fl">100000</span>  <span class="co"># simulaciones por p</span></span>
+<span></span>
+<span><span class="co"># Dos funciones no triviales de T (no dependen de p)</span></span>
+<span><span class="va">g1</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">T</span><span class="op">)</span> <span class="cn">T</span> <span class="op">-</span> <span class="va">n</span><span class="op">/</span><span class="fl">2</span></span>
+<span><span class="va">g2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">T</span><span class="op">)</span> <span class="op">(</span><span class="cn">T</span> <span class="op">-</span> <span class="va">n</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="cn">T</span> <span class="op">-</span> <span class="va">n</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Función trivial (cero) para contraste</span></span>
+<span><span class="va">g0</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">T</span><span class="op">)</span> <span class="fl">0</span> <span class="op">*</span> <span class="cn">T</span></span>
+<span></span>
+<span><span class="va">sim_mean_g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">gfun</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">gridp</span>, <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="cn">T</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">rbinom</a></span><span class="op">(</span><span class="va">N</span>, size <span class="op">=</span> <span class="va">n</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu">gfun</span><span class="op">(</span><span class="cn">T</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Medias empíricas</span></span>
+<span><span class="va">m0</span> <span class="op">&lt;-</span> <span class="fu">sim_mean_g</span><span class="op">(</span><span class="va">g0</span><span class="op">)</span></span>
+<span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu">sim_mean_g</span><span class="op">(</span><span class="va">g1</span><span class="op">)</span></span>
+<span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu">sim_mean_g</span><span class="op">(</span><span class="va">g2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Valores teóricos (para comparar)</span></span>
+<span><span class="co"># E[T] = n p; Var[T] = n p (1-p); E[T^2] = Var[T] + (E[T])^2</span></span>
+<span><span class="va">theo_g1</span> <span class="op">&lt;-</span> <span class="va">n</span> <span class="op">*</span> <span class="op">(</span><span class="va">gridp</span> <span class="op">-</span> <span class="fl">1</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span>  <span class="co"># E[g1(T)] = n(p - 1/2)</span></span>
+<span></span>
+<span><span class="va">ET</span>   <span class="op">&lt;-</span> <span class="va">n</span> <span class="op">*</span> <span class="va">gridp</span></span>
+<span><span class="va">VarT</span> <span class="op">&lt;-</span> <span class="va">n</span> <span class="op">*</span> <span class="va">gridp</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">gridp</span><span class="op">)</span></span>
+<span><span class="va">ET2</span>  <span class="op">&lt;-</span> <span class="va">VarT</span> <span class="op">+</span> <span class="va">ET</span><span class="op">^</span><span class="fl">2</span></span>
+<span><span class="va">theo_g2</span> <span class="op">&lt;-</span> <span class="va">ET2</span> <span class="op">-</span> <span class="op">(</span><span class="va">n</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> <span class="va">n</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span> <span class="op">*</span> <span class="va">ET</span> <span class="op">+</span> <span class="op">(</span><span class="va">n</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>  <span class="co"># expandir (T - n/2)(T - n/3)</span></span>
+<span></span>
+<span><span class="co"># Mostrar resultados</span></span>
+<span><span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  p <span class="op">=</span> <span class="va">gridp</span>,</span>
+<span>  E_g0_emp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">m0</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  E_g1_emp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">m1</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  E_g1_teo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">theo_g1</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  E_g2_emp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">m2</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  E_g2_teo <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">theo_g2</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">tab</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   p E_g0_emp E_g1_emp E_g1_teo E_g2_emp E_g2_teo
+ 0.1        0 -4.00184       -4 10.24421 10.23333
+ 0.2        0 -2.99891       -3  5.61325  5.60000
+ 0.3        0 -2.00216       -2  2.77471  2.76667
+ 0.4        0 -1.00631       -1  1.74363  1.73333
+ 0.5        0 -0.00727        0  2.50485  2.50000
+ 0.6        0  1.00466        1  5.09209  5.06667
+ 0.7        0  1.99571        2  9.43229  9.43333
+ 0.8        0  3.00090        3 15.55946 15.60000
+ 0.9        0  3.99831        4 23.58862 23.56667</code></pre>
+</div>
+</div>
+<div id="tip-3.2" class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;3.2: Qué observar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Para <span class="math inline">\(g_0(T)\equiv 0\)</span>, la media empírica es <span class="math inline">\(\approx 0\)</span> para todos los <span class="math inline">\(p\)</span>.</p></li>
+<li><p>Para <span class="math inline">\(g_1(T) = T - \tfrac{n}{2}\)</span>, la esperanza teórica es <span class="math inline">\(n(p - \tfrac{1}{2})\)</span>:<br>
+solo vale <span class="math inline">\(0\)</span> cuando <span class="math inline">\(p = \tfrac{1}{2}\)</span>; <strong>no</strong> es <span class="math inline">\(0\)</span> para los demás <span class="math inline">\(p\)</span>.</p></li>
+<li><p>Para <span class="math inline">\(g_2(T) = (T - \tfrac{n}{2})(T - \tfrac{n}{3})\)</span>, la esperanza es un polinomio en <span class="math inline">\(p\)</span> que <strong>no</strong> es idénticamente cero; de nuevo, no se anula para todos los <span class="math inline">\(p\)</span>.</p></li>
+</ul>
+<hr>
+<p>Esto ilustra la <strong>completitud</strong>: si alguna <span class="math inline">\(g(T)\)</span> (que no depende de <span class="math inline">\(p\)</span>) tuviera<br><span class="math inline">\(E_p[g(T)] = 0\)</span> para todo <span class="math inline">\(p \in (0,1)\)</span>, entonces esa <span class="math inline">\(g\)</span> debe ser (casi seguro) la función <strong>cero</strong>.</p>
+<p>➡️ De ahí que, con <strong>suficiencia + completitud</strong>, el estimador insesgado derivado es el <strong>único UMVUE</strong> (Teorema de Lehmann–Scheffé).</p>
+</div>
+</div>
+<p><strong>La definición de completitud refuerza la de suficiencia en el sentido de que si un estadístico es suficiente y completo entonces, es suficiente minimal (el recíproco no es cierto)</strong></p>
+<div id="thm-3.12" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.12 (Teorema de Lehmann-Scheffé)</strong></span> Si <span class="math inline">\(T(\underset{\sim}{X})\)</span> es un estadístico suficiente y completo para <span class="math inline">\(\theta\)</span> y <span class="math inline">\(W(\underset{\sim}{X})\)</span> es un estimador insesgado cualquiera de <span class="math inline">\(\tau(\theta)\)</span>, entonces <span class="math display">\[\begin{align}
+W_T(\underset{\sim}{X})=E_\theta(W|T)
+\end{align}\]</span> es el mejor estimador insesgado (UMVUE) de <span class="math inline">\(\tau(\theta)\)</span>. Si, además, <span class="math inline">\(V(W_T) &lt; \infty\)</span> para todo <span class="math inline">\(\theta\)</span>, entonces <span class="math inline">\(W_T\)</span> es único.</p>
+</div>
+<ol type="1">
+<li>La demostración del teorema de Lehmann-Scheffé se basa en el hecho de que, si existen estimadores insesgados, esencialmente sólo existe uno que sea función del estadístico suficiente y completo, pues condicionando cualquiera de los insesgados al estadístico suficiente y completo se obtiene siempre el mismo resultado.</li>
+<li>El teorema de Rao-Blackwell garantiza que al tomar esperanzas condicionadas se ha reducido la varianza, llegando así al UMVUE.</li>
+<li>La principal conclusión del teorema de Lehmann-Scheffé es que si existe un estimador insesgado de <span class="math inline">\(\tau(\theta)\)</span> que sea función de un estadístico suficiente y completo, entonces es el único UMVUE de <span class="math inline">\(\tau(\theta)\)</span>.</li>
+</ol>
+<div id="tip-3.3" class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;3.3: Recreando Lehmann–Scheffé en R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>¡Vamos a “recrear” Lehmann–Scheffé en R con un ejemplo clásico y totalmente replicable!</p>
+<p>Usaremos <span class="math inline">\(X_1,\dots,X_n \sim \text{i.i.d. Poisson}(\lambda)\)</span>.<br>
+Entonces</p>
+<p><span class="math display">\[
+T=\sum_{i=1}^n X_i \sim \text{Poisson}(n\lambda)
+\]</span></p>
+<p>es suficiente y completo para <span class="math inline">\(\lambda\)</span>.</p>
+<p>Veremos dos blancos <span class="math inline">\(\tau(\theta)\)</span>:</p>
+<ul>
+<li>
+<span class="math inline">\(\tau(\lambda)=\lambda\)</span><br>
+</li>
+<li><span class="math inline">\(\tau(\lambda)=e^{-\lambda}\)</span></li>
+</ul>
+<p>En cada caso partimos de un estimador insesgado cualquiera <span class="math inline">\(W(\mathbf X)\)</span> y lo “Rao–Blackwellizamos” con <span class="math inline">\(T\)</span>:</p>
+<p><span class="math display">\[
+W_T(\mathbf X)=\mathbb{E}_\theta[W \mid T].
+\]</span></p>
+<p>Por <strong>Lehmann–Scheffé</strong>, <span class="math inline">\(W_T\)</span> es el <strong>UMVUE</strong>.</p>
+<p><strong>Idea teórica rápida</strong></p>
+<ul>
+<li>Para <span class="math inline">\(\tau(\lambda)=\lambda\)</span>:<br>
+Un estimador insesgado simple es <span class="math inline">\(W=X_1\)</span> (pues <span class="math inline">\(\mathbb{E}[X_1]=\lambda\)</span>).<br>
+Condicionando en <span class="math inline">\(T\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+  W_T = \mathbb{E}[X_1 \mid T] = \tfrac{T}{n} \quad \Longrightarrow \quad \text{UMVUE}.
+\]</span></p>
+<ul>
+<li>Para <span class="math inline">\(\tau(\lambda)=e^{-\lambda}\)</span>:<br>
+Un insesgado simple es <span class="math inline">\(W=\mathbf 1\{X_1=0\}\)</span> (pues <span class="math inline">\(\Pr(X_1=0)=e^{-\lambda}\)</span>).<br>
+Dado <span class="math inline">\(T=t\)</span>,</li>
+</ul>
+<p><span class="math display">\[
+  (X_1,\dots,X_n)\mid T=t \sim \text{Multinomial}\Big(t;\tfrac{1}{n},\dots,\tfrac{1}{n}\Big),
+\]</span></p>
+<p>así que</p>
+<p><span class="math display">\[
+  \Pr(X_1=0 \mid T=t)=\Big(1-\tfrac{1}{n}\Big)^t.
+\]</span></p>
+<p>Por ende,</p>
+<p><span class="math display">\[
+  W_T = \mathbb{E}[\,\mathbf 1\{X_1=0\}\mid T]
+  = \Big(1-\tfrac{1}{n}\Big)^T,
+\]</span></p>
+<p>que es el <strong>UMVUE de <span class="math inline">\(e^{-\lambda}\)</span></strong>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Lehmann–Scheffé con Poisson ----</span></span>
+<span><span class="co">## X_i ~ Poisson(lambda).  T = sum X_i ~ Poisson(n*lambda) es suficiente y completo.</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Parámetros</span></span>
+<span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">n</span>      <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">Nsim</span>   <span class="op">&lt;-</span> <span class="fl">20000</span></span>
+<span></span>
+<span><span class="co"># Contenedores</span></span>
+<span><span class="va">W1_naive</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">Nsim</span><span class="op">)</span>  <span class="co"># para tau1(lambda)=lambda, W = X1</span></span>
+<span><span class="va">W1_RB</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">Nsim</span><span class="op">)</span>  <span class="co"># W_T = E[X1|T] = T/n</span></span>
+<span></span>
+<span><span class="va">W2_naive</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">Nsim</span><span class="op">)</span>  <span class="co"># para tau2(lambda)=exp(-lambda), W = 1{X1=0}</span></span>
+<span><span class="va">W2_RB</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="va">Nsim</span><span class="op">)</span>  <span class="co"># W_T = E[1{X1=0} | T] = ((n-1)/n)^T</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">s</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="va">Nsim</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">lambda</span><span class="op">)</span></span>
+<span>  <span class="va">Tsum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">X</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Caso 1: tau(lambda) = lambda</span></span>
+<span>  <span class="va">W1_naive</span><span class="op">[</span><span class="va">s</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">X</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  <span class="va">W1_RB</span><span class="op">[</span><span class="va">s</span><span class="op">]</span>    <span class="op">&lt;-</span> <span class="va">Tsum</span> <span class="op">/</span> <span class="va">n</span></span>
+<span>  </span>
+<span>  <span class="co"># Caso 2: tau(lambda) = exp(-lambda)</span></span>
+<span>  <span class="va">W2_naive</span><span class="op">[</span><span class="va">s</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">W2_RB</span><span class="op">[</span><span class="va">s</span><span class="op">]</span>    <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fl">1</span><span class="op">/</span><span class="va">n</span><span class="op">)</span><span class="op">^</span><span class="va">Tsum</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co">## Resúmenes empíricos</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Estimador <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"W = X1"</span>, <span class="st">"W_T = T/n"</span>, <span class="st">"W = 1{X1=0}"</span>, <span class="st">"W_T = ((n-1)/n)^T"</span><span class="op">)</span>,</span>
+<span>  Objetivo  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lambda"</span>, <span class="st">"lambda"</span>, <span class="st">"exp(-lambda)"</span>, <span class="st">"exp(-lambda)"</span><span class="op">)</span>,</span>
+<span>  Media     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">W1_naive</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">W1_RB</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">W2_naive</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">W2_RB</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  Varianza  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">W1_naive</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">W1_RB</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">W2_naive</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">W2_RB</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">res</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Estimador     Objetivo    Media    Varianza
+            W = X1       lambda 2.015250 2.036219248
+         W_T = T/n       lambda 1.999100 0.197314056
+       W = 1{X1=0} exp(-lambda) 0.131500 0.114213461
+ W_T = ((n-1)/n)^T exp(-lambda) 0.135274 0.003988959</code></pre>
+</div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Valores teóricos para comparación</span></span>
+<span><span class="co"># Caso 1 (lambda):</span></span>
+<span><span class="va">var_W1_naive_theo</span> <span class="op">&lt;-</span> <span class="va">lambda</span>            <span class="co"># Var(X1)</span></span>
+<span><span class="va">var_W1_RB_theo</span>    <span class="op">&lt;-</span> <span class="va">lambda</span> <span class="op">/</span> <span class="va">n</span>        <span class="co"># Var(T/n)</span></span>
+<span></span>
+<span><span class="co"># Caso 2 (exp(-lambda)):</span></span>
+<span><span class="co"># Var(1{X1=0}) = e^{-lambda}(1 - e^{-lambda})</span></span>
+<span><span class="va">var_W2_naive_theo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">lambda</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Var(((n-1)/n)^T) = E[a^{2T}] - (E[a^T])^2, con a = (n-1)/n y T~Poisson(n*lambda)</span></span>
+<span><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">1</span><span class="op">/</span><span class="va">n</span></span>
+<span><span class="va">E_aT</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">lambda</span> <span class="op">*</span> <span class="op">(</span><span class="va">a</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>        <span class="co"># = exp(n*lambda*(-1/n)) = exp(-lambda)</span></span>
+<span><span class="va">E_a2T</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">lambda</span> <span class="op">*</span> <span class="op">(</span><span class="va">a</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>      <span class="co"># = exp(-2*lambda + lambda/n)</span></span>
+<span><span class="va">var_W2_RB_theo</span> <span class="op">&lt;-</span> <span class="va">E_a2T</span> <span class="op">-</span> <span class="va">E_aT</span><span class="op">^</span><span class="fl">2</span>             <span class="co"># = e^{-2lambda}(e^{lambda/n} - 1)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"\n--- Teórico ---\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+--- Teórico ---</code></pre>
+</div>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Var(W=X1)                 = %.5f\n"</span>, <span class="va">var_W1_naive_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Var(W=X1)                 = 2.00000</code></pre>
+</div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Var(W_T=T/n)              = %.5f\n"</span>, <span class="va">var_W1_RB_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Var(W_T=T/n)              = 0.20000</code></pre>
+</div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Var(W=1{X1=0})            = %.5f\n"</span>, <span class="va">var_W2_naive_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Var(W=1{X1=0})            = 0.11702</code></pre>
+</div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Var(W_T=((n-1)/n)^T)      = %.5f\n\n"</span>, <span class="va">var_W2_RB_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Var(W_T=((n-1)/n)^T)      = 0.00406</code></pre>
+</div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Relaciones esperadas (Rao–Blackwell):\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Relaciones esperadas (Rao–Blackwell):</code></pre>
+</div>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Var(T/n)  &lt;= Var(X1):           %.5f &lt;= %.5f\n"</span>, <span class="va">var_W1_RB_theo</span>, <span class="va">var_W1_naive_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Var(T/n)  &lt;= Var(X1):           0.20000 &lt;= 2.00000</code></pre>
+</div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Var(((n-1)/n)^T) &lt;= Var(1{X1=0}): %.5f &lt;= %.5f\n"</span>, <span class="va">var_W2_RB_theo</span>, <span class="va">var_W2_naive_theo</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Var(((n-1)/n)^T) &lt;= Var(1{X1=0}): 0.00406 &lt;= 0.11702</code></pre>
+</div>
+</div>
+<p><strong>Qué comprueba el script</strong></p>
+<ul>
+<li><p><strong>Insesgadez:</strong> las medias empíricas de <span class="math inline">\(W\)</span> y <span class="math inline">\(W_T\)</span> aproximan <span class="math inline">\(\tau(\lambda)\)</span> (ya sea <span class="math inline">\(\lambda\)</span> o <span class="math inline">\(e^{-\lambda}\)</span>).</p></li>
+<li><p><strong>Mejor varianza:</strong><br><span class="math display">\[\mathrm{Var}(W_T) \leq \mathrm{Var}(W)\]</span><br>
+en ambos casos (se ve empíricamente y con fórmulas teóricas).</p></li>
+<li>
+<p><strong>Forma cerrada del UMVUE:</strong></p>
+<ul>
+<li>Para <span class="math inline">\(\tau(\lambda)=\lambda\)</span>: <span class="math inline">\(W_T = T/n\)</span>.<br>
+</li>
+<li>Para <span class="math inline">\(\tau(\lambda)=e^{-\lambda}\)</span>: <span class="math inline">\(W_T = \Big(\tfrac{n-1}{n}\Big)^T\)</span>.</li>
+</ul>
+</li>
+</ul>
+<p>Y, por <strong>Lehmann–Scheffé</strong>, como <span class="math inline">\(T\)</span> es suficiente y completo y <span class="math inline">\(\mathrm{Var}(W_T)&lt;\infty\)</span>, este UMVUE es <strong>único</strong>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># --- Preparación ----</span></span>
+<span><span class="co"># install.packages("ggplot2") # si no lo tienes</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">explore_LS</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">lambda</span> <span class="op">=</span> <span class="fl">2</span>, <span class="va">n</span> <span class="op">=</span> <span class="fl">10</span>, <span class="va">Nsim</span> <span class="op">=</span> <span class="fl">20000</span>, <span class="va">seed</span> <span class="op">=</span> <span class="fl">123</span>,</span>
+<span>                       <span class="va">show_plots</span> <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">save_plots</span> <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">prefix</span> <span class="op">=</span> <span class="st">"LS"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="va">seed</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># ---- Simulación ----</span></span>
+<span>  <span class="co"># Generamos Nsim muestras, cada una de tamaño n (Poisson(lambda))</span></span>
+<span>  <span class="co"># Para eficiencia, simulamos Nsim*n y damos forma de matriz.</span></span>
+<span>  <span class="va">Xmat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Poisson.html">rpois</a></span><span class="op">(</span><span class="va">Nsim</span> <span class="op">*</span> <span class="va">n</span>, <span class="va">lambda</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="va">Nsim</span>, ncol <span class="op">=</span> <span class="va">n</span><span class="op">)</span></span>
+<span>  <span class="va">Tsum</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">Xmat</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Caso 1: tau(lambda) = lambda</span></span>
+<span>  <span class="va">W1</span>  <span class="op">&lt;-</span> <span class="va">Xmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>          <span class="co"># estimador ingenuo: X1</span></span>
+<span>  <span class="va">WT1</span> <span class="op">&lt;-</span> <span class="va">Tsum</span> <span class="op">/</span> <span class="va">n</span>           <span class="co"># Rao-Blackwell: E[X1 | T] = T/n  (UMVUE)</span></span>
+<span></span>
+<span>  <span class="co"># Caso 2: tau(lambda) = exp(-lambda)</span></span>
+<span>  <span class="va">W2</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">Xmat</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>        <span class="co"># ingenuo: 1{X1=0}</span></span>
+<span>  <span class="va">WT2</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fl">1</span><span class="op">/</span><span class="va">n</span><span class="op">)</span><span class="op">^</span><span class="va">Tsum</span>                    <span class="co"># RB: ((n-1)/n)^T  (UMVUE)</span></span>
+<span></span>
+<span>  <span class="co"># ---- Resúmenes empíricos ----</span></span>
+<span>  <span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>    Estimador <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"W = X1"</span>, <span class="st">"W_T = T/n"</span>, <span class="st">"W = 1{X1=0}"</span>, <span class="st">"W_T = ((n-1)/n)^T"</span><span class="op">)</span>,</span>
+<span>    Objetivo  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lambda"</span>, <span class="st">"lambda"</span>, <span class="st">"exp(-lambda)"</span>, <span class="st">"exp(-lambda)"</span><span class="op">)</span>,</span>
+<span>    Media     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">W1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">WT1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">W2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">WT2</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    Varianza  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">W1</span><span class="op">)</span>,  <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">WT1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">W2</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">WT2</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># ---- Valores teóricos ----</span></span>
+<span>  <span class="co"># Caso 1:</span></span>
+<span>  <span class="va">var_W1_theo</span>  <span class="op">&lt;-</span> <span class="va">lambda</span>           <span class="co"># Var(X1)</span></span>
+<span>  <span class="va">var_WT1_theo</span> <span class="op">&lt;-</span> <span class="va">lambda</span> <span class="op">/</span> <span class="va">n</span>       <span class="co"># Var(T/n)</span></span>
+<span></span>
+<span>  <span class="co"># Caso 2:</span></span>
+<span>  <span class="co"># Var(1{X1=0}) = e^{-lambda}(1 - e^{-lambda})</span></span>
+<span>  <span class="va">var_W2_theo</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">lambda</span><span class="op">)</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">lambda</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Var(((n-1)/n)^T) = E[a^{2T}] - (E[a^T])^2 con T ~ Poisson(n*lambda), a=(n-1)/n</span></span>
+<span>  <span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fl">1</span><span class="op">/</span><span class="va">n</span></span>
+<span>  <span class="va">E_aT</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">lambda</span> <span class="op">*</span> <span class="op">(</span><span class="va">a</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>           <span class="co"># = exp(-lambda)</span></span>
+<span>  <span class="va">E_a2T</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">lambda</span> <span class="op">*</span> <span class="op">(</span><span class="va">a</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span>         <span class="co"># = exp(-2*lambda + lambda/n)</span></span>
+<span>  <span class="va">var_WT2_theo</span> <span class="op">&lt;-</span> <span class="va">E_a2T</span> <span class="op">-</span> <span class="va">E_aT</span><span class="op">^</span><span class="fl">2</span>               <span class="co"># = e^{-2lambda}(e^{lambda/n} - 1)</span></span>
+<span></span>
+<span>  <span class="va">tab_teo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>    Estimador <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"W = X1"</span>, <span class="st">"W_T = T/n"</span>, <span class="st">"W = 1{X1=0}"</span>, <span class="st">"W_T = ((n-1)/n)^T"</span><span class="op">)</span>,</span>
+<span>    Var_teor  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">var_W1_theo</span>, <span class="va">var_WT1_theo</span>, <span class="va">var_W2_theo</span>, <span class="va">var_WT2_theo</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># ---- Data para gráficas ----</span></span>
+<span>  <span class="va">df1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>valor <span class="op">=</span> <span class="va">W1</span>,  tipo <span class="op">=</span> <span class="st">"W = X1"</span>,        objetivo <span class="op">=</span> <span class="st">"lambda"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>valor <span class="op">=</span> <span class="va">WT1</span>, tipo <span class="op">=</span> <span class="st">"W_T = T/n"</span>,     objetivo <span class="op">=</span> <span class="st">"lambda"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>valor <span class="op">=</span> <span class="va">W2</span>,  tipo <span class="op">=</span> <span class="st">"W = 1{X1=0}"</span>,           objetivo <span class="op">=</span> <span class="st">"exp(-lambda)"</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>valor <span class="op">=</span> <span class="va">WT2</span>, tipo <span class="op">=</span> <span class="st">"W_T = ((n-1)/n)^T"</span>,     objetivo <span class="op">=</span> <span class="st">"exp(-lambda)"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># ---- Gráficas ----</span></span>
+<span>  <span class="va">p_dens_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valor</span>, fill <span class="op">=</span> <span class="va">tipo</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.35</span>, adjust <span class="op">=</span> <span class="fl">1.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">lambda</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>      title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="st">"Distribuciones de "</span> <span class="op">*</span> <span class="va">W</span> <span class="op">~</span> <span class="st">"vs"</span> <span class="op">~</span> <span class="va">W</span><span class="op">[</span><span class="cn">T</span><span class="op">]</span> <span class="op">~</span> <span class="st">" para "</span> <span class="op">~</span> <span class="fu">tau</span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span> <span class="op">==</span> <span class="va">lambda</span><span class="op">)</span>,</span>
+<span>      subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="va">lambda</span> <span class="op">==</span> <span class="fu">.</span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span> <span class="op">~</span> <span class="st">", "</span> <span class="op">~</span> <span class="va">n</span> <span class="op">==</span> <span class="fu">.</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">~</span> <span class="st">", "</span> <span class="op">~</span> <span class="va">N</span><span class="op">[</span><span class="va">sim</span><span class="op">]</span> <span class="op">==</span> <span class="fu">.</span><span class="op">(</span><span class="va">Nsim</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      x <span class="op">=</span> <span class="st">"valor"</span>, y <span class="op">=</span> <span class="st">"densidad"</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">p_box_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tipo</span>, y <span class="op">=</span> <span class="va">valor</span>, fill <span class="op">=</span> <span class="va">tipo</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span>, width <span class="op">=</span> <span class="fl">0.6</span>, outlier.alpha <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">lambda</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>      title   <span class="op">=</span> <span class="st">"Boxplots: W vs W_T (objetivo: lambda)"</span>,</span>
+<span>      x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="st">"valor"</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="co"># Para el caso indicador es discreto; usamos barras y boxplot (WT2 es continuo en [0,1])</span></span>
+<span>  <span class="va">p_bar_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">valor</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>, fill <span class="op">=</span> <span class="va">tipo</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>      title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="st">"Distribuciones de "</span> <span class="op">*</span> <span class="va">W</span> <span class="op">~</span> <span class="st">"vs"</span> <span class="op">~</span> <span class="va">W</span><span class="op">[</span><span class="cn">T</span><span class="op">]</span> <span class="op">~</span> <span class="st">" para "</span> <span class="op">~</span> <span class="fu">tau</span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span> <span class="op">==</span> <span class="va">e</span><span class="op">^</span><span class="op">{</span><span class="op">-</span><span class="va">lambda</span><span class="op">}</span><span class="op">)</span>,</span>
+<span>      subtitle <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/bquote.html">bquote</a></span><span class="op">(</span><span class="va">lambda</span> <span class="op">==</span> <span class="fu">.</span><span class="op">(</span><span class="va">lambda</span><span class="op">)</span> <span class="op">~</span> <span class="st">", "</span> <span class="op">~</span> <span class="va">n</span> <span class="op">==</span> <span class="fu">.</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="op">~</span> <span class="st">", "</span> <span class="op">~</span> <span class="va">N</span><span class="op">[</span><span class="va">sim</span><span class="op">]</span> <span class="op">==</span> <span class="fu">.</span><span class="op">(</span><span class="va">Nsim</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>      x <span class="op">=</span> <span class="st">"valor (redondeado a 3 decimales)"</span>, y <span class="op">=</span> <span class="st">"frecuencia"</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="va">p_box_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">tipo</span>, y <span class="op">=</span> <span class="va">valor</span>, fill <span class="op">=</span> <span class="va">tipo</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span>, width <span class="op">=</span> <span class="fl">0.6</span>, outlier.alpha <span class="op">=</span> <span class="fl">0.25</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">lambda</span><span class="op">)</span>, linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>      title <span class="op">=</span> <span class="st">"Boxplots: W vs W_T (objetivo: exp(-lambda))"</span>,</span>
+<span>      x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="st">"valor"</span></span>
+<span>    <span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">show_plots</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">p_dens_1</span><span class="op">)</span>; <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">p_box_1</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">p_bar_2</span><span class="op">)</span>;  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">p_box_2</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">save_plots</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%s_dens_lambda.png"</span>, <span class="va">prefix</span><span class="op">)</span>, <span class="va">p_dens_1</span>, width <span class="op">=</span> <span class="fl">7</span>, height <span class="op">=</span> <span class="fl">4.5</span>, dpi <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%s_box_lambda.png"</span>,  <span class="va">prefix</span><span class="op">)</span>, <span class="va">p_box_1</span>,  width <span class="op">=</span> <span class="fl">6</span>, height <span class="op">=</span> <span class="fl">4.5</span>, dpi <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%s_bar_expl.png"</span>,    <span class="va">prefix</span><span class="op">)</span>, <span class="va">p_bar_2</span>,  width <span class="op">=</span> <span class="fl">7</span>, height <span class="op">=</span> <span class="fl">4.5</span>, dpi <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"%s_box_expl.png"</span>,    <span class="va">prefix</span><span class="op">)</span>, <span class="va">p_box_2</span>,  width <span class="op">=</span> <span class="fl">6</span>, height <span class="op">=</span> <span class="fl">4.5</span>, dpi <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span></span>
+<span>  <span class="co"># ---- Salida ----</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>    resumen_empirico <span class="op">=</span> <span class="va">tab</span>,</span>
+<span>    resumen_teorico  <span class="op">=</span> <span class="va">tab_teo</span>,</span>
+<span>    plots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>dens_lambda <span class="op">=</span> <span class="va">p_dens_1</span>, box_lambda <span class="op">=</span> <span class="va">p_box_1</span>,</span>
+<span>                 bar_expl <span class="op">=</span> <span class="va">p_bar_2</span>, box_expl <span class="op">=</span> <span class="va">p_box_2</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># ===== Ejemplo de uso =====</span></span>
+<span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu">explore_LS</span><span class="op">(</span>lambda <span class="op">=</span> <span class="fl">2</span>, n <span class="op">=</span> <span class="fl">10</span>, Nsim <span class="op">=</span> <span class="fl">20000</span>, seed <span class="op">=</span> <span class="fl">123</span>, show_plots <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-16-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-16-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter2_files/figure-html/unnamed-chunk-16-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Mira los resúmenes:</span></span>
+<span><span class="va">out</span><span class="op">$</span><span class="va">resumen_empirico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Estimador     Objetivo     Media    Varianza
+1            W = X1       lambda 1.9870500 1.961480372
+2         W_T = T/n       lambda 1.9991000 0.199480164
+3       W = 1{X1=0} exp(-lambda) 0.1354500 0.117109153
+4 W_T = ((n-1)/n)^T exp(-lambda) 0.1354626 0.004083226</code></pre>
+</div>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">out</span><span class="op">$</span><span class="va">resumen_teorico</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Estimador    Var_teor
+1            W = X1 2.000000000
+2         W_T = T/n 0.200000000
+3       W = 1{X1=0} 0.117019644
+4 W_T = ((n-1)/n)^T 0.004055133</code></pre>
+</div>
+</div>
+<p><strong>Qué muestra</strong></p>
+<ul>
+<li><p><strong>Densidad y boxplot (objetivo <span class="math inline">\(\lambda\)</span>):</strong><br>
+Compara <span class="math inline">\(W = X_1\)</span> vs <span class="math inline">\(W_T = T/n\)</span>.<br>
+Ambos se centran en <span class="math inline">\(\lambda\)</span>, pero verás <strong>menor varianza</strong> para <span class="math inline">\(W_T\)</span>.</p></li>
+<li><p><strong>Barras/boxplot (objetivo <span class="math inline">\(e^{-\lambda}\)</span>):</strong><br>
+Compara <span class="math inline">\(W = \mathbf{1}\{X_1=0\}\)</span> vs <span class="math inline">\(W_T = \Big(\tfrac{n-1}{n}\Big)^T\)</span>.<br>
+Ambos centrados en <span class="math inline">\(e^{-\lambda}\)</span>, con <strong>varianza menor</strong> para <span class="math inline">\(W_T\)</span>.</p></li>
+</ul>
+<hr>
+<p><strong>Sugerencia:</strong> juega con <span class="math inline">\(\lambda\)</span> y <span class="math inline">\(n\)</span> en <code>explore_LS(lambda, n, ...)</code> para ver cómo cambia la varianza.<br>
+Por <strong>Lehmann–Scheffé</strong>, <span class="math inline">\(W_T\)</span> es el <strong>UMVUE</strong> y único (bajo varianza finita) cuando <span class="math inline">\(T\)</span> es suficiente y completo.</p>
+<section id="referencias" class="level2" data-number="3.13"><h2 data-number="3.13" class="anchored" data-anchor-id="referencias">
+<span class="header-section-number">3.13</span> Referencias</h2>
 <ul>
 <li><p><strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> (2006). <em>Curso de Inferencia y Decisión</em>. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.</p></li>
 <li><p><strong>Wackerly, D. D., Mendenhall, W.</strong>, &amp; <strong>Scheaffer, R. L.</strong> (2008). <strong>Estadística matemática con aplicaciones</strong> (7ª ed.). Cengage Learning.</p></li>
@@ -1323,7 +1968,9 @@ L(\theta|\underset{\sim}{x})=u(\underset{\sim}{x})h(\theta)\exp\{W(\underset{\si
 </ul>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+</div>
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
