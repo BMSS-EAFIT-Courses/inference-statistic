@@ -1823,6 +1823,117 @@ out$resumen_teorico
  **Sugerencia:** juega con $\lambda$ y $n$ en `explore_LS(lambda, n, ...)` para ver cómo cambia la varianza.  
 Por **Lehmann–Scheffé**, $W_T$ es el **UMVUE** y único (bajo varianza finita) cuando $T$ es suficiente y completo.
 
+
+### Normalidad asintótica
+
+En muchas ocasiones sólo es posible realizar estudios del comportamiento asintótico (cuando n tiende a infinito) de los estimadores. Ya hemos estudiado una propiedad asintótica: la consistencia. Veremos ahora que es posible medir la velocidad de convergencia de estimadores consistentes y así seleccionar los que convergen al verdadero valor del parámetro más rápidamente.
+
+::: {#exm-3.11}
+Sea $X_1,\ldots, X_n$ una m.a.s. de $X\sim Pois(\lambda)$, con $\lambda>0$. En este modelo, el estimador de momentos de $\lambda$ coincide con el máximo verosimil: $\hat{\lambda}_n=\bar{X}_n$. Para determinar la distribución del estimador $\hat{\lambda}$ resulta mucho más útil aproximarla por una distribución más sencilla a la que se acerca asintóticamente.
+
+La versión del teorema central del límite para variables aleatorias independientes e idénticamente distribuidas puede aplicarse porque $V(X) = \lambda < \infty$.
+
+\begin{align}
+\frac{\sqrt{n}(\hat{\lambda}_n-\lambda)}{\sqrt{\lambda}}\longrightarrow N(0,1) \mbox{ débilmente,}
+\end{align}
+es decir, para todo $\lambda\in \Theta$ y para todo $w\in\mathbb{R}$,
+\begin{align}
+P_\lambda(\hat{\lambda}\leq w)\approx \phi\left(\frac{\sqrt{n}(w-\lambda)}{\sqrt{\lambda}}\right)
+\end{align}
+donde $\phi$ es la función de distribución de la normal estándar. La aproximación es tanto mejor cuanto mayores son $n$ o $\lambda$.
+
+Obsérvese que $\hat{\lambda}_n$ es consistente pues, por las leyes de los grandes números,
+$$\hat{\lambda}_n = \bar{X}_n \stackrel{P}{\longrightarrow} E(X) = \lambda.$$ Así, $\hat{\lambda}_n -\lambda \stackrel{P}{\longrightarrow} 0$ y también en
+distribución. Esta convergencia a la distribución degenerada en 0 no nos informa de la velocidad a la que $\hat{\lambda}_n$ se acerca a $\lambda$ ni de cómo lo hace.
+
+El hecho de que $V(\sqrt{n}(\hat{\lambda}_n -\lambda)) = \lambda$ para todo n indica que la velocidad a la que $\hat{\lambda}_n$ se acerca a $\lambda$ es la misma con la que $\frac{1}{\sqrt{n}}$ se acerca a 0: multiplicar por $\sqrt{n}$ es la forma de estabilizar las diferencias $(\hat{\lambda}_n-\lambda)$, es la estandarización adecuada.
+
+**El resultado derivado del teorema central del límite, la distribución asintótica de $\sqrt{n}(\hat{\lambda}_n -\lambda)$ es $N(0,\lambda)$, responde a la pregunta de cómo es la aproximación
+$\hat{\lambda}_n$ a $\lambda$ : los valores del estimador se distribuyen alrededor del verdadero valor del parámetro igual que los valores de una variable aleatoria $N(0,\lambda)$ se distribuyen alrededor de 0.**
+::: 
+
+::: {.definition #def-3.4}
+En la práctica la gran mayoría de los estimadores usuales, convenientemente centrados y normalizados, tienen distribución asintótica normal. Se dice que
+	presentan \textcolor{red}{normalidad asintótica} y se denota
+	\begin{align}
+		\hat{\theta}_n\sim AN(\theta,v_n)
+	\end{align}
+	cuando 
+	\begin{align}
+	\frac{1}{\sqrt{v_n}}(\hat{\theta}_n-\theta)\stackrel{d}{\longrightarrow}N(0,1)
+	\end{align}
+:::
+
+A la cantidad $v_n$ se la llama **varianza asintótica** de $\hat{\theta}_n$. El teorema central del límite es el responsable de la normalidad asintótica de muchos estimadores.
+
+### Método delta
+
+En muchos casos, sólo será de interés el comportamiento del estimador alrededor del verdadero valor del parámetro. Si además el estimador es una función suave de un estadístico cuyo comportamiento asintótico es conocido, esa función podrá linealizarse en un entorno del verdadero valor del parámetro, lo cuál facilitará enormemente el estudio asintótico del estimador.
+
+::: {#exm-3.12}
+Queremos estimar $\theta=P(X=0) = \exp\{-\lambda\}$. Por el principio de invariancia, el estimador máximo verosímil de $\theta$ es $\hat{\theta}_n = \exp\{-\bar{X}_n\}$ , dado que $\bar{X}_n$ es el estimador máximo verosímil de $\lambda$.
+Por otro lado, $\bar{X}_n$ es consistente para $\lambda$ y $g(\lambda) = \exp\{-\lambda\}$ es una función continua, luego $\hat{\theta}_n$ es consistente para $\theta$. Estamos interesados ahora en encontrar la distribución asintótica de
+\begin{align}
+	\sqrt{n}(\hat{\theta}_n-\theta)=\sqrt{n}(\exp\{-\bar{X}_n\}-\exp\{-\lambda\})
+\end{align}
+La herramienta en la que nos basaremos para hallar esa distribución asintótica es el **método delta**.
+::: 
+
+::: {#thm-3.13}
+## Método Delta
+Sea $\{a_n\}_n$ una sucesión de número reales tales que $a_n\rightarrow\infty$ cuando $n\rightarrow\infty$ y con $a_n\neq0$ para todo $n$. Sea $\hat{\theta}_n$ una sucesión de estimadores de $\theta$ tales que 
+\begin{align}
+a_n(\hat{\theta}_n-\theta)\stackrel{d}{\longrightarrow}N(0,\sigma_\theta^2)
+\end{align}
+y sea $g(x)$ una función con primera derivada continua en un intervalo que contiene a $\theta$.
+\begin{align}
+a_n(g(\hat{\theta}_n)-g(\theta))\stackrel{d}{\longrightarrow}N(0,(g^{'}(\theta))^2\sigma_\theta^2)
+\end{align}
+:::
+
+::: {#exm-3.13}
+Estimamos $\theta=P(X=0) = \exp\{-\lambda\}$ mediante $\hat{\theta}_n = \exp\{-\bar{X}_n\}$. Por otra parte, $\sqrt{n}(\hat{\lambda}_n-\lambda)\stackrel{d}{\longrightarrow}N(0,\lambda)$. Además $g(\lambda)=\exp\{-\lambda\}$ es derivable con derivada continua $g^{'}(\lambda)=-\exp\{-\lambda\}$
+		
+Aplicando el **método delta**.
+		\begin{align}
+		\sqrt{n}(\hat{\theta}_n-\theta)=\sqrt{n}(\exp\{-\bar{X}_n\}-\exp\{-\lambda\})\stackrel{d}{\longrightarrow}N(0,\lambda\exp\{-2\lambda\})
+		\end{align}
+::: 
+
+
+
+### Eficiencia relativa asintótica
+Sea $T_n(\underset{\sim}{X}) = T_n(X_1 , \ldots, X_n)$ una sucesión de estimadores de una función $\tau(\theta)$ que verifica lo siguiente:
+	\begin{align}
+	\sqrt{n}(T_n(\underset{\sim}{X})-\tau(\theta))\stackrel{d}{\longrightarrow}N(b(\theta),\sigma^2(\theta))
+	\end{align}
+	Si $b(\theta) = 0$ diremos que $T_n(\underset{\sim}{X})$ es asintóticamente insesgado. En caso contrario, diremos que $T_n(\underset{\sim}{X})$ es asintóticamente sesgado.
+
+
+Sean dos sucesiones $T_n(X)$ y $S_n(X)$ de estimadores de $\tau(\theta)$ asintóticamente normales:
+
+\begin{align}
+\sqrt{n}(T_n(\underset{\sim}{X})-\tau(\theta))\stackrel{d}{\longrightarrow}N(0,\sigma_T^2(\theta))
+\end{align}
+
+\begin{align}
+\sqrt{n}(S_n(\underset{\sim}{X})-\tau(\theta))\stackrel{d}{\longrightarrow}N(0,\sigma_S^2(\theta))
+\end{align}
+Se define la **eficiencia relativa asintótica** de $S_n(X)$ respecto a $T_n(X)$ como
+\begin{align}
+ARE(\theta, S_n , T_n)=\frac{\frac{1}{\sigma_S^2(\theta)}}{\frac{1}{\sigma_T^2(\theta)}}=\frac{\sigma_T^2(\theta)}{\sigma_S^2(\theta)}
+\end{align}
+
+
+
+**El valor de la eficiencia relativa asintótica puede interpretarse como el cociente de los tamaños de muestra necesarios para obtener la misma precisión asintótica (o la misma varianza asintótica) mediante los dos estimadores en la estimación de $\tau(\theta)$. En efecto, si elegimos tamaño muestral m para $T$ y n para $S$, las varianzas asintóticas son, respectivamente, $\frac{\sigma_T^2(\theta)}{m}$ y $\frac{\sigma_S^2(\theta)}{n}$. Si forzamos aque ambas sean iguales, se tiene que**
+\begin{align}
+\frac{\sigma_T^2(\theta)}{m}=\frac{\sigma_S^2(\theta)}{n}\Longleftrightarrow\frac{m}{n}=\frac{\sigma_T^2(\theta)}{\sigma_S^2(\theta)}=ARE(\theta, S_n , T_n)
+\end{align}
+
+Es decir, si $ARE(\theta, S_n , T_m) = 0.5$ entonces $S$ es menos eficiente que $T$ asintóticamente: para tener la misma precisión con el estimador $S$ hace falta una muestra el doble de grande que si utilizásemos $T$ ($ARE(\theta, S_n , T_m)= 0.5=\frac{m}{n}\Longrightarrow n = 2m$).
+
+
 ## Referencias
 
 - **Gómez, Guadalupe**, & **Delicado, Pedro** (2006). *Curso de Inferencia y Decisión*. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.

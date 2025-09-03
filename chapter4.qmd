@@ -1,0 +1,404 @@
+---
+title: "Estimación por intervalos"
+author: "Biviana Marcela Suárez Sierra"
+---
+
+En este capítulo se aborda el problema de la estimación por conjuntos, donde se estudian estimadores que proporcionan un conjunto como estimación de $\theta$. El resultado de una estimación por conjuntos es una afirmación del tipo $\theta \in C$, donde $C = C(\underset{\sim}{x})$ es un subconjunto del espacio paramétrico $\theta$ que depende de los datos observados $x$. En el caso de que $\Theta \subseteq \mathbb{R}$ los conjuntos que
+se suelen usar para realizar inferencias sobre $\theta$ son intervalos.
+
+## Intervalos de confianza
+
+Un **estimador por intervalos** de un parámetro $\theta\in\Theta \subseteq \mathbb{R}$ es cualquier par de funciones reales $L(\underset{\sim}{x})$ y $U (\underset{\sim}{x})$ definidas en el espacio muestral $\mathcal{X}$ tales que $L(\underset{\sim}{x})\leq U (\underset{\sim}{x})$ para todo $\underset{\sim}{x} = (x_1 , \ldots, x_n)\in \mathcal{X}$ . Si se observa el valor $\underset{\sim}{x}= \underset{\sim}{x}$ , mediante este estimador se hace la inferencia $L(\underset{\sim}{x})\leq\theta\leq U (\underset{\sim}{x})$. Al intervalo aleatorio $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ se le llama estimador por intervalos de $\theta$(o intervalo estimador de $\theta$), mientras que al valor que ha tomado en la muestra observada $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ se le llama estimación por intervalos de $\theta$ (o intervalo estimación de $\theta$).
+
+::: {#exm-5.1}
+Sea $X_1 , X_2 , X_3 , X_4$ una muestra de tamaño 4 de $X \sim N(\mu, 1)$. Un estimador
+		por intervalos de $\mu$ es $[\bar{X}-1, \bar{X} + 1]$. Para cada muestra observada $x_1 , x_2 , x_3 , x_4$,
+		la estimación por intervalos de $\mu$ es $[\bar{x}-1, \bar{x} + 1]$.
+:::
+
+a. Obsérvese que si se estima un parámetro $\theta$ mediante un intervalo, la inferencia es menos precisa que si se estima con un estimador puntual: 
+b. ahora nos limitamos a afirmar que el parámetro está en un cierto conjunto, mientras que antes dábamos un valor concreto como estimación suya. 
+c. Dado que se pierde en
+precisión, cabe preguntarse qué se gana al estimar un parámetro $\theta$ mediante un intervalo, respecto a hacerlo con un estimador puntual. La respuesta es que se
+gana en confianza: 
+
+d. en general, la probabilidad de que un estimador sea exactamente igual al parámetro que desea estimar es 0, mientras que la probabilidad
+de que un estimador por intervalos cubra al parámetro será positiva.
+
+::: {#exm-5.2}
+Sea $X_1 , X_2 , X_3 , X_4$ una muestra de tamaño 4 de $X \sim N(\mu, 1)$. Un estimador
+		por intervalos de $\mu$ es $[\bar{X}-1, \bar{X} + 1]$. Para cada muestra observada $x_1 , x_2 , x_3 , x_4$,
+		la estimación por intervalos de $\mu$ es $[\bar{x}-1, \bar{x} + 1]$.
+
+Sea $X_1 , X_2 , X_3 , X_4$ una muestra de tamaño 4 de $X \sim N(\mu, 1)$. 
+
+I. $P(\bar{X}=\mu)=0$.
+
+II.$P[\bar{X}-1, \bar{X} + 1]=0.9544$.
+
+A costa de algo de precisión, el paso de un estimador puntual a uno por intervalos ha permitido aumentar la confianza que tenemos en que sea correcta la afirmación hecha en la inferencia.		
+:::
+
+::: {.definition #def-5.1}
+Se llama **probabilidad de cobertura** de un estimador por intervalos
+$[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$  del parámetro $\theta$ a la probabilidad de que ese intervalo aleatorio cubra al verdadero valor del parámetro $\theta$:
+$$P_\theta(\theta\in[L(\underset{\sim}{x}),U (\underset{\sim}{x})] )$$
+Obsérvese que esa probabilidad de cobertura puede variar con $\theta$.
+Se llama \textcolor{red}{coeficiente de confianza} del intervalo $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ como
+		estimador del parámetro $\theta$ al ínfimo de las probabilidades de cobertura:
+		$$\inf_{\theta\in\Theta}P_\theta(\theta\in[L(\underset{\sim}{x}),U (\underset{\sim}{x})] ).$$
+**Intervalo de confianza** es el nombre que recibe usualmente un estimador por intervalos junto con su coeficiente de confianza. 
+
+También se nombra así a  veces a la estimación a que da lugar el estimador por intervalos aplicado a una muestra concreta. 
+
+Además de $C(\underset{\sim}{x})$, se usará también la notación $IC_{1-\alpha}(\theta)$ se usará para referirse a un intervalo de confianza $(1-\alpha)$ para $\theta$.
+:::
+
+Si se desea construir un intervalo para una transformación invertible $\tau(\theta)$ del
+parámetro y $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ es un intervalo de confianza $(1-\alpha)$ para $\theta$, entonces el intervalo $[\tau(L(\underset{\sim}{x})),\tau(U (\underset{\sim}{x}))]$
+es un intervalo de confianza $(1- \alpha)$ para $\tau(\theta)$.
+
+## Métodos para construir intervalos de confianza
+### Inversión de un contraste de hipótesis
+
+Como veremos a continuación, hay una estrecha relación entre la estimación
+por intervalos y los contrastes de hipótesis. En general, se puede decir que cada método de construcción de un intervalo de confianza corresponde a un método de contraste de un hipótesis, y viceversa.
+
+::: {#exm-5.3}
+Sea $X_1 ,\ldots, X_n$ muestra aleatoria simple de $X\sim N(\mu,\sigma^2)$ con $\sigma^2$ conocido. Se desea contrastar $H_0:\mu = \mu_0$ frente a $H_1 : \mu\neq\mu_0$.
+
+Para hacer el contraste a nivel $\alpha$ el test insesgado uniformemente de máxima potencia rechaza $H_0$ si $\mid \bar{x}-\mu_0\mid > z_{\alpha/2}\sigma/\sqrt{n}$, es decir, la región del espacio muestral $\mathcal{X}$ en donde se acepta $H_0$ es el conjunto de $\underset{\sim}{x}$ tales que
+$$\bar{x}-z_{\alpha/2}\sigma/\sqrt{n}\leq\mu_0\leq \bar{x}+z_{\alpha/2}\sigma/\sqrt{n}$$
+::: 
+
+### Intervalos de confianza para la media
+![Intervalo de confianza para $\mu$ cuando se conoce $\sigma^2$](images/ICBMean1.png)
+
+![Intervalo de confianza para $\mu$ cuando se desconoce $\sigma^2$](images/ICBMean2.png)
+![Intervalo de predicción para una observación futura cuando se conoce $\sigma^2$](images/ICBPrediccion1.png)
+
+![Intervalo de predicción para una observación futura cuando se desconoce $\sigma^2$](images/ICBPrediccion2.png)
+
+### Intervalos de confianza para la diferencia de medias
+
+
+![Intervalo de confianza para $\mu_1-\mu_2$ cuando se conocen $\sigma_1^2$ y $\sigma_2^2$](images/Diferencia medias1.png)
+
+![Intervalo de confianza para $\mu_1-\mu_2$ cuando se conocen $\sigma_1^2$ y $\sigma_2^2$](images/Diferencia medias1.png)
+
+
+![Intervalo de confianza para $\mu_1-\mu_2$ cuando se desconocen $\sigma_1^2$ y $\sigma_2^2$](images/Diferencia medias2.png)
+
+![Estimado agrupado de la varianza](images/Varianza agrupada.png)
+
+
+![Intervalo de confianza para $\mu_1-\mu_2$ cuando $\sigma_1^2\neq\sigma_2^2$](images/Diferencia medias3.png)
+![Intervalo de confianza para $\mu_1-\mu_2$ para observaciones pareadas](images/Diferencia medias4.png)
+
+![Desviación de diferencias](images/Varianza agrupada2.png)
+### Intervalos de confianza para proporciones $p$.
+
+![Intervalos de confianza para $p$ de una muestra grande](images/ICBproporciones.png)
+
+### Intervalos de confianza para diferencia de proporciones.
+![Intervalos de confianza para $p_1-p_2$ de una muestra grande](images/Diferencia de proporciones.png)
+
+### Intervalos de confianza para $\sigma^2$
+
+![Intervalos de confianza para $\sigma^2$](images/ICBvar.png)
+
+### Intervalos de confianza para comparación de varianzas.
+![Intervalos de confianza para $\sigma_1^2/\sigma_2^2$](images/Diferencia varianzas.png)
+
+## Test de la razón de verosimilitudes
+
+Sea $X_1 ,\ldots, X_n$ muestra aleatoria simple de $X$, variable aleatoria con función de densidad (o de probabilidad) $f(x\mid \theta)$ para algún $\theta  \in \Theta$. Se desea hacer el contraste
+	
+$$\left\{ \begin{array}{lcc}
+H_0 &   :  & \theta \in\Theta_0 \\
+\\ H_1 &  : & \theta \in\Theta_1  
+\end{array}
+\right.$$
+donde $\Theta_0\cup\Theta_1=\Theta$, $\Theta_0\cap\Theta_1=\emptyset.$ Se define el estadístico de la \textcolor{red}{razón de
+verosimilitudes} como
+
+$$\lambda=\lambda(\underset{\sim}{x})=\frac{\max_{\theta \in \Theta_0}L(\theta \mid \underset{\sim}{x})}{\max_{\theta \in \Theta}L(\theta \mid \underset{\sim}{x})}$$
+
+El test de la razón de verosimilitudes (también llamado test de la
+razón de verosimilitudes generalizado, para distinguirlo del test de Neyman-
+Pearson, o test de la razón de las máximas verosimilitudes) establece
+una región crítica de la forma
+$$C=\{\underset{\sim}{x}:\lambda(\underset{\sim}{x})\leq A\}$$
+para alguna constante $A$ que se determinará para que el test tenga el tamaño $\alpha$ deseado.
+
+La idea intuitiva que sustenta este método de contraste es simple. Observe que $0 \leq \lambda \leq 1$ y que cuanto más cercano a $1$ sea el valor de $\lambda$, más verosímil es que $\theta \in \Theta_0$, mientras que cuanto más se aleje $\lambda$ de 1, más creíble será la hipótesis alternativa $\theta \in \Theta_1$.
+
+::: {#exm-5.4}
+Sea $\underset{\sim}{x}\sim \exp\{\frac{1}{\lambda}\}$, $\lambda=E(X)$, se quiere encontrar la forma de la región crítica utilizando el principio de la razón de verosimilitudes del test 
+$$\left\{ \begin{array}{lcc}
+H_0 &   :  & \lambda=\lambda_0 \\
+\\ H_1 &  : & \lambda\neq\lambda_0 
+\end{array}
+\right.$$
+:::
+
+::: {.proof}
+Recordemos que la función de verosimilitud es 
+		\begin{align}
+			L(\lambda\mid\underset{\sim}{x})&=\prod_{i=1}^{n}\left(\frac{1}{\lambda}\exp\left\{-\frac{1}{\lambda}x_i\right\}\right)\nonumber\\
+			&=\left(\frac{1}{\lambda}\right)^n\exp\left\{-\frac{1}{\lambda}\sum_{i=1}^{n}x_i\right\}
+		\end{align}
+		Además, el estimador de máxima verosimilitud (emv) es $\hat{\lambda}=\bar{x}$
+Luego, el estadístico por la razón de verosimilitudes 
+
+\begin{align}
+		\Lambda(\underset{\sim}{x})&=\frac{\max_{\lambda \in \Theta_0}L(\lambda \mid \underset{\sim}{x})}{\max_{\lambda \in \Theta}L(\lambda \mid \underset{\sim}{x})}\nonumber\\
+		&=\frac{\left(\frac{1}{\lambda_0}\right)^n\exp\left\{-\frac{1}{\lambda_0}\sum_{i=1}^{n}x_i\right\}}{\left(\frac{1}{\bar{x}_n}\right)^n\exp\left\{-\frac{1}{\bar{x}_n}\sum_{i=1}^{n}x_i\right\}}\nonumber\\
+		&=\frac{\left(\frac{1}{\lambda_0}\right)^n\exp\left\{-\frac{1}{\lambda_0}\sum_{i=1}^{n}x_i\right\}}{\left(\frac{1}{\frac{\sum_{i=1}^{n}x_i}{n}}\right)^n\exp\left\{-\frac{1}{\frac{\sum_{i=1}^{n}x_i}{n}}\sum_{i=1}^{n}x_i\right\}}\nonumber\\
+\end{align}
+
+\begin{align}
+\Lambda(\underset{\sim}{x})&=\frac{\max_{\lambda \in \Theta_0}L(\lambda \mid \underset{\sim}{x})}{\max_{\lambda \in \Theta}L(\lambda \mid \underset{\sim}{x})}\nonumber\\
+&=\left(\frac{\sum_{i=1}^{n}x_i}{n\lambda_0}\right)^n\frac{\exp\left\{-\frac{1}{\lambda_0}\sum_{i=1}^{n}x_i\right\}}{\exp\left\{-n\right\}}\nonumber\\
+&=\left(\frac{1}{n}\right)^n\left(\frac{\sum_{i=1}^{n}x_i}{\lambda_0}\right)^n\frac{\exp\left\{-\frac{1}{\lambda_0}\sum_{i=1}^{n}x_i\right\}}{\exp\left\{-n\right\}}\nonumber\\
+\end{align}
+
+Si $\Lambda(\underset{\sim}{x})\leq A$ para alguna constante $A$ que haga el test de tamaño $\alpha$, se tiene que 
+
+\begin{align}
+\left(\frac{\sum_{i=1}^{n}x_i}{\lambda_0}\right)^n\exp\left\{-\frac{1}{\lambda_0}\sum_{i=1}^{n}x_i\right\}\leq A^*
+\end{align}
+
+donde $A^*=An^n\exp\left\{-n\right\}.$
+
+Para un valor fijo $\lambda_0$, la región de NO rechazo del test **región de aceptación**es 
+
+$$\begin{align}
+		\label{RA}
+		A(\lambda_0)=\left\{\underset{\sim}{x}:\left(\frac{\sum_{i=1}^{n}x_i}{\lambda_0}\right)^n\exp\left\{-\frac{1}{\lambda_0}\sum_{i=1}^{n}x_i\right\}\geq k^*\right\}
+\end{align}$${#eq-RA}
+
+donde la constante $k^*$ se elige para que el test tenga tamaño $\alpha$, o lo que es lomismo, para que
+$$P_{\alpha}(\underset{\sim}{x}\in A(\lambda_0))=1-\alpha$$
+:::
+
+
+### Cantidades pivotales.
+
+Uno de los métodos más comunes de construcción de intervalos de confianza
+es el uso de cantidades pivotales.
+
+Sea $\underset{\sim}{x} = (X_1 ,\ldots , X_n)$ una m.a.s. de $X\sim F(x;\theta)$. Una función $Q(\underset{\sim}{x} , \theta)$ de la muestra y del parámetro es una \textcolor{red}{cantidad pivotal} si la distribución de probabilidad de $Q(\underset{\sim}{x} , \theta)$ no depende del parámetro $\theta$, es decir, $Q(\underset{\sim}{x} , \theta)$ tiene la misma distribución para cualquier valor de $\theta$.
+
+Dada una cantidad pivotal $Q(\underset{\sim}{x} , \theta)$, para cualquier conjunto $A$ del espacioimagen de $Q$ se tiene que $P_\theta (Q(\underset{\sim}{x} , \theta) \in A)$ no depende de $\theta$. Por lo tanto si se elige un conjunto $A_\alpha$ tal que
+
+$$P_\theta (Q(\underset{\sim}{x} , \theta) \in A)=1-\alpha,$$ para todo $\theta$, y se observa la muestra $\underset{\sim}{x} = \underset{\sim}{x}$, entonces el conjunto
+$$C(\underset{\sim}{x}) = \{\theta: Q(\underset{\sim}{x} , \theta) \in A\}$$
+es un conjunto de confianza $1-\alpha$ para $\theta$.
+
+En la práctica, la forma en la que se construye un intervalo de confianza a partir de una cantidad pivotal es la siguiente. Supondremos que $Q(\underset{\sim}{x}, \theta) \in \mathbb{R}$ y $\theta \in \mathbb{R}$. Para un valor $\alpha$ dado, se buscan números a y b tales que
+$$P_\theta(a\leq Q(\underset{\sim}{x}, \theta)\leq b)=1-\alpha,$$
+Observar que $a$ y $b$ no dependen de $\theta$ por ser Q cantidad pivotal, y que la elección de a y b no será única en general.
+
+Para cada $\theta_0$ , el conjunto
+	$$A(\theta_0)=\{\underset{\sim}{x}:a\leq Q(\underset{\sim}{x}, \theta)\leq b\}.$$
+	es la región de aceptación de un test de tamaño $\alpha$ para contrastar $H_0 : \theta = \theta_ 0$
+	basado en el estadístico $T ( \underset{\sim}{x}) = Q(\underset{\sim}{x}, \theta_0)$. Invirtiendo este contraste obtenemos el conjunto de confianza $1-\alpha$ para $\theta$:
+	$$C(\underset{\sim}{x})=\{\theta:a\leq Q(\underset{\sim}{x}, \theta)\leq b\}.$$
+
+::: {#exm-5.5}
+Obsérvese en @eq-RA que la expresión de la región de aceptación depende de la muestra y del parámetro sólo a través de $v =\frac{\sum_{i=1}^{n} x_i}{\lambda_0}$. Además, la distribución de 
+$v =\frac{\sum_{i=1}^{n}X_i}{\lambda_0}$  no depende del parámetro $\lambda_0$ : $\sum_{i=1}^{n}X_i\sim \gamma(n,\lambda_0)$ bajo $H_0$ ,
+luego $V\sim \gamma(n,\lambda_0)$. 
+De esto se sigue que el valor $k^{*}$ es el mismo para todo $\lambda_0$.\\
+
+Invirtiendo la región de aceptación se obtiene el conjunto de confianza $1-\alpha$:
+$$C(\underset{\sim}{x})=\left\{\lambda:\left(\frac{\sum_{i=1}^{n}x_i}{\lambda}\right)^n\exp\left\{-\frac{1}{\lambda}\sum_{i=1}^{n}x_i\right\}\geq k^*\right\}.$$
+:::
+Sea $g(v)=v^n\exp\{-v\}$ 
+![Función g](images/g_n1.png)
+a. $g$ es positiva en todo $\mathbb{R}^{+}$.
+b. $g$ vale cero en $v=0$.
+c. $g$ tiende a cero si $v$ tiende a infinito.
+d. $g$ tiene un único punto crítico en $v=n$.
+e. $g$ tiene un único máximo en $v=n$.
+f. Los conjuntos de la forma $\{v\geq0: g(v)\leq k^*\}$, $k^*\leq g(n)=n^n\exp\left\{-n\right\}$, son intervalos de la forma $[l,u]$, donde $l\leq n\leq u$ y $g(l)=g(u)=k^*$.
+
+De ello se deduce que $A(\lambda_0)$ es un intervalo para cualquier valor de $\lambda_0$, y que los conjuntos de confianza $C(\underset{\sim}{x})$ también son intervalos para cualquier valor de $\sum_{i=1}^{n}x_i$. Así pues, el intervalo de confianza obtenido será de la forma
+
+\begin{align}
+C(\underset{\sim}{x})&=\left\{\lambda:l\leq v\leq u\right\}\nonumber\\
+&=\left\{\lambda:l\leq \frac{\sum_{i=1}^{n}x_i}{\lambda}\leq u\right\}\nonumber\\
+&=\left\{\lambda:\frac{1}{u}\leq \frac{\lambda}{\sum_{i=1}^{n}x_i}\leq \frac{1}{l}\right\}\nonumber\\
+&=\left\{\lambda:L\left(\sum_{i=1}^{n}x_i\right)\leq \lambda\leq U\left(\sum_{i=1}^{n}x_i\right)\right\}\nonumber\\
+\end{align}
+
+con 
+
+| Límite inferior | Límite superior |
+|-----------------|-----------------|
+| $$L\!\left(\sum_{i=1}^{n}x_i\right) = \frac{\sum_{i=1}^{n}x_i}{u}$$ | $$U\!\left(\sum_{i=1}^{n}x_i\right) = \frac{\sum_{i=1}^{n}x_i}{l}$$ |
+
+Los valores $l$ y $u$ son las soluciones del sistema de ecuaciones no lineales
+
+$$\left\{ \begin{array}{lcc}
+g(l) =g(u)&     \\
+\\P(l\leq V \leq u)=1-\alpha &   
+\end{array}
+\right.$$
+
+Si $n = 2$, $V\sim \gamma(2, 1)$ y el sistema se transforma en éste:
+	$$\left\{ \begin{array}{lcc}
+	l^2e^{-l} =u^2e^{-u} &     \\
+	\\e^{-l}(l+1)-e^{-u}(u+1)=1-\alpha &   
+	\end{array}
+	\right.$$
+Si hacemos $1-\alpha = 0.9$ y resolvemos el sistema, se obtiene $l = 0.4386$ y $u =5.4945$, luego el intervalo de confianza $0.90$ para $\lambda$ es
+
+$$\left[0.182\sum_{i=1}^{2} x_i;2.28\sum_{i=1}^{2} x_i\right]=\left[0.364\bar{X}_2;4.56\bar{X}_2\right]$$
+![Solución](images/Solucion.png)
+En el ejemplo anterior el intervalo de
+confianza construido se basó en
+
+\begin{align}
+V=\frac{\sum_{i=1}^{n}X_i}{\lambda}
+\end{align}
+
+cuya distribución es $\gamma(n, 1)$ para cualquier valor de $\lambda$, así que $V$ es una cantidad
+pivotal y el intervalo de confianza construido allí es un ejemplo de intervalo basado en una cantidad pivotal.\\
+Si se define $T = 2V$ , entonces $T\sim \gamma(n, 2)$, es decir $T\sim \chi^2_{2n}$ . Es más fácil
+encontrar tabulada la distribución $\chi^2_{2n}$ que la distribución gamma, por lo que $T$
+resultará más útil en la práctica.
+
+::: {#exm-5.6}
+En el ejemplo anteriormente mencionado
+$$Q(\underset{\sim}{x},\lambda)=\frac{2\sum_{i=1}^{n}X_i}{\lambda}\sim\chi^2_{2n}$$
+Así que podemos elegir 
+
+| \(a\) | \(b\) |
+|-------|-------|
+| $$a = \chi^2_{2n,\,1-\alpha/2}$$ | $$b = \chi^2_{2n,\,\alpha/2}$$ |
+
+
+En este caso $g_{\underset{\sim}{x}}(\lambda)=Q(\underset{\sim}{x},\lambda)=\frac{2\sum_{i=1}^{n}X_i}{\lambda}$. Es decir, $g_{\underset{\sim}{x}}$ es invertible y decreciente, luego el intervalo de confianza de $1-\alpha$ para $\lambda$ será
+
+\begin{align}
+C(\underset{\sim}{x})&=\left\{\lambda:a\leq g_{\underset{\sim}{x}}(\lambda)\leq b\right\}\nonumber\\
+&=\left\{\lambda:a\leq \frac{2\sum_{i=1}^{n}x_i}{\lambda}\leq b\right\}\nonumber\\
+&=\left\{\lambda:\frac{1}{b}\leq \frac{\lambda}{2\sum_{i=1}^{n}x_i}\leq \frac{1}{a}\right\}\nonumber\\
+&=\left\{\lambda:g_{\underset{\sim}{x}}^{-1}\left(b\right)\leq \lambda\leq g_{\underset{\sim}{x}}^{-1}\left(a\right)\right\}\nonumber\\
+\end{align}
+
+con 
+
+| Expresión con \(b\) | Expresión con \(a\) |
+|---------------------|---------------------|
+| $$g_{\underset{\sim}{x}}^{-1}(b) = \frac{2\sum_{i=1}^{n} x_i}{\chi^2_{2n,\,\alpha/2}}$$ | $$g_{\underset{\sim}{x}}^{-1}(a) = \frac{2\sum_{i=1}^{n} x_i}{\chi^2_{2n,\,1-\alpha/2}}$$ |
+
+En el caso de $n = 2$ y $\alpha = 0.1$, $\chi^2_{4, 0.05} = 9,49$ y $\chi^2_{4, 0.95} = 0.71$, luego el intervalo de confianza $0.90$ es
+
+$$\left[\frac{4\bar{X}_2}{9.49};\frac{4\bar{X}_2}{0.71}\right]=\left[0.4215\bar{X}_2;5.63\bar{X}_2\right]$$
+::: 
+
+### Intervalos de verosimilitud.
+
+Supongamos que los datos (eventos observados) $E$ de un experimento tiene probabilidad $P(E;\theta)$ la cual depende de un parámetros fijo pero desconocido $\theta$.
+
+El estimador de máxima verosimilitud $\hat{\theta}$ es el valor de $\theta$ el cual máximiza $P(E;\theta)$. Este valor es **el más probable** o **más plausible** de $\theta$ en el sentido de que esto máximiza la probabilidad de que ha sido observado.
+
+Las probabilidades relativas de otros valores de $\theta$ tal que $P(E;\theta)$ es tan cercano o casi tan grande como $P(E;\hat{\theta})$ son justamente plausible en que ellos explican los datos casi tan bien como $\hat{\theta}$ lo hace.
+
+Valores de $\theta$ para los cuales $P(E;\theta)$ es mucho menos que $P(E;\hat{\theta})$ son implausibles porque estos hacen que lo que se ha observado sea mucho menos probable que lo que hace $\hat{\theta}$.
+
+::: {.definition #def-5.2}
+## Función de verosimilutud relativa de $\theta$
+
+La Función de verosimilutud relativa de $\theta$ (RLF), está definida como el ratio de la función de verosimilitud Función de verosimilutud relativa de $L(\theta)$ con el máximo $L(\hat{\theta})$:
+\begin{align}
+R(\theta)=\frac{L(\theta)}{L(\hat{\theta})}
+\end{align}
+Ya que $L(\theta)=CP(E;\theta)$ donde $C$ no depende de $\theta$, se sigue
+
+$$\begin{align}
+R(\theta)=\frac{CP(E;\theta)}{CP(E;\hat{\theta})}=\frac{P(E;\theta)}{P(E;\hat{\theta})}
+\end{align}$${#eq-RLF}
+:::
+
+La constante multiplicativa $C$ en la ecuación @eq-RLF se cancela, así que $R(\theta)$ no se verá afectada por esta constante. Observe que $L(\theta)\leq L(\hat{\theta})$ para todo $\theta$, así que se sigue $0\leq R(\theta)\leq1$.
+
+	
+::: {.definition #def-5.3}
+
+## La función Logverosimilitud relativa
+
+$$\begin{align}
+r(\theta)&=\log\left(R(\theta)\right)\nonumber\\
+&=log\left(\frac{P(E;\theta)}{P(E;\hat{\theta})}\right)\nonumber\\
+&=log\left(P(E;\theta)\right)-log\left(P(E;\hat{\theta})\right)\nonumber\\
+&=log\left(\ell (\theta)\right)-log\left( \ell(\hat{\theta})\right)
+\end{align}$${#eq-RLF2}
+
+:::
+
+Donde $\ell(\theta)$ es la función logverosimilitud. Ya que $0\leq R(\theta)\leq1$, tenemos que $-\infty\leq r(\theta)\leq 0$ para todos los valores parametrales posibles. Sea $\theta_1$ denota algún valor particular del parámetro, entonces
+
+a. Si $R(\theta_1)=0.1$, entonces $\theta_1$ es más bien un valor parametral inverosimil, porque los datos son $10$ veces más probables cuando $\theta=\hat{\theta}$ que cuando $\theta=\theta_1$.
+b. Si $R(\theta_1)=0.5$, entonces $\theta_1$ es más bien un valor parametral justamente plausible, porque los datos son $2$ veces más probables cuando $\theta=\hat{\theta}$ que cuando $\theta=\theta_1$.
+
+::: {.definition #def-5.4}
+
+## Regiones de verosimilitud e intervalos
+
+El conjunto de los valores $\theta$ para el cual $R(\theta)\geq p$ un $100\% p$ región de verosimilitud para $\theta$. Usualmente el $100\% p$ región verosimil consistirá de un intervalo de valores reales, y entonces este es llamado \textcolor{red}{$100\% p$ intervalo verosímil (LI)} para $\theta$.
+:::
+
+Usualmente consideramos $50\%$, $10\%$ y $1\%$ intervalos verosímiles o regiones.
+
+| $$LI$$ | $$\text{Dentro}$$ | $$\text{Fuera}$$ |
+|--------|-------------------|------------------|
+| $50\%$ | $$\text{Evento muy probable}$$ |  |
+| $10\%$ | $$\text{Evento posible}$$      | $$\text{Evento imposible}$$ |
+| $1\%$  |  | $$\text{Evento muy imposible}$$ |
+
+![Función de verosimilitud del ejemplo](images/LI.png)
+
+El $14.7\%$ y $3.6\%$ de los intervalos de verosimilitud son algunas veces calculado por su analogía al $95\%$ y el $99\%$ de intervalos de confianza. 
+a. Como $log(0.5)=-0.69$, tenemos que $r(\theta_1) \geq -0.69$, $logR(\theta_1)\geq log(0.5)$, luego es semejante $R(\theta_1)\geq 0.5$, los datos son 2 veces más probables cuando $\theta=\hat{\theta}$, que cuando  $\theta=\theta_1$ (Más del $50\%$ de la probabilidad máxima posible bajo el modelo).
+b. Como $log(0.1)=-2.30$, tenemos que $r(\theta_1) \geq -2.30$, $logR(\theta_1)\geq log(0.1)$, luego es semejante $R(\theta_1)\geq 0.1$, los datos son 10 veces más probables cuando $\theta=\hat{\theta}$, que cuando  $\theta=\theta_1$ (Más del $10\%$ de la probabilidad máxima posible bajo el modelo).
+c. Como $log(0.01)=-4.61$, tenemos que $r(\theta_1) \geq -4.61$, $logR(\theta_1)\geq log(0.01)$, luego es semejante $R(\theta_1)\geq 0.01$, los datos son 100 veces más probables cuando $\theta=\hat{\theta}$, que cuando  $\theta=\theta_1$ (Más del $1\%$ de la probabilidad máxima posible bajo el modelo).
+
+::: {#exm-5.7}
+Supongamos que deseamos entimar $\theta$, la proporción de personas con tuberculosis en una gran población homogénea.Para esto nosotros seleccionamos aleatoriamente $n$ individuos y encontramos $x$ de ellos que tienen la enfermedad. Ya que la población es grande y homogénea, nosotros asumimos que los $n$ individuos son examinados de manera independiente y que cada uno tiene probabilidad $\theta$ de tener tuberculosis. La probabilidad del evento observado $E$ es entonces 
+\begin{align}
+P(E;\theta)&=P(\mbox{$x$ de $n$ tienen tuberculosis}) \nonumber\\
+&=\binom{n}{x}\theta^x(1-\theta)^{n-x}
+\end{align}
+
+donde $0\leq \theta \leq 1$. Ver \cite{kalbfleisch85}
+
+a. Determine el estimador de máxima verosimilitud e interprete en el contexto del problema.
+b. Suponga que de $100$ personas son examinadas, tres son encontrados con tuberculosis. Sobre la base de estas observaciones, ¿cuales valores de $\theta$ son plausibles? Para responder, utilice el método gráfico de la función de verosimilitud relativa para hallar los intervalos de verosimilitud (IL) del $1\%$, $10\%$ y $50\%$.
+c. Suponga que de $200$ personas son examinadas, seis son encontrados con tuberculosis. Sobre la base de estas observaciones, ¿cuales valores de $\theta$ son plausibles? Para responder, utilice el método gráfico de la función de verosimilitud relativa para hallar los intervalos de verosimilitud (IL) del $1\%$, $10\%$ y $50\%$.
+d. Compare b y c. con las dos gráficas en el mismo cuadro de inspección.
+::: 
+
+![Contrastes de intervalos de verosimilitud](images/Contrastes.png)
+
+## Referencias
+
+- **Gómez, Guadalupe**, & **Delicado, Pedro** (2006). *Curso de Inferencia y Decisión*. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.
+
+- **Wackerly, D. D., Mendenhall, W.**, & **Scheaffer, R. L.** (2008). **Estadística matemática con aplicaciones** (7ª ed.). Cengage Learning.
+
+- **Roussas, G. G.** (1997). **A Course in Mathematical Statistics** (2nd ed.). Academic Press.
+
+- **Kalbfleisch, J. G. Probability and Statistical Inference**. Springer-Verlag, 1985.
+
+
+
+
+
+
+
+
+

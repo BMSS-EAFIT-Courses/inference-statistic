@@ -61,6 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./chapter3.html" rel="next">
 <link href="./chapter1.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -168,6 +169,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./chapter2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación puntual</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis</span></span></a>
   </div>
 </li>
     </ul>
@@ -1512,7 +1519,7 @@ Tip&nbsp;3.1
 </div>
 </div>
 <div id="def-3.4" class="definition theorem">
-<p><span class="theorem-title"><strong>Definition 3.5 (estadístico completo)</strong></span> Sea <span class="math inline">\(f_T(t|\theta)\)</span> la función de densidad (o de masa de probabilidad) de un estadístico <span class="math inline">\(T\)</span> . Diremos que la familia de distribuciones <span class="math inline">\({f_T(t|\theta) : \theta\in \Theta}\)</span> es completa si se da la implicación siguiente: <span class="math display">\[\begin{align}
+<p><span class="theorem-title"><strong>Definition 3.6 (estadístico completo)</strong></span> Sea <span class="math inline">\(f_T(t|\theta)\)</span> la función de densidad (o de masa de probabilidad) de un estadístico <span class="math inline">\(T\)</span> . Diremos que la familia de distribuciones <span class="math inline">\({f_T(t|\theta) : \theta\in \Theta}\)</span> es completa si se da la implicación siguiente: <span class="math display">\[\begin{align}
 E_\theta(g(T))=0 \mbox{para todo $\theta$ entonces}  P_\theta(g(T) = 0) = 1 \mbox{para todo $\theta$}.
 \end{align}\]</span></p>
 <p>En ese caso diremos que <span class="math inline">\(T\)</span> es un estadístico completo.</p>
@@ -1958,7 +1965,69 @@ Ambos centrados en <span class="math inline">\(e^{-\lambda}\)</span>, con <stron
 <hr>
 <p><strong>Sugerencia:</strong> juega con <span class="math inline">\(\lambda\)</span> y <span class="math inline">\(n\)</span> en <code>explore_LS(lambda, n, ...)</code> para ver cómo cambia la varianza.<br>
 Por <strong>Lehmann–Scheffé</strong>, <span class="math inline">\(W_T\)</span> es el <strong>UMVUE</strong> y único (bajo varianza finita) cuando <span class="math inline">\(T\)</span> es suficiente y completo.</p>
-<section id="referencias" class="level2" data-number="3.13"><h2 data-number="3.13" class="anchored" data-anchor-id="referencias">
+<section id="normalidad-asintótica" class="level3" data-number="3.12.2"><h3 data-number="3.12.2" class="anchored" data-anchor-id="normalidad-asintótica">
+<span class="header-section-number">3.12.2</span> Normalidad asintótica</h3>
+<p>En muchas ocasiones sólo es posible realizar estudios del comportamiento asintótico (cuando n tiende a infinito) de los estimadores. Ya hemos estudiado una propiedad asintótica: la consistencia. Veremos ahora que es posible medir la velocidad de convergencia de estimadores consistentes y así seleccionar los que convergen al verdadero valor del parámetro más rápidamente.</p>
+<div id="exm-3.11" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.11</strong></span> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> una m.a.s. de <span class="math inline">\(X\sim Pois(\lambda)\)</span>, con <span class="math inline">\(\lambda&gt;0\)</span>. En este modelo, el estimador de momentos de <span class="math inline">\(\lambda\)</span> coincide con el máximo verosimil: <span class="math inline">\(\hat{\lambda}_n=\bar{X}_n\)</span>. Para determinar la distribución del estimador <span class="math inline">\(\hat{\lambda}\)</span> resulta mucho más útil aproximarla por una distribución más sencilla a la que se acerca asintóticamente.</p>
+<p>La versión del teorema central del límite para variables aleatorias independientes e idénticamente distribuidas puede aplicarse porque <span class="math inline">\(V(X) = \lambda &lt; \infty\)</span>.</p>
+<p><span class="math display">\[\begin{align}
+\frac{\sqrt{n}(\hat{\lambda}_n-\lambda)}{\sqrt{\lambda}}\longrightarrow N(0,1) \mbox{ débilmente,}
+\end{align}\]</span> es decir, para todo <span class="math inline">\(\lambda\in \Theta\)</span> y para todo <span class="math inline">\(w\in\mathbb{R}\)</span>, <span class="math display">\[\begin{align}
+P_\lambda(\hat{\lambda}\leq w)\approx \phi\left(\frac{\sqrt{n}(w-\lambda)}{\sqrt{\lambda}}\right)
+\end{align}\]</span> donde <span class="math inline">\(\phi\)</span> es la función de distribución de la normal estándar. La aproximación es tanto mejor cuanto mayores son <span class="math inline">\(n\)</span> o <span class="math inline">\(\lambda\)</span>.</p>
+<p>Obsérvese que <span class="math inline">\(\hat{\lambda}_n\)</span> es consistente pues, por las leyes de los grandes números, <span class="math display">\[\hat{\lambda}_n = \bar{X}_n \stackrel{P}{\longrightarrow} E(X) = \lambda.\]</span> Así, <span class="math inline">\(\hat{\lambda}_n -\lambda \stackrel{P}{\longrightarrow} 0\)</span> y también en distribución. Esta convergencia a la distribución degenerada en 0 no nos informa de la velocidad a la que <span class="math inline">\(\hat{\lambda}_n\)</span> se acerca a <span class="math inline">\(\lambda\)</span> ni de cómo lo hace.</p>
+<p>El hecho de que <span class="math inline">\(V(\sqrt{n}(\hat{\lambda}_n -\lambda)) = \lambda\)</span> para todo n indica que la velocidad a la que <span class="math inline">\(\hat{\lambda}_n\)</span> se acerca a <span class="math inline">\(\lambda\)</span> es la misma con la que <span class="math inline">\(\frac{1}{\sqrt{n}}\)</span> se acerca a 0: multiplicar por <span class="math inline">\(\sqrt{n}\)</span> es la forma de estabilizar las diferencias <span class="math inline">\((\hat{\lambda}_n-\lambda)\)</span>, es la estandarización adecuada.</p>
+<p><strong>El resultado derivado del teorema central del límite, la distribución asintótica de <span class="math inline">\(\sqrt{n}(\hat{\lambda}_n -\lambda)\)</span> es <span class="math inline">\(N(0,\lambda)\)</span>, responde a la pregunta de cómo es la aproximación <span class="math inline">\(\hat{\lambda}_n\)</span> a <span class="math inline">\(\lambda\)</span> : los valores del estimador se distribuyen alrededor del verdadero valor del parámetro igual que los valores de una variable aleatoria <span class="math inline">\(N(0,\lambda)\)</span> se distribuyen alrededor de 0.</strong></p>
+</div>
+<div id="def-3.4" class="definition theorem">
+<p><span class="theorem-title"><strong>Definition 3.5</strong></span> En la práctica la gran mayoría de los estimadores usuales, convenientemente centrados y normalizados, tienen distribución asintótica normal. Se dice que presentan y se denota <span class="math display">\[\begin{align}
+        \hat{\theta}_n\sim AN(\theta,v_n)
+    \end{align}\]</span> cuando <span class="math display">\[\begin{align}
+    \frac{1}{\sqrt{v_n}}(\hat{\theta}_n-\theta)\stackrel{d}{\longrightarrow}N(0,1)
+    \end{align}\]</span></p>
+</div>
+<p>A la cantidad <span class="math inline">\(v_n\)</span> se la llama <strong>varianza asintótica</strong> de <span class="math inline">\(\hat{\theta}_n\)</span>. El teorema central del límite es el responsable de la normalidad asintótica de muchos estimadores.</p>
+</section><section id="método-delta" class="level3" data-number="3.12.3"><h3 data-number="3.12.3" class="anchored" data-anchor-id="método-delta">
+<span class="header-section-number">3.12.3</span> Método delta</h3>
+<p>En muchos casos, sólo será de interés el comportamiento del estimador alrededor del verdadero valor del parámetro. Si además el estimador es una función suave de un estadístico cuyo comportamiento asintótico es conocido, esa función podrá linealizarse en un entorno del verdadero valor del parámetro, lo cuál facilitará enormemente el estudio asintótico del estimador.</p>
+<div id="exm-3.12" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.12</strong></span> Queremos estimar <span class="math inline">\(\theta=P(X=0) = \exp\{-\lambda\}\)</span>. Por el principio de invariancia, el estimador máximo verosímil de <span class="math inline">\(\theta\)</span> es <span class="math inline">\(\hat{\theta}_n = \exp\{-\bar{X}_n\}\)</span> , dado que <span class="math inline">\(\bar{X}_n\)</span> es el estimador máximo verosímil de <span class="math inline">\(\lambda\)</span>. Por otro lado, <span class="math inline">\(\bar{X}_n\)</span> es consistente para <span class="math inline">\(\lambda\)</span> y <span class="math inline">\(g(\lambda) = \exp\{-\lambda\}\)</span> es una función continua, luego <span class="math inline">\(\hat{\theta}_n\)</span> es consistente para <span class="math inline">\(\theta\)</span>. Estamos interesados ahora en encontrar la distribución asintótica de <span class="math display">\[\begin{align}
+    \sqrt{n}(\hat{\theta}_n-\theta)=\sqrt{n}(\exp\{-\bar{X}_n\}-\exp\{-\lambda\})
+\end{align}\]</span> La herramienta en la que nos basaremos para hallar esa distribución asintótica es el <strong>método delta</strong>.</p>
+</div>
+<div id="thm-3.13" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3.13 (Método Delta)</strong></span> Sea <span class="math inline">\(\{a_n\}_n\)</span> una sucesión de número reales tales que <span class="math inline">\(a_n\rightarrow\infty\)</span> cuando <span class="math inline">\(n\rightarrow\infty\)</span> y con <span class="math inline">\(a_n\neq0\)</span> para todo <span class="math inline">\(n\)</span>. Sea <span class="math inline">\(\hat{\theta}_n\)</span> una sucesión de estimadores de <span class="math inline">\(\theta\)</span> tales que <span class="math display">\[\begin{align}
+a_n(\hat{\theta}_n-\theta)\stackrel{d}{\longrightarrow}N(0,\sigma_\theta^2)
+\end{align}\]</span> y sea <span class="math inline">\(g(x)\)</span> una función con primera derivada continua en un intervalo que contiene a <span class="math inline">\(\theta\)</span>. <span class="math display">\[\begin{align}
+a_n(g(\hat{\theta}_n)-g(\theta))\stackrel{d}{\longrightarrow}N(0,(g^{'}(\theta))^2\sigma_\theta^2)
+\end{align}\]</span></p>
+</div>
+<div id="exm-3.13" class="theorem example">
+<p><span class="theorem-title"><strong>Example 3.13</strong></span> Estimamos <span class="math inline">\(\theta=P(X=0) = \exp\{-\lambda\}\)</span> mediante <span class="math inline">\(\hat{\theta}_n = \exp\{-\bar{X}_n\}\)</span>. Por otra parte, <span class="math inline">\(\sqrt{n}(\hat{\lambda}_n-\lambda)\stackrel{d}{\longrightarrow}N(0,\lambda)\)</span>. Además <span class="math inline">\(g(\lambda)=\exp\{-\lambda\}\)</span> es derivable con derivada continua <span class="math inline">\(g^{'}(\lambda)=-\exp\{-\lambda\}\)</span></p>
+<p>Aplicando el <strong>método delta</strong>. <span class="math display">\[\begin{align}
+        \sqrt{n}(\hat{\theta}_n-\theta)=\sqrt{n}(\exp\{-\bar{X}_n\}-\exp\{-\lambda\})\stackrel{d}{\longrightarrow}N(0,\lambda\exp\{-2\lambda\})
+        \end{align}\]</span></p>
+</div>
+</section><section id="eficiencia-relativa-asintótica" class="level3" data-number="3.12.4"><h3 data-number="3.12.4" class="anchored" data-anchor-id="eficiencia-relativa-asintótica">
+<span class="header-section-number">3.12.4</span> Eficiencia relativa asintótica</h3>
+<p>Sea <span class="math inline">\(T_n(\underset{\sim}{X}) = T_n(X_1 , \ldots, X_n)\)</span> una sucesión de estimadores de una función <span class="math inline">\(\tau(\theta)\)</span> que verifica lo siguiente: <span class="math display">\[\begin{align}
+    \sqrt{n}(T_n(\underset{\sim}{X})-\tau(\theta))\stackrel{d}{\longrightarrow}N(b(\theta),\sigma^2(\theta))
+    \end{align}\]</span> Si <span class="math inline">\(b(\theta) = 0\)</span> diremos que <span class="math inline">\(T_n(\underset{\sim}{X})\)</span> es asintóticamente insesgado. En caso contrario, diremos que <span class="math inline">\(T_n(\underset{\sim}{X})\)</span> es asintóticamente sesgado.</p>
+<p>Sean dos sucesiones <span class="math inline">\(T_n(X)\)</span> y <span class="math inline">\(S_n(X)\)</span> de estimadores de <span class="math inline">\(\tau(\theta)\)</span> asintóticamente normales:</p>
+<p><span class="math display">\[\begin{align}
+\sqrt{n}(T_n(\underset{\sim}{X})-\tau(\theta))\stackrel{d}{\longrightarrow}N(0,\sigma_T^2(\theta))
+\end{align}\]</span></p>
+<p><span class="math display">\[\begin{align}
+\sqrt{n}(S_n(\underset{\sim}{X})-\tau(\theta))\stackrel{d}{\longrightarrow}N(0,\sigma_S^2(\theta))
+\end{align}\]</span> Se define la <strong>eficiencia relativa asintótica</strong> de <span class="math inline">\(S_n(X)\)</span> respecto a <span class="math inline">\(T_n(X)\)</span> como <span class="math display">\[\begin{align}
+ARE(\theta, S_n , T_n)=\frac{\frac{1}{\sigma_S^2(\theta)}}{\frac{1}{\sigma_T^2(\theta)}}=\frac{\sigma_T^2(\theta)}{\sigma_S^2(\theta)}
+\end{align}\]</span></p>
+<p><strong>El valor de la eficiencia relativa asintótica puede interpretarse como el cociente de los tamaños de muestra necesarios para obtener la misma precisión asintótica (o la misma varianza asintótica) mediante los dos estimadores en la estimación de <span class="math inline">\(\tau(\theta)\)</span>. En efecto, si elegimos tamaño muestral m para <span class="math inline">\(T\)</span> y n para <span class="math inline">\(S\)</span>, las varianzas asintóticas son, respectivamente, <span class="math inline">\(\frac{\sigma_T^2(\theta)}{m}\)</span> y <span class="math inline">\(\frac{\sigma_S^2(\theta)}{n}\)</span>. Si forzamos aque ambas sean iguales, se tiene que</strong> <span class="math display">\[\begin{align}
+\frac{\sigma_T^2(\theta)}{m}=\frac{\sigma_S^2(\theta)}{n}\Longleftrightarrow\frac{m}{n}=\frac{\sigma_T^2(\theta)}{\sigma_S^2(\theta)}=ARE(\theta, S_n , T_n)
+\end{align}\]</span></p>
+<p>Es decir, si <span class="math inline">\(ARE(\theta, S_n , T_m) = 0.5\)</span> entonces <span class="math inline">\(S\)</span> es menos eficiente que <span class="math inline">\(T\)</span> asintóticamente: para tener la misma precisión con el estimador <span class="math inline">\(S\)</span> hace falta una muestra el doble de grande que si utilizásemos <span class="math inline">\(T\)</span> (<span class="math inline">\(ARE(\theta, S_n , T_m)= 0.5=\frac{m}{n}\Longrightarrow n = 2m\)</span>).</p>
+</section><section id="referencias" class="level2" data-number="3.13"><h2 data-number="3.13" class="anchored" data-anchor-id="referencias">
 <span class="header-section-number">3.13</span> Referencias</h2>
 <ul>
 <li><p><strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> (2006). <em>Curso de Inferencia y Decisión</em>. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.</p></li>
@@ -2374,6 +2443,9 @@ Por <strong>Lehmann–Scheffé</strong>, <span class="math inline">\(W_T\)</span
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./chapter3.html" class="pagination-link" aria-label="Contrastes de hipótesis">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
