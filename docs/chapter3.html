@@ -193,7 +193,7 @@ window.Quarto = {
    
   <ul>
 <li>
-<a href="#definiciones-b%C3%A1sicas.-contraste-de-hip%C3%B3tesis-simples" id="toc-definiciones-básicas.-contraste-de-hipótesis-simples" class="nav-link active" data-scroll-target="#definiciones-b%C3%A1sicas.-contraste-de-hip%C3%B3tesis-simples"><span class="header-section-number">4.1</span> Definiciones básicas. Contraste de hipótesis simples}</a>
+<a href="#definiciones-b%C3%A1sicas.-contraste-de-hip%C3%B3tesis-simples" id="toc-definiciones-básicas.-contraste-de-hipótesis-simples" class="nav-link active" data-scroll-target="#definiciones-b%C3%A1sicas.-contraste-de-hip%C3%B3tesis-simples"><span class="header-section-number">4.1</span> Definiciones básicas. Contraste de hipótesis simples</a>
   <ul class="collapse">
 <li><a href="#tipos-de-errores" id="toc-tipos-de-errores" class="nav-link" data-scroll-target="#tipos-de-errores"><span class="header-section-number">4.1.1</span> Tipos de errores</a></li>
   <li><a href="#algo-de-interpretaci%C3%B3n-con-r" id="toc-algo-de-interpretación-con-r" class="nav-link" data-scroll-target="#algo-de-interpretaci%C3%B3n-con-r"><span class="header-section-number">4.1.2</span> Algo de interpretación con R</a></li>
@@ -235,7 +235,7 @@ window.Quarto = {
 
 </header><p>Una hipótesis estadística es una conjetura o una afirmación sobre la distribución de una o más variables aleatorias. Un contraste de hipótesis (o un test de hipótesis o una prueba de hipótesis) es un procedimiento para decidir si se acepta o se rechaza una hipótesis.</p>
 <section id="definiciones-básicas.-contraste-de-hipótesis-simples" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="definiciones-básicas.-contraste-de-hipótesis-simples">
-<span class="header-section-number">4.1</span> Definiciones básicas. Contraste de hipótesis simples}</h2>
+<span class="header-section-number">4.1</span> Definiciones básicas. Contraste de hipótesis simples</h2>
 <ol type="1">
 <li>Usualmente se dispone de una muestra <span class="math inline">\(X_1 ,\ldots, X_n\)</span> de una variable aleatoria <span class="math inline">\(X\)</span> con distribución <span class="math inline">\(F\)</span> y función de densidad (o función de masa) <span class="math inline">\(f\)</span> . <strong>Sobre la distribución de <span class="math inline">\(X\)</span> se realizan dos afirmaciones entre las que se debe decidir</strong>.</li>
 <li>En general esas dos afirmaciones serán excluyentes.</li>
@@ -661,6 +661,48 @@ C_a=\{5\},\qquad \bar C_a=\{0,1,2,3,4\}.
 \]</span></p>
 <p><strong>Lectura e intuición</strong> - La regla <span class="math inline">\(C_a=\{5\}\)</span> es <strong>muy conservadora</strong>: solo rechaza <span class="math inline">\(H_0\)</span> en el caso más extremo. - Por eso, el <strong>tamaño</strong> es muy pequeño (<span class="math inline">\(\alpha_a\approx 3.1\%\)</span>). - La <strong>potencia</strong> <span class="math inline">\(\eta_a(\theta)=\theta^5\)</span> crece muy lentamente; el test casi nunca rechaza salvo que <span class="math inline">\(\theta\)</span> sea <strong>muy grande</strong>.<br>
 En términos del error tipo II <span class="math inline">\(\beta_a(\theta)=1-\eta_a(\theta)=1-\theta^5\)</span>: - Si <span class="math inline">\(\theta=0.6\)</span>, <span class="math inline">\(\beta_a=1-0.6^5\approx 0.922\)</span> (muy alto). - Si <span class="math inline">\(\theta=0.9\)</span>, <span class="math inline">\(\beta_a=1-0.9^5\approx 0.410\)</span>. - Recién cerca de <span class="math inline">\(\theta=0.99\)</span>, <span class="math inline">\(\beta_a\approx 0.049\)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 29%">
+<col style="width: 47%">
+</colgroup>
+<thead><tr class="header">
+<th>Concepto</th>
+<th>Explicación</th>
+<th>Ejemplos numéricos</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>
+<strong>Regla</strong> <span class="math inline">\(C_a = \{5\}\)</span>
+</td>
+<td>Muy conservadora: solo rechaza <span class="math inline">\(H_0\)</span> en el caso más extremo.</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>
+<strong>Tamaño</strong> <span class="math inline">\(\alpha_a\)</span>
+</td>
+<td>Muy pequeño (<span class="math inline">\(\alpha_a \approx 3.1\%\)</span>).</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>
+<strong>Potencia</strong> <span class="math inline">\(\eta_a(\theta) = \theta^5\)</span>
+</td>
+<td>Crece muy lentamente; el test casi nunca rechaza salvo que <span class="math inline">\(\theta\)</span> sea muy grande.</td>
+<td>-</td>
+</tr>
+<tr class="even">
+<td>
+<strong>Error tipo II</strong> <span class="math inline">\(\beta_a(\theta) = 1 - \eta_a(\theta) = 1 - \theta^5\)</span>
+</td>
+<td>Se mantiene alto para valores de <span class="math inline">\(\theta\)</span> moderados.</td>
+<td>- Para <span class="math inline">\(\theta=0.6\)</span>: <span class="math inline">\(\beta_a = 1 - 0.6^5 \approx 0.922\)</span> (muy alto). <br> - Para <span class="math inline">\(\theta=0.9\)</span>: <span class="math inline">\(\beta_a = 1 - 0.9^5 \approx 0.410\)</span>. <br> - Para <span class="math inline">\(\theta=0.99\)</span>: <span class="math inline">\(\beta_a \approx 0.049\)</span>.</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Conclusión.</strong> Es un contraste con <strong>bajo error tipo I</strong> pero <strong>muy poca potencia</strong>, salvo cuando el efecto es extremadamente grande (valores de <span class="math inline">\(\theta\)</span> muy cercanos a 1).</p>
 <ol start="2" type="a">
 <li>Considere en segundo lugar el contraste de <strong>rechazar <span class="math inline">\(H_0\)</span> si</strong> <span class="math inline">\(X \in \{3,4,5\}\)</span>.</li>
@@ -933,6 +975,230 @@ H_0 &amp;   :  &amp; \theta=\theta_0 \\
 <div id="def-4.2" class="definition theorem">
 <p><span class="theorem-title"><strong>Definition 4.3</strong></span> Diremos que un contraste de hipótesis es <strong>Uniformemente más potente (UMP)</strong> para contrastar <span class="math inline">\(H_0:\theta\in\Theta_0\)</span> frente <span class="math inline">\(H_1:\theta\in\Theta_1\)</span> si su función de potencia <span class="math inline">\(\eta(\theta)\)</span> verifica que <span class="math display">\[\sup_{\theta\in\Theta_0}\eta(\theta)=\alpha\]</span> y para cualquier otro contraste con función de potencia <span class="math inline">\(\eta^*\)</span> que sea también de tamaño <span class="math inline">\(\alpha\)</span>, es decir, que cumpla <span class="math display">\[\sup_{\theta\in\Theta_0}\eta^*(\theta)=\alpha\]</span> se tiene que <span class="math display">\[\eta(\theta)\geq\eta^*(\theta),\forall\theta\in\Theta_1.\]</span></p>
 </div>
+<div id="tip-4.4" class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;4.4: Test Uniformemente Más Potente (UMP)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Definición</strong> - La <strong>función de potencia</strong> de un test con región crítica <span class="math inline">\(C\)</span> es:</p>
+<p><span class="math display">\[
+  \eta(\theta) = P_\theta(X \in C)
+  \]</span></p>
+<ul>
+<li>
+<p>Un test es <strong>UMP de tamaño <span class="math inline">\(\alpha\)</span></strong> para <span class="math inline">\(H_0:\theta \in \Theta_0\)</span> vs <span class="math inline">\(H_1:\theta \in \Theta_1\)</span> si:</p>
+<p><span class="math display">\[
+\sup_{\theta \in \Theta_0} \eta(\theta) = \alpha
+\]</span></p>
+<p>y, para cualquier otro test del mismo tamaño con función de potencia <span class="math inline">\(\eta^*(\theta)\)</span>,</p>
+<p><span class="math display">\[
+\eta(\theta) \geq \eta^*(\theta), \quad \forall \theta \in \Theta_1
+\]</span></p>
+</li>
+</ul>
+<p><strong>Lectura intuitiva</strong> - <strong>Mismo control de falsos positivos</strong>: todos los tests comparados tienen el mismo tamaño <span class="math inline">\(\alpha\)</span>.<br>
+- <strong>Mejor detección bajo la alternativa</strong>: en todo <span class="math inline">\(\Theta_1\)</span>, la probabilidad de rechazar <span class="math inline">\(H_0\)</span> es al menos tan grande como la de cualquier otro test del mismo tamaño.</p>
+<p><strong>Observaciones</strong> - A veces no existe un UMP (por ejemplo, en muchas alternativas bilaterales).<br>
+- Sí existe UMP en varios problemas unilaterales cuando la familia tiene <strong>razón de verosimilitudes monótona</strong> (teorema de Karlin–Rubin).</p>
+<p><strong>Mini-ejemplo (binomial unilateral)</strong> - Modelo: <span class="math inline">\(X \sim \text{Bin}(n,p)\)</span>.<br>
+- Contraste: <span class="math inline">\(H_0: p \le p_0\)</span> vs <span class="math inline">\(H_1: p &gt; p_0\)</span>.<br>
+- Región crítica de tamaño <span class="math inline">\(\alpha\)</span>: <span class="math inline">\(C = \{x : x \ge c_\alpha\}\)</span> donde</p>
+<p><span class="math display">\[
+  \alpha = P_{p_0}(X \ge c_\alpha)
+  \]</span></p>
+<ul>
+<li>
+<p>Potencia para cualquier <span class="math inline">\(p\)</span>:</p>
+<p><span class="math display">\[
+\eta(p) = P_p(X \ge c_\alpha) = \sum_{k=c_\alpha}^n \binom{n}{k} p^k (1-p)^{n-k}
+\]</span></p>
+</li>
+</ul>
+<p>Este test es <strong>UMP de tamaño <span class="math inline">\(\alpha\)</span></strong> para <span class="math inline">\(H_1: p &gt; p_0\)</span>.</p>
+<p><strong>Comparación: Test cualquiera vs.&nbsp;Test UMP</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 39%">
+<col style="width: 23%">
+</colgroup>
+<thead><tr class="header">
+<th>Característica</th>
+<th>Test cualquiera</th>
+<th>Test UMP</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>
+<strong>Tamaño</strong> (error Tipo I)</td>
+<td>Controlado a nivel <span class="math inline">\(\alpha\)</span>
+</td>
+<td>Controlado a nivel <span class="math inline">\(\alpha\)</span>
+</td>
+</tr>
+<tr class="even">
+<td><strong>Potencia en algunos <span class="math inline">\(\theta \in \Theta_1\)</span></strong></td>
+<td>Puede ser alta o baja, dependiendo del valor de <span class="math inline">\(\theta\)</span>
+</td>
+<td>Siempre es <strong>mayor o igual</strong> que la de cualquier otro test del mismo tamaño</td>
+</tr>
+<tr class="odd">
+<td><strong>Comportamiento global</strong></td>
+<td>Puede ser mejor en unos valores de <span class="math inline">\(\theta\)</span> y peor en otros</td>
+<td>Es el <strong>mejor en todos los valores de <span class="math inline">\(\theta \in \Theta_1\)</span></strong>
+</td>
+</tr>
+<tr class="even">
+<td><strong>Analogía</strong></td>
+<td>Un detector que funciona bien en ciertos ángulos pero falla en otros</td>
+<td>Un detector que funciona <strong>igual o mejor en todos los ángulos</strong>
+</td>
+</tr>
+<tr class="odd">
+<td><strong>Existencia</strong></td>
+<td>Siempre existe un test de tamaño <span class="math inline">\(\alpha\)</span>, pero no siempre es el mejor</td>
+<td>No siempre existe un UMP; cuando existe, es la opción óptima</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># --- Curvas de potencia (Binomial) UMP vs. otros tests del mismo tamaño ---</span></span>
+<span></span>
+<span><span class="co"># Parámetros del problema</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">25</span></span>
+<span><span class="va">p0</span> <span class="op">&lt;-</span> <span class="fl">0.30</span></span>
+<span><span class="va">alpha_target</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
+<span></span>
+<span><span class="co"># Función: cola superior P(X &gt;= c) para Binomial(n, p)</span></span>
+<span><span class="va">binom_tail_ge</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span>, <span class="va">c</span>, <span class="va">p</span><span class="op">)</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span><span class="va">c</span> <span class="op">-</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="va">n</span>, prob <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 1) UMP: región crítica de cola superior {k &gt;= c_alpha} con tamaño ≈ alpha_target</span></span>
+<span><span class="va">candidates</span> <span class="op">&lt;-</span> <span class="fl">0</span><span class="op">:</span><span class="va">n</span></span>
+<span><span class="va">tails</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">candidates</span>, <span class="kw">function</span><span class="op">(</span><span class="va">c</span><span class="op">)</span> <span class="fu">binom_tail_ge</span><span class="op">(</span><span class="va">n</span>, <span class="va">c</span>, <span class="va">p0</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Elegimos el menor c tal que P_{p0}(X &gt;= c) &lt;= alpha_target</span></span>
+<span><span class="va">c_alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">tails</span> <span class="op">&lt;=</span> <span class="va">alpha_target</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">c_alpha</span><span class="op">)</span><span class="op">)</span> <span class="va">c_alpha</span> <span class="op">&lt;-</span> <span class="va">n</span>  <span class="co"># por si la discretud no permite bajar de alpha</span></span>
+<span></span>
+<span><span class="va">R_UMP</span> <span class="op">&lt;-</span> <span class="va">c_alpha</span><span class="op">:</span><span class="va">n</span></span>
+<span><span class="va">size_UMP</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">R_UMP</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 2) Test A: empezamos más conservador (c_alpha+1) y agregamos un punto interior</span></span>
+<span><span class="va">R_A</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">c_alpha</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">:</span><span class="va">n</span></span>
+<span><span class="va">size_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">R_A</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Apuntamos a un punto interior cerca de la moda ~ n*p0</span></span>
+<span><span class="va">mode_approx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">n</span> <span class="op">*</span> <span class="va">p0</span><span class="op">)</span></span>
+<span><span class="va">k_star_candidates</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">mode_approx</span> <span class="op">-</span> <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">n</span>, <span class="va">mode_approx</span> <span class="op">+</span> <span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">best_k</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span><span class="va">best_diff</span> <span class="op">&lt;-</span> <span class="cn">Inf</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">k</span> <span class="kw">in</span> <span class="va">k_star_candidates</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="op">(</span><span class="va">k</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">R_A</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">trial</span> <span class="op">&lt;-</span> <span class="va">size_A</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">k</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span></span>
+<span>    <span class="va">diff</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">alpha_target</span> <span class="op">-</span> <span class="va">trial</span><span class="op">)</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">diff</span> <span class="op">&lt;</span> <span class="va">best_diff</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="va">best_diff</span> <span class="op">&lt;-</span> <span class="va">diff</span></span>
+<span>      <span class="va">best_k</span> <span class="op">&lt;-</span> <span class="va">k</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">best_k</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">R_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">R_A</span>, <span class="va">best_k</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">size_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">R_A</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># 3) Test B: aún más conservador (c_alpha+2) y agregamos dos puntos interiores</span></span>
+<span><span class="va">R_B</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">c_alpha</span> <span class="op">+</span> <span class="fl">2</span><span class="op">)</span><span class="op">:</span><span class="va">n</span></span>
+<span><span class="va">size_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">R_B</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">k_cand_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">mode_approx</span> <span class="op">-</span> <span class="fl">3</span>, <span class="va">mode_approx</span> <span class="op">+</span> <span class="fl">3</span>,</span>
+<span>              <span class="va">mode_approx</span> <span class="op">-</span> <span class="fl">4</span>, <span class="va">mode_approx</span> <span class="op">+</span> <span class="fl">4</span>,</span>
+<span>              <span class="va">mode_approx</span> <span class="op">-</span> <span class="fl">2</span>, <span class="va">mode_approx</span> <span class="op">+</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">k</span> <span class="kw">in</span> <span class="va">k_cand_B</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">k</span> <span class="op">&gt;=</span> <span class="fl">0</span> <span class="op">&amp;&amp;</span> <span class="va">k</span> <span class="op">&lt;=</span> <span class="va">n</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="op">(</span><span class="va">k</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">R_B</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">trial</span> <span class="op">&lt;-</span> <span class="va">size_B</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">k</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span></span>
+<span>    <span class="co"># Permitimos leve sobrepaso por discretud</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">trial</span> <span class="op">&lt;=</span> <span class="va">alpha_target</span> <span class="op">||</span> <span class="op">(</span><span class="va">trial</span> <span class="op">-</span> <span class="va">alpha_target</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.005</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="va">R_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">R_B</span>, <span class="va">k</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>      <span class="va">size_B</span> <span class="op">&lt;-</span> <span class="va">trial</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">size_B</span> <span class="op">&gt;=</span> <span class="va">alpha_target</span> <span class="op">-</span> <span class="fl">1e-6</span><span class="op">)</span> <span class="kw">break</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co"># Si quedó muy por debajo, añadimos el k que mejor aproxime alpha</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">size_B</span> <span class="op">&lt;</span> <span class="va">alpha_target</span> <span class="op">-</span> <span class="fl">0.01</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">diffs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="va">n</span>, <span class="va">R_B</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">alpha_target</span> <span class="op">-</span> <span class="op">(</span><span class="va">size_B</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">k</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">add_k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="va">n</span>, <span class="va">R_B</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.min</a></span><span class="op">(</span><span class="va">diffs</span><span class="op">)</span><span class="op">]</span></span>
+<span>  <span class="va">R_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">R_B</span>, <span class="va">add_k</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">size_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">R_B</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># --- Curvas de potencia ---</span></span>
+<span><span class="va">ps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">p0</span>, <span class="fl">1</span>, length.out <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span><span class="va">power_UMP</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">ps</span>, <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">R_UMP</span>, <span class="va">n</span>, <span class="va">p</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">power_A</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">ps</span>, <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">R_A</span>,   <span class="va">n</span>, <span class="va">p</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">power_B</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">ps</span>, <span class="kw">function</span><span class="op">(</span><span class="va">p</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span><span class="va">R_B</span>,   <span class="va">n</span>, <span class="va">p</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Data frame para graficar</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  p <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">ps</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>  potencia <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">power_UMP</span>, <span class="va">power_A</span>, <span class="va">power_B</span><span class="op">)</span>,</span>
+<span>  test <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"UMP (k ≥ %d), tamaño≈%.3f"</span>, <span class="va">c_alpha</span>, <span class="va">size_UMP</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Test A (tamaño≈%.3f)"</span>, <span class="va">size_A</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Test B (tamaño≈%.3f)"</span>, <span class="va">size_B</span><span class="op">)</span></span>
+<span>  <span class="op">)</span>, each <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">ps</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># --- Gráfico con ggplot2 ---</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">p</span>, y <span class="op">=</span> <span class="va">potencia</span>, linetype <span class="op">=</span> <span class="va">test</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">p0</span>, linetype <span class="op">=</span> <span class="st">"dotted"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sprintf.html">sprintf</a></span><span class="op">(</span><span class="st">"Curvas de potencia (Binomial n=%d, H0: p ≤ p0, p0=%.2f)"</span>, <span class="va">n</span>, <span class="va">p0</span><span class="op">)</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"p"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Potencia  η(p) = P_p(rechazar H0)"</span>,</span>
+<span>    linetype <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Guardar PNG</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"power_curves_UMP_vs_others.png"</span>, <span class="va">g</span>, width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span>, dpi <span class="op">=</span> <span class="fl">150</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Archivo guardado: power_curves_UMP_vs_others.png\n"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Archivo guardado: power_curves_UMP_vs_others.png</code></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># --- Opcional: mostrar las regiones críticas resultantes ---</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Región crítica UMP: {"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">R_UMP</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span>, <span class="st">"}\n"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Región crítica UMP: {13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25}</code></pre>
+</div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Región crítica Test A: {"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">R_A</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span>, <span class="st">"}\n"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Región crítica Test A: {11, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25}</code></pre>
+</div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Región crítica Test B: {"</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">R_B</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span>, <span class="st">"}\n"</span>, sep <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Región crítica Test B: {3, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25}</code></pre>
+</div>
+</div>
 <section id="razón-de-verosimilitud-monótona.-teorema-de-karlin-rubin." class="level3" data-number="4.6.1"><h3 data-number="4.6.1" class="anchored" data-anchor-id="razón-de-verosimilitud-monótona.-teorema-de-karlin-rubin.">
 <span class="header-section-number">4.6.1</span> Razón de verosimilitud monótona. Teorema de Karlin-Rubin.</h3>
 <ol type="a">
@@ -955,16 +1221,125 @@ H_0 &amp;   :  &amp; \theta=\theta_0 \\
       &amp;=P(\bar{x}_n\leq A_1\mid \mu=\mu_0) + P(\bar{x}_n\geq A_2\mid \mu=\mu_0)
 \end{align}\]</span> La forma de fijar <span class="math inline">\(A_1\)</span> y <span class="math inline">\(A_2\)</span> puede atender a distintos criterios. Una posibilidad es elegir <span class="math inline">\(A_1\)</span> y <span class="math inline">\(A_2\)</span> de forma que <span class="math display">\[P(\bar{x}_n\leq A_1\mid \mu=\mu_0)= P(\bar{x}_n\geq A_2\mid \mu=\mu_0)=\frac{\alpha}{2}\]</span></p>
 <p>es decir, <span class="math inline">\(A_1=\mu_0-\frac{z_{\frac{\alpha}{2}}\sigma}{\sqrt{n}}\)</span>, <span class="math inline">\(A_2=\mu_0+\frac{z_{\frac{\alpha}{2}}\sigma}{\sqrt{n}}\)</span></p>
-<p><span class="math display">\[\begin{eqnarray*}
-        \beta&amp;=&amp;P(\mbox{error tipo II})\\
-        &amp;=&amp;P(\mbox{No rechazar $H_0$ cuando $H_0$ es falsa})\\
-        &amp;=&amp;P(\underset{\sim}{x}\notin C\mid H_0\mbox{ falsa})
-    \end{eqnarray*}\]</span></p>
+<p>Entonces se rechazará <span class="math inline">\(H_0\)</span> si</p>
+<p><span class="math display">\[
+\left| \overline{X}_n - \mu_0 \right| \geq z_{\alpha/2} \, \frac{\sigma}{\sqrt{n}}.
+\]</span></p>
+<p>La función de potencia es tal como se refleja en la figura siguiente (curva de trazo continuo).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><figcaption>Gráfico de la función potencia</figcaption><p><img src="images/funcionpotencia.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <p>Este contraste no es UMP porque, por ejemplo, si rechazamos <span class="math inline">\(H_0\)</span> cuando <span class="math inline">\(\bar{X}_n\geq\mu_0+\frac{z_\alpha´\sigma}{\sqrt{n}}\)</span> este contraste tiene potencia superior para <span class="math inline">\(\mu &gt; \mu_0\)</span> , como puede verse en la figura anterior (curva de trazo discontinuo).</p>
+<div id="tip-4.5" class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip&nbsp;4.5: Teorema de Karlin–Rubin aplicado al caso normal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Planteamiento</strong> - Muestra i.i.d. <span class="math inline">\(X_1,\dots,X_n \sim N(\mu,\sigma^2)\)</span> con <span class="math inline">\(\sigma^2\)</span> <strong>conocida</strong>.<br>
+- Estadístico: <span class="math inline">\(\overline{X}_n\)</span>.<br>
+- Queremos contrastar, por ejemplo:</p>
+<p><span class="math display">\[
+  H_0:\ \mu \le \mu_0 \quad \text{vs} \quad H_1:\ \mu &gt; \mu_0
+  \]</span></p>
+<p><strong>Verificación de las hipótesis del teorema</strong> 1. <strong>Suficiencia:</strong> para varianza conocida, <span class="math inline">\(\overline{X}_n\)</span> es suficiente para <span class="math inline">\(\mu\)</span>.<br>
+2. <strong>Razón de verosimilitudes monótona (RVM):</strong> la familia <span class="math inline">\(\{N(\mu,\sigma^2/n): \mu \in \mathbb{R}\}\)</span> posee RVM en <span class="math inline">\(\overline{X}_n\)</span>, porque para <span class="math inline">\(\mu_1&gt;\mu_0\)</span> la razón</p>
+<p><span class="math display">\[
+   \frac{f_{\mu_1}(\overline{x})}{f_{\mu_0}(\overline{x})}
+   \]</span></p>
+<p>es creciente en <span class="math inline">\(\overline{x}\)</span>.</p>
+<p>Por el teorema, <strong>existe un test UMP de tamaño <span class="math inline">\(\alpha\)</span></strong> cuya región crítica es de cola superior.</p>
+<p><strong>Test UMP (unilateral a la derecha)</strong> - Bajo <span class="math inline">\(\mu=\mu_0\)</span>:</p>
+<p><span class="math display">\[
+  Z=\frac{\overline{X}_n-\mu_0}{\sigma/\sqrt{n}} \sim N(0,1)
+  \]</span></p>
+<ul>
+<li>
+<p>El test UMP de tamaño <span class="math inline">\(\alpha\)</span> rechaza <span class="math inline">\(H_0\)</span> si:</p>
+<p><span class="math display">\[
+\overline{X}_n &gt; \mu_0 + z_{1-\alpha}\,\frac{\sigma}{\sqrt{n}}
+\quad \Longleftrightarrow \quad
+Z &gt; z_{1-\alpha}
+\]</span></p>
+</li>
+<li><p><strong>Función de potencia</strong>: Como <span class="math inline">\(\overline{X}_n \sim N(\mu,\ \sigma^2/n)\)</span>, podemos escribir:</p></li>
+</ul>
+<p><span class="math display">\[
+\overline{X}_n = \mu + \frac{\sigma}{\sqrt{n}}\,W,
+\]</span></p>
+<p>donde <span class="math inline">\(W \sim N(0,1)\)</span>.</p>
+<p>Sustituyendo en la definición de <span class="math inline">\(Z\)</span>:</p>
+<p><span class="math display">\[
+Z = \frac{\mu + \tfrac{\sigma}{\sqrt{n}}W - \mu_0}{\sigma/\sqrt{n}}
+= \frac{\mu-\mu_0}{\sigma/\sqrt{n}} + W.
+\]</span></p>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[
+Z \sim N\!\left(\frac{\sqrt{n}}{\sigma}(\mu-\mu_0),\,1\right).
+\]</span></p>
+<p>Es decir: - <strong>Media:</strong> <span class="math inline">\(\delta = \tfrac{\sqrt{n}}{\sigma}(\mu-\mu_0)\)</span><br>
+- <strong>Varianza:</strong> <span class="math inline">\(1\)</span></p>
+<p>El estadístico de prueba es:</p>
+<p><span class="math display">\[
+Z = \frac{\overline{X}_n - \mu_0}{\sigma/\sqrt{n}}
+\]</span></p>
+<p>y bajo el verdadero valor de <span class="math inline">\(\mu\)</span> se distribuye como:</p>
+<p><span class="math display">\[
+Z \sim N\!\left(\frac{\sqrt{n}}{\sigma}(\mu-\mu_0),\,1\right).
+\]</span></p>
+<p>Es decir, <strong>una normal con media desplazada</strong>: - Media: <span class="math inline">\(\delta = \tfrac{\sqrt{n}}{\sigma}(\mu-\mu_0)\)</span><br>
+- Varianza: <span class="math inline">\(1\)</span></p>
+<p><span class="math display">\[
+\eta(\mu) = P_\mu(\text{rechazar } H_0)
+= P_\mu(Z &gt; z_{1-\alpha}).
+\]</span></p>
+<p><span class="math display">\[
+\eta(\mu) = P\!\left(Z &gt; z_{1-\alpha}\right).
+\]</span></p>
+<p>Estandarizando:</p>
+<p><span class="math display">\[
+\eta(\mu) = P\!\left(
+\frac{Z - \tfrac{\sqrt{n}}{\sigma}(\mu-\mu_0)}{1} &gt;
+z_{1-\alpha} - \frac{\sqrt{n}}{\sigma}(\mu-\mu_0)
+\right).
+\]</span> <span class="math display">\[
+  \eta(\mu)=1-\Phi\!\left(z_{1-\alpha}-\frac{\sqrt{n}}{\sigma}(\mu-\mu_0)\right)
+  \]</span></p>
+<p><strong>Versión unilateral a la izquierda</strong> Para <span class="math inline">\(H_0:\mu\ge\mu_0\)</span> vs <span class="math inline">\(H_1:\mu&lt;\mu_0\)</span>, el test UMP es:</p>
+<p><span class="math display">\[
+\text{Rechazar }H_0 \text{ si } \overline{X}_n &lt; \mu_0 - z_{1-\alpha}\,\frac{\sigma}{\sqrt{n}}
+\]</span></p>
+<p>con potencia</p>
+<p><span class="math display">\[
+\eta(\mu)=\Phi\!\left(-z_{1-\alpha}+\frac{\sqrt{n}}{\sigma}(\mu-\mu_0)\right)
+\]</span></p>
+<p><strong>Caso bilateral</strong> El ejemplo plantea <span class="math inline">\(H_0:\mu=\mu_0\)</span> vs <span class="math inline">\(H_1:\mu\neq\mu_0\)</span>.</p>
+<ul>
+<li><p><strong>No existe UMP</strong> en general para alternativas bilaterales.<br></p></li>
+<li>
+<p>Se usa el test <strong>más potente imparcial (MPI)</strong>:</p>
+<p><span class="math display">\[
+\text{Rechazar }H_0 \text{ si } \left|\overline{X}_n-\mu_0\right|
+\ge z_{1-\alpha/2}\,\frac{\sigma}{\sqrt{n}}
+\]</span></p>
+</li>
+<li>
+<p>Su <strong>potencia</strong> es:</p>
+<p><span class="math display">\[
+\eta(\mu)=1-\Big[\Phi\!\Big(z_{1-\alpha/2}-\frac{\sqrt{n}}{\sigma}(\mu-\mu_0)\Big)
+        -\Phi\!\Big(-z_{1-\alpha/2}-\frac{\sqrt{n}}{\sigma}(\mu-\mu_0)\Big)\Big]
+\]</span></p>
+</li>
+</ul>
+<p><strong>Intuición clave</strong> - Con RVM, “valores grandes de <span class="math inline">\(\overline{X}_n\)</span> favorecen <span class="math inline">\(\mu\)</span> grandes”, por eso la <strong>región crítica es de cola</strong> y el test es <strong>UMP</strong> en el caso unilateral.<br>
+- En bilateral no hay un único sentido de “grande”, por eso no existe UMP; el test adecuado es <strong>MPI</strong>.</p>
+</div>
+</div>
 </section></section><section id="referencias" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="referencias">
 <span class="header-section-number">4.7</span> Referencias</h2>
 <ul>

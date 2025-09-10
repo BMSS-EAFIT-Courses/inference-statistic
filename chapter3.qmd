@@ -8,7 +8,7 @@ distribución de una o más variables aleatorias. Un contraste de hipótesis
 (o un test de hipótesis o una prueba de hipótesis) es un procedimiento
 para decidir si se acepta o se rechaza una hipótesis.
 
-## Definiciones básicas. Contraste de hipótesis simples}
+## Definiciones básicas. Contraste de hipótesis simples
 
 
 1. Usualmente se dispone de una muestra $X_1 ,\ldots, X_n$ de una variable aleatoria $X$ con distribución $F$ y función de densidad (o función de masa) $f$ . **Sobre la
@@ -516,6 +516,13 @@ $$
   - Si $\theta=0.9$, $\beta_a=1-0.9^5\approx 0.410$.
   - Recién cerca de $\theta=0.99$, $\beta_a\approx 0.049$.
 
+| Concepto | Explicación | Ejemplos numéricos |
+|----------|-------------|---------------------|
+| **Regla** $C_a = \{5\}$ | Muy conservadora: solo rechaza $H_0$ en el caso más extremo. | - |
+| **Tamaño** $\alpha_a$ | Muy pequeño ($\alpha_a \approx 3.1\%$). | - |
+| **Potencia** $\eta_a(\theta) = \theta^5$ | Crece muy lentamente; el test casi nunca rechaza salvo que $\theta$ sea muy grande. | - |
+| **Error tipo II** $\beta_a(\theta) = 1 - \eta_a(\theta) = 1 - \theta^5$ | Se mantiene alto para valores de $\theta$ moderados. | - Para $\theta=0.6$: $\beta_a = 1 - 0.6^5 \approx 0.922$ (muy alto). <br> - Para $\theta=0.9$: $\beta_a = 1 - 0.9^5 \approx 0.410$. <br> - Para $\theta=0.99$: $\beta_a \approx 0.049$. |
+
 **Conclusión.** Es un contraste con **bajo error tipo I** pero **muy poca potencia**, salvo cuando el efecto es extremadamente grande (valores de $\theta$ muy cercanos a 1).
 
 b) Considere en segundo lugar el contraste de **rechazar $H_0$ si** $X \in \{3,4,5\}$.
@@ -908,8 +915,182 @@ se tiene que
 $$\eta(\theta)\geq\eta^*(\theta),\forall\theta\in\Theta_1.$$
 :::
 
+::: {#tip-4.4 .callout-tip}
+## Test Uniformemente Más Potente (UMP)
+
+**Definición**
+- La **función de potencia** de un test con región crítica $C$ es:
+
+  $$
+  \eta(\theta) = P_\theta(X \in C)
+  $$
+
+- Un test es **UMP de tamaño $\alpha$** para $H_0:\theta \in \Theta_0$ vs $H_1:\theta \in \Theta_1$ si:
+
+  $$
+  \sup_{\theta \in \Theta_0} \eta(\theta) = \alpha
+  $$
+
+  y, para cualquier otro test del mismo tamaño con función de potencia $\eta^*(\theta)$,
+
+  $$
+  \eta(\theta) \geq \eta^*(\theta), \quad \forall \theta \in \Theta_1
+  $$
+
+**Lectura intuitiva**
+- **Mismo control de falsos positivos**: todos los tests comparados tienen el mismo tamaño $\alpha$.  
+- **Mejor detección bajo la alternativa**: en todo $\Theta_1$, la probabilidad de rechazar $H_0$ es al menos tan grande como la de cualquier otro test del mismo tamaño.
+
+**Observaciones**
+- A veces no existe un UMP (por ejemplo, en muchas alternativas bilaterales).  
+- Sí existe UMP en varios problemas unilaterales cuando la familia tiene **razón de verosimilitudes monótona** (teorema de Karlin–Rubin).
+
+**Mini-ejemplo (binomial unilateral)**
+- Modelo: $X \sim \text{Bin}(n,p)$.  
+- Contraste: $H_0: p \le p_0$ vs $H_1: p > p_0$.  
+- Región crítica de tamaño $\alpha$: $C = \{x : x \ge c_\alpha\}$ donde
+
+  $$
+  \alpha = P_{p_0}(X \ge c_\alpha)
+  $$
+
+- Potencia para cualquier $p$:
+
+  $$
+  \eta(p) = P_p(X \ge c_\alpha) = \sum_{k=c_\alpha}^n \binom{n}{k} p^k (1-p)^{n-k}
+  $$
+
+Este test es **UMP de tamaño $\alpha$** para $H_1: p > p_0$.
+
+**Comparación: Test cualquiera vs. Test UMP**
+
+| Característica | Test cualquiera | Test UMP |
+|----------------|-----------------|----------|
+| **Tamaño** (error Tipo I) | Controlado a nivel $\alpha$ | Controlado a nivel $\alpha$ |
+| **Potencia en algunos $\theta \in \Theta_1$** | Puede ser alta o baja, dependiendo del valor de $\theta$ | Siempre es **mayor o igual** que la de cualquier otro test del mismo tamaño |
+| **Comportamiento global** | Puede ser mejor en unos valores de $\theta$ y peor en otros | Es el **mejor en todos los valores de $\theta \in \Theta_1$** |
+| **Analogía** | Un detector que funciona bien en ciertos ángulos pero falla en otros | Un detector que funciona **igual o mejor en todos los ángulos** |
+| **Existencia** | Siempre existe un test de tamaño $\alpha$, pero no siempre es el mejor | No siempre existe un UMP; cuando existe, es la opción óptima |
+:::
+
+```{r}
+# --- Curvas de potencia (Binomial) UMP vs. otros tests del mismo tamaño ---
+
+# Parámetros del problema
+n <- 25
+p0 <- 0.30
+alpha_target <- 0.05
+
+# Función: cola superior P(X >= c) para Binomial(n, p)
+binom_tail_ge <- function(n, c, p) 1 - pbinom(c - 1, size = n, prob = p)
+
+# 1) UMP: región crítica de cola superior {k >= c_alpha} con tamaño ≈ alpha_target
+candidates <- 0:n
+tails <- sapply(candidates, function(c) binom_tail_ge(n, c, p0))
+
+# Elegimos el menor c tal que P_{p0}(X >= c) <= alpha_target
+c_alpha <- which(tails <= alpha_target)[1]
+if (is.na(c_alpha)) c_alpha <- n  # por si la discretud no permite bajar de alpha
+
+R_UMP <- c_alpha:n
+size_UMP <- sum(dbinom(R_UMP, n, p0))
+
+# 2) Test A: empezamos más conservador (c_alpha+1) y agregamos un punto interior
+R_A <- (c_alpha + 1):n
+size_A <- sum(dbinom(R_A, n, p0))
+
+# Apuntamos a un punto interior cerca de la moda ~ n*p0
+mode_approx <- round(n * p0)
+k_star_candidates <- seq(max(0, mode_approx - 4), min(n, mode_approx + 4))
+best_k <- NA
+best_diff <- Inf
+for (k in k_star_candidates) {
+  if (!(k %in% R_A)) {
+    trial <- size_A + dbinom(k, n, p0)
+    diff <- abs(alpha_target - trial)
+    if (diff < best_diff) {
+      best_diff <- diff
+      best_k <- k
+    }
+  }
+}
+if (!is.na(best_k)) {
+  R_A <- sort(unique(c(R_A, best_k)))
+  size_A <- sum(dbinom(R_A, n, p0))
+}
+
+# 3) Test B: aún más conservador (c_alpha+2) y agregamos dos puntos interiores
+R_B <- (c_alpha + 2):n
+size_B <- sum(dbinom(R_B, n, p0))
+k_cand_B <- c(mode_approx - 3, mode_approx + 3,
+              mode_approx - 4, mode_approx + 4,
+              mode_approx - 2, mode_approx + 2)
+
+for (k in k_cand_B) {
+  if (k >= 0 && k <= n && !(k %in% R_B)) {
+    trial <- size_B + dbinom(k, n, p0)
+    # Permitimos leve sobrepaso por discretud
+    if (trial <= alpha_target || (trial - alpha_target) < 0.005) {
+      R_B <- sort(unique(c(R_B, k)))
+      size_B <- trial
+    }
+  }
+  if (size_B >= alpha_target - 1e-6) break
+}
+# Si quedó muy por debajo, añadimos el k que mejor aproxime alpha
+if (size_B < alpha_target - 0.01) {
+  diffs <- sapply(setdiff(0:n, R_B), function(k) abs(alpha_target - (size_B + dbinom(k, n, p0))))
+  add_k <- setdiff(0:n, R_B)[which.min(diffs)]
+  R_B <- sort(unique(c(R_B, add_k)))
+  size_B <- sum(dbinom(R_B, n, p0))
+}
+
+# --- Curvas de potencia ---
+ps <- seq(p0, 1, length.out = 200)
+power_UMP <- sapply(ps, function(p) sum(dbinom(R_UMP, n, p)))
+power_A   <- sapply(ps, function(p) sum(dbinom(R_A,   n, p)))
+power_B   <- sapply(ps, function(p) sum(dbinom(R_B,   n, p)))
+
+# Data frame para graficar
+df <- data.frame(
+  p = rep(ps, 3),
+  potencia = c(power_UMP, power_A, power_B),
+  test = factor(rep(c(
+    sprintf("UMP (k ≥ %d), tamaño≈%.3f", c_alpha, size_UMP),
+    sprintf("Test A (tamaño≈%.3f)", size_A),
+    sprintf("Test B (tamaño≈%.3f)", size_B)
+  ), each = length(ps)))
+)
+
+# --- Gráfico con ggplot2 ---
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+library(ggplot2)
+
+g <- ggplot(df, aes(x = p, y = potencia, linetype = test)) +
+  geom_line(size = 1) +
+  geom_vline(xintercept = p0, linetype = "dotted") +
+  labs(
+    title = sprintf("Curvas de potencia (Binomial n=%d, H0: p ≤ p0, p0=%.2f)", n, p0),
+    x = "p",
+    y = "Potencia  η(p) = P_p(rechazar H0)",
+    linetype = NULL
+  ) +
+  theme_minimal(base_size = 12)
+
+print(g)
+
+# Guardar PNG
+ggplot2::ggsave("power_curves_UMP_vs_others.png", g, width = 8, height = 5, dpi = 150)
+cat("Archivo guardado: power_curves_UMP_vs_others.png\n")
+
+# --- Opcional: mostrar las regiones críticas resultantes ---
+cat("Región crítica UMP: {", paste(R_UMP, collapse = ", "), "}\n", sep = "")
+cat("Región crítica Test A: {", paste(R_A, collapse = ", "), "}\n", sep = "")
+cat("Región crítica Test B: {", paste(R_B, collapse = ", "), "}\n", sep = "")
+```
 
 ### Razón de verosimilitud monótona. Teorema de Karlin-Rubin.
+
 
 a. En esta sección veremos que bajo determinadas condiciones es posible encontrar tests UMP para contrastes unilaterales cuyas regiones críticas son fácilmente expresables en función de un estadístico suficiente.
 b. Las condiciones necesarias hacen referencia a la monotonía de la razón de verosimilitudes como función del estadístico suficiente.
@@ -942,16 +1123,159 @@ $$P(\bar{x}_n\leq A_1\mid \mu=\mu_0)= P(\bar{x}_n\geq A_2\mid \mu=\mu_0)=\frac{\
 
 es decir, $A_1=\mu_0-\frac{z_{\frac{\alpha}{2}}\sigma}{\sqrt{n}}$, $A_2=\mu_0+\frac{z_{\frac{\alpha}{2}}\sigma}{\sqrt{n}}$
 
-\begin{eqnarray*}
-		\beta&=&P(\mbox{error tipo II})\\
-		&=&P(\mbox{No rechazar $H_0$ cuando $H_0$ es falsa})\\
-		&=&P(\underset{\sim}{x}\notin C\mid H_0\mbox{ falsa})
-	\end{eqnarray*}
+Entonces se rechazará $H_0$ si 
+
+$$
+\left| \overline{X}_n - \mu_0 \right| \geq z_{\alpha/2} \, \frac{\sigma}{\sqrt{n}}.
+$$
+
+La función de potencia es tal como se refleja en la figura siguiente (curva de trazo continuo).
+
 
 ![Gráfico de la función potencia](images/funcionpotencia.png)
 
 Este contraste no es UMP porque, por ejemplo, si rechazamos $H_0$ cuando
 $\bar{X}_n\geq\mu_0+\frac{z_\alpha´\sigma}{\sqrt{n}}$ este contraste tiene potencia superior para $\mu > \mu_0$ , como puede verse en la figura anterior (curva de trazo discontinuo).
+
+::: {#tip-4.5 .callout-tip}
+## Teorema de Karlin–Rubin aplicado al caso normal
+
+**Planteamiento**
+- Muestra i.i.d. $X_1,\dots,X_n \sim N(\mu,\sigma^2)$ con $\sigma^2$ **conocida**.  
+- Estadístico: $\overline{X}_n$.  
+- Queremos contrastar, por ejemplo:
+
+  $$
+  H_0:\ \mu \le \mu_0 \quad \text{vs} \quad H_1:\ \mu > \mu_0
+  $$
+
+**Verificación de las hipótesis del teorema**
+1. **Suficiencia:** para varianza conocida, $\overline{X}_n$ es suficiente para $\mu$.  
+2. **Razón de verosimilitudes monótona (RVM):** la familia $\{N(\mu,\sigma^2/n): \mu \in \mathbb{R}\}$ posee RVM en $\overline{X}_n$, porque para $\mu_1>\mu_0$ la razón
+
+   $$
+   \frac{f_{\mu_1}(\overline{x})}{f_{\mu_0}(\overline{x})}
+   $$
+
+   es creciente en $\overline{x}$.
+
+Por el teorema, **existe un test UMP de tamaño $\alpha$** cuya región crítica es de cola superior.
+
+**Test UMP (unilateral a la derecha)**
+- Bajo $\mu=\mu_0$:
+
+  $$
+  Z=\frac{\overline{X}_n-\mu_0}{\sigma/\sqrt{n}} \sim N(0,1)
+  $$
+
+- El test UMP de tamaño $\alpha$ rechaza $H_0$ si:
+
+  $$
+  \overline{X}_n > \mu_0 + z_{1-\alpha}\,\frac{\sigma}{\sqrt{n}}
+  \quad \Longleftrightarrow \quad
+  Z > z_{1-\alpha}
+  $$
+
+- **Función de potencia**:
+Como $\overline{X}_n \sim N(\mu,\ \sigma^2/n)$, podemos escribir:
+
+$$
+\overline{X}_n = \mu + \frac{\sigma}{\sqrt{n}}\,W,
+$$
+
+donde $W \sim N(0,1)$.
+
+Sustituyendo en la definición de $Z$:
+
+$$
+Z = \frac{\mu + \tfrac{\sigma}{\sqrt{n}}W - \mu_0}{\sigma/\sqrt{n}}
+= \frac{\mu-\mu_0}{\sigma/\sqrt{n}} + W.
+$$
+
+
+Por lo tanto:
+
+$$
+Z \sim N\!\left(\frac{\sqrt{n}}{\sigma}(\mu-\mu_0),\,1\right).
+$$
+
+Es decir:
+- **Media:** $\delta = \tfrac{\sqrt{n}}{\sigma}(\mu-\mu_0)$  
+- **Varianza:** $1$
+
+El estadístico de prueba es:
+
+$$
+Z = \frac{\overline{X}_n - \mu_0}{\sigma/\sqrt{n}}
+$$
+
+y bajo el verdadero valor de $\mu$ se distribuye como:
+
+$$
+Z \sim N\!\left(\frac{\sqrt{n}}{\sigma}(\mu-\mu_0),\,1\right).
+$$
+
+Es decir, **una normal con media desplazada**:
+- Media: $\delta = \tfrac{\sqrt{n}}{\sigma}(\mu-\mu_0)$  
+- Varianza: $1$
+
+$$
+\eta(\mu) = P_\mu(\text{rechazar } H_0)
+= P_\mu(Z > z_{1-\alpha}).
+$$
+
+$$
+\eta(\mu) = P\!\left(Z > z_{1-\alpha}\right).
+$$
+
+Estandarizando:
+
+$$
+\eta(\mu) = P\!\left(
+\frac{Z - \tfrac{\sqrt{n}}{\sigma}(\mu-\mu_0)}{1} > 
+z_{1-\alpha} - \frac{\sqrt{n}}{\sigma}(\mu-\mu_0)
+\right).
+$$
+  $$
+  \eta(\mu)=1-\Phi\!\left(z_{1-\alpha}-\frac{\sqrt{n}}{\sigma}(\mu-\mu_0)\right)
+  $$
+
+**Versión unilateral a la izquierda**
+Para $H_0:\mu\ge\mu_0$ vs $H_1:\mu<\mu_0$, el test UMP es:
+
+$$
+\text{Rechazar }H_0 \text{ si } \overline{X}_n < \mu_0 - z_{1-\alpha}\,\frac{\sigma}{\sqrt{n}}
+$$
+
+con potencia
+
+$$
+\eta(\mu)=\Phi\!\left(-z_{1-\alpha}+\frac{\sqrt{n}}{\sigma}(\mu-\mu_0)\right)
+$$
+
+**Caso bilateral**
+El ejemplo plantea $H_0:\mu=\mu_0$ vs $H_1:\mu\neq\mu_0$.
+
+- **No existe UMP** en general para alternativas bilaterales.  
+- Se usa el test **más potente imparcial (MPI)**:
+
+  $$
+  \text{Rechazar }H_0 \text{ si } \left|\overline{X}_n-\mu_0\right|
+  \ge z_{1-\alpha/2}\,\frac{\sigma}{\sqrt{n}}
+  $$
+
+- Su **potencia** es:
+
+  $$
+  \eta(\mu)=1-\Big[\Phi\!\Big(z_{1-\alpha/2}-\frac{\sqrt{n}}{\sigma}(\mu-\mu_0)\Big)
+          -\Phi\!\Big(-z_{1-\alpha/2}-\frac{\sqrt{n}}{\sigma}(\mu-\mu_0)\Big)\Big]
+  $$
+
+**Intuición clave**
+- Con RVM, “valores grandes de $\overline{X}_n$ favorecen $\mu$ grandes”, por eso la **región crítica es de cola** y el test es **UMP** en el caso unilateral.  
+- En bilateral no hay un único sentido de “grande”, por eso no existe UMP; el test adecuado es **MPI**.
+
+::: 
 
 ## Referencias
 
