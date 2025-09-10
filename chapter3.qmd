@@ -8,8 +8,8 @@ distribución de una o más variables aleatorias. Un contraste de hipótesis
 (o un test de hipótesis o una prueba de hipótesis) es un procedimiento
 para decidir si se acepta o se rechaza una hipótesis.
 
-## Definiciones básicas. Contraste de hipótesis simples
 
+## Definiciones básicas. Contraste de hipótesis simples
 
 1. Usualmente se dispone de una muestra $X_1 ,\ldots, X_n$ de una variable aleatoria $X$ con distribución $F$ y función de densidad (o función de masa) $f$ . **Sobre la
 distribución de $X$ se realizan dos afirmaciones entre las que se debe decidir**.
