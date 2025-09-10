@@ -11,6 +11,18 @@ book:
     - chapter2.qmd
     - chapter3.qmd
     - chapter4.qmd
+  navbar:
+    left:
+      - text: "Inicio"
+        href: index.qmd
+      - text: "Volver a mi página"
+        href: https://bimasusi.github.io/
+    right:
+      - icon: github
+        href: https://github.com/bimasusi/inference-statistic
+      - icon: person
+        text: "ORCID"
+        href: https://orcid.org/0000-0003-2151-3537   # reemplaza con tu ORCID real
 
 format:
   html:
@@ -44,3 +56,4 @@ theorem-environments:
     title: "Observación"
   - name: proof
     title: "Demostración"
+
