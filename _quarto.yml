@@ -5,6 +5,9 @@ project:
 book:
   title: "Inferencia Estadística"
   author: "Biviana M. Suárez Sierra"
+  sidebar: 
+    style: "docked"
+    search: true
   chapters:
     - index.qmd
     - chapter1.qmd

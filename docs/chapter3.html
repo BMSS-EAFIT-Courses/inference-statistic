@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-241b0f728d524ab724cf38981e173e36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-c3e8629b911d83352fbe69066dd6b342.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -126,7 +126,7 @@ window.Quarto = {
 };
 </script>
 </head>
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
@@ -173,10 +173,18 @@ window.Quarto = {
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -230,7 +238,8 @@ window.Quarto = {
 <li><a href="#raz%C3%B3n-de-verosimilitud-mon%C3%B3tona.-teorema-de-karlin-rubin." id="toc-razón-de-verosimilitud-monótona.-teorema-de-karlin-rubin." class="nav-link" data-scroll-target="#raz%C3%B3n-de-verosimilitud-mon%C3%B3tona.-teorema-de-karlin-rubin."><span class="header-section-number">4.6.1</span> Razón de verosimilitud monótona. Teorema de Karlin-Rubin.</a></li>
   </ul>
 </li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">4.7</span> Referencias</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">4.7</span> Ejercicios</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">4.8</span> Referencias</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -1364,13 +1373,126 @@ z_{1-\alpha} - \frac{\sqrt{n}}{\sigma}(\mu-\mu_0)
 - En bilateral no hay un único sentido de “grande”, por eso no existe UMP; el test adecuado es <strong>MPI</strong>.</p>
 </div>
 </div>
-</section></section><section id="referencias" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="referencias">
-<span class="header-section-number">4.7</span> Referencias</h2>
+</section></section><section id="ejercicios" class="level2" data-number="4.7"><h2 data-number="4.7" class="anchored" data-anchor-id="ejercicios">
+<span class="header-section-number">4.7</span> Ejercicios</h2>
+<div id="exr-4.1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.1</strong></span> Supongamos que se verifican las siguientes condiciones:</p>
+<p>C1. El parámetro <span class="math inline">\(\theta\)</span> es identificable, en el sentido de que distintos valores de <span class="math inline">\(\theta\)</span> dan lugar a distintas distribuciones de probabilidad para <span class="math inline">\(X\)</span>.</p>
+<p>C2. El conjunto <span class="math inline">\(\{x :f (x|\theta) &gt; 0\}\)</span> es el mismo para todo <span class="math inline">\(\theta \in \Theta\)</span>.</p>
+<p>C3. La cantidad <span class="math display">\[\begin{align}
+e(\theta_0, \theta)=E_{\theta_0}\left[\log\left(\frac{f(X|\theta)}{f(X|\theta_0)}\right)\right]
+\end{align}\]</span> existe para todo par <span class="math inline">\(\theta, \theta_0\)</span> en <span class="math inline">\(\Theta\)</span>.</p>
+<p>Entonces, para todo <span class="math inline">\(\theta\neq\theta_0\)</span> se verifica que</p>
+<ol type="a">
+<li><p><span class="math display">\[E_{\theta_0}\left[\log\left(\frac{L\left(\theta|\underset{\sim}{X}_n\right)}{L\left(\theta_0|\underset{\sim}{X}_n\right)}\right)\right]&lt;0\]</span></p></li>
+<li><p><span class="math display">\[\lim_{n\rightarrow\infty}P_{\theta_0}\{L(\theta_0\mid\underset{\sim}{X})&gt;L(\theta\mid\underset{\sim}{X})\}=1.\]</span></p></li>
+</ol>
+</div>
+<div id="exr-4.2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> Supongamos que además de C1, C2 y C3, se verifican también</p>
+<p>C4. <span class="math inline">\(\Theta\)</span> es un conjunto abierto.</p>
+<p>C5. <span class="math inline">\(\frac{\partial f(x|\theta)}{\partial \theta}\)</span> es continua en <span class="math inline">\(\theta\)</span>.</p>
+<p>Entonces, con probabilidad que tiende a <span class="math inline">\(1\)</span> cuando <span class="math inline">\(n\)</span> tiende a infinito, existe una sucesión <span class="math inline">\(\{\hat{\theta}_n\}_n\)</span> de raíces de la ecuación del score <span class="math display">\[
+\frac{\partial\log L(\theta|\underset{\sim}{X})}{\partial \theta}=0
+\]</span></p>
+<p>(la que se resuelve para hallar el estimador de máxima verosimilitud de <span class="math inline">\(\theta\)</span>) que converge al verdadero valor del parámetro <span class="math inline">\(\theta_0\)</span> en probabilidad.</p>
+</div>
+<div id="exr-4.3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.3</strong></span> Suponga que un candidato, Jones, dice que él ganará más de <span class="math inline">\(50\%\)</span> de los votos en una elección urbana y por tanto saldrá como ganador. Como buscamos apoyo para la hipótesis alternativa de que lo dicho por Jones es falso, nuestra hipótesis alternativa es que <span class="math inline">\(p\)</span>, la probabilidad de seleccionar un votante que esté a favor de Jones, es menor que <span class="math inline">\(.5\)</span>. Si podemos demostrar que los datos apoyan el rechazo de la hipótesis nula <span class="math inline">\(p = .5\)</span> (el valor mínimo necesario para conseguir una mayoría) en favor de la hipótesis alternativa <span class="math inline">\(p &lt; .5\)</span>, hemos alcanzado nuestro objetivo de investigación. Suponga que <span class="math inline">\(n = 15\)</span> votantes se seleccionan aleatoriamente de una ciudad y se registra <span class="math inline">\(Y\)</span>, el número que está a favor de Jones. Calcule <span class="math inline">\(\alpha\)</span> si seleccionamos <span class="math inline">\(RR = \{y \leq 2\}\)</span> como la región de rechazo.</p>
+</div>
+<div id="exr-4.4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.4</strong></span> Del ejercicio anterior <a href="#exr-4.3" class="quarto-xref">Exercise&nbsp;<span>4.3</span></a> conteste, nuestra prueba es tan buena como para evitar concluir que Jones va a ganar si en realidad perder'a? Suponga que 'el recibir'a 30% de los votos (<span class="math inline">\(p=0.3)\)</span> ?`Cu'al es la probabilidad <span class="math inline">\(\beta\)</span> de que la muestra err'oneamente nos lleve a concluir que <span class="math inline">\(H_0\)</span> es veradadera y que Jones va a ganar?</p>
+</div>
+<div id="exr-4.5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.5</strong></span> Calcule el valor de <span class="math inline">\(\beta\)</span>, si Jones del problema <a href="#exr-4.3" class="quarto-xref">Exercise&nbsp;<span>4.3</span></a> recibiera s'olo 10% de los votos (<span class="math inline">\(p=0.1\)</span>).</p>
+</div>
+<div id="exr-4.6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.6</strong></span> &nbsp;</p>
+<ol type="a">
+<li><p>Calcule el valor de <span class="math inline">\(\beta\)</span>, si Jones del problema <a href="#exr-4.3" class="quarto-xref">Exercise&nbsp;<span>4.3</span></a>, recibiera s'olo 10% de los votos (<span class="math inline">\(p=0.1\)</span>).</p></li>
+<li><p>Haga un cuadro comparativo que ilustre el <span class="math inline">\(\beta\)</span> correspondiente a <span class="math inline">\(p=0.5, 0.3, 0.1\)</span>, para <span class="math inline">\(RR=\{y\leq 2\}\)</span>. Qué puede concluir de la convergencia de <span class="math inline">\(\beta\)</span> cuando <span class="math inline">\(p\rightarrow p_0=0.5\)</span></p></li>
+<li><p>Haga un cuadro comparativo que ilustre el <span class="math inline">\(\alpha\)</span> correspondiente a <span class="math inline">\(p=0.5, 0.3, 0.1\)</span>, para <span class="math inline">\(RR=\{y\leq 2\}\)</span>. Qué puede concluir de la convergencia de <span class="math inline">\(\alpha\)</span> cuando <span class="math inline">\(p\rightarrow p_0=0.5\)</span></p></li>
+</ol>
+</div>
+<div id="exr-4.7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.7</strong></span> En el mismo contexto del problema <a href="#exr-4.3" class="quarto-xref">Exercise&nbsp;<span>4.3</span></a>, suponga <span class="math inline">\(RR=\{Y\leq 5\}\)</span>. Calcule el nivel de <span class="math inline">\(\alpha\)</span> de la prueba y calcule <span class="math inline">\(\beta\)</span> si <span class="math inline">\(p=0.3\)</span>. Compare <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span> encontrada para <span class="math inline">\(RR=\{y\leq 2\}\)</span>.</p>
+</div>
+<div id="exr-4.8" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.8</strong></span> El vicepresidente de ventas de una gran empresa afi rma que los vendedores están promediando no más de 15 contactos de venta por semana. (Le gustaría aumentar esta cantidad.) Como prueba de su afirmación, aleatoriamente se seleccionan <span class="math inline">\(n = 36\)</span> vendedores y se registra el número de contactos hechos por cada uno para una sola semana seleccionada al azar. La media y varianza de las <span class="math inline">\(36\)</span> mediciones fueron <span class="math inline">\(17\)</span> y <span class="math inline">\(9\)</span>, respectivamente. ¿La evidencia contradice lo dicho por el vicepresidente? Use una prueba con nivel <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+</div>
+<div id="exr-4.9" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.9</strong></span> Si la producción diaria de la máquina de una fábrica tiene más de <span class="math inline">\(10\%\)</span> de artículos defectuosos, es necesario repararla. Una muestra aleatoria de <span class="math inline">\(100\)</span> piezas de la producción del día contiene <span class="math inline">\(15\)</span> piezas defectuosas y el supervisor decide que la máquina debe ser reparada. ¿La evidencia muestral apoya su decisión? Use una prueba con nivel <span class="math inline">\(0.01\)</span>.</p>
+</div>
+<div id="exr-4.10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.10</strong></span> Se realizó un estudio psicológico para comparar los tiempos de reacción de hombres y mujeres a un estímulo. En el experimento se emplearon muestras aleatorias independientes de <span class="math inline">\(50\)</span> hombres y <span class="math inline">\(50\)</span> mujeres. Los resultados se muestran en la siguiente Tabla. ¿Los datos presentan evidencia para sugerir una diferencia entre los tiempos medios de reacción verdaderos para hombres y mujeres? Use <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Hombres</th>
+<th>Mujeres</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(n_1 = 50\)</span></td>
+<td><span class="math inline">\(n_2 = 50\)</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\bar{y}_1 = 3.6 \; seg\)</span></td>
+<td><span class="math inline">\(\bar{y}_2 = 3.8 \; seg\)</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(s_1^2 = 0.18\)</span></td>
+<td><span class="math inline">\(s_2^2 = 0.14\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="exr-4.11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.11</strong></span> Suponga que el vicepresidente del problema exr-4.8 desea detectar una diferencia igual a una llamada en el número medio de llamadas por semana. Es decir, desea probar <span class="math inline">\(H_0 : \mu = 15\)</span> contra <span class="math inline">\(H_a : \mu = 16\)</span>. Con la información proporcionada en el problema <span class="math inline">\(\ref{prob_9}\)</span>, encuentre <span class="math inline">\(\beta\)</span> para esta prueba.</p>
+</div>
+<div id="exr-4.12" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.12</strong></span> Suponga que el vicepresidente del problema exr-4.8 desea probar <span class="math inline">\(H_ 0 : \mu = 15\)</span> contra <span class="math inline">\(H_a : \mu = 16\)</span> con <span class="math inline">\(\alpha = \beta = 0.05\)</span>. Determine el tamaño muestral que asegure esta precisión. Suponga que <span class="math inline">\(\sigma^2\)</span> es aproximadamente 9.</p>
+</div>
+<div id="exr-4.13" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.13</strong></span> Utiliza el Lema de Neyman-Pearson para encontrar la región crítica del test más potente para contrastar <span class="math inline">\(H_0\)</span> frente a <span class="math inline">\(H_1\)</span> en las siguientes situaciones</p>
+<ol type="a">
+<li>
+<span class="math inline">\(X_1, \ldots, X_n\)</span> es m.a.s de <span class="math inline">\(X\sim Poisson(\theta)\)</span>. <span class="math inline">\(H_0: \theta=\theta_0\)</span>, <span class="math inline">\(H_1: \theta=\theta_1\)</span>, <span class="math inline">\(\theta_1&gt;\theta_0\)</span>.</li>
+</ol>
+<p>b.<span class="math inline">\(X_1, \ldots, X_n\)</span> es m.a.s de <span class="math inline">\(X\sim Exp(\theta)\)</span>, <span class="math inline">\(\theta=E(X)^{-1}\)</span>. <span class="math inline">\(H_0: \theta=\theta_0\)</span>, <span class="math inline">\(H_1: \theta=\theta_1\)</span>, <span class="math inline">\(\theta_1&gt;\theta_0\)</span>.</p>
+<p>c.<span class="math inline">\(X_1, \ldots, X_n\)</span> es m.a.s de <span class="math inline">\(X\sim N(\mu, \sigma^2)\)</span>,con <span class="math inline">\(\sigma\)</span> conocido. Se desea contrastar <span class="math inline">\(H_0: \mu=\mu_0\)</span>, <span class="math inline">\(H_1: \mu=\mu_1\)</span>, <span class="math inline">\(\mu_1&gt;\mu_0\)</span>.</p>
+</div>
+<div id="exr-4.14" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.14</strong></span> Del libro <strong>George Casella y Roger Berger</strong>, página pdf 411, Ejemplo 8.3.2, muestran el ejemplo llamado función potencia binomial. Calcular el p-valor para el test c.</p>
+</div>
+<div id="exr-4.15" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.15</strong></span> Recuerde el análisis de la encuesta política (problemas <a href="#exr-4.3" class="quarto-xref">Exercise&nbsp;<span>4.3</span></a>) donde fueron muestreados <span class="math inline">\(n = 15\)</span> votantes. Si deseamos probar <span class="math inline">\(H_0 : p = .5\)</span> contra <span class="math inline">\(H_a : p &lt; 0.5\)</span>, usando <span class="math inline">\(Y\)</span> = número de votantes a favor de Jones como nuestro estadístico de prueba, ¿cuál es el valor <span class="math inline">\(p\)</span> si <span class="math inline">\(Y = 3\)</span>? Interprete el resultado.</p>
+</div>
+<div id="exr-4.16" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.16</strong></span> Encuentre e interprete el valor p del problema <a href="#exr-4.9" class="quarto-xref">Exercise&nbsp;<span>4.9</span></a>.</p>
+</div>
+<div id="exr-4.17" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.17</strong></span> Represente gráficamente la curva ideal de la función potencia de <span class="math inline">\(H_0:\theta=\theta_0\)</span> contra <span class="math inline">\(H_0:\theta\neq\theta_0\)</span></p>
+</div>
+<div id="exr-4.18" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.18</strong></span> &nbsp;</p>
+Suponga que Y representa una sola observación de una población con función de densidad de probabilidad [f(y)= {
+<span class="math display">\[\begin{array}{lcc}
+\theta y^{\theta-1} &amp;   si  &amp; 0 &lt;y&lt; 1 \\
+\\ 0 &amp;  si &amp; \mbox{en cualquier otro punto}
+\end{array}\]</span>
+<p>. ] Encuentre la más potente prueba utilizando el lema de Neyman-Pearson con nivel de significancia <span class="math inline">\(\alpha = 0.05\)</span> para probar <span class="math inline">\(H_0 : \theta= 2\)</span> contra <span class="math inline">\(H_a : \theta = 1\)</span>.</p>
+</div>
+<div id="exr-4.19" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4.19</strong></span> Analice y explique con sus propias palabras el ejemplo 8.3.14 de la página 418 del libro <strong>George Casella y Roger Berger</strong>. Luego, invente un contexto para la variable aleatoria en cuestión y concluya que sucede en cada uno de las diferentes escogencias para <span class="math inline">\(k\)</span>.</p>
+</div>
+</section><section id="referencias" class="level2" data-number="4.8"><h2 data-number="4.8" class="anchored" data-anchor-id="referencias">
+<span class="header-section-number">4.8</span> Referencias</h2>
 <ul>
 <li><p><strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> (2006). <em>Curso de Inferencia y Decisión</em>. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.</p></li>
 <li><p><strong>Wackerly, D. D., Mendenhall, W.</strong>, &amp; <strong>Scheaffer, R. L.</strong> (2008). <strong>Estadística matemática con aplicaciones</strong> (7ª ed.). Cengage Learning.</p></li>
 <li><p><strong>Roussas, G. G.</strong> (1997). <strong>A Course in Mathematical Statistics</strong> (2nd ed.). Academic Press.</p></li>
 <li><p><strong>Kalbfleisch, J. G. Probability and Statistical Inference</strong>. Springer-Verlag, 1985.</p></li>
+<li><p><strong>George Casella y Roger Berger</strong>. <strong>Statistical Inference</strong>. Duxbury Resource Center, 2001. ISBN: 0534243126.</p></li>
 </ul>
 
 

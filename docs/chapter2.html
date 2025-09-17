@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-241b0f728d524ab724cf38981e173e36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-c3e8629b911d83352fbe69066dd6b342.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -125,7 +125,7 @@ window.Quarto = {
 };
 </script>
 </head>
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
@@ -172,10 +172,18 @@ window.Quarto = {
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter2.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estimación puntual</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -1548,7 +1556,7 @@ Tip&nbsp;3.1
 </ol>
 </div>
 </div>
-<div id="def-3.4" class="definition theorem">
+<div id="def-3.6" class="definition theorem">
 <p><span class="theorem-title"><strong>Definition 3.6 (estadístico completo)</strong></span> Sea <span class="math inline">\(f_T(t|\theta)\)</span> la función de densidad (o de masa de probabilidad) de un estadístico <span class="math inline">\(T\)</span> . Diremos que la familia de distribuciones <span class="math inline">\({f_T(t|\theta) : \theta\in \Theta}\)</span> es completa si se da la implicación siguiente: <span class="math display">\[\begin{align}
 E_\theta(g(T))=0 \mbox{para todo $\theta$ entonces}  P_\theta(g(T) = 0) = 1 \mbox{para todo $\theta$}.
 \end{align}\]</span></p>
@@ -2057,8 +2065,110 @@ ARE(\theta, S_n , T_n)=\frac{\frac{1}{\sigma_S^2(\theta)}}{\frac{1}{\sigma_T^2(\
 \frac{\sigma_T^2(\theta)}{m}=\frac{\sigma_S^2(\theta)}{n}\Longleftrightarrow\frac{m}{n}=\frac{\sigma_T^2(\theta)}{\sigma_S^2(\theta)}=ARE(\theta, S_n , T_n)
 \end{align}\]</span></p>
 <p>Es decir, si <span class="math inline">\(ARE(\theta, S_n , T_m) = 0.5\)</span> entonces <span class="math inline">\(S\)</span> es menos eficiente que <span class="math inline">\(T\)</span> asintóticamente: para tener la misma precisión con el estimador <span class="math inline">\(S\)</span> hace falta una muestra el doble de grande que si utilizásemos <span class="math inline">\(T\)</span> (<span class="math inline">\(ARE(\theta, S_n , T_m)= 0.5=\frac{m}{n}\Longrightarrow n = 2m\)</span>).</p>
-</section><section id="referencias" class="level2" data-number="3.13"><h2 data-number="3.13" class="anchored" data-anchor-id="referencias">
-<span class="header-section-number">3.13</span> Referencias</h2>
+<hr></section><section id="ejercicios" class="level2" data-number="3.13"><h2 data-number="3.13" class="anchored" data-anchor-id="ejercicios">
+<span class="header-section-number">3.13</span> Ejercicios</h2>
+<div id="exr-3.1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.1</strong></span> Se cuenta con una muestra de variables aleatorias independientes e idénticamente distribuidas <span class="math inline">\(x=(x_1,\ldots,x_n)\)</span> como cada uno de los modelos que se indican abajo.</p>
+<ol type="1">
+<li>Poisson<span class="math inline">\((\lambda)\)</span>
+</li>
+<li>Normal con media conocida <span class="math inline">\(\mu\)</span> y varianza desconocida <span class="math inline">\(\sigma^2\)</span>
+</li>
+<li><span class="math inline">\(f(x;\theta)=\theta x^{\theta-1}I_{\left[0,1\right]}(x)\)</span></li>
+</ol>
+<p>Encuentra un estimador de momentos y el estimador de máxima verosimilitud. Determine si son insesgados asintóticamente (ve la Sección 11.7 del Kalbfleisch donde se define este concepto) o no y suficientes. Encuentra el vector de estadísticas suficientes de menor dimensión. Demuestre si es suficiente minimal o no.</p>
+</div>
+<div id="exr-3.2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.2</strong></span> Se toma una muestra de tamaño <span class="math inline">\(n=1\)</span> de una m.a.s de <span class="math inline">\(X\sim exp(\lambda)\)</span>, es decir <span class="math inline">\(f(x|\lambda)=\lambda\exp(-\lambda x)I_{\left[0,\infty\right)}(x), \lambda&gt;0\)</span> y se observa <span class="math inline">\(x=3\)</span>. Determine la verosimilitud <span class="math inline">\(L(\lambda|3)\)</span> y establezca el estimador máximo verosil.</p>
+</div>
+<div id="exr-3.3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.3</strong></span> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> una sucesión de variables aleatorias iid Bernoulli con parámetro <span class="math inline">\(\theta\)</span>, con <span class="math inline">\(0&lt;\theta&lt;1\)</span>. Muestre que <span class="math inline">\(T(\underset{\sim}{X})=X_1+\ldots+ X_n\)</span> es un estadístico suficiente para <span class="math inline">\(\theta\)</span>.</p>
+</div>
+<div id="exr-3.4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.4</strong></span> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> una sucesión de v.a.s iid de <span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>, donde <span class="math inline">\(\sigma^2\)</span> es conocida. Utilizando el teorema 1.3 muestre que <span class="math inline">\(T(\underset{\sim}{X})=T(X_1,\ldots, X_n)=\bar{X}=\frac{\sum_{i=1}^{n}X_i}{n}\)</span> es una estadística suficiente para <span class="math inline">\(\mu\)</span>.</p>
+</div>
+<div id="exr-3.5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.5</strong></span> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> una sucesión de v.a.s iid de <span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span>, donde <span class="math inline">\(\sigma^2\)</span> es conocida. Utilizando el teorema 1.3 muestre que <span class="math inline">\(T(\underset{\sim}{X})=T(X_1,\ldots, X_n)=\bar{X}=\frac{\sum_{i=1}^{n}X_i}{n}\)</span> es una estadística suficiente para <span class="math inline">\(\mu\)</span>.</p>
+</div>
+<div id="exr-3.6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.6</strong></span> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> una sucesión de v.a.s iid de $X$ definida de la siguiente manera. <span class="math display">\[\begin{align}
+f(x|\theta)= \left\{ \begin{array}{lcc}
+\frac{1}{\theta} &amp;   si  &amp; x=1, 2, \ldots, \theta \\
+\\ 0 &amp;  en &amp; \mbox{cualquier otro caso}
+\end{array}
+\right.
+\end{align}\]</span> Utilice el teorema de factorización y determine que <span class="math inline">\(T(\underset{\sim}{X})=\max_iX_i\)</span> es un estadístico suficiente para <span class="math inline">\(\theta\)</span>.</p>
+</div>
+<div id="exr-3.7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.7</strong></span> Muestre que <span class="math inline">\(T_2=X_1+X_2\)</span> es un estadístico suficiente para <span class="math inline">\(\theta\)</span>, donde <span class="math inline">\(\theta\)</span> es el parámetro de la distribución Bernoulli, la cual es la distribución de una muestra aleatoria simple de tamaño dos <span class="math inline">\(X_1, X_2\)</span>.</p>
+</div>
+<div id="exr-3.8" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.8</strong></span> Muestre que <span class="math inline">\(T_2^{´}=X_1X_2\)</span> NO es un estadístico suficiente para <span class="math inline">\(\theta\)</span>, donde <span class="math inline">\(\theta\)</span> es el parámetro de la distribución Bernoulli, la cual es la distribución de una muestra aleatoria simple de tamaño dos <span class="math inline">\(X_1, X_2\)</span>.</p>
+</div>
+<div id="exr-3.9" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.9</strong></span> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> una mas de <span class="math inline">\(X\sim N(\mu, \sigma^2)\)</span>. Demuestre que <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S^2\)</span> son estimadores insesgados para <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma^2\)</span> respectivamente</p>
+</div>
+<div id="exr-3.10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.10</strong></span> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> una mas de <span class="math inline">\(X\sim N(\mu, \sigma^2)\)</span>. Muestre que el error cuadrático medio de <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S^2\)</span> coindien con su varianza respectivamente.</p>
+</div>
+<div id="exr-3.11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.11</strong></span> Sea <span class="math inline">\(X_1,\ldots, X_n\)</span> m.a.s. de <span class="math inline">\(X\sim N(\mu, 1)\)</span>, <span class="math inline">\(-\infty&lt;\mu&lt;\infty\)</span>. La media <span class="math inline">\(\bar{X}\)</span> y la mediana muestral <span class="math inline">\(M_n\)</span> son estimadores insesgados de <span class="math inline">\(\mu\)</span>. Para <span class="math inline">\(n=21\)</span>, muestre que la mediana muestral <span class="math inline">\(M_n\)</span> es inanmisible para <span class="math inline">\(\mu\)</span>, frente a <span class="math inline">\(\bar{X}\)</span>.</p>
+</div>
+<div id="exr-3.12" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.12</strong></span> Suponga que <span class="math inline">\(\hat{\theta}\)</span> es un estimador para un parámetro <span class="math inline">\(\theta\)</span> y <span class="math inline">\(E(\hat{\theta}) = a\theta+b\)</span> para algunas constantes diferentes de cero a y b.</p>
+<ol type="a">
+<li><p>En términos de a, b, y <span class="math inline">\(\theta\)</span>, ¿cuál es sesgo <span class="math inline">\(B(\hat{\theta})\)</span>?</p></li>
+<li><p>Encuentre una función de <span class="math inline">\(\hat{\theta}\)</span>, por ejemplo <span class="math inline">\(\hat{\theta}^{*}\)</span> que es un estimador insesgado para <span class="math inline">\(\theta\)</span>.</p></li>
+</ol>
+</div>
+<div id="exr-3.13" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.13</strong></span> Usando la identidad <span class="math display">\[\begin{align}
+(\hat{\theta}-\theta) = [\hat{\theta}-E( \hat{\theta})] + [E(\hat{\theta})-\theta] = [\hat{\theta}-E(\hat{\theta})] + B(\hat{\theta}),
+\end{align}\]</span></p>
+<p>demuestre que <span class="math display">\[\begin{align}
+MSE(\hat{\theta}) = E[(\hat{\theta}-\theta)^2]= V(\hat{\theta})+(B(\hat{\theta}))^2.
+\end{align}\]</span></p>
+</div>
+<div id="exr-3.14" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.14</strong></span> Consulte los Ejercicios en (<a href="#exr-3.13" class="quarto-xref">Exercise&nbsp;<span>3.13</span></a>) y considere el estimador insesgado <span class="math inline">\(\hat{\theta}^*\)</span> que usted propuso en el Ejercicio (<a href="#exr-3.12" class="quarto-xref">Exercise&nbsp;<span>3.12</span></a>). Exprese <span class="math inline">\(MSE(\hat{\theta}^*)\)</span> como función de <span class="math inline">\(V(\hat{\theta}^*)\)</span>.</p>
+</div>
+<div id="exr-3.15" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.15</strong></span> Suponga que <span class="math inline">\(E(\hat{\theta}_1) = E(\hat{\theta}_2) = \theta\)</span>, <span class="math inline">\(V(\hat{\theta}_1) = \sigma_1^2\)</span> , y <span class="math inline">\(V(\hat{\theta}_2)=\sigma_2^2\)</span>. Considere el estimador <span class="math inline">\(\hat{\theta}_3=a\hat{\theta}_1+(1-a)\hat{\theta}_2\)</span>.</p>
+<ol type="a">
+<li><p>Demuestre que <span class="math inline">\(\hat{\theta}_3\)</span> es un estimador insesgado para <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Si <span class="math inline">\(\hat{\theta}_2\)</span> son independientes, ¿cómo debe escogerse la constante <span class="math inline">\(a\)</span> para minimizar la varianza de <span class="math inline">\(\hat{\theta}_3\)</span>?</p></li>
+</ol>
+</div>
+<div id="exr-3.16" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.16</strong></span> Suponga que <span class="math inline">\(E(\hat{\theta}_1) = E(\hat{\theta}_2) = \theta\)</span>, <span class="math inline">\(V(\hat{\theta}_1) = \sigma_1^2\)</span> , y <span class="math inline">\(V(\hat{\theta}_2)=\sigma_2^2\)</span>. Considere el estimador <span class="math inline">\(\hat{\theta}_3=a\hat{\theta}_1+(1-a)\hat{\theta}_2\)</span>.</p>
+<ol type="a">
+<li>¿Cómo debe elegirse la constante a para minimizar la varianza de <span class="math inline">\(\hat{\theta}_3\)</span> , si <span class="math inline">\(\hat{\theta}_1\)</span> y <span class="math inline">\(\hat{\theta}_2\)</span> no son independientes pero son tales que <span class="math inline">\(Cov(\hat{\theta}_1 , \hat{\theta}_2) = c \neq 0\)</span>?</li>
+</ol>
+</div>
+<div id="exr-3.17" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.17</strong></span> Suponga que <span class="math inline">\(Y_1,\, Y_2,\, Y_3\)</span> denotan una muestra aleatoria ind de una distribuci'on exponencial con funci'on de densidad <span class="math display">\[f(y)=\left\{\begin{array}{ll}\left(\frac{1}{\theta}\right)e^{-y/\theta},&amp; y&gt;0,\\0,&amp;\mbox{ en cualquier otro punto}\end{array}\right.\]</span> Considere los siguientes estimadores de <span class="math inline">\(\theta\)</span>: <span class="math display">\[\hat{\theta}_1= Y_1,\,\,\,\,\,\,\,\,\,\,\hat{\theta}_2=\frac{Y_1+Y_2}{2},\,\,\,\,\,\,\,\,\,\,\hat{\theta}_3=\frac{Y_1+2Y_2}{3},\,\,\,\,\,\,\,\,\,\,\hat{\theta}_4=\min(Y_1,\,Y_2,\,Y_3),\,\,\,\,\,\,\,\,\,\,\hat{\theta}_5=\overline{Y}\]</span></p>
+<ol type="a">
+<li>¿Cuáles son insesgados?</li>
+<li>Entre los estimadores insesgados, ¿cuál tiene la varianza más pequeña?</li>
+</ol>
+</div>
+<div id="exr-3.18" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.18</strong></span> Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,Y_n\)</span> una muestra con <span class="math inline">\(E(Y_i)=\mu\)</span> y <span class="math inline">\(V(Y_i)=\sigma^2\)</span>. Demuestre que <span class="math display">\[S'^2=\frac{1}{n}\sum_{i=1}^n(Y_i-\overline{Y})^2\]</span> es un estimador sesgado para <span class="math inline">\(\sigma^2\)</span> y que <span class="math display">\[S^2=\frac{1}{n-1}\sum_{i=1}^n(Y_i-\overline{Y})^2\]</span> es un estimador insesgado para <span class="math inline">\(\sigma^2\)</span>.</p>
+</div>
+<div id="exr-3.19" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.19</strong></span> Sea <span class="math inline">\(\{X_n\}\)</span> para <span class="math inline">\(n\leq 1\)</span> , sucesión de variables aleatorias independientes e idénticamente distribuidas definidas en el espacio de probabilidad <span class="math inline">\((\Omega, \mathcal{A}, P)\)</span> con función de distribución común <span class="math inline">\(F\)</span> . Se denota por <span class="math inline">\(F_n\)</span> la función de distribución empírica obtenida de las <span class="math inline">\(n\)</span> primeras variables aleatorias <span class="math inline">\(X_1 ,\ldots, X_n\)</span> . Sea <span class="math inline">\(x\in\mathbb{R}\)</span>. Verifique lo siguiente:</p>
+<ol type="a">
+<li><p><span class="math inline">\(P(nF_n(x)=j)=P(F_n(x)=\frac{j}{n})=\binom{n}{j}(F(x))^j(1-F(x))^{n-j}\)</span>, <span class="math inline">\(j=1,\ldots,n\)</span>\</p></li>
+<li><p><span class="math inline">\(E(F_n(x))=F(x)\)</span>; <span class="math inline">\(Var(F_n(x))=\frac{1}{n}F(x)(1-F(x))\)</span>.</p></li>
+<li><p><span class="math inline">\(\lim _{n\to \infty }F_{n}(x)=F(x)\)</span></p></li>
+<li><p><span class="math inline">\(\lim _{n\to \infty }\frac{F_{n}(x)-F(x)}{\sqrt{\frac{F(x)(1-F(x))}{n}}}=Z\)</span>, donde <span class="math inline">\(Z\)</span> es una variable aleatoria con distribución normal estándar y la convergencia es convergencia en distribución.</p></li>
+</ol>
+</div>
+<div id="exr-3.20" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3.20</strong></span> Se toma una muestra de tamaño tres de una población con distribución de Poisson de parámetro <span class="math inline">\(\theta\)</span> cuyos los resultados son, <span class="math inline">\(x_1 = 2\)</span>, <span class="math inline">\(x_2 = 0\)</span>, <span class="math inline">\(x_3 = 5\)</span>. Determinar la estimación máximoverosimil de <span class="math inline">\(\theta\)</span>.</p>
+</div>
+</section><section id="referencias" class="level2" data-number="3.14"><h2 data-number="3.14" class="anchored" data-anchor-id="referencias">
+<span class="header-section-number">3.14</span> Referencias</h2>
 <ul>
 <li><p><strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> (2006). <em>Curso de Inferencia y Decisión</em>. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.</p></li>
 <li><p><strong>Wackerly, D. D., Mendenhall, W.</strong>, &amp; <strong>Scheaffer, R. L.</strong> (2008). <strong>Estadística matemática con aplicaciones</strong> (7ª ed.). Cengage Learning.</p></li>

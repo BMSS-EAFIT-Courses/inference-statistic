@@ -1277,6 +1277,163 @@ El ejemplo plantea $H_0:\mu=\mu_0$ vs $H_1:\mu\neq\mu_0$.
 
 ::: 
 
+## Ejercicios
+
+::: {#exr-4.1}
+
+Supongamos que se verifican las siguientes condiciones:
+
+C1. El parámetro $\theta$ es identificable, en el sentido de que distintos valores de $\theta$ dan lugar a distintas distribuciones de probabilidad para $X$.
+
+C2. El conjunto $\{x :f (x|\theta) > 0\}$ es el mismo para todo $\theta \in \Theta$.
+
+C3. La cantidad 
+$$\begin{align}
+e(\theta_0, \theta)=E_{\theta_0}\left[\log\left(\frac{f(X|\theta)}{f(X|\theta_0)}\right)\right]
+\end{align}$$
+existe para todo par $\theta, \theta_0$ en $\Theta$.
+
+Entonces, para todo $\theta\neq\theta_0$ se verifica que
+
+a. 
+$$E_{\theta_0}\left[\log\left(\frac{L\left(\theta|\underset{\sim}{X}_n\right)}{L\left(\theta_0|\underset{\sim}{X}_n\right)}\right)\right]<0$$
+
+b. $$\lim_{n\rightarrow\infty}P_{\theta_0}\{L(\theta_0\mid\underset{\sim}{X})>L(\theta\mid\underset{\sim}{X})\}=1.$$
+
+
+::: 
+
+
+
+::: {#exr-4.2}
+Supongamos que además de C1, C2 y C3, se verifican también
+
+C4. $\Theta$ es un conjunto abierto.
+
+C5. $\frac{\partial f(x|\theta)}{\partial \theta}$ es continua en $\theta$.
+
+Entonces, con probabilidad que tiende a $1$ cuando $n$ tiende a infinito, existe una sucesión $\{\hat{\theta}_n\}_n$ de raíces de la ecuación del score
+$$
+\frac{\partial\log L(\theta|\underset{\sim}{X})}{\partial \theta}=0
+$$
+
+(la que se resuelve para hallar el estimador de máxima verosimilitud de $\theta$) que converge al verdadero valor del parámetro $\theta_0$ en probabilidad.
+:::
+
+
+::: {#exr-4.3}
+Suponga que un candidato, Jones, dice que él ganará más de $50\%$ de los votos en una elección urbana y por tanto saldrá como ganador. Como buscamos apoyo para la hipótesis alternativa de que lo dicho por Jones es falso, nuestra hipótesis alternativa es que $p$, la probabilidad de seleccionar un votante que esté a favor de Jones, es menor que $.5$. Si podemos demostrar que los datos apoyan el rechazo de la hipótesis nula $p = .5$ (el valor mínimo necesario para conseguir una mayoría) en favor de la hipótesis alternativa $p < .5$, hemos alcanzado nuestro objetivo de investigación. Suponga que $n = 15$ votantes se seleccionan aleatoriamente de una ciudad y se registra $Y$, el número que está a favor de Jones. Calcule $\alpha$ si seleccionamos $RR = \{y \leq 2\}$ como la región de rechazo. 
+:::
+
+
+::: {#exr-4.4}
+Del ejercicio anterior @exr-4.3 conteste, nuestra prueba es tan buena como para evitar concluir que Jones va a ganar si en realidad perder\'a? Suponga que \'el recibir\'a  30\% de los votos ($p=0.3)$ ?`Cu\'al es la probabilidad $\beta$ de que la muestra err\'oneamente nos lleve a concluir  que $H_0$ es veradadera y que Jones va a ganar?
+::: 
+
+
+::: {#exr-4.5}
+Calcule el valor de $\beta$, si Jones del problema @exr-4.3 recibiera s\'olo 10\% de los votos ($p=0.1$).
+::: 
+
+
+::: {#exr-4.6}
+a. Calcule el valor de $\beta$, si Jones del problema @exr-4.3, recibiera s\'olo 10\% de los votos ($p=0.1$).
+
+b. Haga un cuadro comparativo que ilustre el $\beta$ correspondiente a $p=0.5, 0.3, 0.1$, para $RR=\{y\leq 2\}$. Qué puede concluir de la convergencia de $\beta$ cuando $p\rightarrow p_0=0.5$
+
+c. Haga un cuadro comparativo que ilustre el $\alpha$ correspondiente a $p=0.5, 0.3, 0.1$, para $RR=\{y\leq 2\}$. Qué puede concluir de la convergencia de $\alpha$ cuando $p\rightarrow p_0=0.5$
+::: 
+
+
+::: {#exr-4.7}
+En el mismo contexto del problema @exr-4.3, suponga $RR=\{Y\leq 5\}$. Calcule el nivel de $\alpha$ de la prueba y calcule $\beta$ si $p=0.3$. Compare $\alpha$ y $\beta$ encontrada para $RR=\{y\leq 2\}$.
+::: 
+
+
+::: {#exr-4.8}
+El vicepresidente de ventas de una gran empresa afi rma que los vendedores están promediando no más de 15 contactos de venta por semana. (Le gustaría aumentar esta cantidad.) Como
+prueba de su afirmación, aleatoriamente se seleccionan $n = 36$ vendedores y se registra el número de contactos hechos por cada uno para una sola semana seleccionada al azar. La media y varianza de las $36$ mediciones fueron $17$ y $9$, respectivamente. ¿La evidencia contradice lo
+dicho por el vicepresidente? Use una prueba con nivel $\alpha = 0.05$.
+::: 
+
+
+::: {#exr-4.9}
+Si la producción diaria de la máquina de una fábrica tiene más de $10\%$ de artículos defectuosos, es necesario repararla. Una muestra aleatoria de $100$ piezas de la producción del día
+contiene $15$ piezas defectuosas y el supervisor decide que la máquina debe ser reparada. ¿La evidencia muestral apoya su decisión? Use una prueba con nivel $0.01$.
+::: 
+
+
+::: {#exr-4.10}
+Se realizó un estudio psicológico para comparar los tiempos de reacción de hombres y mujeres a un estímulo. En el experimento se emplearon muestras aleatorias independientes de
+$50$ hombres y $50$ mujeres. Los resultados se muestran en la siguiente Tabla. ¿Los datos presentan
+evidencia para sugerir una diferencia entre los tiempos medios de reacción verdaderos para
+hombres y mujeres? Use $\alpha = 0.05$.
+
+
+| Hombres            | Mujeres            |
+|--------------------|--------------------|
+| $n_1 = 50$         | $n_2 = 50$         |
+| $\bar{y}_1 = 3.6 \; seg$ | $\bar{y}_2 = 3.8 \; seg$ |
+| $s_1^2 = 0.18$     | $s_2^2 = 0.14$     |
+
+::: 
+
+::: {#exr-4.11}
+Suponga que el vicepresidente del problema exr-4.8 desea detectar una diferencia igual a una llamada en el número medio de llamadas por semana. Es decir, desea probar $H_0 : \mu = 15$ contra $H_a : \mu = 16$. Con la información proporcionada en el problema \ref{prob_9}, encuentre $\beta$ para esta
+prueba.
+::: 
+
+
+::: {#exr-4.12}
+Suponga que el vicepresidente del problema exr-4.8 desea probar $H_ 0 : \mu = 15$ contra $H_a : \mu = 16$
+con $\alpha = \beta = 0.05$. Determine el tamaño muestral que asegure esta precisión. Suponga que $\sigma^2$
+es aproximadamente 9.
+::: 
+
+::: {#exr-4.13}
+Utiliza el Lema de Neyman-Pearson para encontrar la región crítica del test más potente para contrastar $H_0$ frente a $H_1$ en las siguientes situaciones 
+
+a. $X_1, \ldots, X_n$ es m.a.s de $X\sim Poisson(\theta)$. $H_0: \theta=\theta_0$, $H_1: \theta=\theta_1$, $\theta_1>\theta_0$.
+
+b.$X_1, \ldots, X_n$ es m.a.s de $X\sim Exp(\theta)$, $\theta=E(X)^{-1}$. $H_0: \theta=\theta_0$, $H_1: \theta=\theta_1$, $\theta_1>\theta_0$.
+
+c.$X_1, \ldots, X_n$ es m.a.s de $X\sim N(\mu, \sigma^2)$,con $\sigma$ conocido. Se desea contrastar $H_0: \mu=\mu_0$, $H_1: \mu=\mu_1$, $\mu_1>\mu_0$.
+:::
+
+::: {#exr-4.14}
+Del libro **George Casella y Roger Berger**, página pdf 411, Ejemplo 8.3.2, muestran el ejemplo llamado función potencia binomial. Calcular el p-valor para el test c.
+::: 
+
+
+::: {#exr-4.15}
+Recuerde el análisis de la encuesta política (problemas @exr-4.3) donde fueron muestreados $n = 15$ votantes. Si deseamos probar $H_0 : p = .5$ contra $H_a : p < 0.5$, usando $Y$ = número de votantes a favor de Jones como nuestro estadístico de prueba, ¿cuál es el valor $p$ si
+$Y = 3$? Interprete el resultado.
+:::
+
+::: {#exr-4.16}
+Encuentre e interprete el valor p del problema @exr-4.9.
+:::
+
+::: {#exr-4.17}
+Represente gráficamente la curva ideal de la función potencia de $H_0:\theta=\theta_0$ contra $H_0:\theta\neq\theta_0$  
+::: 
+
+::: {#exr-4.18}
+Suponga que Y representa una sola observación de una población con función de densidad de probabilidad 
+\[f(y\mid\theta)= \left\{ \begin{array}{lcc}
+\theta y^{\theta-1} &   si  & 0 <y< 1 \\
+\\ 0 &  si & \mbox{en cualquier otro punto} 
+\end{array}
+\right.
+\]
+Encuentre la más potente prueba utilizando el lema de Neyman-Pearson con nivel de significancia $\alpha = 0.05$ para probar $H_0 : \theta= 2$ contra $H_a : \theta = 1$.
+::: 
+
+
+::: {#exr-4.19}
+Analice y explique con sus propias palabras el ejemplo 8.3.14 de la página 418 del libro **George Casella y Roger Berger**. Luego, invente un contexto para la variable aleatoria en cuestión y concluya que sucede en cada uno de las diferentes escogencias para $k$. 
+::: 
+
 ## Referencias
 
 - **Gómez, Guadalupe**, & **Delicado, Pedro** (2006). *Curso de Inferencia y Decisión*. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.
@@ -1286,3 +1443,5 @@ El ejemplo plantea $H_0:\mu=\mu_0$ vs $H_1:\mu\neq\mu_0$.
 - **Roussas, G. G.** (1997). **A Course in Mathematical Statistics** (2nd ed.). Academic Press.
 
 - **Kalbfleisch, J. G. Probability and Statistical Inference**. Springer-Verlag, 1985.
+
+- **George Casella y Roger Berger**. **Statistical Inference**. Duxbury Resource Center, 2001. ISBN: 0534243126.

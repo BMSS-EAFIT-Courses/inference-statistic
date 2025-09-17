@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-241b0f728d524ab724cf38981e173e36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-c3e8629b911d83352fbe69066dd6b342.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -125,7 +125,7 @@ window.Quarto = {
 };
 </script>
 </head>
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
@@ -172,10 +172,18 @@ window.Quarto = {
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">INTRODUCCIÓN</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
   </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -263,7 +271,8 @@ window.Quarto = {
   </ul>
 </li>
   <li><a href="#teorema-central-del-l%C3%ADmite" id="toc-teorema-central-del-límite" class="nav-link" data-scroll-target="#teorema-central-del-l%C3%ADmite"><span class="header-section-number">1.15</span> Teorema central del límite</a></li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">1.16</span> Referencias</a></li>
+  <li><a href="#ejercicio" id="toc-ejercicio" class="nav-link" data-scroll-target="#ejercicio"><span class="header-section-number">1.16</span> Ejercicio</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">1.17</span> Referencias</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -797,7 +806,7 @@ f_{\underset{\sim}{X}}(\underset{\sim}{x} \mid \theta) = \prod_{i=1}^{n} f_{\the
 <section id="definición-de-distribución-chi-cuadrada" class="level3" data-number="1.12.1"><h3 data-number="1.12.1" class="anchored" data-anchor-id="definición-de-distribución-chi-cuadrada">
 <span class="header-section-number">1.12.1</span> Definición de distribución Chi cuadrada</h3>
 <div id="def-1.7" class="definition theorem">
-<p><span class="theorem-title"><strong>Definition 1.7</strong></span> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(\nu\)</span> un entero positivo. Se dice que una v.a <span class="math inline">\(Y\)</span> tiene distribuci'on <strong>chi cuadrada con <span class="math inline">\(\nu\)</span> grados de libertad</strong> si y sólo si <span class="math inline">\(Y\)</span> es una vriable aleatoria con distribución gamma y parámetros <span class="math inline">\(\alpha=\nu/2\)</span> y <span class="math inline">\(\beta=2\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 1.7</strong></span> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(\nu\)</span> un entero positivo. Se dice que una v.a <span class="math inline">\(Y\)</span> tiene distribución <strong>chi cuadrada con <span class="math inline">\(\nu\)</span> grados de libertad</strong> si y sólo si <span class="math inline">\(Y\)</span> es una vriable aleatoria con distribución gamma y parámetros <span class="math inline">\(\alpha=\nu/2\)</span> y <span class="math inline">\(\beta=2\)</span>.</p>
 </div>
 <div id="thm-8" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 1.8</strong></span> <strong>(Teorema de Fisher)</strong> En el resto del tema supondremos que <span class="math inline">\(X 1,\ldots, X_n\)</span> m.a.s. de una <span class="math inline">\(N(\mu, \sigma^2)\)</span>.</p>
@@ -811,17 +820,17 @@ f_{\underset{\sim}{X}}(\underset{\sim}{x} \mid \theta) = \prod_{i=1}^{n} f_{\the
 </section><section id="distribuciones-asociadas-a-la-normal" class="level3" data-number="1.12.2"><h3 data-number="1.12.2" class="anchored" data-anchor-id="distribuciones-asociadas-a-la-normal">
 <span class="header-section-number">1.12.2</span> Distribuciones asociadas a la normal</h3>
 <div id="thm-9" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1.9</strong></span> (Wackerly et al.&nbsp;(2008)) Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> definidas como en el Teorema <a href="#thm-7" class="quarto-xref">Theorem&nbsp;<span>1.7</span></a> de Wackerly et al.&nbsp;(2008) y definimos <span class="math inline">\(Z_i\)</span> por <span class="math display">\[Z_i=\frac{Y_i-\mu_i}{\sigma_i}\]</span> con <span class="math inline">\(i=1,\,2,\cdots,\,n\)</span>. Entonces <span class="math inline">\(\sum_{i=1}^nZ_i^2\)</span> tiene distribuici'on <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n\)</span> grados de libertad.</p>
+<p><span class="theorem-title"><strong>Theorem 1.9</strong></span> (Wackerly et al.&nbsp;(2008)) Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> definidas como en el Teorema <a href="#thm-7" class="quarto-xref">Theorem&nbsp;<span>1.7</span></a> de Wackerly et al.&nbsp;(2008) y definimos <span class="math inline">\(Z_i\)</span> por <span class="math display">\[Z_i=\frac{Y_i-\mu_i}{\sigma_i}\]</span> con <span class="math inline">\(i=1,\,2,\cdots,\,n\)</span>. Entonces <span class="math inline">\(\sum_{i=1}^nZ_i^2\)</span> tiene distribuición <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n\)</span> grados de libertad.</p>
 </div>
 <div id="thm-10" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1.10</strong></span> (Wackerly et al.&nbsp;(2008)) Si <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> es una muestra aleatoria de una distribuci'on normal con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(Y_i\)</span>, <span class="math inline">\(i=1,\,2,\cdots,n\)</span> son v.a’s independientes distribu'idas normalmente, con <span class="math inline">\(E(Y_i)=\mu\)</span> y <span class="math inline">\(V(Y_i)=\sigma^2\)</span>.</p>
-<p>Entonces <span class="math display">\[Z_i=\frac{Y_i-\mu}{\sigma}\]</span> son v.a’s independientes, <span class="math inline">\(i=1,\,2,\cdots,n\)</span> y <span class="math display">\[\sum_{i=1}^nZ_i^2=\sum_{i=1}^n\left(\frac{Y_i-\mu}{\sigma}\right)^2\]</span>tienen una distribuci'on <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n\)</span> grados de libertad (gl).</p>
+<p><span class="theorem-title"><strong>Theorem 1.10</strong></span> (Wackerly et al.&nbsp;(2008)) Si <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> es una muestra aleatoria de una distribución normal con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(Y_i\)</span>, <span class="math inline">\(i=1,\,2,\cdots,n\)</span> son v.a’s independientes distribuídas normalmente, con <span class="math inline">\(E(Y_i)=\mu\)</span> y <span class="math inline">\(V(Y_i)=\sigma^2\)</span>.</p>
+<p>Entonces <span class="math display">\[Z_i=\frac{Y_i-\mu}{\sigma}\]</span> son v.a’s independientes, <span class="math inline">\(i=1,\,2,\cdots,n\)</span> y <span class="math display">\[\sum_{i=1}^nZ_i^2=\sum_{i=1}^n\left(\frac{Y_i-\mu}{\sigma}\right)^2\]</span>tienen una distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n\)</span> grados de libertad (gl).</p>
 </div>
 <div id="thm-11" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1.11</strong></span> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> una muestra aleatoria con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>. Entonces <span class="math display">\[\frac{(n-1)S^2}{\sigma^2}=\frac{1}{\sigma^2}\sum_{i=1}^n(Y_i-\overline{Y})^2\]</span> tiene una distribuci'on <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((n-1)\)</span> gl. <span class="math inline">\(\overline{Y}\)</span> y <span class="math inline">\(S^2\)</span> son v.a independientes.</p>
+<p><span class="theorem-title"><strong>Theorem 1.11</strong></span> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> una muestra aleatoria con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>. Entonces <span class="math display">\[\frac{(n-1)S^2}{\sigma^2}=\frac{1}{\sigma^2}\sum_{i=1}^n(Y_i-\overline{Y})^2\]</span> tiene una distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((n-1)\)</span> gl. <span class="math inline">\(\overline{Y}\)</span> y <span class="math inline">\(S^2\)</span> son v.a independientes.</p>
 </div>
 <div id="def-1.8" class="definition theorem">
-<p><span class="theorem-title"><strong>Definition 1.8</strong></span> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(Z\)</span> una v.a normal est'andar y sea <span class="math inline">\(W\)</span> una v.a con distribuci'on <span class="math inline">\(\chi^2_\nu\)</span>. Entonces, si <span class="math inline">\(W\)</span> y <span class="math inline">\(Z\)</span> son ind <span class="math display">\[T=\frac{Z}{\sqrt{W/\nu}}\]</span> se dice que tiene una distribuci'on <span class="math inline">\(t\)</span> con <span class="math inline">\(\nu\)</span> grados de libertad.</p>
+<p><span class="theorem-title"><strong>Definition 1.8</strong></span> (Wackerly et al.&nbsp;(2008)) Sea <span class="math inline">\(Z\)</span> una v.a normal estándar y sea <span class="math inline">\(W\)</span> una v.a con distribución <span class="math inline">\(\chi^2_\nu\)</span>. Entonces, si <span class="math inline">\(W\)</span> y <span class="math inline">\(Z\)</span> son ind <span class="math display">\[T=\frac{Z}{\sqrt{W/\nu}}\]</span> se dice que tiene una distribución <span class="math inline">\(t\)</span> con <span class="math inline">\(\nu\)</span> grados de libertad.</p>
 </div>
 <div id="obs-1" class="callout callout-style-default callout-note no-icon callout-titled" title="Observación 1">
 <div class="callout-header d-flex align-content-center">
@@ -858,7 +867,7 @@ T &amp;= \frac{Z}{\sqrt{W/\nu}} \\
 </div>
 <p>Como se indica en la <a href="#obs-normal">Observación 7.1</a>, esta propiedad…</p>
 <div id="def-1.9" class="definition theorem">
-<p><span class="theorem-title"><strong>Definition 1.9</strong></span> Sean <span class="math inline">\(W_1\)</span> y <span class="math inline">\(W_2\)</span> v.a’s independientes con distribución <span class="math inline">\(\chi^2\)</span>, con <span class="math inline">\(\nu_1\)</span> y <span class="math inline">\(\nu_2\)</span> grados de libertad respectivamente. Entonces se dice que: <span class="math display">\[F=\frac{W_1/\nu_1}{W_2/\nu_2}\]</span> tiene una distribuc'on <span class="math inline">\(F\)</span> con <span class="math inline">\(\nu_1\)</span> grados de libertad en el numerador y <span class="math inline">\(\nu_2\)</span> grados de libertad en el denominador.</p>
+<p><span class="theorem-title"><strong>Definition 1.9</strong></span> Sean <span class="math inline">\(W_1\)</span> y <span class="math inline">\(W_2\)</span> v.a’s independientes con distribución <span class="math inline">\(\chi^2\)</span>, con <span class="math inline">\(\nu_1\)</span> y <span class="math inline">\(\nu_2\)</span> grados de libertad respectivamente. Entonces se dice que: <span class="math display">\[F=\frac{W_1/\nu_1}{W_2/\nu_2}\]</span> tiene una distribución <span class="math inline">\(F\)</span> con <span class="math inline">\(\nu_1\)</span> grados de libertad en el numerador y <span class="math inline">\(\nu_2\)</span> grados de libertad en el denominador.</p>
 </div>
 <div id="rem-3" class="proof remark">
 <p><span class="proof-title"><em>Remark 1.1</em>. </span>Considerando dos muestras aleatorias independientes tomadas de distribuiciones normales <span class="math display">\[W_1=\frac{(n_1-1)S_1^2}{\sigma_1^2}\sim\chi^2_{n_1-1}\]</span> <span class="math display">\[W_1=\frac{(n_2-1)S_2^2}{\sigma_2^2}\sim\chi^2_{n_2-1}\]</span> <span class="math inline">\(W_1\bot W_2\)</span>.</p>
@@ -870,7 +879,7 @@ T &amp;= \frac{Z}{\sqrt{W/\nu}} \\
             &amp;=&amp;\frac{[(n_1-1)S_1^2/\sigma_1^2]/(n_1-1)}{[(n_2-1)S_2^2/\sigma_2^2]/(n_2-1)}\\
             &amp;=&amp;\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}
         \end{eqnarray*}
-\]</span> tiene distribuci'on <span class="math inline">\(F\)</span> con <span class="math inline">\((n_1-1)\)</span> gl en el numerador y <span class="math inline">\((n_2-1)\)</span> gl en el denominador</p>
+\]</span> tiene distribución <span class="math inline">\(F\)</span> con <span class="math inline">\((n_1-1)\)</span> gl en el numerador y <span class="math inline">\((n_2-1)\)</span> gl en el denominador</p>
 </div>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
@@ -1025,37 +1034,37 @@ Calcular el valor crítico <span class="math inline">\(F_{0.05,\,5,\,9}\)</span>
 <tbody>
 <tr class="odd">
 <td style="text-align: right;">5</td>
-<td style="text-align: right;">9.98571</td>
+<td style="text-align: right;">9.95141</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">19.81420</td>
+<td style="text-align: right;">17.31254</td>
 <td style="text-align: right;">20</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">9.94386</td>
+<td style="text-align: right;">10.15079</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">9.64602</td>
+<td style="text-align: right;">10.36593</td>
 <td style="text-align: right;">10</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">25</td>
-<td style="text-align: right;">10.00654</td>
+<td style="text-align: right;">9.98391</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">3.67868</td>
+<td style="text-align: right;">3.94153</td>
 <td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">50</td>
-<td style="text-align: right;">10.00180</td>
+<td style="text-align: right;">10.00724</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">2.16984</td>
+<td style="text-align: right;">2.08629</td>
 <td style="text-align: right;">2</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">10.01309</td>
+<td style="text-align: right;">10.01261</td>
 <td style="text-align: right;">10</td>
-<td style="text-align: right;">1.05616</td>
+<td style="text-align: right;">0.96121</td>
 <td style="text-align: right;">1</td>
 </tr>
 </tbody>
@@ -1063,7 +1072,7 @@ Calcular el valor crítico <span class="math inline">\(F_{0.05,\,5,\,9}\)</span>
 </div>
 </div>
 <div id="thm-12" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1.12</strong></span> Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> v.a’s con funciones generadoras de momentos <span class="math inline">\(m(t)\)</span> y <span class="math inline">\(m_1(t),\,m_2(t),\cdots,\)</span> respectivamente. Si <span class="math display">\[\lim_{n\rightarrow\infty}m_n(t)=m(t)\mbox{ para toda $t$ real,}\]</span> entonces la funci'on de distribuci'on de <span class="math inline">\(Y_n\)</span> converge hacia la funci'on de distribuci'on de <span class="math inline">\(Y\)</span> cuando <span class="math inline">\(n\rightarrow\infty\)</span></p>
+<p><span class="theorem-title"><strong>Theorem 1.12</strong></span> Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> v.a’s con funciones generadoras de momentos <span class="math inline">\(m(t)\)</span> y <span class="math inline">\(m_1(t),\,m_2(t),\cdots,\)</span> respectivamente. Si <span class="math display">\[\lim_{n\rightarrow\infty}m_n(t)=m(t)\mbox{ para toda $t$ real,}\]</span> entonces la función de distribución de <span class="math inline">\(Y_n\)</span> converge hacia la función de distribución de <span class="math inline">\(Y\)</span> cuando <span class="math inline">\(n\rightarrow\infty\)</span></p>
 </div>
 </section></section><section id="leyes-de-los-grandes-números-y-teorema-central-del-límite" class="level2" data-number="1.13"><h2 data-number="1.13" class="anchored" data-anchor-id="leyes-de-los-grandes-números-y-teorema-central-del-límite">
 <span class="header-section-number">1.13</span> Leyes de los Grandes Números y Teorema Central del Límite</h2>
@@ -1108,7 +1117,7 @@ E\left(\left|\frac{S_n-E(S_n)}{n}\right|^2\right)\leq \frac{C}{n}
 </section></section><section id="teorema-central-del-límite" class="level2" data-number="1.15"><h2 data-number="1.15" class="anchored" data-anchor-id="teorema-central-del-límite">
 <span class="header-section-number">1.15</span> Teorema central del límite</h2>
 <div id="thm-line" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 1.15</strong></span> <strong>Central de Límite</strong> Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> v.a’s iid ( no se precisa de que distribuci'on se generan) con <span class="math inline">\(E[Y_i]=\mu\)</span> y <span class="math inline">\(V[Y_i]=\sigma^2&lt;\infty\)</span>. Definamos <span class="math display">\[U_n=\frac{\sum_{i=1}^nY_i-n\mu}{\sigma\sqrt{n}}=\frac{\overline{Y}-\mu}{\sigma/\sqrt{n}}\mbox{ donde} \overline{Y}=\frac{1}{n}\sum_{i=1}^nY_i\]</span> Entonces la función de distribución de <span class="math inline">\(U_n\)</span> converge hacia la función de distribución normal estándar cuando n tiende a infinito . Esto es, <span class="math display">\[\lim_{n\rightarrow\infty}P(U_n\leq u)=\int_{-\infty}^u\frac{1}{\sqrt{2\pi}}e^{-t^2/2}dt, \forall u\]</span></p>
+<p><span class="theorem-title"><strong>Theorem 1.15</strong></span> <strong>Central de Límite</strong> Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> v.a’s iid ( no se precisa de que distribución se generan) con <span class="math inline">\(E[Y_i]=\mu\)</span> y <span class="math inline">\(V[Y_i]=\sigma^2&lt;\infty\)</span>. Definamos <span class="math display">\[U_n=\frac{\sum_{i=1}^nY_i-n\mu}{\sigma\sqrt{n}}=\frac{\overline{Y}-\mu}{\sigma/\sqrt{n}}\mbox{ donde} \overline{Y}=\frac{1}{n}\sum_{i=1}^nY_i\]</span> Entonces la función de distribución de <span class="math inline">\(U_n\)</span> converge hacia la función de distribución normal estándar cuando n tiende a infinito . Esto es, <span class="math display">\[\lim_{n\rightarrow\infty}P(U_n\leq u)=\int_{-\infty}^u\frac{1}{\sqrt{2\pi}}e^{-t^2/2}dt, \forall u\]</span></p>
 </div>
 <!-- ## Ejemplo -->
 <!-- ::: {#thm-line} -->
@@ -1118,8 +1127,67 @@ E\left(\left|\frac{S_n-E(S_n)}{n}\right|^2\right)\leq \frac{C}{n}
 <!-- $$ -->
 <!-- ::: -->
 <!-- See @thm-line. -->
-<hr></section><section id="referencias" class="level2" data-number="1.16"><h2 data-number="1.16" class="anchored" data-anchor-id="referencias">
-<span class="header-section-number">1.16</span> Referencias</h2>
+</section><section id="ejercicio" class="level2" data-number="1.16"><h2 data-number="1.16" class="anchored" data-anchor-id="ejercicio">
+<span class="header-section-number">1.16</span> Ejercicio</h2>
+<div id="exr-1.1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.1</strong></span> Para <span class="math inline">\(i=1,...,n\)</span> sea <span class="math inline">\(\{X_{i}\}\)</span> variables aleatorias independientes. Tal que <span class="math display">\[\begin{align*}
+    P(X_n=1)&amp;=p_n,\\
+    P(X_n=0)&amp;=1-p_n.
+\end{align*}\]</span></p>
+<p>¿Bajo qué condiciones de <span class="math inline">\(p_n\)</span>, <span class="math inline">\(X_{n}\xrightarrow{P}0\)</span> cuando <span class="math inline">\(n\to \infty\)</span>?</p>
+</div>
+<div id="exr-1.2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.2</strong></span> Sea <span class="math inline">\(\{X_{i}\}\)</span> v.a.i.i.d, tal que <span class="math inline">\(E(X_{i})=\mu\)</span> y <span class="math inline">\(Var(X_{i})=\sigma^2\)</span> para todo <span class="math inline">\(i=1,...,n\)</span>. Muestre que <span class="math inline">\(E(\hat{X}_{n}-\mu)^2\xrightarrow{}0\)</span> cuando <span class="math inline">\(n\to \infty\)</span>.</p>
+</div>
+<div id="exr-1.3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.3</strong></span> Para <span class="math inline">\(i=1,...,n\)</span> sea <span class="math inline">\(\{X_{i}\}\)</span> variables aleatorias reales. Supongase que <span class="math inline">\(\sqrt{n}(X_n-\mu)\xrightarrow{d}N(0,\sigma^2)\)</span>. Demostrar que <span class="math inline">\(X_n\xrightarrow{P}\mu\)</span>, cuando <span class="math inline">\(n\to \infty\)</span>.</p>
+</div>
+<div id="exr-1.4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.4</strong></span> Sea <span class="math inline">\(S={1,2,3,4}\)</span> y sobre los subconjuntos de <span class="math inline">\(S\)</span> se definen las siguientes variables aleatorias con función de distribución uniforme discreta de la siguiente manera: <span class="math display">\[\begin{align*}
+&amp;X_{n}(1)=X_{n}(2)=1,\ \
+X_n(3) = X_n(4) = 0, n=1,2,...\\
+&amp;X(1)=X(2)=0,\ \
+X(3) = X(4) = 1.
+\end{align*}\]</span>,&nbsp;<br>
+X(3) = X(4) = 1. \end{align*} Muestre que <span class="math inline">\(X_n\xrightarrow{d}X\)</span>, pero no converge en probabilidad cuando <span class="math inline">\(n\to \infty\)</span></p>
+</div>
+<div id="exr-1.5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.5</strong></span> Demuestre la Desigualdad de Chebychev que establece los siguiente. Si <span class="math inline">\(X\)</span> es una variable aleatoria tal que <span class="math inline">\(\exists E(X^2)\)</span>, se tiene <span class="math display">\[\begin{align*}
+    P(|X-E(X)|\geq k)\leq \frac{Var[X]}{k^2}, \forall k &gt; 0
+    \end{align*}\]</span></p>
+</div>
+<div id="exr-1.6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.6</strong></span> Sea <span class="math inline">\(g(Y)=Y-\mu\)</span>, donde <span class="math inline">\(Y\)</span> es una v.a normalmente distribuida con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>. Encuentre la función generadora de momento para <span class="math inline">\(g(Y)\)</span>.</p>
+</div>
+<div id="exr-1.7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.7</strong></span> %Denotemos con <span class="math inline">\(m_X(t)\)</span> y <span class="math inline">\(m_Y(t)\)</span> las funciones generadoras de momentos de las v.a’s <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span>, respectivamente. Demuestre que si existen funciones generadoras de momento y <span class="math inline">\(M_X(t)=M_Y(t)\)</span> para toda <span class="math inline">\(t\)</span>, entonces <span class="math inline">\(X\)</span>, y <span class="math inline">\(Y\)</span> tienen la misma distribución de probabilidad.</p>
+</div>
+<div id="exr-1.8" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.8</strong></span> Sea <span class="math inline">\(Y\)</span> una variable aleatoria normalmente distribuida con media <span class="math inline">\(\mu\)</span> y varianza <span class="math inline">\(\sigma^2\)</span>. Demuestre que <span class="math display">\[Z=\frac{Y-\mu}{\sigma}\]</span> tiene una distribución normal estándar, una distribución con media 0 y varianza 1.</p>
+</div>
+<div id="exr-1.9" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.9</strong></span> Demostrar el siguiente teorema.</p>
+</div>
+<div id="thm-1.16" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1.16</strong></span> Sea <span class="math inline">\(X 1,\ldots, X_n\)</span> una muestra aleatoria simple de una población <span class="math inline">\(X\)</span> con función generadora de momentos <span class="math inline">\(M_X(t)\)</span>. La función generatriz de momentos de <span class="math inline">\(X\)</span> es <span class="math display">\[\begin{align*}
+    &amp;M_{\bar{X}}(t)=\left(M_X\left(\frac{t}{n}\right)\right)^n
+\end{align*}\]</span> .</p>
+</div>
+<div id="exr-1.10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.10</strong></span> Una máquina embotelladora puede ser regulada para que descargue un promedio de <span class="math inline">\(\mu\)</span> onzas por botella. Se ha observado que la cantidad de líquido dosificado por la m'aquina está distribuida normalmente con <span class="math inline">\(\sigma=1\)</span> onza. Una muestra de <span class="math inline">\(n=9\)</span> botellas se selecciona aleatoriamente de la producción de la máquina en un día determinado (todas embotelladas con el mismo ajuste de la máquina) y las onzas de contenido líquido se miden para cada una. Determine la probabilidad de que la media muestral se encuentre a no más de .3 onza de la verdadera media <span class="math inline">\(\mu\)</span> para el ajuste seleccionado de la máquina</p>
+</div>
+<div id="exr-1.11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.11</strong></span> Bajo el mismo contexto del Ejemplo 7.1. Determinar ?`Cuántas observaciones deben de estar incluídas en la muestra si deseamos que <span class="math inline">\(\overline{Y}\)</span> se encuentre a no más de 0.3 onzas de <span class="math inline">\(\mu\)</span> con probabilidad 0.95?</p>
+</div>
+<div id="exr-1.12" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.12</strong></span> La resistencia a la tensión para un tipo de alambre se distribuye <span class="math inline">\(N(\mu,\,\sigma^2)\)</span>. <span class="math inline">\(Y_i\)</span>: La resistencia a la tensión para el trozo <span class="math inline">\(i\)</span>, se mide para <span class="math inline">\(i=1,\cdots,\,6\)</span>.</p>
+<p>La media <span class="math inline">\(\mu\)</span> y la varianza <span class="math inline">\(\sigma^2\)</span> pueden ser estimadas por <span class="math inline">\(\overline{X}\)</span> y <span class="math inline">\(S^2\)</span>, respectivamente <span class="math inline">\(\sigma_{\overline{Y}}^2=\frac{\sigma^2}{n}\)</span> puede ser estimada por <span class="math inline">\(\frac{S^2}{n}\)</span>. Encuentre la probabilidad aproximada de que <span class="math inline">\(\overline{Y}\)</span> esté dentro de <span class="math inline">\(\frac{2S}{n}\)</span> de la verdadera media poblacional <span class="math inline">\(\mu\)</span>.</p>
+</div>
+<div id="exr-1.13" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1.13</strong></span> Sean <span class="math inline">\(Y_1,\,Y_2,\cdots,\,Y_n\)</span> v.a’s con funciones generadoras de momentos <span class="math inline">\(m(t)\)</span> y <span class="math inline">\(m_1(t),\,m_2(t),\cdots,\)</span> respectivamente. Si <span class="math display">\[\lim_{n\rightarrow\infty}m_n(t)=m(t)\mbox{ para toda $t$ real,}\]</span> entonces la función de distribución de <span class="math inline">\(Y_n\)</span> converge hacia la función de distribución de <span class="math inline">\(Y\)</span> cuando <span class="math inline">\(n\rightarrow\infty\)</span></p>
+</div>
+<hr></section><section id="referencias" class="level2" data-number="1.17"><h2 data-number="1.17" class="anchored" data-anchor-id="referencias">
+<span class="header-section-number">1.17</span> Referencias</h2>
 <ul>
 <li><p><strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> (2006). <em>Curso de Inferencia y Decisión</em>. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.</p></li>
 <li><p><strong>Wackerly, D. D., Mendenhall, W.</strong>, &amp; <strong>Scheaffer, R. L.</strong> (2008). <strong>Estadística matemática con aplicaciones</strong> (7ª ed.). Cengage Learning.</p></li>

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.7.32">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Biviana Marcela Suárez Sierra">
-
 <title>5&nbsp; Estimación por intervalos – Inferencia Estadística</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -41,8 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-241b0f728d524ab724cf38981e173e36.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-c3e8629b911d83352fbe69066dd6b342.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -68,12 +98,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -99,15 +124,11 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 </head>
-
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Inferencia Estadística</span>
@@ -119,7 +140,7 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
@@ -128,8 +149,8 @@ window.Quarto = {
 <span class="menu-text">Volver a mi página</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://github.com/bimasusi/inference-statistic"> <i class="bi bi-github" role="img">
 </i> 
 <span class="menu-text"></span></a>
@@ -140,29 +161,31 @@ window.Quarto = {
 <span class="menu-text">ORCID</span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
+</div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter4.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimación por intervalos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">INTRODUCCIÓN</span></span></a>
@@ -193,40 +216,41 @@ window.Quarto = {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#intervalos-de-confianza" id="toc-intervalos-de-confianza" class="nav-link active" data-scroll-target="#intervalos-de-confianza"><span class="header-section-number">5.1</span> Intervalos de confianza</a></li>
-  <li><a href="#métodos-para-construir-intervalos-de-confianza" id="toc-métodos-para-construir-intervalos-de-confianza" class="nav-link" data-scroll-target="#métodos-para-construir-intervalos-de-confianza"><span class="header-section-number">5.2</span> Métodos para construir intervalos de confianza</a>
+<li><a href="#intervalos-de-confianza" id="toc-intervalos-de-confianza" class="nav-link active" data-scroll-target="#intervalos-de-confianza"><span class="header-section-number">5.1</span> Intervalos de confianza</a></li>
+  <li>
+<a href="#m%C3%A9todos-para-construir-intervalos-de-confianza" id="toc-métodos-para-construir-intervalos-de-confianza" class="nav-link" data-scroll-target="#m%C3%A9todos-para-construir-intervalos-de-confianza"><span class="header-section-number">5.2</span> Métodos para construir intervalos de confianza</a>
   <ul class="collapse">
-  <li><a href="#inversión-de-un-contraste-de-hipótesis" id="toc-inversión-de-un-contraste-de-hipótesis" class="nav-link" data-scroll-target="#inversión-de-un-contraste-de-hipótesis"><span class="header-section-number">5.2.1</span> Inversión de un contraste de hipótesis</a></li>
+<li><a href="#inversi%C3%B3n-de-un-contraste-de-hip%C3%B3tesis" id="toc-inversión-de-un-contraste-de-hipótesis" class="nav-link" data-scroll-target="#inversi%C3%B3n-de-un-contraste-de-hip%C3%B3tesis"><span class="header-section-number">5.2.1</span> Inversión de un contraste de hipótesis</a></li>
   <li><a href="#intervalos-de-confianza-para-la-media" id="toc-intervalos-de-confianza-para-la-media" class="nav-link" data-scroll-target="#intervalos-de-confianza-para-la-media"><span class="header-section-number">5.2.2</span> Intervalos de confianza para la media</a></li>
   <li><a href="#intervalos-de-confianza-para-la-diferencia-de-medias" id="toc-intervalos-de-confianza-para-la-diferencia-de-medias" class="nav-link" data-scroll-target="#intervalos-de-confianza-para-la-diferencia-de-medias"><span class="header-section-number">5.2.3</span> Intervalos de confianza para la diferencia de medias</a></li>
   <li><a href="#intervalos-de-confianza-para-diferencia-de-proporciones." id="toc-intervalos-de-confianza-para-diferencia-de-proporciones." class="nav-link" data-scroll-target="#intervalos-de-confianza-para-diferencia-de-proporciones."><span class="header-section-number">5.2.4</span> Intervalos de confianza para diferencia de proporciones.</a></li>
   <li><a href="#intervalos-de-confianza-para-sigma2" id="toc-intervalos-de-confianza-para-sigma2" class="nav-link" data-scroll-target="#intervalos-de-confianza-para-sigma2"><span class="header-section-number">5.2.5</span> Intervalos de confianza para <span class="math inline">\(\sigma^2\)</span></a></li>
-  <li><a href="#intervalos-de-confianza-para-comparación-de-varianzas." id="toc-intervalos-de-confianza-para-comparación-de-varianzas." class="nav-link" data-scroll-target="#intervalos-de-confianza-para-comparación-de-varianzas."><span class="header-section-number">5.2.6</span> Intervalos de confianza para comparación de varianzas.</a></li>
-  </ul></li>
-  <li><a href="#test-de-la-razón-de-verosimilitudes" id="toc-test-de-la-razón-de-verosimilitudes" class="nav-link" data-scroll-target="#test-de-la-razón-de-verosimilitudes"><span class="header-section-number">5.3</span> Test de la razón de verosimilitudes</a>
-  <ul class="collapse">
-  <li><a href="#cantidades-pivotales." id="toc-cantidades-pivotales." class="nav-link" data-scroll-target="#cantidades-pivotales."><span class="header-section-number">5.3.1</span> Cantidades pivotales.</a></li>
-  <li><a href="#intervalos-de-verosimilitud." id="toc-intervalos-de-verosimilitud." class="nav-link" data-scroll-target="#intervalos-de-verosimilitud."><span class="header-section-number">5.3.2</span> Intervalos de verosimilitud.</a></li>
-  </ul></li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">5.4</span> Referencias</a></li>
+  <li><a href="#intervalos-de-confianza-para-comparaci%C3%B3n-de-varianzas." id="toc-intervalos-de-confianza-para-comparación-de-varianzas." class="nav-link" data-scroll-target="#intervalos-de-confianza-para-comparaci%C3%B3n-de-varianzas."><span class="header-section-number">5.2.6</span> Intervalos de confianza para comparación de varianzas.</a></li>
   </ul>
-</nav>
+</li>
+  <li>
+<a href="#test-de-la-raz%C3%B3n-de-verosimilitudes" id="toc-test-de-la-razón-de-verosimilitudes" class="nav-link" data-scroll-target="#test-de-la-raz%C3%B3n-de-verosimilitudes"><span class="header-section-number">5.3</span> Test de la razón de verosimilitudes</a>
+  <ul class="collapse">
+<li><a href="#cantidades-pivotales." id="toc-cantidades-pivotales." class="nav-link" data-scroll-target="#cantidades-pivotales."><span class="header-section-number">5.3.1</span> Cantidades pivotales.</a></li>
+  <li><a href="#intervalos-de-verosimilitud." id="toc-intervalos-de-verosimilitud." class="nav-link" data-scroll-target="#intervalos-de-verosimilitud."><span class="header-section-number">5.3.2</span> Intervalos de verosimilitud.</a></li>
+  </ul>
+</li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios"><span class="header-section-number">5.4</span> Ejercicios</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">5.5</span> Referencias</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimación por intervalos</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Estimación por intervalos</span>
+</h1>
 </div>
 
 
@@ -246,13 +270,10 @@ window.Quarto = {
   
 
 
-</header>
-
-
-<p>En este capítulo se aborda el problema de la estimación por conjuntos, donde se estudian estimadores que proporcionan un conjunto como estimación de <span class="math inline">\(\theta\)</span>. El resultado de una estimación por conjuntos es una afirmación del tipo <span class="math inline">\(\theta \in C\)</span>, donde <span class="math inline">\(C = C(\underset{\sim}{x})\)</span> es un subconjunto del espacio paramétrico <span class="math inline">\(\theta\)</span> que depende de los datos observados <span class="math inline">\(x\)</span>. En el caso de que <span class="math inline">\(\Theta \subseteq \mathbb{R}\)</span> los conjuntos que se suelen usar para realizar inferencias sobre <span class="math inline">\(\theta\)</span> son intervalos.</p>
-<section id="intervalos-de-confianza" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="intervalos-de-confianza"><span class="header-section-number">5.1</span> Intervalos de confianza</h2>
-<p>Un <strong>estimador por intervalos</strong> de un parámetro <span class="math inline">\(\theta\in\Theta \subseteq \mathbb{R}\)</span> es cualquier par de funciones reales <span class="math inline">\(L(\underset{\sim}{x})\)</span> y <span class="math inline">\(U (\underset{\sim}{x})\)</span> definidas en el espacio muestral <span class="math inline">\(\mathcal{X}\)</span> tales que <span class="math inline">\(L(\underset{\sim}{x})\leq U (\underset{\sim}{x})\)</span> para todo <span class="math inline">\(\underset{\sim}{x} = (x_1 , \ldots, x_n)\in \mathcal{X}\)</span> . Si se observa el valor <span class="math inline">\(\underset{\sim}{x}= \underset{\sim}{x}\)</span> , mediante este estimador se hace la inferencia <span class="math inline">\(L(\underset{\sim}{x})\leq\theta\leq U (\underset{\sim}{x})\)</span>. Al intervalo aleatorio <span class="math inline">\([L(\underset{\sim}{x}),U (\underset{\sim}{x})]\)</span> se le llama estimador por intervalos de <span class="math inline">\(\theta\)</span>(o intervalo estimador de <span class="math inline">\(\theta\)</span>), mientras que al valor que ha tomado en la muestra observada <span class="math inline">\([L(\underset{\sim}{x}),U (\underset{\sim}{x})]\)</span> se le llama estimación por intervalos de <span class="math inline">\(\theta\)</span> (o intervalo estimación de <span class="math inline">\(\theta\)</span>).</p>
+</header><p>En este capítulo se aborda el problema de la estimación por conjuntos, donde se estudian estimadores que proporcionan un conjunto como estimación de <span class="math inline">\(\theta\)</span>. El resultado de una estimación por conjuntos es una afirmación del tipo <span class="math inline">\(\theta \in C\)</span>, donde <span class="math inline">\(C = C(\underset{\sim}{x})\)</span> es un subconjunto del espacio paramétrico <span class="math inline">\(\theta\)</span> que depende de los datos observados <span class="math inline">\(x\)</span>. En el caso de que <span class="math inline">\(\Theta \subseteq \mathbb{R}\)</span> los conjuntos que se suelen usar para realizar inferencias sobre <span class="math inline">\(\theta\)</span> son intervalos.</p>
+<section id="intervalos-de-confianza" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="intervalos-de-confianza">
+<span class="header-section-number">5.1</span> Intervalos de confianza</h2>
+<p>Un <strong>estimador por intervalos</strong> de un parámetro <span class="math inline">\(\theta\in\Theta \subseteq \mathbb{R}\)</span> es cualquier par de funciones reales <span class="math inline">\(L(\underset{\sim}{x})\)</span> y <span class="math inline">\(U (\underset{\sim}{x})\)</span> definidas en el espacio muestral <span class="math inline">\(\mathcal{X}\)</span> tales que <span class="math inline">\(L(\underset{\sim}{x})\leq U (\underset{\sim}{x})\)</span> para todo <span class="math inline">\(\underset{\sim}{x} = (x_1 , \ldots, x_n)\in \mathcal{X}\)</span> . Si se observa el valor <span class="math inline">\(\underset{\sim}{X}= \underset{\sim}{x}\)</span> , mediante este estimador se hace la inferencia <span class="math inline">\(L(\underset{\sim}{x})\leq\theta\leq U (\underset{\sim}{x})\)</span>. Al intervalo aleatorio <span class="math inline">\([L(\underset{\sim}{X}),U (\underset{\sim}{X})]\)</span> se le llama estimador por intervalos de <span class="math inline">\(\theta\)</span> (o intervalo estimador de <span class="math inline">\(\theta\)</span>), mientras que al valor que ha tomado en la muestra observada <span class="math inline">\([L(\underset{\sim}{x}),U (\underset{\sim}{x})]\)</span> se le llama estimación por intervalos de <span class="math inline">\(\theta\)</span> (o intervalo estimación de <span class="math inline">\(\theta\)</span>).</p>
 <div id="exm-5.1" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.1</strong></span> Sea <span class="math inline">\(X_1 , X_2 , X_3 , X_4\)</span> una muestra de tamaño 4 de <span class="math inline">\(X \sim N(\mu, 1)\)</span>. Un estimador por intervalos de <span class="math inline">\(\mu\)</span> es <span class="math inline">\([\bar{X}-1, \bar{X} + 1]\)</span>. Para cada muestra observada <span class="math inline">\(x_1 , x_2 , x_3 , x_4\)</span>, la estimación por intervalos de <span class="math inline">\(\mu\)</span> es <span class="math inline">\([\bar{x}-1, \bar{x} + 1]\)</span>.</p>
 </div>
@@ -270,109 +291,82 @@ window.Quarto = {
 <p>A costa de algo de precisión, el paso de un estimador puntual a uno por intervalos ha permitido aumentar la confianza que tenemos en que sea correcta la afirmación hecha en la inferencia.</p>
 </div>
 <div id="def-5.1" class="definition theorem">
-<p><span class="theorem-title"><strong>Definition 5.1</strong></span> Se llama <strong>probabilidad de cobertura</strong> de un estimador por intervalos <span class="math inline">\([L(\underset{\sim}{x}),U (\underset{\sim}{x})]\)</span> del parámetro <span class="math inline">\(\theta\)</span> a la probabilidad de que ese intervalo aleatorio cubra al verdadero valor del parámetro <span class="math inline">\(\theta\)</span>: <span class="math display">\[P_\theta(\theta\in[L(\underset{\sim}{x}),U (\underset{\sim}{x})] )\]</span> Obsérvese que esa probabilidad de cobertura puede variar con <span class="math inline">\(\theta\)</span>. Se llama del intervalo <span class="math inline">\([L(\underset{\sim}{x}),U (\underset{\sim}{x})]\)</span> como estimador del parámetro <span class="math inline">\(\theta\)</span> al ínfimo de las probabilidades de cobertura: <span class="math display">\[\inf_{\theta\in\Theta}P_\theta(\theta\in[L(\underset{\sim}{x}),U (\underset{\sim}{x})] ).\]</span> <strong>Intervalo de confianza</strong> es el nombre que recibe usualmente un estimador por intervalos junto con su coeficiente de confianza.</p>
+<p><span class="theorem-title"><strong>Definition 5.1</strong></span> Se llama <strong>probabilidad de cobertura</strong> de un estimador por intervalos <span class="math inline">\([L(\underset{\sim}{x}),U (\underset{\sim}{x})]\)</span> del parámetro <span class="math inline">\(\theta\)</span> a la probabilidad de que ese intervalo aleatorio cubra al verdadero valor del parámetro <span class="math inline">\(\theta\)</span>: <span class="math display">\[P_\theta(\theta\in[L(\underset{\sim}{x}),U (\underset{\sim}{x})] )\]</span> Obsérvese que esa probabilidad de cobertura puede variar con <span class="math inline">\(\theta\)</span>. Se llama <strong>coeficiente de confianza</strong> del intervalo <span class="math inline">\([L(\underset{\sim}{x}),U (\underset{\sim}{x})]\)</span> como estimador del parámetro <span class="math inline">\(\theta\)</span> al ínfimo de las probabilidades de cobertura: <span class="math display">\[\inf_{\theta\in\Theta}P_\theta(\theta\in[L(\underset{\sim}{x}),U (\underset{\sim}{x})] ).\]</span> <strong>Intervalo de confianza</strong> es el nombre que recibe usualmente un estimador por intervalos junto con su coeficiente de confianza.</p>
 <p>También se nombra así a veces a la estimación a que da lugar el estimador por intervalos aplicado a una muestra concreta.</p>
 <p>Además de <span class="math inline">\(C(\underset{\sim}{x})\)</span>, se usará también la notación <span class="math inline">\(IC_{1-\alpha}(\theta)\)</span> se usará para referirse a un intervalo de confianza <span class="math inline">\((1-\alpha)\)</span> para <span class="math inline">\(\theta\)</span>.</p>
 </div>
 <p>Si se desea construir un intervalo para una transformación invertible <span class="math inline">\(\tau(\theta)\)</span> del parámetro y <span class="math inline">\([L(\underset{\sim}{x}),U (\underset{\sim}{x})]\)</span> es un intervalo de confianza <span class="math inline">\((1-\alpha)\)</span> para <span class="math inline">\(\theta\)</span>, entonces el intervalo <span class="math inline">\([\tau(L(\underset{\sim}{x})),\tau(U (\underset{\sim}{x}))]\)</span> es un intervalo de confianza <span class="math inline">\((1- \alpha)\)</span> para <span class="math inline">\(\tau(\theta)\)</span>.</p>
-</section>
-<section id="métodos-para-construir-intervalos-de-confianza" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="métodos-para-construir-intervalos-de-confianza"><span class="header-section-number">5.2</span> Métodos para construir intervalos de confianza</h2>
-<section id="inversión-de-un-contraste-de-hipótesis" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="inversión-de-un-contraste-de-hipótesis"><span class="header-section-number">5.2.1</span> Inversión de un contraste de hipótesis</h3>
+</section><section id="métodos-para-construir-intervalos-de-confianza" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="métodos-para-construir-intervalos-de-confianza">
+<span class="header-section-number">5.2</span> Métodos para construir intervalos de confianza</h2>
+<section id="inversión-de-un-contraste-de-hipótesis" class="level3" data-number="5.2.1"><h3 data-number="5.2.1" class="anchored" data-anchor-id="inversión-de-un-contraste-de-hipótesis">
+<span class="header-section-number">5.2.1</span> Inversión de un contraste de hipótesis</h3>
 <p>Como veremos a continuación, hay una estrecha relación entre la estimación por intervalos y los contrastes de hipótesis. En general, se puede decir que cada método de construcción de un intervalo de confianza corresponde a un método de contraste de un hipótesis, y viceversa.</p>
 <div id="exm-5.3" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.3</strong></span> Sea <span class="math inline">\(X_1 ,\ldots, X_n\)</span> muestra aleatoria simple de <span class="math inline">\(X\sim N(\mu,\sigma^2)\)</span> con <span class="math inline">\(\sigma^2\)</span> conocido. Se desea contrastar <span class="math inline">\(H_0:\mu = \mu_0\)</span> frente a <span class="math inline">\(H_1 : \mu\neq\mu_0\)</span>.</p>
 <p>Para hacer el contraste a nivel <span class="math inline">\(\alpha\)</span> el test insesgado uniformemente de máxima potencia rechaza <span class="math inline">\(H_0\)</span> si <span class="math inline">\(\mid \bar{x}-\mu_0\mid &gt; z_{\alpha/2}\sigma/\sqrt{n}\)</span>, es decir, la región del espacio muestral <span class="math inline">\(\mathcal{X}\)</span> en donde se acepta <span class="math inline">\(H_0\)</span> es el conjunto de <span class="math inline">\(\underset{\sim}{x}\)</span> tales que <span class="math display">\[\bar{x}-z_{\alpha/2}\sigma/\sqrt{n}\leq\mu_0\leq \bar{x}+z_{\alpha/2}\sigma/\sqrt{n}\]</span></p>
 </div>
-</section>
-<section id="intervalos-de-confianza-para-la-media" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="intervalos-de-confianza-para-la-media"><span class="header-section-number">5.2.2</span> Intervalos de confianza para la media</h3>
+</section><section id="intervalos-de-confianza-para-la-media" class="level3" data-number="5.2.2"><h3 data-number="5.2.2" class="anchored" data-anchor-id="intervalos-de-confianza-para-la-media">
+<span class="header-section-number">5.2.2</span> Intervalos de confianza para la media</h3>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalo de confianza para <span class="math inline">\(\mu\)</span> cuando se conoce <span class="math inline">\(\sigma^2\)</span></figcaption>
-<p><img src="images/ICBMean1.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalo de confianza para <span class="math inline">\(\mu\)</span> cuando se conoce <span class="math inline">\(\sigma^2\)</span></figcaption><p><img src="images/ICBMean1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p><img src="images/ICBMean2.png" class="img-fluid" alt="Intervalo de confianza para \mu cuando se desconoce \sigma^2"> <img src="images/ICBPrediccion1.png" class="img-fluid" alt="Intervalo de predicción para una observación futura cuando se conoce \sigma^2"></p>
+<p><img src="images/ICBMean2.png" class="img-fluid" alt="Intervalo de confianza para \mu cuando se desconoce \sigma^2"><img src="images/ICBPrediccion1.png" class="img-fluid" alt="Intervalo de predicción para una observación futura cuando se conoce \sigma^2"></p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalo de predicción para una observación futura cuando se desconoce <span class="math inline">\(\sigma^2\)</span></figcaption>
-<p><img src="images/ICBPrediccion2.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalo de predicción para una observación futura cuando se desconoce <span class="math inline">\(\sigma^2\)</span></figcaption><p><img src="images/ICBPrediccion2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-</section>
-<section id="intervalos-de-confianza-para-la-diferencia-de-medias" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="intervalos-de-confianza-para-la-diferencia-de-medias"><span class="header-section-number">5.2.3</span> Intervalos de confianza para la diferencia de medias</h3>
+</section><section id="intervalos-de-confianza-para-la-diferencia-de-medias" class="level3" data-number="5.2.3"><h3 data-number="5.2.3" class="anchored" data-anchor-id="intervalos-de-confianza-para-la-diferencia-de-medias">
+<span class="header-section-number">5.2.3</span> Intervalos de confianza para la diferencia de medias</h3>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalo de confianza para <span class="math inline">\(\mu_1-\mu_2\)</span> cuando se conocen <span class="math inline">\(\sigma_1^2\)</span> y <span class="math inline">\(\sigma_2^2\)</span></figcaption>
-<p><img src="images/Diferencia medias1.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalo de confianza para <span class="math inline">\(\mu_1-\mu_2\)</span> cuando se conocen <span class="math inline">\(\sigma_1^2\)</span> y <span class="math inline">\(\sigma_2^2\)</span></figcaption><p><img src="images/Diferencia medias1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalo de confianza para <span class="math inline">\(\mu_1-\mu_2\)</span> cuando se conocen <span class="math inline">\(\sigma_1^2\)</span> y <span class="math inline">\(\sigma_2^2\)</span></figcaption>
-<p><img src="images/Diferencia medias1.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalo de confianza para <span class="math inline">\(\mu_1-\mu_2\)</span> cuando se conocen <span class="math inline">\(\sigma_1^2\)</span> y <span class="math inline">\(\sigma_2^2\)</span></figcaption><p><img src="images/Diferencia medias1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalo de confianza para <span class="math inline">\(\mu_1-\mu_2\)</span> cuando se desconocen <span class="math inline">\(\sigma_1^2\)</span> y <span class="math inline">\(\sigma_2^2\)</span></figcaption>
-<p><img src="images/Diferencia medias2.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalo de confianza para <span class="math inline">\(\mu_1-\mu_2\)</span> cuando se desconocen <span class="math inline">\(\sigma_1^2\)</span> y <span class="math inline">\(\sigma_2^2\)</span></figcaption><p><img src="images/Diferencia medias2.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Estimado agrupado de la varianza</figcaption>
-<p><img src="images/Varianza agrupada.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Estimado agrupado de la varianza</figcaption><p><img src="images/Varianza agrupada.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p><img src="images/Diferencia medias3.png" class="img-fluid" alt="Intervalo de confianza para \mu_1-\mu_2 cuando \sigma_1^2\neq\sigma_2^2"> <img src="images/Diferencia medias4.png" class="img-fluid" alt="Intervalo de confianza para \mu_1-\mu_2 para observaciones pareadas"></p>
+<p><img src="images/Diferencia medias3.png" class="img-fluid" alt="Intervalo de confianza para \mu_1-\mu_2 cuando \sigma_1^2\neq\sigma_2^2"><img src="images/Diferencia medias4.png" class="img-fluid" alt="Intervalo de confianza para \mu_1-\mu_2 para observaciones pareadas"></p>
 <p><img src="images/Varianza agrupada2.png" class="img-fluid" alt="Desviación de diferencias"> ### Intervalos de confianza para proporciones <span class="math inline">\(p\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalos de confianza para <span class="math inline">\(p\)</span> de una muestra grande</figcaption>
-<p><img src="images/ICBproporciones.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalos de confianza para <span class="math inline">\(p\)</span> de una muestra grande</figcaption><p><img src="images/ICBproporciones.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-</section>
-<section id="intervalos-de-confianza-para-diferencia-de-proporciones." class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="intervalos-de-confianza-para-diferencia-de-proporciones."><span class="header-section-number">5.2.4</span> Intervalos de confianza para diferencia de proporciones.</h3>
+</section><section id="intervalos-de-confianza-para-diferencia-de-proporciones." class="level3" data-number="5.2.4"><h3 data-number="5.2.4" class="anchored" data-anchor-id="intervalos-de-confianza-para-diferencia-de-proporciones.">
+<span class="header-section-number">5.2.4</span> Intervalos de confianza para diferencia de proporciones.</h3>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalos de confianza para <span class="math inline">\(p_1-p_2\)</span> de una muestra grande</figcaption>
-<p><img src="images/Diferencia de proporciones.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalos de confianza para <span class="math inline">\(p_1-p_2\)</span> de una muestra grande</figcaption><p><img src="images/Diferencia de proporciones.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-</section>
-<section id="intervalos-de-confianza-para-sigma2" class="level3" data-number="5.2.5">
-<h3 data-number="5.2.5" class="anchored" data-anchor-id="intervalos-de-confianza-para-sigma2"><span class="header-section-number">5.2.5</span> Intervalos de confianza para <span class="math inline">\(\sigma^2\)</span></h3>
+</section><section id="intervalos-de-confianza-para-sigma2" class="level3" data-number="5.2.5"><h3 data-number="5.2.5" class="anchored" data-anchor-id="intervalos-de-confianza-para-sigma2">
+<span class="header-section-number">5.2.5</span> Intervalos de confianza para <span class="math inline">\(\sigma^2\)</span>
+</h3>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalos de confianza para <span class="math inline">\(\sigma^2\)</span></figcaption>
-<p><img src="images/ICBvar.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalos de confianza para <span class="math inline">\(\sigma^2\)</span></figcaption><p><img src="images/ICBvar.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-</section>
-<section id="intervalos-de-confianza-para-comparación-de-varianzas." class="level3" data-number="5.2.6">
-<h3 data-number="5.2.6" class="anchored" data-anchor-id="intervalos-de-confianza-para-comparación-de-varianzas."><span class="header-section-number">5.2.6</span> Intervalos de confianza para comparación de varianzas.</h3>
+</section><section id="intervalos-de-confianza-para-comparación-de-varianzas." class="level3" data-number="5.2.6"><h3 data-number="5.2.6" class="anchored" data-anchor-id="intervalos-de-confianza-para-comparación-de-varianzas.">
+<span class="header-section-number">5.2.6</span> Intervalos de confianza para comparación de varianzas.</h3>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Intervalos de confianza para <span class="math inline">\(\sigma_1^2/\sigma_2^2\)</span></figcaption>
-<p><img src="images/Diferencia varianzas.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Intervalos de confianza para <span class="math inline">\(\sigma_1^2/\sigma_2^2\)</span></figcaption><p><img src="images/Diferencia varianzas.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
-</section>
-</section>
-<section id="test-de-la-razón-de-verosimilitudes" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="test-de-la-razón-de-verosimilitudes"><span class="header-section-number">5.3</span> Test de la razón de verosimilitudes</h2>
+</section></section><section id="test-de-la-razón-de-verosimilitudes" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="test-de-la-razón-de-verosimilitudes">
+<span class="header-section-number">5.3</span> Test de la razón de verosimilitudes</h2>
 <p>Sea <span class="math inline">\(X_1 ,\ldots, X_n\)</span> muestra aleatoria simple de <span class="math inline">\(X\)</span>, variable aleatoria con función de densidad (o de probabilidad) <span class="math inline">\(f(x\mid \theta)\)</span> para algún <span class="math inline">\(\theta  \in \Theta\)</span>. Se desea hacer el contraste</p>
 <p><span class="math display">\[\left\{ \begin{array}{lcc}
 H_0 &amp;   :  &amp; \theta \in\Theta_0 \\
 \\ H_1 &amp;  : &amp; \theta \in\Theta_1  
 \end{array}
-\right.\]</span> donde <span class="math inline">\(\Theta_0\cup\Theta_1=\Theta\)</span>, <span class="math inline">\(\Theta_0\cap\Theta_1=\emptyset.\)</span> Se define el estadístico de la como</p>
+\right.\]</span> donde <span class="math inline">\(\Theta_0\cup\Theta_1=\Theta\)</span>, <span class="math inline">\(\Theta_0\cap\Theta_1=\emptyset.\)</span> Se define el estadístico de la <strong>razón de verosimilitudes</strong> como</p>
 <p><span class="math display">\[\lambda=\lambda(\underset{\sim}{x})=\frac{\max_{\theta \in \Theta_0}L(\theta \mid \underset{\sim}{x})}{\max_{\theta \in \Theta}L(\theta \mid \underset{\sim}{x})}\]</span></p>
 <p>El test de la razón de verosimilitudes (también llamado test de la razón de verosimilitudes generalizado, para distinguirlo del test de Neyman- Pearson, o test de la razón de las máximas verosimilitudes) establece una región crítica de la forma <span class="math display">\[C=\{\underset{\sim}{x}:\lambda(\underset{\sim}{x})\leq A\}\]</span> para alguna constante <span class="math inline">\(A\)</span> que se determinará para que el test tenga el tamaño <span class="math inline">\(\alpha\)</span> deseado.</p>
 <p>La idea intuitiva que sustenta este método de contraste es simple. Observe que <span class="math inline">\(0 \leq \lambda \leq 1\)</span> y que cuanto más cercano a <span class="math inline">\(1\)</span> sea el valor de <span class="math inline">\(\lambda\)</span>, más verosímil es que <span class="math inline">\(\theta \in \Theta_0\)</span>, mientras que cuanto más se aleje <span class="math inline">\(\lambda\)</span> de 1, más creíble será la hipótesis alternativa <span class="math inline">\(\theta \in \Theta_1\)</span>.</p>
@@ -410,19 +404,68 @@ H_0 &amp;   :  &amp; \lambda=\lambda_0 \\
 \end{align} \tag{5.1}\]</span></span></p>
 <p>donde la constante <span class="math inline">\(k^*\)</span> se elige para que el test tenga tamaño <span class="math inline">\(\alpha\)</span>, o lo que es lomismo, para que <span class="math display">\[P_{\alpha}(\underset{\sim}{x}\in A(\lambda_0))=1-\alpha\]</span></p>
 </div>
-<section id="cantidades-pivotales." class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="cantidades-pivotales."><span class="header-section-number">5.3.1</span> Cantidades pivotales.</h3>
+<section id="cantidades-pivotales." class="level3" data-number="5.3.1"><h3 data-number="5.3.1" class="anchored" data-anchor-id="cantidades-pivotales.">
+<span class="header-section-number">5.3.1</span> Cantidades pivotales.</h3>
 <p>Uno de los métodos más comunes de construcción de intervalos de confianza es el uso de cantidades pivotales.</p>
-<p>Sea <span class="math inline">\(\underset{\sim}{x} = (X_1 ,\ldots , X_n)\)</span> una m.a.s. de <span class="math inline">\(X\sim F(x;\theta)\)</span>. Una función <span class="math inline">\(Q(\underset{\sim}{x} , \theta)\)</span> de la muestra y del parámetro es una si la distribución de probabilidad de <span class="math inline">\(Q(\underset{\sim}{x} , \theta)\)</span> no depende del parámetro <span class="math inline">\(\theta\)</span>, es decir, <span class="math inline">\(Q(\underset{\sim}{x} , \theta)\)</span> tiene la misma distribución para cualquier valor de <span class="math inline">\(\theta\)</span>.</p>
-<p>Dada una cantidad pivotal <span class="math inline">\(Q(\underset{\sim}{x} , \theta)\)</span>, para cualquier conjunto <span class="math inline">\(A\)</span> del espacioimagen de <span class="math inline">\(Q\)</span> se tiene que <span class="math inline">\(P_\theta (Q(\underset{\sim}{x} , \theta) \in A)\)</span> no depende de <span class="math inline">\(\theta\)</span>. Por lo tanto si se elige un conjunto <span class="math inline">\(A_\alpha\)</span> tal que</p>
-<p><span class="math display">\[P_\theta (Q(\underset{\sim}{x} , \theta) \in A)=1-\alpha,\]</span> para todo <span class="math inline">\(\theta\)</span>, y se observa la muestra <span class="math inline">\(\underset{\sim}{x} = \underset{\sim}{x}\)</span>, entonces el conjunto <span class="math display">\[C(\underset{\sim}{x}) = \{\theta: Q(\underset{\sim}{x} , \theta) \in A\}\]</span> es un conjunto de confianza <span class="math inline">\(1-\alpha\)</span> para <span class="math inline">\(\theta\)</span>.</p>
+<p>Sea <span class="math inline">\(\underset{\sim}{x} = (X_1 ,\ldots , X_n)\)</span> una m.a.s. de <span class="math inline">\(X\sim F(x;\theta)\)</span>. Una función <span class="math inline">\(Q(\underset{\sim}{x} , \theta)\)</span> de la muestra y del parámetro es una <strong>cantidad pivotal</strong> si la distribución de probabilidad de <span class="math inline">\(Q(\underset{\sim}{x} , \theta)\)</span> no depende del parámetro <span class="math inline">\(\theta\)</span>, es decir, <span class="math inline">\(Q(\underset{\sim}{x} , \theta)\)</span> tiene la misma distribución para cualquier valor de <span class="math inline">\(\theta\)</span>.</p>
+<p>Dada una cantidad pivotal <span class="math inline">\(Q(\underset{\sim}{x} , \theta)\)</span>, para cualquier conjunto <span class="math inline">\(A\)</span> del espacio imagen de <span class="math inline">\(Q\)</span> se tiene que <span class="math inline">\(P_\theta (Q(\underset{\sim}{x} , \theta) \in A)\)</span> no depende de <span class="math inline">\(\theta\)</span>. Por lo tanto si se elige un conjunto <span class="math inline">\(A_\alpha\)</span> tal que</p>
+<p><span class="math display">\[P_\theta (Q(\underset{\sim}{x} , \theta) \in A)=1-\alpha,\]</span> para todo <span class="math inline">\(\theta\)</span>, y se observa la muestra <span class="math inline">\(\underset{\sim}{X} = \underset{\sim}{x}\)</span>, entonces el conjunto <span class="math display">\[C(\underset{\sim}{x}) = \{\theta: Q(\underset{\sim}{x} , \theta) \in A\}\]</span> es un conjunto de confianza <span class="math inline">\(1-\alpha\)</span> para <span class="math inline">\(\theta\)</span>.</p>
 <p>En la práctica, la forma en la que se construye un intervalo de confianza a partir de una cantidad pivotal es la siguiente. Supondremos que <span class="math inline">\(Q(\underset{\sim}{x}, \theta) \in \mathbb{R}\)</span> y <span class="math inline">\(\theta \in \mathbb{R}\)</span>. Para un valor <span class="math inline">\(\alpha\)</span> dado, se buscan números a y b tales que <span class="math display">\[P_\theta(a\leq Q(\underset{\sim}{x}, \theta)\leq b)=1-\alpha,\]</span> Observar que <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> no dependen de <span class="math inline">\(\theta\)</span> por ser Q cantidad pivotal, y que la elección de a y b no será única en general.</p>
 <p>Para cada <span class="math inline">\(\theta_0\)</span> , el conjunto <span class="math display">\[A(\theta_0)=\{\underset{\sim}{x}:a\leq Q(\underset{\sim}{x}, \theta)\leq b\}.\]</span> es la región de aceptación de un test de tamaño <span class="math inline">\(\alpha\)</span> para contrastar <span class="math inline">\(H_0 : \theta = \theta_ 0\)</span> basado en el estadístico <span class="math inline">\(T ( \underset{\sim}{x}) = Q(\underset{\sim}{x}, \theta_0)\)</span>. Invirtiendo este contraste obtenemos el conjunto de confianza <span class="math inline">\(1-\alpha\)</span> para <span class="math inline">\(\theta\)</span>: <span class="math display">\[C(\underset{\sim}{x})=\{\theta:a\leq Q(\underset{\sim}{x}, \theta)\leq b\}.\]</span></p>
 <div id="exm-5.5" class="theorem example">
-<p><span class="theorem-title"><strong>Example 5.5</strong></span> Obsérvese en <a href="#eq-RA" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> que la expresión de la región de aceptación depende de la muestra y del parámetro sólo a través de <span class="math inline">\(v =\frac{\sum_{i=1}^{n} x_i}{\lambda_0}\)</span>. Además, la distribución de <span class="math inline">\(v =\frac{\sum_{i=1}^{n}X_i}{\lambda_0}\)</span> no depende del parámetro <span class="math inline">\(\lambda_0\)</span> : <span class="math inline">\(\sum_{i=1}^{n}X_i\sim \gamma(n,\lambda_0)\)</span> bajo <span class="math inline">\(H_0\)</span> , luego <span class="math inline">\(V\sim \gamma(n,\lambda_0)\)</span>. De esto se sigue que el valor <span class="math inline">\(k^{*}\)</span> es el mismo para todo <span class="math inline">\(\lambda_0\)</span>.\</p>
+<p><span class="theorem-title"><strong>Example 5.5</strong></span> Obsérvese en <a href="#eq-RA" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> que la expresión de la región de aceptación depende de la muestra y del parámetro sólo a través de <span class="math inline">\(v =\frac{\sum_{i=1}^{n} x_i}{\lambda_0}\)</span>. Además, la distribución de <span class="math inline">\(v =\frac{\sum_{i=1}^{n}X_i}{\lambda_0}\)</span> no depende del parámetro <span class="math inline">\(\lambda_0\)</span> : <span class="math inline">\(\sum_{i=1}^{n}X_i\sim \gamma(n,\lambda_0)\)</span> bajo <span class="math inline">\(H_0\)</span> , luego <span class="math inline">\(V\sim \gamma(n,\lambda_0)\)</span>. De esto se sigue que el valor <span class="math inline">\(k^{*}\)</span> es el mismo para todo <span class="math inline">\(\lambda_0\)</span>.</p>
 <p>Invirtiendo la región de aceptación se obtiene el conjunto de confianza <span class="math inline">\(1-\alpha\)</span>: <span class="math display">\[C(\underset{\sim}{x})=\left\{\lambda:\left(\frac{\sum_{i=1}^{n}x_i}{\lambda}\right)^n\exp\left\{-\frac{1}{\lambda}\sum_{i=1}^{n}x_i\right\}\geq k^*\right\}.\]</span></p>
 </div>
-<p>Sea <span class="math inline">\(g(v)=v^n\exp\{-v\}\)</span> <img src="images/g_n1.png" class="img-fluid" alt="Función g"> a. <span class="math inline">\(g\)</span> es positiva en todo <span class="math inline">\(\mathbb{R}^{+}\)</span>. b. <span class="math inline">\(g\)</span> vale cero en <span class="math inline">\(v=0\)</span>. c.&nbsp;<span class="math inline">\(g\)</span> tiende a cero si <span class="math inline">\(v\)</span> tiende a infinito. d.&nbsp;<span class="math inline">\(g\)</span> tiene un único punto crítico en <span class="math inline">\(v=n\)</span>. e. <span class="math inline">\(g\)</span> tiene un único máximo en <span class="math inline">\(v=n\)</span>. f.&nbsp;Los conjuntos de la forma <span class="math inline">\(\{v\geq0: g(v)\leq k^*\}\)</span>, <span class="math inline">\(k^*\leq g(n)=n^n\exp\left\{-n\right\}\)</span>, son intervalos de la forma <span class="math inline">\([l,u]\)</span>, donde <span class="math inline">\(l\leq n\leq u\)</span> y <span class="math inline">\(g(l)=g(u)=k^*\)</span>.</p>
+<p>Sea <span class="math inline">\(g(v)=v^n\exp\{-v\}\)</span></p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Definir la función</span></span>
+<span><span class="va">g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">v</span>, <span class="va">n</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">v</span><span class="op">^</span><span class="va">n</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="op">-</span><span class="va">v</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Valores de v en el dominio</span></span>
+<span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.5</span>, <span class="fl">6.5</span>, length.out <span class="op">=</span> <span class="fl">500</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Lista de valores de n</span></span>
+<span><span class="va">n_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span>, <span class="fl">4</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Inicializar el gráfico</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">v</span>, <span class="fu">g</span><span class="op">(</span><span class="va">v</span>, <span class="va">n_vals</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"l"</span>, lwd <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>     col <span class="op">=</span> <span class="fl">1</span>, xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">0.5</span>, <span class="fl">6.5</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>,</span>
+<span>     xlab <span class="op">=</span> <span class="st">"v"</span>, ylab <span class="op">=</span> <span class="st">"g(v)"</span>,</span>
+<span>     main <span class="op">=</span> <span class="st">"g(v) = v^n * exp(-v)"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Agregar curvas para otros valores de n</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">n_vals</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">v</span>, <span class="fu">g</span><span class="op">(</span><span class="va">v</span>, <span class="va">n_vals</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>, col <span class="op">=</span> <span class="va">i</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Línea en cero</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>h <span class="op">=</span> <span class="fl">0</span>, col <span class="op">=</span> <span class="st">"gray"</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"gray"</span>, lty <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co"># Leyenda</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"n ="</span>, <span class="va">n_vals</span><span class="op">)</span>,</span>
+<span>       col <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">n_vals</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="chapter4_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="a">
+<li>
+<span class="math inline">\(g\)</span> es positiva en todo <span class="math inline">\(\mathbb{R}^{+}\)</span>.</li>
+<li>
+<span class="math inline">\(g\)</span> vale cero en <span class="math inline">\(v=0\)</span>.</li>
+<li>
+<span class="math inline">\(g\)</span> tiende a cero si <span class="math inline">\(v\)</span> tiende a infinito.</li>
+<li>
+<span class="math inline">\(g\)</span> tiene un único punto crítico en <span class="math inline">\(v=n\)</span>.</li>
+<li>
+<span class="math inline">\(g\)</span> tiene un único máximo en <span class="math inline">\(v=n\)</span> (<span class="math inline">\(n=1\)</span> en el ejemplo gráfico).</li>
+<li>Los conjuntos de la forma <span class="math inline">\(\{v\geq0: g(v)\leq k^*\}\)</span>, <span class="math inline">\(k^*\leq g(n)=n^n\exp\left\{-n\right\}\)</span>, son intervalos de la forma <span class="math inline">\([l,u]\)</span>, donde <span class="math inline">\(l\leq n\leq u\)</span> y <span class="math inline">\(g(l)=g(u)=k^*\)</span>.</li>
+</ol>
 <p>De ello se deduce que <span class="math inline">\(A(\lambda_0)\)</span> es un intervalo para cualquier valor de <span class="math inline">\(\lambda_0\)</span>, y que los conjuntos de confianza <span class="math inline">\(C(\underset{\sim}{x})\)</span> también son intervalos para cualquier valor de <span class="math inline">\(\sum_{i=1}^{n}x_i\)</span>. Así pues, el intervalo de confianza obtenido será de la forma</p>
 <p><span class="math display">\[\begin{align}
 C(\underset{\sim}{x})&amp;=\left\{\lambda:l\leq v\leq u\right\}\nonumber\\
@@ -436,18 +479,14 @@ C(\underset{\sim}{x})&amp;=\left\{\lambda:l\leq v\leq u\right\}\nonumber\\
 <col style="width: 50%">
 <col style="width: 50%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Límite inferior</th>
 <th>Límite superior</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td><span class="math display">\[L\!\left(\sum_{i=1}^{n}x_i\right) = \frac{\sum_{i=1}^{n}x_i}{u}\]</span></td>
 <td><span class="math display">\[U\!\left(\sum_{i=1}^{n}x_i\right) = \frac{\sum_{i=1}^{n}x_i}{l}\]</span></td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p>Los valores <span class="math inline">\(l\)</span> y <span class="math inline">\(u\)</span> son las soluciones del sistema de ecuaciones no lineales</p>
 <p><span class="math display">\[\left\{ \begin{array}{lcc}
@@ -468,18 +507,14 @@ V=\frac{\sum_{i=1}^{n}X_i}{\lambda}
 <div id="exm-5.6" class="theorem example">
 <p><span class="theorem-title"><strong>Example 5.6</strong></span> En el ejemplo anteriormente mencionado <span class="math display">\[Q(\underset{\sim}{x},\lambda)=\frac{2\sum_{i=1}^{n}X_i}{\lambda}\sim\chi^2_{2n}\]</span> Así que podemos elegir</p>
 <table class="caption-top table">
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>(a)</th>
 <th>(b)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td><span class="math display">\[a = \chi^2_{2n,\,1-\alpha/2}\]</span></td>
 <td><span class="math display">\[b = \chi^2_{2n,\,\alpha/2}\]</span></td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p>En este caso <span class="math inline">\(g_{\underset{\sim}{x}}(\lambda)=Q(\underset{\sim}{x},\lambda)=\frac{2\sum_{i=1}^{n}X_i}{\lambda}\)</span>. Es decir, <span class="math inline">\(g_{\underset{\sim}{x}}\)</span> es invertible y decreciente, luego el intervalo de confianza de <span class="math inline">\(1-\alpha\)</span> para <span class="math inline">\(\lambda\)</span> será</p>
 <p><span class="math display">\[\begin{align}
@@ -494,25 +529,20 @@ C(\underset{\sim}{x})&amp;=\left\{\lambda:a\leq g_{\underset{\sim}{x}}(\lambda)\
 <col style="width: 50%">
 <col style="width: 50%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th>Expresión con (b)</th>
 <th>Expresión con (a)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
+</tr></thead>
+<tbody><tr class="odd">
 <td><span class="math display">\[g_{\underset{\sim}{x}}^{-1}(b) = \frac{2\sum_{i=1}^{n} x_i}{\chi^2_{2n,\,\alpha/2}}\]</span></td>
 <td><span class="math display">\[g_{\underset{\sim}{x}}^{-1}(a) = \frac{2\sum_{i=1}^{n} x_i}{\chi^2_{2n,\,1-\alpha/2}}\]</span></td>
-</tr>
-</tbody>
+</tr></tbody>
 </table>
 <p>En el caso de <span class="math inline">\(n = 2\)</span> y <span class="math inline">\(\alpha = 0.1\)</span>, <span class="math inline">\(\chi^2_{4, 0.05} = 9,49\)</span> y <span class="math inline">\(\chi^2_{4, 0.95} = 0.71\)</span>, luego el intervalo de confianza <span class="math inline">\(0.90\)</span> es</p>
 <p><span class="math display">\[\left[\frac{4\bar{X}_2}{9.49};\frac{4\bar{X}_2}{0.71}\right]=\left[0.4215\bar{X}_2;5.63\bar{X}_2\right]\]</span></p>
 </div>
-</section>
-<section id="intervalos-de-verosimilitud." class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="intervalos-de-verosimilitud."><span class="header-section-number">5.3.2</span> Intervalos de verosimilitud.</h3>
+</section><section id="intervalos-de-verosimilitud." class="level3" data-number="5.3.2"><h3 data-number="5.3.2" class="anchored" data-anchor-id="intervalos-de-verosimilitud.">
+<span class="header-section-number">5.3.2</span> Intervalos de verosimilitud.</h3>
 <p>Supongamos que los datos (eventos observados) <span class="math inline">\(E\)</span> de un experimento tiene probabilidad <span class="math inline">\(P(E;\theta)\)</span> la cual depende de un parámetros fijo pero desconocido <span class="math inline">\(\theta\)</span>.</p>
 <p>El estimador de máxima verosimilitud <span class="math inline">\(\hat{\theta}\)</span> es el valor de <span class="math inline">\(\theta\)</span> el cual máximiza <span class="math inline">\(P(E;\theta)\)</span>. Este valor es <strong>el más probable</strong> o <strong>más plausible</strong> de <span class="math inline">\(\theta\)</span> en el sentido de que esto máximiza la probabilidad de que ha sido observado.</p>
 <p>Las probabilidades relativas de otros valores de <span class="math inline">\(\theta\)</span> tal que <span class="math inline">\(P(E;\theta)\)</span> es tan cercano o casi tan grande como <span class="math inline">\(P(E;\hat{\theta})\)</span> son justamente plausible en que ellos explican los datos casi tan bien como <span class="math inline">\(\hat{\theta}\)</span> lo hace.</p>
@@ -540,7 +570,7 @@ r(\theta)&amp;=\log\left(R(\theta)\right)\nonumber\\
 <li>Si <span class="math inline">\(R(\theta_1)=0.5\)</span>, entonces <span class="math inline">\(\theta_1\)</span> es más bien un valor parametral justamente plausible, porque los datos son <span class="math inline">\(2\)</span> veces más probables cuando <span class="math inline">\(\theta=\hat{\theta}\)</span> que cuando <span class="math inline">\(\theta=\theta_1\)</span>.</li>
 </ol>
 <div id="def-5.4" class="definition theorem">
-<p><span class="theorem-title"><strong>Definition 5.4 (Regiones de verosimilitud e intervalos)</strong></span> El conjunto de los valores <span class="math inline">\(\theta\)</span> para el cual <span class="math inline">\(R(\theta)\geq p\)</span> un <span class="math inline">\(100\% p\)</span> región de verosimilitud para <span class="math inline">\(\theta\)</span>. Usualmente el <span class="math inline">\(100\% p\)</span> región verosimil consistirá de un intervalo de valores reales, y entonces este es llamado para <span class="math inline">\(\theta\)</span>.</p>
+<p><span class="theorem-title"><strong>Definition 5.4 (Regiones de verosimilitud e intervalos)</strong></span> El conjunto de los valores <span class="math inline">\(\theta\)</span> para el cual <span class="math inline">\(R(\theta)\geq p\)</span> un <span class="math inline">\(100\% p\)</span> región de verosimilitud para <span class="math inline">\(\theta\)</span>. Usualmente el <span class="math inline">\(100\% p\)</span> región verosimil consistirá de un intervalo de valores reales, y entonces este es llamado <strong><span class="math inline">\(100\% p\)</span> intervalo verosímil (LI)</strong> para <span class="math inline">\(\theta\)</span>.</p>
 </div>
 <p>Usualmente consideramos <span class="math inline">\(50\%\)</span>, <span class="math inline">\(10\%\)</span> y <span class="math inline">\(1\%\)</span> intervalos verosímiles o regiones.</p>
 <table class="caption-top table">
@@ -549,13 +579,11 @@ r(\theta)&amp;=\log\left(R(\theta)\right)\nonumber\\
 <col style="width: 42%">
 <col style="width: 40%">
 </colgroup>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th><span class="math display">\[LI\]</span></th>
 <th><span class="math display">\[\text{Dentro}\]</span></th>
 <th><span class="math display">\[\text{Fuera}\]</span></th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td><span class="math inline">\(50\%\)</span></td>
@@ -575,9 +603,7 @@ r(\theta)&amp;=\log\left(R(\theta)\right)\nonumber\\
 </tbody>
 </table>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Función de verosimilitud del ejemplo</figcaption>
-<p><img src="images/LI.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Función de verosimilitud del ejemplo</figcaption><p><img src="images/LI.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <p>El <span class="math inline">\(14.7\%\)</span> y <span class="math inline">\(3.6\%\)</span> de los intervalos de verosimilitud son algunas veces calculado por su analogía al <span class="math inline">\(95\%\)</span> y el <span class="math inline">\(99\%\)</span> de intervalos de confianza. a. Como <span class="math inline">\(log(0.5)=-0.69\)</span>, tenemos que <span class="math inline">\(r(\theta_1) \geq -0.69\)</span>, <span class="math inline">\(logR(\theta_1)\geq log(0.5)\)</span>, luego es semejante <span class="math inline">\(R(\theta_1)\geq 0.5\)</span>, los datos son 2 veces más probables cuando <span class="math inline">\(\theta=\hat{\theta}\)</span>, que cuando <span class="math inline">\(\theta=\theta_1\)</span> (Más del <span class="math inline">\(50\%\)</span> de la probabilidad máxima posible bajo el modelo). b. Como <span class="math inline">\(log(0.1)=-2.30\)</span>, tenemos que <span class="math inline">\(r(\theta_1) \geq -2.30\)</span>, <span class="math inline">\(logR(\theta_1)\geq log(0.1)\)</span>, luego es semejante <span class="math inline">\(R(\theta_1)\geq 0.1\)</span>, los datos son 10 veces más probables cuando <span class="math inline">\(\theta=\hat{\theta}\)</span>, que cuando <span class="math inline">\(\theta=\theta_1\)</span> (Más del <span class="math inline">\(10\%\)</span> de la probabilidad máxima posible bajo el modelo). c.&nbsp;Como <span class="math inline">\(log(0.01)=-4.61\)</span>, tenemos que <span class="math inline">\(r(\theta_1) \geq -4.61\)</span>, <span class="math inline">\(logR(\theta_1)\geq log(0.01)\)</span>, luego es semejante <span class="math inline">\(R(\theta_1)\geq 0.01\)</span>, los datos son 100 veces más probables cuando <span class="math inline">\(\theta=\hat{\theta}\)</span>, que cuando <span class="math inline">\(\theta=\theta_1\)</span> (Más del <span class="math inline">\(1\%\)</span> de la probabilidad máxima posible bajo el modelo).</p>
@@ -595,15 +621,248 @@ P(E;\theta)&amp;=P(\mbox{$x$ de $n$ tienen tuberculosis}) \nonumber\\
 </ol>
 </div>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<figcaption>Contrastes de intervalos de verosimilitud</figcaption>
-<p><img src="images/Contrastes.png" class="img-fluid figure-img"></p>
+<figure class="figure"><figcaption>Contrastes de intervalos de verosimilitud</figcaption><p><img src="images/Contrastes.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
+</section></section><section id="ejercicios" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="ejercicios">
+<span class="header-section-number">5.4</span> Ejercicios</h2>
+<div id="exr-5.1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.1</strong></span> En <span class="math inline">\(1000\)</span> lanzamientos de una moneda, aparecen <span class="math inline">\(560\)</span> caras y <span class="math inline">\(440\)</span> sellos aparecen. ¿Es razonable asumir que la moneda es justa <span class="math inline">\(\left(p=\frac{1}{2}\right)\)</span>?</p>
+</div>
+<div id="exr-5.2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.2</strong></span> En una ciudad dada se asume que el número de accidentes automovilísticos en un año dado sigue una distribución Poisson. En años pasados el promedio del número de accidentes por año fue de <span class="math inline">\(15\)</span>, y este año fue de <span class="math inline">\(10\)</span>. ¿Es justificada la afirmación que dice que la tasa de siniestralidad ha disminuido?</p>
+</div>
+<div id="exr-5.3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.3</strong></span> Sea <span class="math inline">\(X\)</span> es una variable aleatoria cuya función de masa de probabilidad (fmp) bajo <span class="math inline">\(H_0\)</span> y <span class="math inline">\(H_1\)</span> está dado por</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead><tr class="header">
+<th><span class="math inline">\(f(x \mid \cdot) \backslash x\)</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f(x \mid H_0)\)</span></td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.01</td>
+<td>0.94</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(f(x \mid H_1)\)</span></td>
+<td>0.06</td>
+<td>0.05</td>
+<td>0.04</td>
+<td>0.03</td>
+<td>0.02</td>
+<td>0.01</td>
+<td>0.79</td>
+</tr>
+</tbody>
+</table>
+<p>Use el Lema de Neyman Pearson para encontrar la prueba más potente para <span class="math inline">\(H_0\)</span> versus <span class="math inline">\(H_1\)</span> con tamaño <span class="math inline">\(\alpha=0.04\)</span>. Compute la probabilidad del error tipo II para esta prueba. En otras palabras establezca los siguientes resultados</p>
+<ol type="a">
+<li><p>Establezca los diferentes ratios <span class="math inline">\(\frac{f(x\mid H_1)}{f(x\mid H_0)}\)</span>. ¿Qué puede decir de estos ratios en función de <span class="math inline">\(x\)</span>?</p></li>
+<li><p>¿Para qué valores de <span class="math inline">\(x\)</span> se rechaza la hipótesis nula <span class="math inline">\(H_0\)</span>?</p></li>
+<li><p>Para conseguir un tamaño de prueba <span class="math inline">\(\alpha\)</span>, se necesita escoger un <span class="math inline">\(c\)</span> de tal manera que <span class="math inline">\(P(X\leq c\mid H_0)=\alpha\)</span>. Para el presente problema, calcular <span class="math inline">\(c\)</span> dado que la prueba uniforme más potente tiene tamaño <span class="math inline">\(\alpha=0.04\)</span>.</p></li>
+<li><p>Calcule la probabilidad del error tipo II.</p></li>
+</ol>
+</div>
+<div id="exr-5.4" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.4</strong></span> En cada una de las siguientes situaciones, calcule el <span class="math inline">\(p\)</span>-valor de los datos observados. Para esto, determine la función <span class="math inline">\(\alpha\)</span> en función del parámetro de interés en <span class="math inline">\(\Theta_0\)</span>. Grafique <span class="math inline">\(\alpha\)</span> y señale en la gráfica el <span class="math inline">\(p\)</span> valor.</p>
+<ol type="a">
+<li><p>Para la prueba <span class="math inline">\(H_0:\theta\leq\frac{1}{2}\)</span> versus <span class="math inline">\(H_1:\theta&gt;\frac{1}{2}\)</span>, <span class="math inline">\(7\)</span> éxitos son observados en <span class="math inline">\(10\)</span> ensayos Bernoulli.</p></li>
+<li><p>Para la prueba <span class="math inline">\(H_0:\lambda\leq1\)</span> versus <span class="math inline">\(H_1:\lambda&gt;1\)</span>,se observa <span class="math inline">\(X=3\)</span>, donde <span class="math inline">\(X\sim Pois(\lambda)\)</span>.</p></li>
+<li><p>Para la prueba <span class="math inline">\(H_0:\lambda\leq 1\)</span> versus <span class="math inline">\(H_1:\lambda&gt;1\)</span>, se observa <span class="math inline">\(X_1=3\)</span>,<span class="math inline">\(X_2=5\)</span>, <span class="math inline">\(X_3=1\)</span>, donde <span class="math inline">\(X_i\sim Pois(\lambda)\)</span>, con <span class="math inline">\(i=1,2,3\)</span> independientes.</p></li>
+</ol>
+</div>
+<div id="exr-5.5" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.5</strong></span> Use el corolario 7 sobre contrastes uniformemente más potentes de la página 161 del pdf de las notas <strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> para resolver el siguiente problema. Sea <span class="math inline">\(X\sim binom(2,\theta)\)</span>. Se quiere probar <span class="math inline">\(H_0:\theta=\frac{1}{2}\)</span> versus <span class="math inline">\(H_1:\theta=\frac{3}{4}\)</span>.</p>
+<ol type="a">
+<li><p>Calcule los diferentes ratios de la función de masa de probabilidad.</p></li>
+<li><p>Del corolario 7, determine que pasa con una elección <span class="math inline">\(\frac{3}{4}&lt;A(\theta_1)&lt;\frac{9}{4}\)</span>, el lema de Neyman Pearson dice que el test que rechaza <span class="math inline">\(H_0\)</span> si <span class="math inline">\(X=\_\_\_\_\_\_\)</span> es la prueba uniformente más potente (UMP) a nivel <span class="math inline">\(\alpha=\_\_\_\_\_\_\)</span>. Complete los espacios en blanco y justifique sus respuestas.</p></li>
+<li><p>Del corolario 7, determine que pasa con una elección <span class="math inline">\(\frac{1}{4}&lt;A(\theta_1)&lt;\frac{3}{4}\)</span>, el lema de Neyman Pearson dice que el test que rechaza <span class="math inline">\(H_0\)</span> si <span class="math inline">\(X=\_\_\_\_\_\_\)</span> es la prueba uniformente más potente (UMP) a nivel <span class="math inline">\(\alpha=\_\_\_\_\_\_\)</span>. Complete los espacios en blanco y justifique sus respuestas.</p></li>
+<li><p>Del corolario 7, determine que pasa con una elección <span class="math inline">\(A(\theta_1)&lt;\frac{1}{4}\)</span>, el lema de Neyman Pearson dice que el test que rechaza <span class="math inline">\(H_0\)</span> si <span class="math inline">\(X=\_\_\_\_\_\_\)</span> es la prueba uniformente más potente (UMP) a nivel <span class="math inline">\(\alpha=\_\_\_\_\_\_\)</span>. Complete los espacios en blanco y justifique sus respuestas.</p></li>
+<li><p>Del corolario 7, determine que pasa con una elección <span class="math inline">\(A(\theta_1)&gt;\frac{9}{4}\)</span>, el lema de Neyman Pearson dice que el test que rechaza <span class="math inline">\(H_0\)</span> si <span class="math inline">\(X=\_\_\_\_\_\_\)</span> es la prueba uniformente más potente (UMP) a nivel <span class="math inline">\(\alpha=\_\_\_\_\_\_\)</span>. Complete los espacios en blanco y justifique sus respuestas.</p></li>
+</ol>
+</div>
+<div id="exr-5.6" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.6</strong></span> A dos grupos de ratas diabéticas se les suministra dos dosis de insulina (alto y bajo) para verificar la capacidad de fijación de esta hormona. Se obtuvieron los siguientes datos.</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Grupo</th>
+<th>Información</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Dosis baja</td>
+<td>
+<span class="math inline">\(n_1 = 8\)</span>, <span class="math inline">\(\bar{x}_1 = 1.98\)</span>, <span class="math inline">\(s_1 = 0.51\)</span>
+</td>
+</tr>
+<tr class="even">
+<td>Dosis alta</td>
+<td>
+<span class="math inline">\(n_2 = 13\)</span>, <span class="math inline">\(\bar{x}_2 = 1.30\)</span>, <span class="math inline">\(s_1 = 0.35\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Suponga que las varianzas son iguales. Determine un intervalo de confianza del <span class="math inline">\(95\%\)</span> para la diferencia en la capacidad promedio verdadera de fijación de la insulina entre las dos muestras.</p>
+</div>
+<div id="exr-5.7" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.7</strong></span> En el estudio Germination and Emergence of Broccoli, realizado por el Departamento de horticultura del Virginia Tech, un investigador encontró que a <span class="math inline">\(5^\circ C\)</span>, de <span class="math inline">\(20\)</span> semillas de brócoli germinaron <span class="math inline">\(10\)</span>; en tanto que a <span class="math inline">\(15^\circ C\)</span>, de <span class="math inline">\(20\)</span> semillas germinaron <span class="math inline">\(15\)</span>. Calcule un intervalo de confianza del <span class="math inline">\(95\%\)</span> para la diferencia en la proporción de semillas que germinaron a las dos temperaturas y decida si esta diferencia es significativa.</p>
+</div>
+<div id="exr-5.8" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.8</strong></span> Un fabricante de planchas eléctricas produce estos artículos en dos plantas en las que las partes pequeñas son surtidas por el mismo proveedor. El fabricante puede ahorrar algo si le compra a un proveedor local los termostatos para la planta B. Para probar si estos nuevos termostatos son tan precisos como los anteriores le compra sólo un lote al proveedor local y los prueba en planchas a <span class="math inline">\(550^\circ F\)</span>. Al final lee con un termo par las temperaturas reales y las redondea al siguiente <span class="math inline">\(0.1^\circ F\)</span> más cercano. Los datos son los siguientes:</p>
+<section id="proveedor-nuevo-f" class="level3" data-number="5.4.1"><h3 data-number="5.4.1" class="anchored" data-anchor-id="proveedor-nuevo-f">
+<span class="header-section-number">5.4.1</span> Proveedor nuevo (°F)</h3>
+<table class="caption-top table"><tbody>
+<tr class="odd">
+<td>530.3</td>
+<td>559.3</td>
+<td>549.4</td>
+<td>544.0</td>
+<td>551.7</td>
+<td>566.3</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>549.9</td>
+<td>556.9</td>
+<td>536.7</td>
+<td>558.8</td>
+<td>538.8</td>
+<td>543.3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>559.1</td>
+<td>555.0</td>
+<td>538.6</td>
+<td>551.1</td>
+<td>565.4</td>
+<td>554.9</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>550.0</td>
+<td>554.9</td>
+<td>554.7</td>
+<td>536.1</td>
+<td>569.1</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></section><section id="proveedor-anterior-f" class="level3" data-number="5.4.2"><h3 data-number="5.4.2" class="anchored" data-anchor-id="proveedor-anterior-f">
+<span class="header-section-number">5.4.2</span> Proveedor anterior (°F)</h3>
+<table class="caption-top table"><tbody>
+<tr class="odd">
+<td>559.7</td>
+<td>534.7</td>
+<td>554.8</td>
+<td>545.0</td>
+<td>544.6</td>
+<td>538.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>550.7</td>
+<td>563.1</td>
+<td>551.1</td>
+<td>553.8</td>
+<td>538.8</td>
+<td>564.6</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>554.5</td>
+<td>553.0</td>
+<td>538.4</td>
+<td>548.3</td>
+<td>552.9</td>
+<td>535.1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>555.0</td>
+<td>544.8</td>
+<td>558.4</td>
+<td>548.7</td>
+<td>563.0</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<ol type="a">
+<li><p>Calcule un intervalo del <span class="math inline">\(95\%\)</span> para <span class="math inline">\(\frac{\sigma_1^2}{\sigma_2^2}\)</span></p></li>
+<li><p>Calcule un intervalo del <span class="math inline">\(95\%\)</span> para <span class="math inline">\(\frac{\sigma_1}{\sigma_2}\)</span></p></li>
+</ol>
+<p>donde <span class="math inline">\(\sigma_1^2\)</span> y <span class="math inline">\(\sigma_2^2\)</span>son las varianzas de la población de las lecturas de los termostatos del proveedor nuevo y del anterior, respectivamente.</p>
 </section>
-</section>
-<section id="referencias" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="referencias"><span class="header-section-number">5.4</span> Referencias</h2>
+</div>
+<div id="exr-5.9" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.9</strong></span> Se seleccionó una muestra aleatoria de <span class="math inline">\(30\)</span> empresas que comercializan productos inalámbricos para determinar la proporción de tales empresas que implementaron software nuevo para aumentar la productividad. Resultó que 8 de las 30 empresas habían implementado tal software. Calcule un intervalo de confianza del <span class="math inline">\(95\%\)</span> en <span class="math inline">\(p\)</span>, la proporción verdadera de ese tipo de empresas que implementaron el nuevo software.</p>
+</div>
+<div id="exr-5.10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.10</strong></span> Remítase al ejercicio anterior. Suponga que se desea saber sila estimación puntual <span class="math inline">\(\hat{p} = 8/30\)</span> es lo suficientemente precisa porque el intervalo de confianza alrededor de <span class="math inline">\(p\)</span> no es tan estrecho como se requiere. Utilice <span class="math inline">\(\hat{p}\)</span> como el estimado de p para determinar cuántas empresas habría que incluir en una muestra para obtener un intervalo de confianza del <span class="math inline">\(95\%\)</span> con una anchura de sólo <span class="math inline">\(0.05\)</span>.</p>
+</div>
+<div id="exr-5.10" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.11</strong></span> El siguiente conjunto de datos, con mediciones en cientos de horas, representa la vida útil de diez componentes electrónicos idénticos que operan en un sistema de control de guía para proyectiles: [0.637; 1.531; 0.733; 2.256 ;2.364 1.601; 0.152; 1.826; 1.868; 1.126] Se supone que la vida útil de un componente de este tipo sigue una distribución de Weibull con una función de densidad dada por <span class="math display">\[f(y|\theta)=\left\{\begin{array}{ll}\left(\frac{2y}{\theta}\right)e^{-y^2/\theta},&amp;y&gt;0\\0,&amp;\mbox{ en cualquier otro punto.}\end{array}\right.\]</span>.</p>
+<ol type="a">
+<li><p>Determine un estadístico suficiente que resuma mejor la información de <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Determine una función del estadístico suficiente encontrado en el anterior item que sea insesgada para <span class="math inline">\(\theta\)</span>.</p></li>
+<li><p>Utilice los datos para construir un intervalo de confi anza de <span class="math inline">\(95\%\)</span> para <span class="math inline">\(\theta\)</span>. Encuentre una cantidad pivote.</p></li>
+</ol>
+</div>
+<div id="exr-5.11" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.12</strong></span> Supongamos que deseamos entimar <span class="math inline">\(\theta\)</span>, la proporción de personas con tuberculosis en una gran población homogénea.Para esto nosotros seleccionamos aleatoriamente <span class="math inline">\(n\)</span> individuos y encontramos <span class="math inline">\(x\)</span> de ellos que tienen la enfermedad. Ya que la población es grande y homogénea, nosotros asumimos que los <span class="math inline">\(n\)</span> individuos son examinados de manera independiente y que cada uno tiene probabilidad <span class="math inline">\(\theta\)</span> de tener tuberculosis. La probabilidad del evento observado <span class="math inline">\(E\)</span> es entonces</p>
+<p><span class="math display">\[\begin{align}
+P(E;\theta)&amp;=P(\mbox{$x$ de $n$ tienen tuberculosis}) \nonumber\\
+&amp;=\binom{n}{x}\theta^x(1-\theta)^{n-x}
+\end{align}\]</span> donde <span class="math inline">\(0\leq \theta \leq 1\)</span></p>
+<ol type="a">
+<li><p>Determine el estimador de máxima verosimilitud e interprete en el contexto del problema.</p></li>
+<li><p>Suponga que de <span class="math inline">\(100\)</span> personas son examinadas, tres son encontrados con tuberculosis. Sobre la base de estas observaciones, ¿cuales valores de <span class="math inline">\(\theta\)</span> son plausibles? Para responder, utilice el método gráfico de la función de verosimilitud relativa para hallar los intervalos de verosimilitud (IL) del <span class="math inline">\(1\%\)</span>, <span class="math inline">\(10\%\)</span> y <span class="math inline">\(50\%\)</span>.</p></li>
+<li><p>Suponga que de <span class="math inline">\(200\)</span> personas son examinadas, seis son encontrados con tuberculosis. Sobre la base de estas observaciones, ¿cuales valores de <span class="math inline">\(\theta\)</span> son plausibles? Para responder, utilice el método gráfico de la función de verosimilitud relativa para hallar los intervalos de verosimilitud (IL) del <span class="math inline">\(1\%\)</span>, <span class="math inline">\(10\%\)</span> y <span class="math inline">\(50\%\)</span>.</p></li>
+<li><p>Compare b y c.&nbsp;con las dos gráficas en el mismo cuadro de inspección.</p></li>
+</ol>
+</div>
+<div id="exr-5.12" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.13</strong></span> No es usualmente posible contar el número de bacterias en una muestra de agua de rio, uno únicamente puede determinar si están presentes o no están presentes las bacterias en la muestra. Para esto, cada uno de los <span class="math inline">\(n\)</span> tubos de ensayo contienen un volumen <span class="math inline">\(v\)</span> de agua de rio, los cuales son encubados y evaluados. Una prueba negativa muestra que no hay bacterias presentes, mientras que una prueba positiva muestra que al menos una bacteria está presente. Si <span class="math inline">\(y\)</span> tubos de <span class="math inline">\(n\)</span> evaluados, dan resultados negativos, determine:</p>
+<ol type="a">
+<li>¿Cuál es el estimador de máxima verosimilitud para <span class="math inline">\(\mu\)</span>?, si la probabilidad de que haya <span class="math inline">\(x\)</span> bacterias en un volumen <span class="math inline">\(v\)</span> de agua de rio está dado por una distribución de Poisson con media <span class="math inline">\(\mu v\)</span>:</li>
+</ol>
+<p><span class="math display">\[\begin{align}
+f(x)&amp;=\frac{(\mu v)^x\exp\{-\mu v\}}{x!}; \mbox{para $x=0,1,2,\ldots$}
+\end{align}\]</span> Hind: Empiece estableciendo que <span class="math inline">\(p=f(0)=\exp\{-\mu v\}\)</span> y que la probabilidad de observar <span class="math inline">\(y\)</span> reacciones negativas en <span class="math inline">\(n\)</span> ensayos es: ´ <span class="math display">\[\begin{align}
+P(E;\theta)&amp;=\binom{n}{y}p^y(1-p)^{n-y}; \mbox{$\mu\geq 0$}
+\end{align}\]</span> b. Considere un experimento donde se observan <span class="math inline">\(y=28\)</span> reacciones negativas en <span class="math inline">\(n=40\)</span> tubos de ensayo. Cada uno conteniendo <span class="math inline">\(v=10\)</span>ml. Obtenga un intervalo IL del <span class="math inline">\(50\%\)</span> para <span class="math inline">\(\mu\)</span>.</p>
+<ol start="3" type="a">
+<li><p>Considere un experimento donde se observan <span class="math inline">\(y=37\)</span> reacciones negativas en <span class="math inline">\(n=40\)</span> tubos de ensayo. Cada uno conteniendo <span class="math inline">\(v=1\)</span>ml. Obtenga un intervalo IL del <span class="math inline">\(50\%\)</span> para <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>Establezca la función de logverosimilitud mezcla <span class="math inline">\(l(\mu)=l_1(\mu)+l_2(\mu)\)</span>, donde <span class="math inline">\(l_1(\mu\)</span> es la logverosimilitud del modelo del item b. y <span class="math inline">\(l_2(\mu)\)</span> es la logverosimilitud del modelo del item c.&nbsp;De <span class="math inline">\(l(\mu)\)</span> determine la función de verosimilitud relativa <span class="math inline">\(r(\mu)\)</span> y con esta obtenga un intervalo IL del <span class="math inline">\(50\%\)</span> para <span class="math inline">\(\mu\)</span>.</p></li>
+</ol>
+</div>
+</section><section id="referencias" class="level2" data-number="5.5"><h2 data-number="5.5" class="anchored" data-anchor-id="referencias">
+<span class="header-section-number">5.5</span> Referencias</h2>
 <ul>
 <li><p><strong>Gómez, Guadalupe</strong>, &amp; <strong>Delicado, Pedro</strong> (2006). <em>Curso de Inferencia y Decisión</em>. Departament d’Estadística i Investigació Operativa, Universitat Politècnica de Catalunya.</p></li>
 <li><p><strong>Wackerly, D. D., Mendenhall, W.</strong>, &amp; <strong>Scheaffer, R. L.</strong> (2008). <strong>Estadística matemática con aplicaciones</strong> (7ª ed.). Cengage Learning.</p></li>
@@ -612,10 +871,7 @@ P(E;\theta)&amp;=P(\mbox{$x$ de $n$ tienen tuberculosis}) \nonumber\\
 </ul>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1013,9 +1269,7 @@ P(E;\theta)&amp;=P(\mbox{$x$ de $n$ tienen tuberculosis}) \nonumber\\
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./chapter3.html" class="pagination-link" aria-label="Contrastes de hipótesis">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Contrastes de hipótesis</span></span>
       </a>          
@@ -1024,7 +1278,6 @@ P(E;\theta)&amp;=P(\mbox{$x$ de $n$ tienen tuberculosis}) \nonumber\\
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 

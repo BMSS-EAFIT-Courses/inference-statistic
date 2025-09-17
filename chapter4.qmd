@@ -8,7 +8,7 @@ se suelen usar para realizar inferencias sobre $\theta$ son intervalos.
 
 ## Intervalos de confianza
 
-Un **estimador por intervalos** de un parámetro $\theta\in\Theta \subseteq \mathbb{R}$ es cualquier par de funciones reales $L(\underset{\sim}{x})$ y $U (\underset{\sim}{x})$ definidas en el espacio muestral $\mathcal{X}$ tales que $L(\underset{\sim}{x})\leq U (\underset{\sim}{x})$ para todo $\underset{\sim}{x} = (x_1 , \ldots, x_n)\in \mathcal{X}$ . Si se observa el valor $\underset{\sim}{x}= \underset{\sim}{x}$ , mediante este estimador se hace la inferencia $L(\underset{\sim}{x})\leq\theta\leq U (\underset{\sim}{x})$. Al intervalo aleatorio $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ se le llama estimador por intervalos de $\theta$(o intervalo estimador de $\theta$), mientras que al valor que ha tomado en la muestra observada $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ se le llama estimación por intervalos de $\theta$ (o intervalo estimación de $\theta$).
+Un **estimador por intervalos** de un parámetro $\theta\in\Theta \subseteq \mathbb{R}$ es cualquier par de funciones reales $L(\underset{\sim}{x})$ y $U (\underset{\sim}{x})$ definidas en el espacio muestral $\mathcal{X}$ tales que $L(\underset{\sim}{x})\leq U (\underset{\sim}{x})$ para todo $\underset{\sim}{x} = (x_1 , \ldots, x_n)\in \mathcal{X}$ . Si se observa el valor $\underset{\sim}{X}= \underset{\sim}{x}$ , mediante este estimador se hace la inferencia $L(\underset{\sim}{x})\leq\theta\leq U (\underset{\sim}{x})$. Al intervalo aleatorio $[L(\underset{\sim}{X}),U (\underset{\sim}{X})]$ se le llama estimador por intervalos de $\theta$ (o intervalo estimador de $\theta$), mientras que al valor que ha tomado en la muestra observada $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ se le llama estimación por intervalos de $\theta$ (o intervalo estimación de $\theta$).
 
 ::: {#exm-5.1}
 Sea $X_1 , X_2 , X_3 , X_4$ una muestra de tamaño 4 de $X \sim N(\mu, 1)$. Un estimador
@@ -44,7 +44,7 @@ Se llama **probabilidad de cobertura** de un estimador por intervalos
 $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$  del parámetro $\theta$ a la probabilidad de que ese intervalo aleatorio cubra al verdadero valor del parámetro $\theta$:
 $$P_\theta(\theta\in[L(\underset{\sim}{x}),U (\underset{\sim}{x})] )$$
 Obsérvese que esa probabilidad de cobertura puede variar con $\theta$.
-Se llama \textcolor{red}{coeficiente de confianza} del intervalo $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ como
+Se llama **coeficiente de confianza** del intervalo $[L(\underset{\sim}{x}),U (\underset{\sim}{x})]$ como
 		estimador del parámetro $\theta$ al ínfimo de las probabilidades de cobertura:
 		$$\inf_{\theta\in\Theta}P_\theta(\theta\in[L(\underset{\sim}{x}),U (\underset{\sim}{x})] ).$$
 **Intervalo de confianza** es el nombre que recibe usualmente un estimador por intervalos junto con su coeficiente de confianza. 
@@ -119,8 +119,7 @@ H_0 &   :  & \theta \in\Theta_0 \\
 \\ H_1 &  : & \theta \in\Theta_1  
 \end{array}
 \right.$$
-donde $\Theta_0\cup\Theta_1=\Theta$, $\Theta_0\cap\Theta_1=\emptyset.$ Se define el estadístico de la \textcolor{red}{razón de
-verosimilitudes} como
+donde $\Theta_0\cup\Theta_1=\Theta$, $\Theta_0\cap\Theta_1=\emptyset.$ Se define el estadístico de la **razón de verosimilitudes** como
 
 $$\lambda=\lambda(\underset{\sim}{x})=\frac{\max_{\theta \in \Theta_0}L(\theta \mid \underset{\sim}{x})}{\max_{\theta \in \Theta}L(\theta \mid \underset{\sim}{x})}$$
 
@@ -188,11 +187,11 @@ $$P_{\alpha}(\underset{\sim}{x}\in A(\lambda_0))=1-\alpha$$
 Uno de los métodos más comunes de construcción de intervalos de confianza
 es el uso de cantidades pivotales.
 
-Sea $\underset{\sim}{x} = (X_1 ,\ldots , X_n)$ una m.a.s. de $X\sim F(x;\theta)$. Una función $Q(\underset{\sim}{x} , \theta)$ de la muestra y del parámetro es una \textcolor{red}{cantidad pivotal} si la distribución de probabilidad de $Q(\underset{\sim}{x} , \theta)$ no depende del parámetro $\theta$, es decir, $Q(\underset{\sim}{x} , \theta)$ tiene la misma distribución para cualquier valor de $\theta$.
+Sea $\underset{\sim}{x} = (X_1 ,\ldots , X_n)$ una m.a.s. de $X\sim F(x;\theta)$. Una función $Q(\underset{\sim}{x} , \theta)$ de la muestra y del parámetro es una **cantidad pivotal** si la distribución de probabilidad de $Q(\underset{\sim}{x} , \theta)$ no depende del parámetro $\theta$, es decir, $Q(\underset{\sim}{x} , \theta)$ tiene la misma distribución para cualquier valor de $\theta$.
 
-Dada una cantidad pivotal $Q(\underset{\sim}{x} , \theta)$, para cualquier conjunto $A$ del espacioimagen de $Q$ se tiene que $P_\theta (Q(\underset{\sim}{x} , \theta) \in A)$ no depende de $\theta$. Por lo tanto si se elige un conjunto $A_\alpha$ tal que
+Dada una cantidad pivotal $Q(\underset{\sim}{x} , \theta)$, para cualquier conjunto $A$ del espacio imagen de $Q$ se tiene que $P_\theta (Q(\underset{\sim}{x} , \theta) \in A)$ no depende de $\theta$. Por lo tanto si se elige un conjunto $A_\alpha$ tal que
 
-$$P_\theta (Q(\underset{\sim}{x} , \theta) \in A)=1-\alpha,$$ para todo $\theta$, y se observa la muestra $\underset{\sim}{x} = \underset{\sim}{x}$, entonces el conjunto
+$$P_\theta (Q(\underset{\sim}{x} , \theta) \in A)=1-\alpha,$$ para todo $\theta$, y se observa la muestra $\underset{\sim}{X} = \underset{\sim}{x}$, entonces el conjunto
 $$C(\underset{\sim}{x}) = \{\theta: Q(\underset{\sim}{x} , \theta) \in A\}$$
 es un conjunto de confianza $1-\alpha$ para $\theta$.
 
@@ -210,18 +209,50 @@ Para cada $\theta_0$ , el conjunto
 Obsérvese en @eq-RA que la expresión de la región de aceptación depende de la muestra y del parámetro sólo a través de $v =\frac{\sum_{i=1}^{n} x_i}{\lambda_0}$. Además, la distribución de 
 $v =\frac{\sum_{i=1}^{n}X_i}{\lambda_0}$  no depende del parámetro $\lambda_0$ : $\sum_{i=1}^{n}X_i\sim \gamma(n,\lambda_0)$ bajo $H_0$ ,
 luego $V\sim \gamma(n,\lambda_0)$. 
-De esto se sigue que el valor $k^{*}$ es el mismo para todo $\lambda_0$.\\
+De esto se sigue que el valor $k^{*}$ es el mismo para todo $\lambda_0$.
 
 Invirtiendo la región de aceptación se obtiene el conjunto de confianza $1-\alpha$:
 $$C(\underset{\sim}{x})=\left\{\lambda:\left(\frac{\sum_{i=1}^{n}x_i}{\lambda}\right)^n\exp\left\{-\frac{1}{\lambda}\sum_{i=1}^{n}x_i\right\}\geq k^*\right\}.$$
 :::
 Sea $g(v)=v^n\exp\{-v\}$ 
-![Función g](images/g_n1.png)
+
+```{r}
+# Definir la función
+g <- function(v, n) {
+  v^n * exp(-v)
+}
+
+# Valores de v en el dominio
+v <- seq(-0.5, 6.5, length.out = 500)
+
+# Lista de valores de n
+n_vals <- c(1, 2, 3, 4)
+
+# Inicializar el gráfico
+plot(v, g(v, n_vals[1]), type = "l", lwd = 2,
+     col = 1, xlim = c(-0.5, 6.5), ylim = c(-1, 5),
+     xlab = "v", ylab = "g(v)",
+     main = "g(v) = v^n * exp(-v)")
+
+# Agregar curvas para otros valores de n
+for (i in 2:length(n_vals)) {
+  lines(v, g(v, n_vals[i]), col = i, lwd = 2)
+}
+
+# Línea en cero
+abline(h = 0, col = "gray", lty = 2)
+abline(v = c(0,1,2,3,4), col = "gray", lty = 2)
+# Leyenda
+legend("topright", legend = paste("n =", n_vals),
+       col = 1:length(n_vals), lwd = 2)
+
+```
+
 a. $g$ es positiva en todo $\mathbb{R}^{+}$.
 b. $g$ vale cero en $v=0$.
 c. $g$ tiende a cero si $v$ tiende a infinito.
 d. $g$ tiene un único punto crítico en $v=n$.
-e. $g$ tiene un único máximo en $v=n$.
+e. $g$ tiene un único máximo en $v=n$ ($n=1$ en el ejemplo gráfico).
 f. Los conjuntos de la forma $\{v\geq0: g(v)\leq k^*\}$, $k^*\leq g(n)=n^n\exp\left\{-n\right\}$, son intervalos de la forma $[l,u]$, donde $l\leq n\leq u$ y $g(l)=g(u)=k^*$.
 
 De ello se deduce que $A(\lambda_0)$ es un intervalo para cualquier valor de $\lambda_0$, y que los conjuntos de confianza $C(\underset{\sim}{x})$ también son intervalos para cualquier valor de $\sum_{i=1}^{n}x_i$. Así pues, el intervalo de confianza obtenido será de la forma
@@ -349,7 +380,7 @@ b. Si $R(\theta_1)=0.5$, entonces $\theta_1$ es más bien un valor parametral ju
 
 ## Regiones de verosimilitud e intervalos
 
-El conjunto de los valores $\theta$ para el cual $R(\theta)\geq p$ un $100\% p$ región de verosimilitud para $\theta$. Usualmente el $100\% p$ región verosimil consistirá de un intervalo de valores reales, y entonces este es llamado \textcolor{red}{$100\% p$ intervalo verosímil (LI)} para $\theta$.
+El conjunto de los valores $\theta$ para el cual $R(\theta)\geq p$ un $100\% p$ región de verosimilitud para $\theta$. Usualmente el $100\% p$ región verosimil consistirá de un intervalo de valores reales, y entonces este es llamado **$100\% p$ intervalo verosímil (LI)** para $\theta$.
 :::
 
 Usualmente consideramos $50\%$, $10\%$ y $1\%$ intervalos verosímiles o regiones.
@@ -383,6 +414,171 @@ d. Compare b y c. con las dos gráficas en el mismo cuadro de inspección.
 ::: 
 
 ![Contrastes de intervalos de verosimilitud](images/Contrastes.png)
+
+## Ejercicios
+
+::: {#exr-5.1}
+En $1000$ lanzamientos de una moneda, aparecen $560$ caras y $440$ sellos aparecen. ¿Es razonable asumir que la moneda es justa $\left(p=\frac{1}{2}\right)$?
+:::
+
+::: {#exr-5.2}
+En una ciudad dada se asume que el número de accidentes automovilísticos en un año dado sigue una distribución Poisson. En años pasados el promedio del número de accidentes por año fue de $15$, y este año fue de $10$. ¿Es justificada la afirmación que dice que la tasa de siniestralidad ha disminuido?
+::: 
+
+::: {#exr-5.3}
+Sea $X$ es una variable aleatoria cuya función de masa de probabilidad (fmp) bajo $H_0$ y $H_1$ está dado por 
+
+
+| $f(x \mid \cdot) \backslash x$ | 1     | 2     | 3     | 4     | 5     | 6     | 7     |
+|--------------------------------|-------|-------|-------|-------|-------|-------|-------|
+| $f(x \mid H_0)$                | 0.01  | 0.01  | 0.01  | 0.01  | 0.01  | 0.01  | 0.94  |
+| $f(x \mid H_1)$                | 0.06  | 0.05  | 0.04  | 0.03  | 0.02  | 0.01  | 0.79  |
+
+
+Use el Lema de Neyman Pearson para encontrar la prueba más potente para $H_0$ versus $H_1$ con tamaño $\alpha=0.04$. Compute la probabilidad del error tipo II para esta prueba. En otras palabras establezca los siguientes resultados 
+
+a. Establezca los diferentes ratios $\frac{f(x\mid H_1)}{f(x\mid H_0)}$. ¿Qué puede decir de estos ratios en función de $x$?
+
+b. ¿Para qué valores de $x$ se rechaza la hipótesis nula $H_0$?
+
+c. Para conseguir un tamaño de prueba $\alpha$, se necesita escoger un $c$ de tal manera que $P(X\leq c\mid H_0)=\alpha$. Para el presente problema, calcular $c$ dado que la prueba uniforme más potente tiene tamaño  $\alpha=0.04$.
+
+d. Calcule la probabilidad del error tipo II.
+::: 
+
+::: {#exr-5.4}
+En cada una de las siguientes situaciones, calcule el $p$-valor de los datos observados. Para esto, determine la función $\alpha$ en función del parámetro de interés en $\Theta_0$. Grafique $\alpha$ y señale en la gráfica el $p$ valor.
+
+a. Para la prueba $H_0:\theta\leq\frac{1}{2}$ versus $H_1:\theta>\frac{1}{2}$, $7$ éxitos son observados en $10$ ensayos Bernoulli.
+
+b. Para la prueba $H_0:\lambda\leq1$ versus $H_1:\lambda>1$,se observa $X=3$, donde $X\sim Pois(\lambda)$.
+
+c. Para la prueba $H_0:\lambda\leq 1$ versus $H_1:\lambda>1$, se observa $X_1=3$,$X_2=5$, $X_3=1$, donde $X_i\sim Pois(\lambda)$, con $i=1,2,3$ independientes.
+::: 
+
+::: {#exr-5.5}
+Use el corolario 7 sobre contrastes uniformemente más potentes de la página 161 del pdf de las notas **Gómez, Guadalupe**, & **Delicado, Pedro** para resolver el siguiente problema. Sea $X\sim binom(2,\theta)$. Se quiere probar $H_0:\theta=\frac{1}{2}$ versus $H_1:\theta=\frac{3}{4}$.
+
+a. Calcule los diferentes ratios de la función de masa de probabilidad.
+
+b. Del corolario 7, determine que pasa con una elección $\frac{3}{4}<A(\theta_1)<\frac{9}{4}$, el lema de Neyman Pearson dice que el test que rechaza $H_0$ si $X=\_\_\_\_\_\_$ es la prueba uniformente más potente (UMP) a nivel $\alpha=\_\_\_\_\_\_$. Complete los espacios en blanco y justifique sus respuestas.
+
+c. Del corolario 7, determine que pasa con una elección $\frac{1}{4}<A(\theta_1)<\frac{3}{4}$, el lema de Neyman Pearson dice que el test que rechaza $H_0$ si $X=\_\_\_\_\_\_$ es la prueba uniformente más potente (UMP) a nivel $\alpha=\_\_\_\_\_\_$. Complete los espacios en blanco y justifique sus respuestas.
+
+d. Del corolario 7, determine que pasa con una elección $A(\theta_1)<\frac{1}{4}$, el lema de Neyman Pearson dice que el test que rechaza $H_0$ si $X=\_\_\_\_\_\_$ es la prueba uniformente más potente (UMP) a nivel $\alpha=\_\_\_\_\_\_$. Complete los espacios en blanco y justifique sus respuestas.
+
+e. Del corolario 7, determine que pasa con una elección $A(\theta_1)>\frac{9}{4}$, el lema de Neyman Pearson dice que el test que rechaza $H_0$ si $X=\_\_\_\_\_\_$ es la prueba uniformente más potente (UMP) a nivel $\alpha=\_\_\_\_\_\_$. Complete los espacios en blanco y justifique sus respuestas.
+::: 
+
+::: {#exr-5.6}
+A dos grupos de ratas diabéticas se les suministra dos dosis de insulina (alto y bajo) para verificar la capacidad de fijación de esta hormona.  Se obtuvieron los siguientes datos.
+
+| Grupo      | Información                              |
+|------------|------------------------------------------|
+| Dosis baja | $n_1 = 8$, $\bar{x}_1 = 1.98$, $s_1 = 0.51$ |
+| Dosis alta | $n_2 = 13$, $\bar{x}_2 = 1.30$, $s_1 = 0.35$ |
+
+Suponga que las varianzas son iguales. Determine un intervalo de confianza del $95\%$ para la diferencia en la capacidad promedio verdadera de fijación de la insulina entre las dos muestras.
+::: 
+
+::: {#exr-5.7}
+En el estudio Germination and Emergence of Broccoli, realizado por el Departamento de horticultura del Virginia Tech, un investigador encontró que a $5^\circ C$, de $20$ semillas de brócoli germinaron $10$; en tanto que a $15^\circ C$, de $20$ semillas germinaron $15$. Calcule un intervalo de confianza del $95\%$ para la diferencia en la proporción de semillas que germinaron a las dos temperaturas y decida si esta diferencia es significativa.
+::: 
+
+
+
+::: {#exr-5.8}
+Un fabricante de planchas eléctricas produce estos artículos en dos plantas en las que las partes pequeñas son surtidas por el mismo proveedor. El fabricante puede ahorrar algo si le compra a un proveedor local los termostatos para la planta B. Para probar si estos nuevos termostatos son tan precisos como los anteriores le compra sólo un lote al proveedor local y los prueba en planchas a $550^\circ F$. Al final lee con un termo par las temperaturas reales y las redondea al siguiente $0.1^\circ F$ más cercano. Los datos son los siguientes:
+
+### Proveedor nuevo (°F)
+
+|       |       |       |       |       |       |       |
+|-------|-------|-------|-------|-------|-------|-------|
+| 530.3 | 559.3 | 549.4 | 544.0 | 551.7 | 566.3 |
+| 549.9 | 556.9 | 536.7 | 558.8 | 538.8 | 543.3 |
+| 559.1 | 555.0 | 538.6 | 551.1 | 565.4 | 554.9 |
+| 550.0 | 554.9 | 554.7 | 536.1 | 569.1 |       |
+
+### Proveedor anterior (°F)
+
+|       |       |       |       |       |       |       |
+|-------|-------|-------|-------|-------|-------|-------|
+| 559.7 | 534.7 | 554.8 | 545.0 | 544.6 | 538.0 |
+| 550.7 | 563.1 | 551.1 | 553.8 | 538.8 | 564.6 |
+| 554.5 | 553.0 | 538.4 | 548.3 | 552.9 | 535.1 |
+| 555.0 | 544.8 | 558.4 | 548.7 | 563.0 |       |
+
+a. Calcule un intervalo del $95\%$ para $\frac{\sigma_1^2}{\sigma_2^2}$
+
+b. Calcule un intervalo del $95\%$ para $\frac{\sigma_1}{\sigma_2}$
+
+donde $\sigma_1^2$ y $\sigma_2^2$son las varianzas de la población de las lecturas de los termostatos del proveedor nuevo y del anterior, respectivamente.
+::: 
+
+
+::: {#exr-5.9}
+Se seleccionó una muestra aleatoria de $30$ empresas que comercializan productos inalámbricos para determinar la proporción de tales empresas que implementaron software nuevo para aumentar la productividad. Resultó que 8 de las 30 empresas habían implementado tal software. Calcule un intervalo de confianza del $95\%$ en $p$, la proporción verdadera de ese tipo de empresas que implementaron el nuevo software.
+::: 
+
+::: {#exr-5.10}
+Remítase al ejercicio anterior. Suponga que se desea saber sila estimación puntual $\hat{p} = 8/30$ es
+lo suficientemente precisa porque el intervalo de confianza alrededor de $p$ no es tan estrecho como se requiere.
+Utilice $\hat{p}$ como el estimado de p para determinar cuántas empresas habría que incluir en una muestra para
+obtener un intervalo de confianza del $95\%$ con una anchura de sólo $0.05$.
+:::
+
+::: {#exr-5.10}
+El siguiente conjunto de datos, con mediciones en cientos de horas, representa la vida útil de diez componentes electrónicos idénticos que operan en un sistema de control de guía para proyectiles:
+\[0.637; 1.531; 0.733; 2.256 ;2.364
+1.601; 0.152; 1.826; 1.868; 1.126\]
+Se supone que la vida útil de un componente de este tipo sigue una distribución de Weibull con
+una función de densidad dada por
+$$f(y|\theta)=\left\{\begin{array}{ll}\left(\frac{2y}{\theta}\right)e^{-y^2/\theta},&y>0\\0,&\mbox{ en cualquier otro punto.}\end{array}\right.$$.
+
+a. Determine un estadístico suficiente que resuma mejor la información de $\theta$.
+
+b. Determine una función del estadístico suficiente encontrado en el anterior item que sea insesgada para $\theta$.
+
+c. Utilice los datos para construir un intervalo de confi anza de $95\%$ para $\theta$. Encuentre una cantidad pivote.
+::: 
+
+::: {#exr-5.11}
+Supongamos que deseamos entimar $\theta$, la proporción de personas con tuberculosis en una gran población homogénea.Para esto nosotros seleccionamos aleatoriamente $n$ individuos y encontramos $x$ de ellos que tienen la enfermedad. Ya que la población es grande y homogénea, nosotros asumimos que los $n$ individuos son examinados de manera independiente y que cada uno tiene probabilidad $\theta$ de tener tuberculosis. La probabilidad del evento observado $E$ es entonces 
+
+$$\begin{align}
+P(E;\theta)&=P(\mbox{$x$ de $n$ tienen tuberculosis}) \nonumber\\
+&=\binom{n}{x}\theta^x(1-\theta)^{n-x}
+\end{align}$$
+donde $0\leq \theta \leq 1$
+
+a. Determine el estimador de máxima verosimilitud e interprete en el contexto del problema.
+
+b. Suponga que de $100$ personas son examinadas, tres son encontrados con tuberculosis. Sobre la base de estas observaciones, ¿cuales valores de $\theta$ son plausibles? Para responder, utilice el método gráfico de la función de verosimilitud relativa para hallar los intervalos de verosimilitud (IL) del $1\%$, $10\%$ y $50\%$.
+
+c. Suponga que de $200$ personas son examinadas, seis son encontrados con tuberculosis. Sobre la base de estas observaciones, ¿cuales valores de $\theta$ son plausibles? Para responder, utilice el método gráfico de la función de verosimilitud relativa para hallar los intervalos de verosimilitud (IL) del $1\%$, $10\%$ y $50\%$.
+
+d. Compare b y c. con las dos gráficas en el mismo cuadro de inspección.
+::: 
+
+
+::: {#exr-5.12}
+No es usualmente posible contar el número de bacterias en una muestra de agua de rio, uno únicamente puede determinar si están presentes o no están presentes las bacterias en la muestra. Para esto, cada uno de los $n$ tubos de ensayo contienen un volumen $v$ de agua de rio, los cuales son encubados y evaluados. Una prueba negativa muestra que no hay bacterias presentes, mientras que una prueba positiva muestra que al menos una bacteria está presente. Si $y$ tubos de $n$ evaluados, dan resultados negativos, determine:
+
+a. ¿Cuál es el estimador de máxima verosimilitud para $\mu$?, si la probabilidad de que haya $x$ bacterias en un volumen $v$ de agua de rio está dado por una distribución de Poisson con media $\mu v$:
+
+$$\begin{align}
+f(x)&=\frac{(\mu v)^x\exp\{-\mu v\}}{x!}; \mbox{para $x=0,1,2,\ldots$}
+\end{align}$$
+Hind: Empiece estableciendo que $p=f(0)=\exp\{-\mu v\}$ y que la probabilidad de observar $y$ reacciones negativas en $n$ ensayos es: ´
+$$\begin{align}
+P(E;\theta)&=\binom{n}{y}p^y(1-p)^{n-y}; \mbox{$\mu\geq 0$}
+\end{align}$$
+b. Considere un experimento donde se observan $y=28$ reacciones negativas en $n=40$ tubos de ensayo. Cada uno conteniendo $v=10$ml. Obtenga un intervalo IL del $50\%$ para $\mu$.
+
+c. Considere un experimento donde se observan $y=37$ reacciones negativas en $n=40$ tubos de ensayo. Cada uno conteniendo $v=1$ml. Obtenga un intervalo IL del $50\%$ para $\mu$.
+
+d. Establezca la función de logverosimilitud  mezcla $l(\mu)=l_1(\mu)+l_2(\mu)$, donde $l_1(\mu$ es la logverosimilitud del modelo del item b. y $l_2(\mu)$ es la logverosimilitud del modelo del item c. De $l(\mu)$ determine la función de verosimilitud relativa $r(\mu)$ y con esta obtenga un intervalo IL del $50\%$ para $\mu$.
+::: 
 
 ## Referencias
 

@@ -730,7 +730,7 @@ De ahí que $\bar{X}\sim N(\mu,\frac{\sigma^2}{n})$.
 
 ::: {.definition #def-1.7}
 (Wackerly et al. (2008)) 
-Sea $\nu$ un entero positivo. Se dice que una v.a $Y$ tiene distribuci\'on **chi cuadrada con $\nu$ grados de libertad** si y sólo si $Y$ es una vriable aleatoria con distribución gamma y parámetros $\alpha=\nu/2$ y $\beta=2$.
+Sea $\nu$ un entero positivo. Se dice que una v.a $Y$ tiene distribución **chi cuadrada con $\nu$ grados de libertad** si y sólo si $Y$ es una vriable aleatoria con distribución gamma y parámetros $\alpha=\nu/2$ y $\beta=2$.
 :::
 
 
@@ -749,29 +749,29 @@ c. $\frac{(n-1)S_n^2}{\sigma^2}\sim \mathcal{X}^2_{n-1}.$
 ::: {#thm-9}
 (Wackerly et al. (2008)) Sean $Y_1,\,Y_2,\cdots,\,Y_n$ definidas como en el Teorema @thm-7 de Wackerly et al. (2008) y definimos $Z_i$ por 
 	$$Z_i=\frac{Y_i-\mu_i}{\sigma_i}$$
-	con $i=1,\,2,\cdots,\,n$. Entonces $\sum_{i=1}^nZ_i^2$ tiene distribuici\'on $\chi^2$ con $n$ grados de libertad. 
+	con $i=1,\,2,\cdots,\,n$. Entonces $\sum_{i=1}^nZ_i^2$ tiene distribuición $\chi^2$ con $n$ grados de libertad. 
 :::
 
 ::: {#thm-10}
-(Wackerly et al. (2008)) Si $Y_1,\,Y_2,\cdots,\,Y_n$ es una muestra aleatoria de una distribuci\'on normal con media $\mu$ y varianza $\sigma^2$, $Y_i$, $i=1,\,2,\cdots,n$ son v.a's independientes distribu\'idas normalmente, con $E(Y_i)=\mu$ y $V(Y_i)=\sigma^2$.
+(Wackerly et al. (2008)) Si $Y_1,\,Y_2,\cdots,\,Y_n$ es una muestra aleatoria de una distribución normal con media $\mu$ y varianza $\sigma^2$, $Y_i$, $i=1,\,2,\cdots,n$ son v.a's independientes distribuídas normalmente, con $E(Y_i)=\mu$ y $V(Y_i)=\sigma^2$.
 
 Entonces $$Z_i=\frac{Y_i-\mu}{\sigma}$$
 		son v.a's independientes, $i=1,\,2,\cdots,n$  y 
-		$$\sum_{i=1}^nZ_i^2=\sum_{i=1}^n\left(\frac{Y_i-\mu}{\sigma}\right)^2$$tienen una distribuci\'on $\chi^2$ con $n$ grados de libertad (gl).
+		$$\sum_{i=1}^nZ_i^2=\sum_{i=1}^n\left(\frac{Y_i-\mu}{\sigma}\right)^2$$tienen una distribución $\chi^2$ con $n$ grados de libertad (gl).
 :::
 
 ::: {#thm-11}
 (Wackerly et al. (2008)) Sea $Y_1,\,Y_2,\cdots,\,Y_n$ una muestra aleatoria con media $\mu$ y varianza $\sigma^2$. Entonces
 		$$\frac{(n-1)S^2}{\sigma^2}=\frac{1}{\sigma^2}\sum_{i=1}^n(Y_i-\overline{Y})^2$$
-		tiene una distribuci\'on $\chi^2$ con $(n-1)$ gl. $\overline{Y}$ y $S^2$ son v.a independientes.
+		tiene una distribución $\chi^2$ con $(n-1)$ gl. $\overline{Y}$ y $S^2$ son v.a independientes.
 :::
 
 
 ::: {.definition #def-1.8}
 (Wackerly et al. (2008))
-Sea $Z$ una v.a normal est\'andar y sea $W$ una v.a con distribuci\'on $\chi^2_\nu$. Entonces, si $W$ y $Z$ son ind
+Sea $Z$ una v.a normal estándar y sea $W$ una v.a con distribución $\chi^2_\nu$. Entonces, si $W$ y $Z$ son ind
 		$$T=\frac{Z}{\sqrt{W/\nu}}$$
-		se dice que tiene una distribuci\'on $t$ con $\nu$ grados de libertad.
+		se dice que tiene una distribución $t$ con $\nu$ grados de libertad.
 :::
 
 
@@ -805,7 +805,7 @@ Como se indica en la [Observación 7.1](#obs-normal), esta propiedad...
 ::: {.definition #def-1.9}
 Sean $W_1$ y $W_2$ v.a's independientes con distribución $\chi^2$, con $\nu_1$ y $\nu_2$  grados de libertad respectivamente. Entonces se dice que:
 		$$F=\frac{W_1/\nu_1}{W_2/\nu_2}$$
-		tiene una distribuc\'on $F$ con $\nu_1$ grados de libertad en el numerador y $\nu_2$ grados de libertad en el denominador.
+		tiene una distribución $F$ con $\nu_1$ grados de libertad en el numerador y $\nu_2$ grados de libertad en el denominador.
 :::
 
 
@@ -824,7 +824,7 @@ $$
 			&=&\frac{S_1^2/\sigma_1^2}{S_2^2/\sigma_2^2}
 		\end{eqnarray*}
 $$
-		tiene distribuci\'on $F$ con $(n_1-1)$ gl en el numerador y $(n_2-1)$ gl en el denominador    
+		tiene distribución $F$ con $(n_1-1)$ gl en el numerador y $(n_2-1)$ gl en el denominador    
 ::: 
 
 
@@ -970,7 +970,7 @@ knitr::kable(resultados, digits = 5)
 ::: {#thm-12}
 Sean $Y_1,\,Y_2,\cdots,\,Y_n$  v.a's  con funciones generadoras de momentos $m(t)$  y $m_1(t),\,m_2(t),\cdots,$ respectivamente. Si 
 	$$\lim_{n\rightarrow\infty}m_n(t)=m(t)\mbox{ para toda $t$ real,}$$
-	entonces la funci\'on de distribuci\'on de $Y_n$ converge hacia la funci\'on de distribuci\'on de $Y$ cuando $n\rightarrow\infty$
+	entonces la función de distribución de $Y_n$ converge hacia la función de distribución de $Y$ cuando $n\rightarrow\infty$
 :::
 
 
@@ -1015,6 +1015,7 @@ incorreladas.
 
 
 ### Ley fuerte de los grandes números
+
 ::: {#thm-line}
 Sea $X 1,\ldots, X_n$ una sucesión de variables aleatorias incorreladas con momentos de segundo orden acotados por una constante $C$, independiente de $n$. Sea $S_n = \sum_{i=1  }^{n}X_i$. Entonces
 		$$
@@ -1028,7 +1029,7 @@ y, como consecuencia $$\lim _{n\to \infty }\frac{S_n-E(S_n)}{n}=0$$ en el sentid
 
 ## Teorema central del límite
 ::: {#thm-line}
-**Central de Límite** Sean $Y_1,\,Y_2,\cdots,\,Y_n$  v.a's iid ( no se precisa de que distribuci\'on se generan) con $E[Y_i]=\mu$ y $V[Y_i]=\sigma^2<\infty$. Definamos 
+**Central de Límite** Sean $Y_1,\,Y_2,\cdots,\,Y_n$  v.a's iid ( no se precisa de que distribución se generan) con $E[Y_i]=\mu$ y $V[Y_i]=\sigma^2<\infty$. Definamos 
 	$$U_n=\frac{\sum_{i=1}^nY_i-n\mu}{\sigma\sqrt{n}}=\frac{\overline{Y}-\mu}{\sigma/\sqrt{n}}\mbox{ donde} \overline{Y}=\frac{1}{n}\sum_{i=1}^nY_i$$
 Entonces la función de distribución de $U_n$ converge hacia la función de distribución normal estándar cuando n tiende a infinito . Esto es,
 $$\lim_{n\rightarrow\infty}P(U_n\leq u)=\int_{-\infty}^u\frac{1}{\sqrt{2\pi}}e^{-t^2/2}dt, \forall u$$ 
@@ -1050,7 +1051,98 @@ $$\lim_{n\rightarrow\infty}P(U_n\leq u)=\int_{-\infty}^u\frac{1}{\sqrt{2\pi}}e^{
 <!-- ::: -->
 
 <!-- See @thm-line. -->
+## Ejercicio 
 
+::: {#exr-1.1}
+Para $i=1,...,n$ sea $\{X_{i}\}$ variables aleatorias independientes. Tal que 
+\begin{align*}
+	P(X_n=1)&=p_n,\\
+	P(X_n=0)&=1-p_n.
+\end{align*}
+
+¿Bajo qué condiciones de $p_n$, $X_{n}\xrightarrow{P}0$ cuando $n\to \infty$?
+:::
+
+::: {#exr-1.2}
+Sea $\{X_{i}\}$ v.a.i.i.d, tal que $E(X_{i})=\mu$ y $Var(X_{i})=\sigma^2$ para todo $i=1,...,n$. Muestre que $E(\hat{X}_{n}-\mu)^2\xrightarrow{}0$ cuando $n\to \infty$.
+::: 
+
+::: {#exr-1.3}
+Para $i=1,...,n$ sea $\{X_{i}\}$ variables aleatorias reales. Supongase que $\sqrt{n}(X_n-\mu)\xrightarrow{d}N(0,\sigma^2)$. Demostrar que $X_n\xrightarrow{P}\mu$, cuando $n\to \infty$.
+::: 
+
+
+::: {#exr-1.4}
+Sea $S={1,2,3,4}$ y sobre los subconjuntos de $S$ se definen las siguientes variables aleatorias con función de distribución uniforme  discreta de la siguiente manera:
+\begin{align*}
+&X_{n}(1)=X_{n}(2)=1,\ \
+X_n(3) = X_n(4) = 0, n=1,2,...\\ 
+&X(1)=X(2)=0,\ \
+X(3) = X(4) = 1.
+\end{align*}
+Muestre que $X_n\xrightarrow{d}X$, pero no converge en probabilidad cuando $n\to \infty$
+:::
+
+
+::: {#exr-1.5}
+
+Demuestre la Desigualdad de Chebychev que establece los siguiente. Si $X$ es una variable aleatoria tal que $\exists E(X^2)$, se tiene
+	\begin{align*}
+	P(|X-E(X)|\geq k)\leq \frac{Var[X]}{k^2}, \forall k > 0
+	\end{align*}
+:::
+
+
+::: {#exr-1.6}
+Sea $g(Y)=Y-\mu$, donde $Y$ es una v.a normalmente distribuida con media $\mu$ y varianza $\sigma^2$. Encuentre la función generadora de momento para $g(Y)$.
+:::
+
+
+::: {#exr-1.7}
+%Denotemos con $m_X(t)$ y $m_Y(t)$ las funciones generadoras de momentos de las v.a's $X$ y $Y$, respectivamente. 
+Demuestre que si existen funciones generadoras de momento y $M_X(t)=M_Y(t)$ para toda $t$, entonces $X$, y $Y$ tienen la misma distribución de probabilidad.
+::: 
+
+::: {#exr-1.8}
+Sea $Y$ una variable aleatoria normalmente distribuida con media $\mu$ y varianza $\sigma^2$. Demuestre que 
+$$Z=\frac{Y-\mu}{\sigma}$$
+tiene una distribución normal estándar, una distribución con media 0 y varianza 1.
+:::
+
+::: {#exr-1.9}
+Demostrar el siguiente teorema. 
+::: 
+
+::: {#thm-1.16}
+
+Sea $X 1,\ldots, X_n$ una muestra aleatoria simple de una población $X$ con función generadora de momentos $M_X(t)$. La función generatriz de momentos de $X$ es 
+\begin{align*}
+	&M_{\bar{X}}(t)=\left(M_X\left(\frac{t}{n}\right)\right)^n
+\end{align*}	 .
+::: 
+
+::: {#exr-1.10}
+
+Una máquina embotelladora puede ser regulada para que descargue un promedio de $\mu$ onzas por botella. Se ha observado que la cantidad de líquido dosificado por la m\'aquina está distribuida normalmente con $\sigma=1$ onza. Una muestra de $n=9$ botellas se selecciona aleatoriamente de la producción de la máquina en un día determinado (todas embotelladas  con el mismo ajuste de la máquina) y las onzas de contenido líquido se miden para cada una. Determine la probabilidad de que la media muestral se encuentre a no más de .3 onza de la verdadera media $\mu$ para el ajuste seleccionado de la máquina
+::: 
+
+::: {#exr-1.11}
+Bajo el mismo contexto del Ejemplo 7.1. Determinar ?`Cuántas observaciones deben de estar incluídas en la muestra si deseamos que $\overline{Y}$ se encuentre a no más de 0.3 onzas de $\mu$ con probabilidad 0.95?
+::: 
+
+
+::: {#exr-1.12}
+La resistencia  a la tensión para un tipo de alambre se distribuye $N(\mu,\,\sigma^2)$. $Y_i$: La resistencia a la tensión para el trozo $i$, se mide para $i=1,\cdots,\,6$.
+
+La media $\mu$ y la varianza $\sigma^2$ pueden ser estimadas por $\overline{X}$ y $S^2$, respectivamente $\sigma_{\overline{Y}}^2=\frac{\sigma^2}{n}$ puede ser estimada por $\frac{S^2}{n}$. Encuentre la probabilidad aproximada de que $\overline{Y}$ esté dentro de $\frac{2S}{n}$ de la verdadera media poblacional $\mu$.
+:::
+
+
+::: {#exr-1.13}
+Sean $Y_1,\,Y_2,\cdots,\,Y_n$  v.a's  con funciones generadoras de momentos $m(t)$  y $m_1(t),\,m_2(t),\cdots,$ respectivamente. Si 
+$$\lim_{n\rightarrow\infty}m_n(t)=m(t)\mbox{ para toda $t$ real,}$$
+entonces la función de distribución de $Y_n$ converge hacia la función de distribución de $Y$ cuando $n\rightarrow\infty$
+:::
 
 
 

@@ -1241,6 +1241,7 @@ $E(Y_1) = E[E(Y_1 \mid Y_2)]$,
 
 donde en el lado derecho de la ecuación el valor esperado interior es con respecto a la distribución condicional de $Y_1$ dada $Y_2$, y el valor esperado exterior es con respecto a la distribución de $Y_2$.
 ::: 
+
 ---
 
 ::: {#thm-3.7}
@@ -1416,7 +1417,6 @@ $$0\leq P(|\hat{\theta}_n-\theta|>\varepsilon)\leq \frac{V(\hat{\theta}_n)}{\var
 	Luego 
 	$$\lim_{n\rightarrow\infty}P(|\hat{\theta}_n-\theta|>\varepsilon)=0$$
 	luego $\hat{\theta}_n$ es un estimador consistente para $\theta$.
-	
 ::: 
 
 
@@ -1436,7 +1436,7 @@ método para construirlos. **El siguiente teorema establece este resultado. Pode
 :::
 
 
-::: {.definition #def-3.4}
+::: {.definition #def-3.6}
 ## estadístico completo
 Sea $f_T(t|\theta)$ la función de densidad (o de masa de probabilidad) de un estadístico $T$ . Diremos que la familia de distribuciones ${f_T(t|\theta) : \theta\in \Theta}$ es completa si se da la implicación siguiente:
 \begin{align}
@@ -1444,6 +1444,7 @@ E_\theta(g(T))=0 \mbox{para todo $\theta$ entonces}  P_\theta(g(T) = 0) = 1 \mbo
 \end{align}
 
 En ese caso diremos que $T$ es un estadístico completo.
+
 ```{r}
 ## Completitud para T ~ Binomial(n, p)
 set.seed(1)
@@ -1492,8 +1493,9 @@ tab <- data.frame(
 print(tab, row.names = FALSE)
 
 ```
+
 ::: {.callout-tip #tip-3.2}
-### Qué observar
+## Qué observar
 
 - Para $g_0(T)\equiv 0$, la media empírica es $\approx 0$ para todos los $p$.  
 
@@ -1556,8 +1558,6 @@ $$
 
 Por **Lehmann–Scheffé**, $W_T$ es el **UMVUE**.
 
-
-
 **Idea teórica rápida**
 
 - Para $\tau(\lambda)=\lambda$:  
@@ -1576,22 +1576,23 @@ $$
   (X_1,\dots,X_n)\mid T=t \sim \text{Multinomial}\Big(t;\tfrac{1}{n},\dots,\tfrac{1}{n}\Big),
 $$
 
-  así que  
+así que  
 
 $$
   \Pr(X_1=0 \mid T=t)=\Big(1-\tfrac{1}{n}\Big)^t.
 $$
 
-  Por ende,  
+Por ende,  
 
- $$
+$$
   W_T = \mathbb{E}[\,\mathbf 1\{X_1=0\}\mid T] 
   = \Big(1-\tfrac{1}{n}\Big)^T,
 $$
 
-  que es el **UMVUE de $e^{-\lambda}$**.
-
+que es el **UMVUE de $e^{-\lambda}$**.
 ::: 
+
+
 
 ```{r}
 ## Lehmann–Scheffé con Poisson ----
@@ -1660,6 +1661,7 @@ cat(sprintf("Var(T/n)  <= Var(X1):           %.5f <= %.5f\n", var_W1_RB_theo, va
 cat(sprintf("Var(((n-1)/n)^T) <= Var(1{X1=0}): %.5f <= %.5f\n", var_W2_RB_theo, var_W2_naive_theo))
 
 ```
+
 **Qué comprueba el script**
 
 - **Insesgadez:** las medias empíricas de $W$ y $W_T$ aproximan $\tau(\lambda)$ (ya sea $\lambda$ o $e^{-\lambda}$).  
@@ -1806,7 +1808,6 @@ out <- explore_LS(lambda = 2, n = 10, Nsim = 20000, seed = 123, show_plots = TRU
 # Mira los resúmenes:
 out$resumen_empirico
 out$resumen_teorico
-
 ```
 **Qué muestra**
 
@@ -1820,7 +1821,7 @@ out$resumen_teorico
 
 ---
 
- **Sugerencia:** juega con $\lambda$ y $n$ en `explore_LS(lambda, n, ...)` para ver cómo cambia la varianza.  
+**Sugerencia:** juega con $\lambda$ y $n$ en `explore_LS(lambda, n, ...)` para ver cómo cambia la varianza.  
 Por **Lehmann–Scheffé**, $W_T$ es el **UMVUE** y único (bajo varianza finita) cuando $T$ es suficiente y completo.
 
 
@@ -1833,13 +1834,13 @@ Sea $X_1,\ldots, X_n$ una m.a.s. de $X\sim Pois(\lambda)$, con $\lambda>0$. En e
 
 La versión del teorema central del límite para variables aleatorias independientes e idénticamente distribuidas puede aplicarse porque $V(X) = \lambda < \infty$.
 
-\begin{align}
+$$\begin{align}
 \frac{\sqrt{n}(\hat{\lambda}_n-\lambda)}{\sqrt{\lambda}}\longrightarrow N(0,1) \mbox{ débilmente,}
-\end{align}
+\end{align}$$
 es decir, para todo $\lambda\in \Theta$ y para todo $w\in\mathbb{R}$,
-\begin{align}
+$$\begin{align}
 P_\lambda(\hat{\lambda}\leq w)\approx \phi\left(\frac{\sqrt{n}(w-\lambda)}{\sqrt{\lambda}}\right)
-\end{align}
+\end{align}$$
 donde $\phi$ es la función de distribución de la normal estándar. La aproximación es tanto mejor cuanto mayores son $n$ o $\lambda$.
 
 Obsérvese que $\hat{\lambda}_n$ es consistente pues, por las leyes de los grandes números,
@@ -1900,8 +1901,6 @@ Aplicando el **método delta**.
 		\end{align}
 ::: 
 
-
-
 ### Eficiencia relativa asintótica
 Sea $T_n(\underset{\sim}{X}) = T_n(X_1 , \ldots, X_n)$ una sucesión de estimadores de una función $\tau(\theta)$ que verifica lo siguiente:
 	\begin{align}
@@ -1927,11 +1926,149 @@ ARE(\theta, S_n , T_n)=\frac{\frac{1}{\sigma_S^2(\theta)}}{\frac{1}{\sigma_T^2(\
 
 
 **El valor de la eficiencia relativa asintótica puede interpretarse como el cociente de los tamaños de muestra necesarios para obtener la misma precisión asintótica (o la misma varianza asintótica) mediante los dos estimadores en la estimación de $\tau(\theta)$. En efecto, si elegimos tamaño muestral m para $T$ y n para $S$, las varianzas asintóticas son, respectivamente, $\frac{\sigma_T^2(\theta)}{m}$ y $\frac{\sigma_S^2(\theta)}{n}$. Si forzamos aque ambas sean iguales, se tiene que**
-\begin{align}
+$$\begin{align}
 \frac{\sigma_T^2(\theta)}{m}=\frac{\sigma_S^2(\theta)}{n}\Longleftrightarrow\frac{m}{n}=\frac{\sigma_T^2(\theta)}{\sigma_S^2(\theta)}=ARE(\theta, S_n , T_n)
-\end{align}
+\end{align}$$
 
 Es decir, si $ARE(\theta, S_n , T_m) = 0.5$ entonces $S$ es menos eficiente que $T$ asintóticamente: para tener la misma precisión con el estimador $S$ hace falta una muestra el doble de grande que si utilizásemos $T$ ($ARE(\theta, S_n , T_m)= 0.5=\frac{m}{n}\Longrightarrow n = 2m$).
+
+---
+## Ejercicios 
+
+::: {#exr-3.1}
+Se cuenta con una muestra de variables aleatorias independientes e idénticamente distribuidas $x=(x_1,\ldots,x_n)$ como cada uno de los modelos que se indican abajo. 
+
+1. Poisson$(\lambda)$
+2. Normal con media conocida $\mu$ y varianza desconocida $\sigma^2$
+3. $f(x;\theta)=\theta x^{\theta-1}I_{\left[0,1\right]}(x)$
+
+Encuentra un estimador de momentos y el estimador de máxima verosimilitud. Determine si son insesgados asintóticamente (ve la Sección 11.7 del Kalbfleisch donde se define este
+concepto) o no y suficientes. Encuentra el vector de estadísticas suficientes de menor dimensión. Demuestre si es suficiente minimal o no.
+::: 
+
+::: {#exr-3.2}
+Se toma una muestra de tamaño $n=1$ de una m.a.s de $X\sim exp(\lambda)$, es decir $f(x|\lambda)=\lambda\exp(-\lambda x)I_{\left[0,\infty\right)}(x), \lambda>0$ y se observa $x=3$. Determine la verosimilitud $L(\lambda|3)$ y establezca el estimador máximo verosil. 
+::: 
+
+::: {#exr-3.3}
+Sea  $X_1,\ldots, X_n$ una sucesión de variables aleatorias iid Bernoulli con parámetro $\theta$, con $0<\theta<1$. Muestre que $T(\underset{\sim}{X})=X_1+\ldots+ X_n$ es un estadístico suficiente para $\theta$.
+
+::: 
+
+::: {#exr-3.4}
+Sea $X_1,\ldots, X_n$ una sucesión de v.a.s iid de $X\sim N(\mu,\sigma^2)$, donde $\sigma^2$ es conocida. Utilizando el teorema 1.3 muestre que  $T(\underset{\sim}{X})=T(X_1,\ldots, X_n)=\bar{X}=\frac{\sum_{i=1}^{n}X_i}{n}$ es una estadística suficiente para $\mu$.
+::: 
+
+::: {#exr-3.5}
+Sea $X_1,\ldots, X_n$ una sucesión de v.a.s iid de $X\sim N(\mu,\sigma^2)$, donde $\sigma^2$ es conocida. Utilizando el teorema 1.3 muestre que  $T(\underset{\sim}{X})=T(X_1,\ldots, X_n)=\bar{X}=\frac{\sum_{i=1}^{n}X_i}{n}$ es una estadística suficiente para $\mu$.
+::: 
+
+::: {#exr-3.6}
+Sea $X_1,\ldots, X_n$ una sucesión de v.a.s iid de $X\sim \mbox{Uniforme discreta sobre $1,\ldots,\theta$}$ definida de la siguiente manera.
+\begin{align}
+f(x|\theta)= \left\{ \begin{array}{lcc}
+\frac{1}{\theta} &   si  & x=1, 2, \ldots, \theta \\
+\\ 0 &  en & \mbox{cualquier otro caso}
+\end{array}
+\right.
+\end{align}
+Utilice el teorema de factorización y determine que $T(\underset{\sim}{X})=\max_iX_i$ es un estadístico suficiente para $\theta$.
+::: 
+
+::: {#exr-3.7}
+Muestre que $T_2=X_1+X_2$ es un estadístico suficiente para $\theta$, donde $\theta$ es el parámetro de la distribución Bernoulli, la cual es la distribución de una muestra aleatoria simple de tamaño dos $X_1, X_2$.
+::: 
+
+::: {#exr-3.8}
+Muestre que $T_2^{´}=X_1X_2$ NO es un estadístico suficiente para $\theta$, donde $\theta$ es el parámetro de la distribución Bernoulli, la cual es la distribución de una muestra aleatoria simple de tamaño dos $X_1, X_2$.
+::: 
+
+::: {#exr-3.9}
+Sea $X_1,\ldots, X_n$ una mas de $X\sim N(\mu, \sigma^2)$. Demuestre que $\bar{X}$ y $S^2$ son estimadores insesgados para $\mu$ y $\sigma^2$ respectivamente
+::: 
+
+::: {#exr-3.10}
+Sea $X_1,\ldots, X_n$ una mas de $X\sim N(\mu, \sigma^2)$. Muestre que el error cuadrático medio de  $\bar{X}$ y $S^2$ coindien con su varianza respectivamente.
+::: 
+
+::: {#exr-3.11}
+Sea $X_1,\ldots, X_n$ m.a.s. de $X\sim N(\mu, 1)$, $-\infty<\mu<\infty$. La media $\bar{X}$ y la mediana muestral $M_n$ son estimadores insesgados de $\mu$. Para $n=21$,  muestre que la mediana muestral $M_n$ es inanmisible para $\mu$, frente a $\bar{X}$.
+::: 
+
+::: {#exr-3.12}
+Suponga que $\hat{\theta}$ es un estimador para un parámetro $\theta$ y $E(\hat{\theta}) = a\theta+b$ para algunas constantes diferentes de cero a y b.
+
+a. En términos de a, b, y $\theta$, ¿cuál es sesgo $B(\hat{\theta})$?
+
+b. Encuentre una función de $\hat{\theta}$, por ejemplo $\hat{\theta}^{*}$ que es un estimador insesgado para $\theta$.
+::: 
+
+::: {#exr-3.13}
+Usando la identidad
+\begin{align}
+(\hat{\theta}-\theta) = [\hat{\theta}-E( \hat{\theta})] + [E(\hat{\theta})-\theta] = [\hat{\theta}-E(\hat{\theta})] + B(\hat{\theta}),
+\end{align}
+
+demuestre que
+\begin{align}
+MSE(\hat{\theta}) = E[(\hat{\theta}-\theta)^2]= V(\hat{\theta})+(B(\hat{\theta}))^2.
+\end{align}
+::: 
+
+::: {#exr-3.14}
+Consulte los Ejercicios en (@exr-3.13) y considere el estimador insesgado $\hat{\theta}^*$ que usted propuso en el Ejercicio (@exr-3.12). Exprese $MSE(\hat{\theta}^*)$ como función de $V(\hat{\theta}^*)$.
+::: 
+
+::: {#exr-3.15}
+Suponga que $E(\hat{\theta}_1) = E(\hat{\theta}_2) = \theta$, $V(\hat{\theta}_1) = \sigma_1^2$ , y $V(\hat{\theta}_2)=\sigma_2^2$. Considere el estimador $\hat{\theta}_3=a\hat{\theta}_1+(1-a)\hat{\theta}_2$.
+
+a. Demuestre que $\hat{\theta}_3$ es un estimador insesgado para $\theta$.
+
+b. Si $\hat{\theta}_2$ son independientes, ¿cómo debe escogerse la constante $a$ para minimizar la varianza de
+$\hat{\theta}_3$?
+::: 
+
+::: {#exr-3.16}
+Suponga que $E(\hat{\theta}_1) = E(\hat{\theta}_2) = \theta$, $V(\hat{\theta}_1) = \sigma_1^2$ , y $V(\hat{\theta}_2)=\sigma_2^2$. Considere el estimador $\hat{\theta}_3=a\hat{\theta}_1+(1-a)\hat{\theta}_2$.
+
+a. ¿Cómo debe elegirse la constante a para minimizar la varianza de $\hat{\theta}_3$ , si $\hat{\theta}_1$ y $\hat{\theta}_2$ no son independientes pero son tales que $Cov(\hat{\theta}_1 , \hat{\theta}_2) = c \neq 0$?
+::: 
+
+::: {#exr-3.17}
+Suponga que $Y_1,\, Y_2,\, Y_3$ denotan una muestra aleatoria ind de una distribuci\'on exponencial con funci\'on de densidad
+$$f(y)=\left\{\begin{array}{ll}\left(\frac{1}{\theta}\right)e^{-y/\theta},& y>0,\\0,&\mbox{ en cualquier otro punto}\end{array}\right.$$
+Considere los siguientes estimadores de $\theta$:
+$$\hat{\theta}_1= Y_1,\,\,\,\,\,\,\,\,\,\,\hat{\theta}_2=\frac{Y_1+Y_2}{2},\,\,\,\,\,\,\,\,\,\,\hat{\theta}_3=\frac{Y_1+2Y_2}{3},\,\,\,\,\,\,\,\,\,\,\hat{\theta}_4=\min(Y_1,\,Y_2,\,Y_3),\,\,\,\,\,\,\,\,\,\,\hat{\theta}_5=\overline{Y}$$
+
+a. ¿Cuáles son insesgados?
+b. Entre los estimadores insesgados, ¿cuál tiene la varianza más pequeña?
+::: 
+
+::: {#exr-3.18}
+Sean $Y_1,\,Y_2,\cdots,Y_n$ una muestra con $E(Y_i)=\mu$ y $V(Y_i)=\sigma^2$. Demuestre que 
+	$$S'^2=\frac{1}{n}\sum_{i=1}^n(Y_i-\overline{Y})^2$$
+	es un estimador sesgado para $\sigma^2$ y que
+	$$S^2=\frac{1}{n-1}\sum_{i=1}^n(Y_i-\overline{Y})^2$$
+	es un estimador insesgado para $\sigma^2$.
+::: 
+
+::: {#exr-3.19}
+Sea $\{X_n\}$ para $n\leq 1$ , sucesión de variables aleatorias independientes e idénticamente distribuidas definidas en el espacio de probabilidad $(\Omega, \mathcal{A}, P)$ con función de distribución común $F$ . Se denota por $F_n$ la función de distribución empírica obtenida de las $n$ primeras variables aleatorias $X_1 ,\ldots, X_n$ . Sea $x\in\mathbb{R}$.
+Verifique lo siguiente:
+
+a. $P(nF_n(x)=j)=P(F_n(x)=\frac{j}{n})=\binom{n}{j}(F(x))^j(1-F(x))^{n-j}$, $j=1,\ldots,n$\\
+
+b. $E(F_n(x))=F(x)$; $Var(F_n(x))=\frac{1}{n}F(x)(1-F(x))$.
+
+c. $\lim _{n\to \infty }F_{n}(x)=F(x)$
+
+d. $\lim _{n\to \infty }\frac{F_{n}(x)-F(x)}{\sqrt{\frac{F(x)(1-F(x))}{n}}}=Z$, donde $Z$ es una variable aleatoria con distribución normal estándar y la convergencia es convergencia en distribución.
+::: 
+
+::: {#exr-3.20}
+Se toma una muestra de tamaño tres de una población con
+distribución de Poisson de parámetro $\theta$ cuyos los resultados son, $x_1 = 2$, $x_2 = 0$, $x_3 = 5$. Determinar la estimación máximoverosimil de $\theta$.
+::: 
 
 
 ## Referencias
